@@ -1,0 +1,14 @@
+package a.b.c.board.scr;
+
+public class KckBoardScr {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		public String kboardSelectAll();
+		public String kboardSelect();
+		public String kboardInsert();
+		public String kboardUpdate();
+		public String kboardDelete();
+	}
+
+}

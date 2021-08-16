@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<typeInfoHistroy>
+<typeInfo handle="=javaTest/C:\/Program Files\/Java\/jdk1.8.0_291\/jre\/lib\/rt.jar=/javadoc_location=/https:\/\/docs.oracle.com\/javase\/8\/docs\/api\/=/&lt;java.lang(Runnable.class[Runnable" modifiers="1537" timestamp="1624936104041"/>
+<typeInfo handle="=javaTest/src&lt;a.b.c{interfaceClass.java[interfaceClass" modifiers="513" timestamp="1626666864280"/>
+<typeInfo handle="=javaTest/src&lt;a.b.c.mem.dao{KckMemberDAO.java[KckMemberDAO" modifiers="513" timestamp="1628561873752"/>
+<typeInfo handle="=javaTest/src&lt;a.b.c.mem.service{KckMemberService.java[KckMemberService" modifiers="513" timestamp="1628653046751"/>
+<typeInfo handle="=javaTest/src&lt;a.b.c.board.dao{KckBoardDAO.java[KckBoardDAO" modifiers="513" timestamp="1628654329659"/>
+<typeInfo handle="=javaTest/src&lt;a.b.c.board.service{KckBoardService.java[KckBoardService" modifiers="513" timestamp="1628654343596"/>
+</typeInfoHistroy>

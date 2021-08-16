@@ -1,0 +1,14 @@
+package a.b.c.board.common;
+
+public class KckBoardChabun {
+	
+	public String gubunNum() {
+		
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

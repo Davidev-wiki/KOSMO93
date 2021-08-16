@@ -1,0 +1,31 @@
+package a.b.c.mem.service;
+
+import a.b.c.interfaceClass;
+
+public class KckMemberServiceImpl implements interfaceClass {
+
+	@Override
+	public void a() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public int b() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public String c() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean d() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

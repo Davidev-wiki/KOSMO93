@@ -1,0 +1,52 @@
+package a.b.c.ch9.kck.vo;
+
+public class KckMemberVO {
+
+	private String HNUM;
+	private String HNAME;
+	private String HID;
+	private String HPW;
+	private String HBIRTH;
+	private String HGENDER;
+	private String HTEL;
+	private String HHP;
+	private String HEMAIL;
+	private String HADDR;
+	private String HHOBBY;
+	private String HPHOTO;
+	private String HSKILL;
+	private String HJOB;
+	private String DELETEYN;
+	private String INSERTDATE;
+	private String UPDATEDATE;
+
+	// »ý¼ºÀÚ
+	public KckMemberVO() {
+
+	}
+
+	public KckMemberVO(String HNUM, String HNAME, String HID, String HPW, String HBIRTH, String HGENDER, String HTEL,
+			String HHP, String HEMAIL, String HADDR, String HHOBBY, String HPHOTO, String HSKILL, String HJOB,
+			String DELETEYN, String INSERTDATE, String UPDATEDATE) {
+
+		this.HNUM = HNUM;
+		this.HNAME = HNAME;
+		this.HID = HID;
+		this.HPW = HPW;
+		this.HBIRTH = HBIRTH;
+		this.HGENDER = HGENDER;
+		this.HTEL = HTEL;
+		this.HHP = HHP;
+		this.HEMAIL = HEMAIL;
+		this.HADDR = HADDR;
+		this.HHOBBY = HHOBBY;
+		this.HPHOTO = HPHOTO;
+		this.HSKILL = HSKILL;
+		this.HJOB = HJOB;
+		this.DELETEYN = DELETEYN;
+		this.INSERTDATE = INSERTDATE;
+		this.UPDATEDATE = UPDATEDATE;
+
+	}
+
+}

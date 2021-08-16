@@ -1,0 +1,189 @@
+package a.b.c.ch9.kck.vo;
+
+public class KckMemberVO {
+
+	private String knum;
+	private String kname;
+	private String kid;
+	private String kpw;
+	private String kbirth;
+	private String kgender;
+	private String ktel;
+	private String khp;
+	private String kemail;
+	private String kaddr;
+	private String khobby;
+	private String kphoto;
+	private String kskill;
+	private String kjob;
+	private String deleteyn;
+	private String insertdate;
+	private String updatedate;
+
+	// »ý¼ºÀÚ
+	public KckMemberVO() {
+
+	}
+
+	public KckMemberVO(String knum, String kname, String kid, String kpw, String kbirth, String kgender, String ktel,
+			String khp, String kemail, String kaddr, String khobby, String kphoto, String kskill, String kjob,
+			String deleteyn, String insertdate, String updatedate) {
+
+		this.knum = knum;
+		this.kname = kname;
+		this.kid = kid;
+		this.kpw = kpw;
+		this.kbirth = kbirth;
+		this.kgender = kgender;
+		this.ktel = ktel;
+		this.khp = khp;
+		this.kemail = kemail;
+		this.kaddr = kaddr;
+		this.khobby = khobby;
+		this.kphoto = kphoto;
+		this.kskill = kskill;
+		this.kjob = kjob;
+		this.deleteyn = deleteyn;
+		this.insertdate = insertdate;
+		this.updatedate = updatedate;
+
+	}
+
+	public String getknum() {
+		return knum;
+	}
+
+	public String getkname() {
+		return kname;
+	}
+
+	public String getkid() {
+		return kid;
+	}
+
+	public String getkpw() {
+		return kpw;
+	}
+
+	public String getkbirth() {
+		return kbirth;
+	}
+
+	public String getkgender() {
+		return kgender;
+	}
+
+	public String getktel() {
+		return ktel;
+	}
+
+	public String getkhp() {
+		return khp;
+	}
+
+	public String getkemail() {
+		return kemail;
+	}
+
+	public String getkaddr() {
+		return kaddr;
+	}
+
+	public String getkhobby() {
+		return khobby;
+	}
+
+	public String getkphoto() {
+		return kphoto;
+	}
+
+	public String getkskill() {
+		return kskill;
+	}
+
+	public String getkjob() {
+		return kjob;
+	}
+
+	public String getdeleteyn() {
+		return deleteyn;
+	}
+
+	public String getinsertdate() {
+		return insertdate;
+	}
+
+	public String getupdatedate() {
+		return updatedate;
+	}
+
+	public void setknum(String knum) {
+		knum = knum;
+	}
+
+	public void setkname(String kname) {
+		kname = kname;
+	}
+
+	public void setkid(String kid) {
+		kid = kid;
+	}
+
+	public void setkpw(String kpw) {
+		kpw = kpw;
+	}
+
+	public void setkbirth(String kbirth) {
+		kbirth = kbirth;
+	}
+
+	public void setkgender(String kgender) {
+		kgender = kgender;
+	}
+
+	public void setktel(String ktel) {
+		ktel = ktel;
+	}
+
+	public void setkhp(String khp) {
+		khp = khp;
+	}
+
+	public void setkemail(String kemail) {
+		kemail = kemail;
+	}
+
+	public void setkaddr(String kaddr) {
+		kaddr = kaddr;
+	}
+
+	public void setkhobby(String khobby) {
+		khobby = khobby;
+	}
+
+	public void setkphoto(String kphoto) {
+		kphoto = kphoto;
+	}
+
+	public void setkskill(String kskill) {
+		kskill = kskill;
+	}
+
+	public void setkjob(String kjob) {
+		kjob = kjob;
+	}
+
+	public void setdeleteyn(String deleteyn) {
+		deleteyn = deleteyn;
+	}
+
+	public void setinsertdate(String insertdate) {
+		insertdate = insertdate;
+	}
+
+	public void setupdatedate(String updatedate) {
+		updatedate = updatedate;
+	}
+
+	
+}

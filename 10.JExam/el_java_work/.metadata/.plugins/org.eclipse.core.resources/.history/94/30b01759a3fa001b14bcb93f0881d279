@@ -1,0 +1,5 @@
+package a.b.c.board.common;
+
+public abstract class DateUtil {
+	numPad();
+}

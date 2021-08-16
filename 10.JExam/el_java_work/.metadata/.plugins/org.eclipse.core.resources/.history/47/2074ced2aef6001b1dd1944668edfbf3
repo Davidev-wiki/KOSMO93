@@ -1,0 +1,527 @@
+package a.b.c.ch9.kckmem;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import a.b.c.ch9.kck.vo.KckMemberVO;
+import a.b.c.ch9.kck.vo.KckMemberVO2;
+import a.b.c.ch9.kckmem.sql.KckMemberSqlMap;
+import a.b.c.common.KckConnProperty2;
+
+public class KckMember2 {
+
+	// 전체 조회 함수
+	public ArrayList<KckMemberVO2> kmemSelectAll() {
+		System.out.println("KckMember2.kmemSelectAll() 함수 진입 ");
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rsRs = null;
+
+		ArrayList<KckMemberVO2> aList = null;
+
+		try {
+
+			conn = KckConnProperty2.getConnection();
+			pstmt = conn.prepareStatement(KckMemberSqlMap.getKckMemberSelectAllQuery());
+			System.out.println("전체조회 \n" + KckMemberSqlMap.getKckMemberSelectAllQuery());
+
+			rsRs = pstmt.executeQuery();
+
+			if (rsRs != null) {
+
+				aList = new ArrayList<KckMemberVO2>();
+
+				while (rsRs.next()) {
+
+					KckMemberVO2 kvo = new KckMemberVO2();
+					kvo.setKnum(rsRs.getString(1));
+					kvo.setKname(rsRs.getString(2));
+					kvo.setKid(rsRs.getString(3));
+					kvo.setKpw(rsRs.getString(4));
+					kvo.setKbirth(rsRs.getString(5));
+					kvo.setKgender(rsRs.getString(6));
+					kvo.setKtel(rsRs.getString(7));
+					kvo.setKhp(rsRs.getString(8));
+					kvo.setKemail(rsRs.getString(9));
+					kvo.setKaddr(rsRs.getString(10));
+					kvo.setKhobby(rsRs.getString(11));
+					kvo.setKphoto(rsRs.getString(12));
+					kvo.setKskill(rsRs.getString(13));
+					kvo.setKjob(rsRs.getString(14));
+					kvo.setDeleteyn(rsRs.getString(15));
+					kvo.setInsertdate(rsRs.getString(16));
+					kvo.setUpdatedate(rsRs.getString(17));
+
+					aList.add(kvo);
+				}
+			}
+		} catch (Exception e) {
+			System.out.println("kmemSelectAll() 함수에서 디비연결 또는 쿼리에서 문제가 생겼네요 >>> : " + e.getMessage());
+		}
+
+		return aList;
+	}
+
+	// 조건 조회 함수
+	public ArrayList<KckMemberVO2> kmemSelect(KckMemberVO2 kvo) {
+		System.out.println("KckMember.kmemSelect() 함수 진입 ");
+		// 아랫줄은 굳이 필요없는 코드 세팅과정을 보여주기위해 일부러 만든 코드같음
+		//KckMemberVO2.printlnKckMemberVO(kvo);
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rsRs = null;
+
+		ArrayList<KckMemberVO2> aList = null;
+
+		try {
+
+			conn = KckConnProperty2.getConnection();
+			pstmt = conn.prepareStatement(KckMemberSqlMap.getKckMemberSelectQuery());
+			// System.out.println("조건조회 \n" + KckMemberSqlMap.getKckMemberSelectQuery());
+
+			pstmt.clearParameters();
+			//
+			pstmt.setString(1, kvo.getKnum());
+			rsRs = pstmt.executeQuery();
+
+			if (rsRs != null) {
+
+				aList = new ArrayList<KckMemberVO2>();
+
+				while (rsRs.next()) {
+
+					KckMemberVO2 _kvo = new KckMemberVO2();
+					_kvo.setKnum(rsRs.getString(1));
+					_kvo.setKname(rsRs.getString(2));
+					_kvo.setKid(rsRs.getString(3));
+					_kvo.setKpw(rsRs.getString(4));
+					_kvo.setKbirth(rsRs.getString(5));
+					_kvo.setKgender(rsRs.getString(6));
+					_kvo.setKtel(rsRs.getString(7));
+					_kvo.setKhp(rsRs.getString(8));
+					_kvo.setKemail(rsRs.getString(9));
+					_kvo.setKaddr(rsRs.getString(10));
+					_kvo.setKhobby(rsRs.getString(11));
+					_kvo.setKphoto(rsRs.getString(12));
+					_kvo.setKskill(rsRs.getString(13));
+					_kvo.setKjob(rsRs.getString(14));
+					_kvo.setDeleteyn(rsRs.getString(15));
+					_kvo.setInsertdate(rsRs.getString(16));
+					_kvo.setUpdatedate(rsRs.getString(17));
+
+					aList.add(_kvo);
+				}
+			}
+		} catch (Exception e) {
+			System.out.println("kmemSelect() 함수에서 디비연결 또는 쿼리에서 문제가 생겼네요 >>> : " + e.getMessage());
+		}
+
+		return aList;
+	}
+
+	// 회원 등록
+	public boolean kmemInsert(KckMemberVO2 kvo) {
+		System.out.println("KckMember kmemInsert() 함수 진입 >>> : ");
+		KckMemberVO2.printlnKckMemberVO(kvo);
+		
+		// 사용할 객체를 지역변수로 선언하고 초기화 하기 
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int nCnt = 0;
+		boolean bool = false;
+		
+		try {			
+
+			conn = KckConnProperty2.getConnection();
+			System.out.println("conn.getAutoCommit() >>> : " + conn.getAutoCommit());
+			
+			pstmt = conn.prepareStatement(KckMemberSqlMap.getKckMemberInsertQuery());
+			System.out.println("입력하기 >>> : \n"+ KckMemberSqlMap.getKckMemberInsertQuery());
+  			
+			// 파라미터 클리어 꼭 하기 
+			pstmt.clearParameters();
+			
+			pstmt.setString(1, kvo.getKnum()); // 202108060007
+			pstmt.setString(2, kvo.getKname()); // GGGG
+			pstmt.setString(3, kvo.getKid());   // GG00
+			pstmt.setString(4, kvo.getKpw());
+			pstmt.setString(5, kvo.getKbirth());
+			pstmt.setString(6, kvo.getKgender());
+			pstmt.setString(7, kvo.getKtel());
+			pstmt.setString(8, kvo.getKhp());			
+			pstmt.setString(9, kvo.getKemail());
+			pstmt.setString(10, kvo.getKaddr());
+			pstmt.setString(11, kvo.getKhobby());
+			pstmt.setString(12, kvo.getKphoto());
+			pstmt.setString(13, kvo.getKskill());
+			pstmt.setString(14, kvo.getKjob());
+			/*
+			sb.append("      			 HNUM 				\n"); // COLUMN 1
+			sb.append("					,HNAME 				\n"); // COLUMN 2
+			sb.append("					,HID 				\n"); // COLUMN 3
+		    sb.append("					,HPW   				\n"); // COLUMN 4
+		    sb.append("					,HBIRTH				\n"); // COLUMN 5	    
+		    sb.append("					,HGENDER 			\n"); // COLUMN 6	    
+		    sb.append("					,HTEL   			\n"); // COLUMN 7	    
+		    sb.append("					,HHP 				\n"); // COLUMN 8	    	    
+		    sb.append("					,HEMAIL				\n"); // COLUMN 9
+		    sb.append("					,HADDR 				\n"); // COLUMN 10	    	    
+		    sb.append("					,HHOBBY				\n"); // COLUMN 11
+		    sb.append("					,HPHOTO 			\n"); // COLUMN 12
+		    sb.append("					,HSKILL				\n"); // COLUMN 13
+		    sb.append("					,HJOB				\n"); // COLUMN 14	    	    	  
+		    sb.append("					,DELETEYN			\n"); // COLUMN 15
+		    sb.append("					,INSERTDATE			\n"); // COLUMN 16
+		    sb.append("					,UPDATEDATE			\n"); // COLUMN 17
+			sb.append("			      )						\n");
+			sb.append("	       VALUES   					\n");
+			sb.append("	       		 (  					\n");
+			sb.append("     				 ? 				\n"); // placeholder 1 202108060007
+			sb.append("						,? 				\n"); // placeholder 2 GGGG
+		    sb.append("						,?   			\n"); // placeholder 3 GG00
+		    sb.append("						,?   			\n"); // placeholder 4
+		    sb.append("						,? 				\n"); // placeholder 5
+		    sb.append("						,? 				\n"); // placeholder 6
+		    sb.append("						,?				\n"); // placeholder 7
+		    sb.append("						,?				\n"); // placeholder 8
+		    sb.append("						,?				\n"); // placeholder 9
+		    sb.append("						,?   			\n"); // placeholder 10
+		    sb.append("						,? 				\n"); // placeholder 11
+		    sb.append("						,? 				\n"); // placeholder 12
+		    sb.append("						,?				\n"); // placeholder 13
+		    sb.append("						,?				\n"); // placeholder 14
+			*/
+			
+			// 쿼리문 전달 시작 
+			// SELECT 는 executeQuery() 함수를 사용한다. : 리턴이 ResultSet 이다 . 
+			// INSERT, UPDATE, DELETE 는 executeUpdate() 함수를 사용한다. : 리턴값이 int : 건수를 리턴한다. 
+			// executeQuery() 나 executeUpdate() 함수를 사용하기 싫으면 exeute() 함수를 사용하면 된다. 
+			nCnt = pstmt.executeUpdate();						
+			if (!conn.getAutoCommit()) conn.commit();			
+			
+			System.out.println("nCnt >>> : " + nCnt + " 건 등록 되었음 ");
+			
+			if (nCnt > 0) { bool = true;}
+			
+			KckConnProperty2.conClose(conn, pstmt);
+		}catch(Exception e) {
+			System.out.println("입력 디비연동에 문제가 생겼습니다. >>> : " + e);
+		}finally {
+			try {
+				KckConnProperty2.conClose(conn, pstmt);				
+			}catch(Exception e2) {}
+		}
+				
+		return bool;
+	}
+
+	// 회원 수정 
+	public boolean kmemUpdate(KckMemberVO2 kvo) {
+		System.out.println("KckMember kmemUpdate() 함수 진입 >>> : ");
+		KckMemberVO2.printlnKckMemberVO(kvo);
+		
+		// 사용할 객체를 지역변수로 선언하고 초기화 하기 
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int nCnt = 0;
+		boolean bool = false;
+		
+		try {			
+
+			conn = KckConnProperty2.getConnection();
+			System.out.println("conn.getAutoCommit() >>> : " + conn.getAutoCommit());
+			
+			pstmt = conn.prepareStatement(KckMemberSqlMap.getKckMemberUpdateQuery());
+			System.out.println("수정하기 >>> : \n"+ KckMemberSqlMap.getKckMemberUpdateQuery());
+  			
+			// 파라미터 클리어 꼭 하기 
+			pstmt.clearParameters();
+			
+			pstmt.setString(1, kvo.getKemail());
+			pstmt.setString(2, kvo.getKaddr());
+			pstmt.setString(3, kvo.getKhobby());			
+			pstmt.setString(4, kvo.getKjob());
+			pstmt.setString(5, kvo.getKnum()); 
+			/*
+			    sb.append("	SET  								\n");
+				sb.append("			,HEMAIL 		= ?			\n"); // placeholder 1	    	    
+				sb.append("			,HADDR			= ?			\n"); // placeholder 2	    
+				sb.append("			,HHOBBY 		= ? 		\n"); // placeholder 3
+				sb.append("			,HJOB   		= ?			\n"); // placeholder 4	        		
+			    sb.append("		  	,UPDATEDATE 	= SYSDATE	\n");
+				sb.append("	WHERE  	 HNUM 			= ?			\n"); // placeholder 5	    
+				sb.append("	AND    	 DELETEYN 		= 'Y'  		\n");			
+			*/
+			
+			// 쿼리문 전달 시작 
+			// SELECT 는 executeQuery() 함수를 사용한다. : 리턴이 ResultSet 이다 . 
+			// INSERT, UPDATE, DELETE 는 executeUpdate() 함수를 사용한다. : 리턴값이 int : 건수를 리턴한다. 
+			// executeQuery() 나 executeUpdate() 함수를 사용하기 싫으면 exeute() 함수를 사용하면 된다. 
+			nCnt = pstmt.executeUpdate();						
+			if (!conn.getAutoCommit()) conn.commit();			
+			
+			System.out.println("nCnt >>> : " + nCnt + " 건 수정 되었음 ");
+			
+			if (nCnt > 0) { bool = true;}
+			
+			KckConnProperty2.conClose(conn, pstmt);
+		}catch(Exception e) {
+			System.out.println("입력 디비연동에 문제가 생겼습니다. >>> : " + e);
+		}finally {
+			try {
+				KckConnProperty2.conClose(conn, pstmt);				
+			}catch(Exception e2) {}
+		}
+				
+		return bool;
+	}
+	
+	// 회원 삭제
+	public boolean kmemDelete(KckMemberVO2 kvo) {
+		System.out.println("KckMember kmemDelete() 함수 진입 >>> : ");
+		KckMemberVO2.printlnKckMemberVO(kvo);
+		
+		// 사용할 객체를 지역변수로 선언하고 초기화 하기 
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int nCnt = 0;
+		boolean bool = false;
+		
+		try {			
+
+			conn = KckConnProperty2.getConnection();
+			System.out.println("conn.getAutoCommit() >>> : " + conn.getAutoCommit());
+			
+			pstmt = conn.prepareStatement(KckMemberSqlMap.getKckMemberDeleteQuery());
+			System.out.println("삭제하기 >>> : \n"+ KckMemberSqlMap.getKckMemberDeleteQuery());
+  			
+			// 파라미터 클리어 꼭 하기 
+			pstmt.clearParameters();
+			pstmt.setString(1, kvo.getKnum()); 
+			/*
+				sb.append("	SET  								\n");
+			    sb.append("		   DELETEYN 	= 'N'			\n");	    	   
+			    sb.append("		  ,UPDATEDATE 	= SYSDATE		\n");
+				sb.append("	WHERE  HNUM 		= ?				\n");	 // placeholder 1    
+				sb.append("	AND    DELETEYN 	= 'Y'  			\n");		
+			*/
+			
+			// 쿼리문 전달 시작 
+			// SELECT 는 executeQuery() 함수를 사용한다. : 리턴이 ResultSet 이다 . 
+			// INSERT, UPDATE, DELETE 는 executeUpdate() 함수를 사용한다. : 리턴값이 int : 건수를 리턴한다. 
+			// executeQuery() 나 executeUpdate() 함수를 사용하기 싫으면 exeute() 함수를 사용하면 된다. 
+			nCnt = pstmt.executeUpdate();						
+			if (!conn.getAutoCommit()) conn.commit();			
+			
+			System.out.println("nCnt >>> : " + nCnt + " 건 삭제 되었음 ");
+			
+			if (nCnt > 0) { bool = true;}
+			
+			KckConnProperty2.conClose(conn, pstmt);
+		}catch(Exception e) {
+			System.out.println("입력 디비연동에 문제가 생겼습니다. >>> : " + e);
+		}finally {
+			try {
+				KckConnProperty2.conClose(conn, pstmt);				
+			}catch(Exception e2) {}
+		}
+				
+		return bool;	
+		}
+	
+	// main() 함수
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		System.out.println("회원정보 CRUD::ISUD 테스트 >>> : ");
+
+		Scanner sc = new Scanner(System.in);
+
+		while (true) {
+
+			System.out.println("\n\n회원정보 전체조회:SA, 조건조회:S, 등록:I, 수정:U, 삭제:D, 종료:Q");
+
+			String isud = sc.next().toUpperCase();
+
+			if ("Q".equals(isud))
+				break;
+
+			if ("SA".equals(isud)) {
+				System.out.println("회원정보 전체조회 >>> : " + isud);
+
+				KckMember2 km = new KckMember2();
+
+				ArrayList<KckMemberVO2> aList = km.kmemSelectAll();
+
+				if (aList != null && aList.size() > 0) {
+					for (int i = 0; i < aList.size(); i++) {
+
+						KckMemberVO2 kvo = aList.get(i);
+						KckMemberVO2.printKckMemberVO(kvo);
+					}
+				} else {
+					System.out.println("aList 에 데이터가 없네요 >>> : " + aList);
+				}
+			}
+			if ("S".equals(isud)) {
+				System.out.println("회원정보 조건조회 >>> : " + isud);
+
+				System.out.println("조회조건 회원번호를 입력하시오 >>> : ");
+				Scanner scs = new Scanner(System.in);
+				String knum = scs.next();
+
+				KckMember2 km = new KckMember2();
+
+				KckMemberVO2 kvo = null;
+				kvo = new KckMemberVO2();
+				kvo.setKnum(knum);
+
+				ArrayList<KckMemberVO2> aList = km.kmemSelect(kvo);
+
+				if (aList != null && aList.size() > 0) {
+					for (int i = 0; i < aList.size(); i++) {
+
+						KckMemberVO2 _kvo = aList.get(i);
+						KckMemberVO2.printlnKckMemberVO(_kvo);
+					}
+				} else {
+					System.out.println("aList 에 데이터가 없네요 >>> : " + aList);
+				}
+			}
+			if ("I".equals(isud)) {
+				System.out.println("회원정보 등록 >>> : " + isud);
+				
+				String knum = "202108060007";
+				String kname = "GGGG";
+				String kid = "GG00";
+				String kpw = "GG1234"; 
+				String kbirth = "20210701";
+				String kgender = "01";
+				String ktel = "03212341234";
+				String khp = "01012341234"; 
+				String kemail = "GG00@naver.com";
+				String kaddr = "서울 금천구 가산동 77"; 
+				String khobby = "01";
+				String kphoto = "abc06.jpg";
+				String kskill = "특기7";
+				String kjob = "01";
+			
+				KckMember2 km = new KckMember2();
+				
+				KckMemberVO2 kvo = null;
+				kvo = new KckMemberVO2();
+				kvo.setKnum(knum);
+				kvo.setKname(kname);
+				kvo.setKid(kid);
+				kvo.setKpw(kpw);
+				kvo.setKbirth(kbirth);
+				kvo.setKgender(kgender);
+				kvo.setKtel(ktel);
+				kvo.setKhp(khp);
+				kvo.setKemail(kemail);
+				kvo.setKaddr(kaddr);
+				kvo.setKhobby(khobby);				
+				kvo.setKphoto(kphoto);
+				kvo.setKskill(kskill);
+				kvo.setKjob(kjob);
+				
+				boolean bool = km.kmemInsert(kvo);
+
+				if (bool) {
+					System.out.println("회원 정보 입력 성공 >>> : " + bool);	
+					
+					ArrayList<KckMemberVO2> aList = km.kmemSelectAll();
+
+					if (aList !=null && aList.size() > 0) {
+						for (int i=0; i < aList.size(); i++) {
+							
+							KckMemberVO2 _kvo = aList.get(i);
+							KckMemberVO2.printKckMemberVO(_kvo);
+						}		
+					}else {
+						System.out.println("aList 에 데이터가 없네요 >>> : " + aList);
+					}
+				}else {
+					System.out.println("회원 정보 입력 실패 >>> : " + bool);
+				}	
+				
+
+			}
+			if ("U".equals(isud)) {
+				System.out.println("회원정보 수정 >>> : " + isud);
+				
+				String knum = "202108060006";				
+				String kemail = "FF00@naver.com";
+				String kaddr = "서울 금천구 가산동 6622"; 
+				String khobby = "04";				
+				String kjob = "02";
+			
+				KckMember2 km = new KckMember2();
+				
+				KckMemberVO2 kvo = null;
+				kvo = new KckMemberVO2();
+				kvo.setKnum(knum);			
+				kvo.setKemail(kemail);
+				kvo.setKaddr(kaddr);
+				kvo.setKhobby(khobby);								
+				kvo.setKjob(kjob);
+				
+				boolean bool = km.kmemUpdate(kvo);
+				if (bool) {
+					System.out.println("회원 정보 수정 성공 >>> : " + bool);	
+					
+					ArrayList<KckMemberVO2> aList = km.kmemSelectAll();
+
+					if (aList !=null && aList.size() > 0) {
+						for (int i=0; i < aList.size(); i++) {
+							
+							KckMemberVO2 _kvo = aList.get(i);
+							KckMemberVO2.printKckMemberVO(_kvo);
+						}		
+					}else {
+						System.out.println("aList 에 데이터가 없네요 >>> : " + aList);
+					}
+				}else {
+					System.out.println("회원 정보 수정 실패 >>> : " + bool);
+				}	
+				
+			}
+			if ("D".equals(isud)) {
+				System.out.println("회원정보 삭제 >>> : " + isud);
+				
+				String hnum = "202108060006";				
+			
+				KckMember2 km = new KckMember2();
+				
+				KckMemberVO2 kvo = null;
+				kvo = new KckMemberVO2();
+				kvo.setKnum(hnum);			
+				
+				boolean bool = km.kmemDelete(kvo);
+				
+				if (bool) {
+					System.out.println("회원 정보 삭제 성공 >>> : " + bool);	
+					
+					ArrayList<KckMemberVO2> aList = km.kmemSelectAll();
+
+					if (aList !=null && aList.size() > 0) {
+						for (int i=0; i < aList.size(); i++) {
+							
+							KckMemberVO2 _kvo = aList.get(i);
+							KckMemberVO2.printKckMemberVO(_kvo);
+						}		
+					}else {
+						System.out.println("aList 에 데이터가 없네요 >>> : " + aList);
+					}
+				}else {
+					System.out.println("회원 정보 삭제 실패 >>> : " + bool);
+				}					
+			}
+		}
+	}
+}

@@ -1,0 +1,188 @@
+package a.b.c.ch9.kck.vo;
+
+public class KckMemberVO {
+
+	private String HNUM;
+	private String HNAME;
+	private String HID;
+	private String HPW;
+	private String HBIRTH;
+	private String HGENDER;
+	private String HTEL;
+	private String HHP;
+	private String HEMAIL;
+	private String HADDR;
+	private String HHOBBY;
+	private String HPHOTO;
+	private String HSKILL;
+	private String HJOB;
+	private String DELETEYN;
+	private String INSERTDATE;
+	private String UPDATEDATE;
+
+	// »ý¼ºÀÚ
+	public KckMemberVO() {
+
+	}
+
+	public KckMemberVO(String HNUM, String HNAME, String HID, String HPW, String HBIRTH, String HGENDER, String HTEL,
+			String HHP, String HEMAIL, String HADDR, String HHOBBY, String HPHOTO, String HSKILL, String HJOB,
+			String DELETEYN, String INSERTDATE, String UPDATEDATE) {
+
+		this.HNUM = HNUM;
+		this.HNAME = HNAME;
+		this.HID = HID;
+		this.HPW = HPW;
+		this.HBIRTH = HBIRTH;
+		this.HGENDER = HGENDER;
+		this.HTEL = HTEL;
+		this.HHP = HHP;
+		this.HEMAIL = HEMAIL;
+		this.HADDR = HADDR;
+		this.HHOBBY = HHOBBY;
+		this.HPHOTO = HPHOTO;
+		this.HSKILL = HSKILL;
+		this.HJOB = HJOB;
+		this.DELETEYN = DELETEYN;
+		this.INSERTDATE = INSERTDATE;
+		this.UPDATEDATE = UPDATEDATE;
+
+	}
+
+	public String getHNUM() {
+		return HNUM;
+	}
+
+	public String getHNAME() {
+		return HNAME;
+	}
+
+	public String getHID() {
+		return HID;
+	}
+
+	public String getHPW() {
+		return HPW;
+	}
+
+	public String getHBIRTH() {
+		return HBIRTH;
+	}
+
+	public String getHGENDER() {
+		return HGENDER;
+	}
+
+	public String getHTEL() {
+		return HTEL;
+	}
+
+	public String getHHP() {
+		return HHP;
+	}
+
+	public String getHEMAIL() {
+		return HEMAIL;
+	}
+
+	public String getHADDR() {
+		return HADDR;
+	}
+
+	public String getHHOBBY() {
+		return HHOBBY;
+	}
+
+	public String getHPHOTO() {
+		return HPHOTO;
+	}
+
+	public String getHSKILL() {
+		return HSKILL;
+	}
+
+	public String getHJOB() {
+		return HJOB;
+	}
+
+	public String getDELETEYN() {
+		return DELETEYN;
+	}
+
+	public String getINSERTDATE() {
+		return INSERTDATE;
+	}
+
+	public String getUPDATEDATE() {
+		return UPDATEDATE;
+	}
+
+	public void setHNUM(String hNUM) {
+		HNUM = hNUM;
+	}
+
+	public void setHNAME(String hNAME) {
+		HNAME = hNAME;
+	}
+
+	public void setHID(String hID) {
+		HID = hID;
+	}
+
+	public void setHPW(String hPW) {
+		HPW = hPW;
+	}
+
+	public void setHBIRTH(String hBIRTH) {
+		HBIRTH = hBIRTH;
+	}
+
+	public void setHGENDER(String hGENDER) {
+		HGENDER = hGENDER;
+	}
+
+	public void setHTEL(String hTEL) {
+		HTEL = hTEL;
+	}
+
+	public void setHHP(String hHP) {
+		HHP = hHP;
+	}
+
+	public void setHEMAIL(String hEMAIL) {
+		HEMAIL = hEMAIL;
+	}
+
+	public void setHADDR(String hADDR) {
+		HADDR = hADDR;
+	}
+
+	public void setHHOBBY(String hHOBBY) {
+		HHOBBY = hHOBBY;
+	}
+
+	public void setHPHOTO(String hPHOTO) {
+		HPHOTO = hPHOTO;
+	}
+
+	public void setHSKILL(String hSKILL) {
+		HSKILL = hSKILL;
+	}
+
+	public void setHJOB(String hJOB) {
+		HJOB = hJOB;
+	}
+
+	public void setDELETEYN(String dELETEYN) {
+		DELETEYN = dELETEYN;
+	}
+
+	public void setINSERTDATE(String iNSERTDATE) {
+		INSERTDATE = iNSERTDATE;
+	}
+
+	public void setUPDATEDATE(String uPDATEDATE) {
+		UPDATEDATE = uPDATEDATE;
+	}
+
+}

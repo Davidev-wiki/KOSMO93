@@ -1,0 +1,5 @@
+package a.b.c.board.sql;
+
+public abstract class KckBoardSqlMap {
+
+}

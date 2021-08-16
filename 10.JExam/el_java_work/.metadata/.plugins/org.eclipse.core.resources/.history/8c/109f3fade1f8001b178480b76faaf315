@@ -1,0 +1,39 @@
+package a.b.c.mem.service;
+
+import java.util.ArrayList;
+
+import a.b.c.mem.vo.KckMemberVO;
+
+public class KckMemberServiceImpl implements KckMemberService {
+
+	@Override
+	public ArrayList<KckMemberVO> hmemSelectAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<KckMemberVO> hmemSelect(KckMemberVO hvo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean hmemInsert(KckMemberVO hvo) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean hmemUpdate(KckMemberVO hvo) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean hmemDelete(KckMemberVO hvo) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

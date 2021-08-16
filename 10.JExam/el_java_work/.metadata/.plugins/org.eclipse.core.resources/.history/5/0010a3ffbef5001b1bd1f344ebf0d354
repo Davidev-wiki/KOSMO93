@@ -1,0 +1,102 @@
+package a.b.c.ch9.kckmem;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
+import a.b.c.ch9.kck.vo.KckMemberVO;
+import a.b.c.common.KckConnProperty;
+
+public class KckMember {
+
+	// 쿼리문
+	public static final String KMEM_SELECT = "SELECT * FROM KCK_MEMBER";
+	// 멤버변수
+
+	// 함수
+	public ArrayList<KckMemberVO> kmemSelectALL() {
+
+		Connection conn = null;
+//		Statement stmt = null;
+		PreparedStatement pstmt = null;
+		ResultSet rsRs = null;
+
+		ArrayList<KckMemberVO> aList = null;
+
+		try {
+
+			conn = KckConnProperty.getConnection();
+			pstmt = conn.prepareStatement(KckMember.KMEM_SELECT);
+			rsRs = pstmt.executeQuery();
+
+			if (rsRs != null) {
+
+				aList = new ArrayList<KckMemberVO>();
+
+				while (rsRs.next()) {
+
+					KckMemberVO kvo = new KckMemberVO();
+					kvo.setKNUM(rsRs.getString("KNUM"));
+					kvo.setKNAME(rsRs.getString("KNAME"));
+					kvo.setKID(rsRs.getString("KID"));
+					kvo.setKPW(rsRs.getString("KPW"));
+					kvo.setKBIRTH(rsRs.getString("KBIRTH"));
+					kvo.setKGENDER(rsRs.getString("KGENDER"));
+					kvo.setKTEL(rsRs.getString("KTEL"));
+					kvo.setKHP(rsRs.getString("KHP"));
+					kvo.setKEMAIL(rsRs.getString("KEMAIL"));
+					kvo.setKADDR(rsRs.getString("KADDR"));
+					kvo.setKHOBBY(rsRs.getString("KHOBBY"));
+					kvo.setKPHOTO(rsRs.getString("KPHOTO"));
+					kvo.setKSKILL(rsRs.getString("KSKILL"));
+					kvo.setKJOB(rsRs.getString("KJOB"));
+					kvo.setDELETEYN(rsRs.getString("DELETEYN"));
+					kvo.setINSERTDATE(rsRs.getString("INSERTDATE"));
+					kvo.setUPDATEDATE(rsRs.getString("UPDATEDATE"));
+
+					aList.add(kvo);
+				}
+			}
+		} catch (Exception e) {
+			System.out.println("디비연결 또는 쿼리에서 문제가 생겼슴 >>> : " + e.getMessage());
+		}
+
+		return aList;
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		KckMember kckm = new KckMember();
+
+		ArrayList<KckMemberVO> aList = kckm.kmemSelectALL();
+
+		if (aList != null && aList.size() > 0) {
+			for (int i = 0; i < aList.size(); i++) {
+
+				KckMemberVO kvo = aList.get(i);
+
+				System.out.print(kvo.getKNUM() + " : ");
+				System.out.print(kvo.getKNAME() + " : ");
+				System.out.print(kvo.getKID() + " : ");
+				System.out.print(kvo.getKPW() + " : ");
+				System.out.print(kvo.getKBIRTH() + " : ");
+				System.out.print(kvo.getKGENDER() + " : ");
+				System.out.print(kvo.getKTEL() + " : ");
+				System.out.print(kvo.getKHP() + " : ");
+				System.out.print(kvo.getKEMAIL() + " : ");
+				System.out.print(kvo.getKADDR() + " : ");
+				System.out.print(kvo.getKHOBBY() + " : ");
+				System.out.print(kvo.getKPHOTO() + " : ");
+				System.out.print(kvo.getKSKILL() + " : ");
+				System.out.print(kvo.getKJOB() + " : ");
+				System.out.print(kvo.getDELETEYN() + " : ");
+				System.out.print(kvo.getINSERTDATE() + " : ");
+				System.out.println(kvo.getUPDATEDATE());
+			}
+		} else {
+			System.out.println("aList 에 데이터가 없네요 >>> : " + aList);
+		}
+	}
+}
