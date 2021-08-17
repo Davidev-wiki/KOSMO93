@@ -1,0 +1,633 @@
+SELECT * FROM EMP;
+
+--오라클 컨스트레인트스 : Oralce Constraints : 제약조건 
+--오라클은 종속된 테이블의 삭제를 방지하고, 테이블에 유효하지 않은 데이터가 입력되는 것을 
+--방지하기 위해서 CONSTRAINTS 를 사용한다. 
+
+--USER_CONSTRAINTS : 제약조건을 보기위하 데이터 딕션너리 테이블 
+--CONSTRAINT_TYPE
+--P : PRIMARY KEY
+--R : FOREIGN KEY
+--C : CHECK OR NOT NULL
+--U : UNIQUE
+
+SELECT CONSTRAINT_NAME, CONSTRAINT_TYPE, TABLE_NAME
+FROM   USER_CONSTRAINTS
+WHERE  TABLE_NAME = 'CONST_TEST';
+
+CREATE TABLE CONST_TEST(
+    CONST_1 NUMBER(4) PRIMARY KEY -- NOT NULL + UNIQUE
+   ,CONST_2 VARCHAR2(20) NOT NULL
+   ,CONST_3 VARCHAR(10) UNIQUE
+);
+SELECT * FROM CONST_TEST;
+INSERT INTO CONST_TEST VALUES(1111, '1111', '1111');
+INSERT INTO CONST_TEST VALUES(1111, '2222', '2222');
+INSERT INTO CONST_TEST VALUES(NULL, '2222', '2222');
+INSERT INTO CONST_TEST VALUES(1112, NULL, '2222');
+INSERT INTO CONST_TEST VALUES(1112, '1112', '1111');
+INSERT INTO CONST_TEST VALUES(1112, '1112', '1112');
+COMMIT;
+
+
+
+
+-- 제약조건 (컬럼이름)사용자입력 방법 1 : CONSTRAINT키워드 테이블 컬럼명 컬럼옵션
+
+SELECT CONSTRAINT_NAME, CONSTRAINT_TYPE, TABLE_NAME, SEARCH_CONDITION
+FROM   USER_CONSTRAINTS
+WHERE  TABLE_NAME = 'CONST_TEST_1';
+
+CREATE TABLE CONST_TEST_1(
+    CONST_1 NUMBER(4) CONSTRAINT CONST_TEST_1_CONT_1_PK PRIMARY KEY 
+   ,CONST_2 VARCHAR2(20) CONSTRAINT CONST_TEST_1_CONT_2_NN NOT NULL
+   ,CONST_3 VARCHAR(10) CONSTRAINT CONST_TEST_1_CONT_2_UK UNIQUE
+);
+
+
+
+-- 제약조건 (컬럼이름)사용자입력방법 2 : DBA들이 쓰는 방법. (여기까진 안해도 됨. 읽는것 까지만 할 수 있게..)
+
+SELECT CONSTRAINT_NAME, CONSTRAINT_TYPE, TABLE_NAME, SEARCH_CONDITION
+FROM   USER_CONSTRAINTS
+WHERE  TABLE_NAME = 'CONST_TEST_2';
+
+CREATE TABLE CONST_TEST_2(
+    CONST_1 NUMBER(4) 
+   ,CONST_2 VARCHAR2(20) CONSTRAINT CONST_TEST_2_CONT_2_NN NOT NULL
+   ,CONST_3 VARCHAR(10) 
+   ,CONSTRAINT CONST_TEST_2_CONT_1_PK PRIMARY KEY(CONST_1)
+   ,CONSTRAINT CONST_TEST_2_CONT_2_UK UNIQUE(CONST_3)
+);
+
+
+--------------------------------------------------------------------------------
+
+
+-- USER_CONS_COLUMNS : 제약조건이름과 연관된 컬럼을 볼 수 있는 데이터 딕션너리
+--PK 여부와 FK 여부를 볼 수 있다.
+SELECT * FROM USER_CONS_COLUMNS
+WHERE TABLE_NAME = 'EMP';
+
+SELECT * FROM USER_CONS_COLUMNS
+WHERE TABLE_NAME = 'DEPT';
+
+DESC DEPT;
+SELECT * FROM TAB;
+
+CREATE TABLE EMP06(
+    EMPNO NUMBER(4) CONSTRAINT EMP06_EMPNO_PK PRIMARY KEY
+   ,ENAME VARCHAR2(10) CONSTRAINT EMP06_ENAME_NN NOT NULL
+   ,JOB VARCHAR2(9) CONSTRAINT EMP06_JOB_UK UNIQUE
+   ,DEPTNO NUMBER(2) CONSTRAINT EMP06_DEPTNO_FK REFERENCES DEPT(DEPTNO)
+);
+
+SELECT * FROM USER_CONS_COLUMNS
+WHERE TABLE_NAME = 'EMP06';
+-- 실무에서 FK 잡는 것은 나중에 제대로 한다고..
+-- 빈 깡통 테이블에 데이터 마구 집어넣고나서 어느정도 쌓이면 새 테이블만들어 진행.
+
+
+
+
+-- DB에 대한 OWNER SHIP 이 없으면 
+-- 쿼리에다가 CHECK, DEFAULT 같은거 쓰지 마세요(아래 예제)
+CREATE TABLE CON_TEST_1(
+     CON_1 NUMBER(4) PRIMARY KEY
+    ,CON_2 VARCHAR2(2) NOT NULL
+    ,GENDER VARCHAR2(1) CHECK(GENDER IN('M', 'F'))
+);
+
+SELECT CONSTRAINT_NAME, CONSTRAINT_TYPE, TABLE_NAME, SEARCH_CONDITION
+FROM   USER_CONSTRAINTS
+WHERE  TABLE_NAME = 'CONST_TEST_1';
+
+
+
+
+----------------------------------------------------------------------------
+
+
+--CHECK : 저장 가능한 데이터 값의 범위나 조건을 지정하여 설정한 값만을 허용한다. 
+--DEFAULT : 정해진 값 입력
+
+CREATE TABLE CON_TEST_2(
+    C_1 NUMBER(4)
+   ,C_2 VARCHAR2(20)
+   ,C_3 NUMBER(7, 2) CONSTRAINT CON_TEST_2_C_3 CHECK(C_3 > 0)
+);
+
+SELECT * FROM CON_TEST_2;
+
+--Error) 상기 constraints(제약조건)은 c_3컬럼이 양의정수가 되야 한다.
+INSERT INTO CON_TEST_2 VALUES(111, '111', -200);
+
+CREATE TABLE CON_TEST_3(  
+   C_GENDER VARCHAR2(1) CONSTRAINT CON_TEST_3_C_GENDER_CHECK CHECK(C_GENDER IN ('M','F'))
+);
+
+SELECT * FROM CON_TEST_3;
+
+--Error) 상기 constraints(제약조건)에 따라 'M' 또는 'F' 가 와야 한다.
+INSERT INTO CON_TEST_3 VALUES('R');
+
+CREATE TABLE CON_TEST_4(  
+   C_DELYN VARCHAR2(1) CONSTRAINT CON_TEST_4_C_DELYN_CHECK CHECK(C_DELYN IN ('Y','N'))
+);
+
+-- Error) 상기 constraints(제약조건)에 따라 'Y 또는 'N'이 와야 한다.
+INSERT INTO CON_TEST_4 VALUES('T');
+
+
+-- 'C_2'컬럼의 기본값을 1000으로 설정한다.
+CREATE TABLE CON_TEST_6(
+    C_1 NUMBER(4) PRIMARY KEY 
+   ,C_2 NUMBER(7,2) DEFAULT 1000
+);
+
+INSERT INTO CON_TEST_6 (C_1) VALUES(111);
+
+SELECT * FROM CON_TEST_6;
+
+
+--------------------------------------------------------------------------------
+
+실제 테이블 만들 때 제일 중요해보이는 코드. 
+
+
+--DBA 수준에서 작성하는 테이블.--
+
+CREATE TABLE T_EMP03(
+     T_EMPNO NUMBER(4)
+    ,T_ENAME VARCHAR2(10) CONSTRAINT EMP03_ENAME_NN NOT NULL
+    ,T_JOB VARCHAR2(9)
+    ,T_DEPTNO NUMBER(2)
+    ,T_GENDER VARCHAR2(1) CONSTRAINT CON_TEST_3_T_GENDER_CHECK CHECK(T_GENDER IN('Y','N'))
+    ,T_DELYN VARCHAR2(1) CONSTRAINT CON_TEST_4_T_DELYN_CHECK CHECK(T_DELYN IN('Y','N'))
+    ,T_INSERTDATE DATE DEFAULT SYSDATE
+    ,T_UPDATEDATE DATE DEFAULT SYSDATE
+    ,CONSTRAINT T_EMP03_T_EMPNO_PK PRIMARY KEY(T_EMPNO)
+    ,CONSTRAINT T_EMP03_T_JOB_UK UNIQUE(T_JOB)
+    ,CONSTRAINT T_EMP03_T_EMPNO_FK FOREIGN KEY(T_DEPTNO) REFERENCES DEPT(DEPTNO)    
+);
+
+SELECT * FROM T_EMP03;
+
+
+
+-- 우리가 자바랑 연동할 때 만들 수준. (자바에서 직접 쿼리를 컨트롤하게 한다.)
+CREATE TABLE T_EMP03_1(  
+     T_EMPNO NUMBER(4) PRIMARY KEY 
+    ,T_ENAME VARCHAR2(10) NOT NULL 
+    ,T_JOB VARCHAR2(9) UNIQUE
+    ,T_DEPTNO NUMBER(2) 
+    ,T_GENDER VARCHAR2(1) -- 입력할 때 코드값으로, 보여줄 때 치환하기 
+    ,T_DELYN VARCHAR2(1) -- 퀴리문에서 Y, N
+    ,T_INSERTDATE DATE -- 쿼리문에서 SYSDATE
+    ,T_UPDATEDATE DATE -- 쿼리문에서 SYSDATE  
+);
+
+
+
+
+--------------------------------------------------------------------------------
+
+
+
+--########################################
+--DUMP() 함수
+-- 사용하는 이유 : ASKII코드로 빈 공백문자를 찾으려고 : ' '(공백, 가비지가 붙어있으면 눈에 안보여 식별이 어렵기 때문에
+
+SELECT DUMP(' ') FROM DUAL;
+SELECT ' TEST' FROM DUAL;
+SELECT 'TEST' FROM DUAL;
+SELECT DUMP(' TEST') FROM DUAL;
+SELECT DUMP('TEST ') FROM DUAL;
+SELECT DUMP(' TEST ') FROM DUAL;
+
+
+
+--DUMP(expression, [, return_format][, start_position][, length])
+--DUMP 함수는 데이터타입, 바이트 길이 및 expression의 내부 표현 정보를 VARCHAR2 형식으로 반환하는 함수이다.
+
+--8       8진법
+--10      10진법
+--16      16진법
+--17      단일문자
+--1008    문자셋과 8진법
+--1010    문자셋과 10진법
+--1016    문자셋과 16진법
+--1017    문자셋과 단일문자
+
+SELECT DUMP('DUMP') AS DUMP_RESULT FROM DUAL;
+--TYP=96 : CHAR 또는 NCHAR 타입
+--LEN=4 : 'DUMP'의 문자길이
+--68,85,77,80 : 'DUMP'를 10진수로 표현한 결과 
+
+SELECT DUMP('DUMP', 8) AS DUMP_RESULT FROM DUAL;
+SELECT DUMP('DUMP', 10) AS DUMP_RESULT FROM DUAL; --DEFAULT
+SELECT DUMP('DUMP', 16) AS DUMP_RESULT FROM DUAL;
+SELECT DUMP('DUMP', 17) AS DUMP_RESULT FROM DUAL; --단일문자
+
+SELECT DUMP('DUMP', 1008) AS DUMP_RESULT FROM DUAL;
+SELECT DUMP('DUMP', 1010) AS DUMP_RESULT FROM DUAL;
+SELECT DUMP('DUMP', 1016) AS DUMP_RESULT FROM DUAL;
+SELECT DUMP('DUMP', 1017) AS DUMP_RESULT FROM DUAL;
+
+--Unicode Database [ ASCII-Based platforms ]
+--
+--UTF8 : Unicode Version ? 2.1 ~ 3.0
+--지원 RDBMS 8.0 ~ 9I
+--Unicode Encoding ? UTF8
+--8i 보다 하위 버전의 Client 존재시 UTF8 사용 필수
+--
+--AL32UTF8 : Unicode Version ? 3.0 ~ 3.1 Version
+--지원 RDBMS 9i 이후
+--Unicode Encoding ? UTF8
+--9i/10G 에서 UTF8 Default CharacterSet
+--8i 보다 하위 버전의 Client 존재시 AL32UTF8 사용시 문제 발생 가능
+
+
+
+
+
+
+--------------------------------------------------------------------------------
+
+
+-- 대소문자 처리 함수
+
+
+SELECT  'Oracle mania'
+        , UPPER('Oracle mania')
+        , LOWER('Oracle mania')
+        , INITCAP('Oracle mania') 
+FROM DUAL;
+
+
+SELECT
+         A.EMPNO  EMPNO
+        ,A.ENAME  ENAME
+        ,A.JOB    JOB
+FROM EMP A
+WHERE UPPER(A.ENAME) = UPPER('miller');
+
+
+
+-- LENGTH : 문자길이 : 한글 1BYTE : 문자 갯수
+-- LENGTHB : 문자길이 : 한글 2BYTE
+SELECT LENGTH('Oracle mania'), LENGTH('오라클매니아') FROM DUAL;
+SELECT LENGTHB('Oracle mania'), LENGTHB('오라클매니아') FROM DUAL;
+
+
+--[추가로 알려주신 유용한 함수]
+
+-- GREATEST
+ -- 인자중 초대값
+SELECT GREATEST(11, 105, 50, -22) FROM DUAL;
+
+-- LEAST
+-- 인자중 최소값
+SELECT LEAST(11, 105, 50, -22) FROM DUAL; 
+
+--UID는 현재 사용자의 유일한 ID 번호를 반환하고, 
+--USER는 현재 오라클 사용자를 VARCHAR2형식으로 반환 한다.
+SELECT USER, UID FROM DUAL;
+
+-- USERENV 함수는 현재 세션의 환경 정보를 반환 한다.
+-- ENTRYID : 사용 가능한 Auditing entry Identifier를 반환.
+-- LABEL : 현재 세션의 Label을 반환.
+-- LANGUAGE : 현재 세션에서 사용중인 언어와 테리토리 값을 반환.
+-- SESSIONID : Auditing(감사) Session ID를 반환.
+-- TERMINAL : 현재 세션 터미널의 OS ID를 반환.
+SELECT USERENV('LANGUAGE') "Language" FROM DUAL;
+
+--VSIZE 해당 문자의 BYTE 수를 반환, 해당 문자가 NULL 이면 NULL 값 반환
+SELECT VSIZE('DataBase') FROM DUAL;
+
+
+--RPAD
+SELECT RPAD('KOREA', 8, '*') FROM DUAL;
+SELECT LENGTH(RPAD('KOREA', 8, '*')) FROM DUAL;
+
+--LPAD '0001' 만들기
+SELECT LPAD(NVL(NULL,0), -4, '0') + 1 FROM DUAL; -- NULL
+
+SELECT NULL FROM DUAL;
+SELECT NVL(NULL, 0) FROM DUAL;
+SELECT NVL(NULL, 0) +1 FROM DUAL;
+SELECT LPAD('1', 4, '0') FROM DUAL; -- CORRECT CASE
+SELECT LPAD(NVL(NULL, 0) +1), 4, '0') FROM DUAL; -- ERROR
+
+
+--TRIM
+SELECT TRIM('a' FROM 'aaaaDataBase programingaaaa') FROM DUAL;
+SELECT TRIM(LEADING 'a' FROM 'aaaaDataBase programingaaaa') FROM DUAL; --앞에 있는 중복된 부분만 없앤다.
+SELECT TRIM(TRAILING 'a' FROM 'aaaaDataBase programingaaaa') FROM DUAL; --뒤에 있는 중복된 부분을 없앤다.
+SELECT TRIM(BOTH 'a' FROM 'aaaaDataBase programingaaaa') FROM DUAL;
+SELECT TRIM('  aaaaDataBase programingaaaa  ') FROM DUAL;
+SELECT DUMP('  aaaaDataBase programingaaaa  ') FROM DUAL;
+SELECT TRIM(BOTH FROM ' ABCD ') BOTH1, LENGTH(TRIM(BOTH FROM ' ABCD ') BOTH1 FROM DUAL;
+
+
+--SUBSTR
+SELECT HIREDATE FROM EMP WHERE SUBSTR(HIREDATE, 1, 2) = '81';
+SELECT SUBSTR(HIREDATE, 1, 2) FROM EMP;
+SELECT TO_CHAR(HIREDATE, 'YYYYMMDD') FROM EMP;
+SELECT SUBSTR(TO_CHAR(TO_DATE('1981-02-01'), 'YYYYMMDD'), 1, 6) FROM EMP;
+SELECT SUBSTR('20210817', -2) FROM DUAL;
+
+
+--CONCATE
+SELECT CONCAT('Oracle', 'MANIA') FROM DUAL;
+
+
+--INSERT : 검색시 사용하는 함수. 
+SELECT INSTR('DataBase', 'a') FROM DUAL;
+SELECT INSTR('DataBase', 'a', 3, 1) FROM DUAL;
+SELECT INSTR('DataBase', 'a', 3, 2) FROM DUAL;
+
+
+
+
+--------------------------------------------------------------------------------
+
+--숫자 함수. ABS(절대값), ROUND(반올림), FLOOR(내림), MOD(나머지), TRUNC(절사)
+
+SELECT ABS(-15) FROM DUAL;
+SELECT 98.7597, ROUND(98.7597), ROUND(98.7697, 2), ROUND(98.7597, -1) FROM DUAL;
+SELECT 98.7597, TRUNC(98.7597), TRUNC(98.7697, 2), TRUNC(98.7597, -1) FROM DUAL;
+SELECT FLOOR(34.5678) FROM DUAL;
+
+SELECT MOD(3, 2), MOD(34, 2), MOD(34, 5), MOD(34, 7) FROM DUAL;
+SELECT TRUNC(150/60) || '분' || MOD(150,60) || '초' FROM DUAL;
+
+SELECT A.EMPNO
+        ,MOD(A.EMPNO, 2) "짝수"
+        ,A.ENAME
+        ,A.JOB
+FROM EMP A
+WHERE MOD(A.EMPNO,2) = 0;
+
+
+
+
+--------------------------------------------------------------------------------
+
+-- NVL(), REPLACE
+SELECT NVL(NULL, 0)
+      ,NVL('', 'aa')
+      ,NVL('NULL', 'BB')
+      ,REPLACE(NVL(NULL, 0), 0, 'CEO')
+FROM DUAL;
+      
+
+-- NVL2(COLUMN, EXPRESSION1, EXPRESSION2)
+-- 해당 컬럼이 NULL일 때, EXPRESSION2
+-- NULL이 아닐 때, EXPRESSION1의 값을 리턴함.
+SELECT EMPNO, ENAME, COMM, NVL2(COMM, COMM*1.1, 0) FROM EMP;
+
+--------------------------------------------------------------------------------
+
+
+
+
+--- 날짜 함수 
+SELECT SYSDATE FROM DUAL;
+SELECT SYSTIMESTAMP FROM DUAL;
+
+SELECT SYSDATE - 1 어제 FROM DUAL;
+SELECT SYSDATE 오늘 FROM DUAL;
+SELECT SYSDATE + 1 내일 FROM DUAL;
+
+SELECT ROUND(MONTHS_BETWEEN(SYSDATE,'1998-10-02')) MONTHS FROM   DUAL; -- 275
+SELECT ROUND(MONTHS_BETWEEN(SYSDATE,'1988-12-15')) MONTHS FROM   DUAL; -- 392
+SELECT ROUND(MONTHS_BETWEEN(SYSDATE,'1988-12-15')) 
+        - ROUND(MONTHS_BETWEEN(SYSDATE,'1998-10-02'))
+MONTHS FROM  DUAL;
+SELECT ROUND(MONTHS_BETWEEN(SYSDATE,'1963-07-25')) MONTHS FROM DUAL; -- 697
+SELECT ROUND(MONTHS_BETWEEN(SYSDATE,'1963-07-25')) 
+        - ROUND(MONTHS_BETWEEN(SYSDATE,'1998-10-02'))
+MONTHS FROM  DUAL;
+
+SELECT 
+       SYSDATE
+      ,A.HIREDATE
+      ,ROUND(MONTHS_BETWEEN(SYSDATE, A.HIREDATE)) AA -- 특정 기준으로 반올림
+      ,TRUNC(MONTHS_BETWEEN(SYSDATE, A.HIREDATE)) BB -- 특정 기준으로 버림
+FROM   EMP A
+WHERE  A.DEPTNO = 10;
+
+SELECT ADD_MONTHS(SYSDATE, 3) FROM DUAL;
+
+-- 요일 
+-- 1:일, 2:월, 3:화, 4:수, 5:목, 6:금, 7:토
+SELECT SYSDATE, NEXT_DAY(SYSDATE, '수요일') FROM DUAL;
+SELECT SYSDATE, NEXT_DAY(SYSDATE, '수') FROM DUAL;
+SELECT TO_CHAR(TO_DATE('20210817'), 'd') FROM DUAL;
+SELECT TO_CHAR(TO_DATE('20210817'), 'dy') FROM DUAL;
+SELECT TO_CHAR(TO_DATE('20210817'), 'day') FROM DUAL;
+SELECT TO_CHAR(SYSDATE, 'd') FROM DUAL;
+SELECT TO_CHAR(SYSDATE, 'dy') FROM DUAL;
+SELECT TO_CHAR(SYSDATE, 'day') FROM DUAL;
+
+SELECT NEXT_DAY(SYSDATE, 6) FROM DUAL;
+SELECT LAST_DAY(SYSDATE) FROM DUAL;
+
+
+-- TO_NUMBER()
+SELECT 10 + 20 FROM DUAL;
+SELECT '10' + '20' FROM DUAL;
+SELECT TO_NUMBER('10') + TO_NUMBER('20') FROM DUAL;
+
+
+
+
+--------------------------------------------------------------------------------
+
+--DECODE :  JAVA의 IF와 유사하다.
+--일반함수 (DECODE : 첫번째 인자로 받은 값을 조건에 맞춰 변경)
+--DECODE(표현식, 조건1, 결과1,
+--              조건2, 결과2,
+--              조건3, 결과3, 
+--              기본결과)
+SELECT DEPTNO FROM EMP GROUP BY DEPTNO;
+SELECT DEPTNO, JOB FROM EMP WHERE DEPTNO = 30;
+SELECT DEPTNO, JOB FROM EMP WHERE DEPTNO = 20;
+SELECT DEPTNO, JOB FROM EMP WHERE DEPTNO = 10;
+SELECT DEPTNO, DNAME FROM DEPT;
+
+SELECT DEPTNO, DECODE(DEPTNO, 10, 'ACCOUNTING'
+                             ,20, 'RESEARCH'
+                             ,30, 'SALES'
+                             ,40, 'OPERATIONS'  ) AS DNAME 
+FROM   EMP;
+
+SELECT TO_CHAR(HIREDATE, 'MM') FROM EMP;
+SELECT DECODE(TO_CHAR(HIREDATE, 'MM'), '02', 1) FROM EMP;
+SELECT COUNT(DECODE(TO_CHAR(HIREDATE, 'MM'), '02', 1)) FROM EMP;
+SELECT SUM(DECODE(TO_CHAR(HIREDATE, 'MM'), '02', 1)) FROM EMP;
+
+-- ORACLE 공식 예제
+SELECT COUNT(DECODE(TO_CHAR(HIREDATE, 'MM'), '01', 1)) "1월"
+      ,COUNT(DECODE(TO_CHAR(HIREDATE, 'MM'), '02', 1)) "2월"
+      ,COUNT(DECODE(TO_CHAR(HIREDATE, 'MM'), '03', 1)) "3월"
+      ,COUNT(DECODE(TO_CHAR(HIREDATE, 'MM'), '04', 1)) "4월"
+      ,COUNT(DECODE(TO_CHAR(HIREDATE, 'MM'), '05', 1)) "5월"
+      ,COUNT(DECODE(TO_CHAR(HIREDATE, 'MM'), '06', 1)) "6월"
+      ,COUNT(DECODE(TO_CHAR(HIREDATE, 'MM'), '07', 1)) "7월"
+      ,COUNT(DECODE(TO_CHAR(HIREDATE, 'MM'), '08', 1)) "8월"
+      ,COUNT(DECODE(TO_CHAR(HIREDATE, 'MM'), '09', 1)) "9월"
+      ,COUNT(DECODE(TO_CHAR(HIREDATE, 'MM'), '10', 1)) "10월"
+      ,COUNT(DECODE(TO_CHAR(HIREDATE, 'MM'), '11', 1)) "11월"
+      ,COUNT(DECODE(TO_CHAR(HIREDATE, 'MM'), '12', 1)) "12월"
+      ,COUNT(HIREDATE) 전체
+FROM   EMP
+WHERE  TO_CHAR(HIREDATE, 'MM') >= '01'
+AND    TO_CHAR(HIREDATE, 'MM') <= '12';
+
+-- ORACLE 공식 예제
+SELECT SUM(DECODE(TO_CHAR(HIREDATE, 'MM'), '01', 1)) "1월"
+      ,SUM(DECODE(TO_CHAR(HIREDATE, 'MM'), '02', 1)) "2월"
+      ,SUM(DECODE(TO_CHAR(HIREDATE, 'MM'), '03', 1)) "3월"
+      ,SUM(DECODE(TO_CHAR(HIREDATE, 'MM'), '04', 1)) "4월"
+      ,SUM(DECODE(TO_CHAR(HIREDATE, 'MM'), '05', 1)) "5월"
+      ,SUM(DECODE(TO_CHAR(HIREDATE, 'MM'), '06', 1)) "6월"
+      ,SUM(DECODE(TO_CHAR(HIREDATE, 'MM'), '07', 1)) "7월"
+      ,SUM(DECODE(TO_CHAR(HIREDATE, 'MM'), '08', 1)) "8월"
+      ,SUM(DECODE(TO_CHAR(HIREDATE, 'MM'), '09', 1)) "9월"
+      ,SUM(DECODE(TO_CHAR(HIREDATE, 'MM'), '10', 1)) "10월"
+      ,SUM(DECODE(TO_CHAR(HIREDATE, 'MM'), '11', 1)) "11월"
+      ,SUM(DECODE(TO_CHAR(HIREDATE, 'MM'), '12', 1)) "12월"
+      ,COUNT(HIREDATE) 전체 
+FROM   EMP
+WHERE  TO_CHAR(HIREDATE, 'MM') >= '01'
+AND    TO_CHAR(HIREDATE, 'MM') <= '12';
+
+SELECT DEPTNO, DECODE(DEPTNO, 10, SUM(SAL),
+                              20, MAX(SAL),
+                              30, MIN(SAL)) SAL 
+FROM   EMP
+GROUP BY DEPTNO ORDER BY DEPTNO;
+
+SELECT DEPTNO, NVL(SUM(DECODE(DEPTNO, 10, SAL)), 0) DEPTNO10
+              ,NVL(SUM(DECODE(DEPTNO, 20, SAL)), 0) DEPTNO20
+              ,NVL(SUM(DECODE(DEPTNO, 30, SAL)), 0) DEPTNO30
+              ,NVL(SUM(DECODE(DEPTNO, 40, SAL)), 0) DEPTNO40
+FROM   EMP
+GROUP BY DEPTNO;
+
+SELECT MAX(NVL(SUM(DECODE(DEPTNO, 10, SAL)), 0)) DEPTNO10
+      ,MAX(NVL(SUM(DECODE(DEPTNO, 20, SAL)), 0)) DEPTNO20
+      ,MAX(NVL(SUM(DECODE(DEPTNO, 30, SAL)), 0)) DEPTNO30
+      ,MAX(NVL(SUM(DECODE(DEPTNO, 40, SAL)), 0)) DEPTNO40
+FROM   EMP
+GROUP BY DEPTNO;
+
+--------------------------------------------------------------------------------
+
+
+--CASE WHEN : DECODE 의 대항마. 요즘엔 이걸 많이 쓴다고 함. JAVA의 CASE와 유사함.
+--일반함수 (CASE : 조건에 맞는 문장을 수행)
+--CASE WHEN [조건1] THEN [결과1]
+--                 ELSE [결과2]
+--     END AS [컬럼]
+SELECT ENAME, SAL
+      ,CASE
+        WHEN SAL < 1000 THEN SAL + (SAL * 0.8)
+        WHEN SAL BETWEEN  1000 AND 2000 THEN SAL + (SAL * 0.5)
+        WHEN SAL BETWEEN  2001 AND 3000 THEN SAL + (SAL * 0.3)
+        ELSE SAL + (SAL * 0.1)
+       END SALUP
+FROM   EMP;
+
+SELECT COUNT(HIREDATE) FROM EMP;
+
+SELECT COUNT(HIREDATE) FROM EMP
+GROUP BY HIREDATE
+HAVING TO_CHAR(HIREDATE, 'MM') >= '01'
+AND    TO_CHAR(HIREDATE, 'MM') <= '12';
+
+
+
+
+--------------------------------------------------------------------------------
+
+--가장 이례적이고 조심해야 할 부분.
+
+
+--###################################
+--테이블 컬럼 변경
+SELECT * FROM TAB;
+
+CREATE TABLE EMP07
+AS 
+SELECT EMPNO, ENAME, DEPTNO FROM EMP WHERE 1=0;
+
+SELECT * FROM EMP07;
+DESC EMP07;
+
+-- 컬럼 추가 : 대상 테이블의 마지막 컬럼 뒤에만 가능하다. 중간에 끼워넣을 수 없음 
+ALTER TABLE EMP07 ADD (JOB VARCHAR2(9)); 
+ALTER TABLE EMP07 ADD (MGR NUMBER(4)); 
+
+-- 컬럼의 변경 : 데이터 타입, 사이즈 변경이 가능하다.
+--1. 해당 컬럼에 데이터가 없는 경우 
+--컬럼의 데이터 타입 변경 가능
+--컬럼의 크기도 변경 가능 
+ALTER TABLE EMP07 MODIFY (JOB VARCHAR2(30));
+ALTER TABLE EMP07 MODIFY (MGR VARCHAR2(30));
+
+--2. 해당 컬럼에 데이터가 있는 경우 
+--컬럼의 데이터 타입 변경 불가능 
+--컬럼의 크기는 현재보다 크게는 제한이 없고
+--작게도 가능한데 현재 존재하는 데이터의 크기보다 작게할 수는 없다.
+CREATE TABLE EMP08
+AS 
+SELECT EMPNO, ENAME, MGR, JOB, DEPTNO FROM EMP WHERE 1=1;
+
+SELECT * FROM EMP08;
+DROP TABLE EMP08;
+DESC EMP08;
+DESC EMP;
+ALTER TABLE EMP08 MODIFY (JOB VARCHAR2(30));
+ALTER TABLE EMP08 MODIFY (MGR VARCHAR2(4));
+--ORA-01439: 데이터 유형을 변경할 열은 비어 있어야 합니다
+--01439. 00000 -  "column to be modified must be empty to change datatype"
+--*Cause:    
+--*Action:
+ALTER TABLE EMP08 MODIFY (ENAME VARCHAR2(8));
+ALTER TABLE EMP08 MODIFY (ENAME VARCHAR2(6));
+ALTER TABLE EMP08 MODIFY (ENAME VARCHAR2(5));
+SELECT DUMP(ENAME) FROM EMP08;
+
+-- 컬럼 삭제
+ALTER TABLE EMP07 DROP COLUMN MGR;
+SELECT * FROM EMP07;
+
+RENAME EMP08 TO EMP08_1;
+
+SELECT * FROM EMP08;
+SELECT * FROM EMP08_1;
+
+CREATE TABLE EMP09
+AS 
+SELECT EMPNO, ENAME FROM EMP WHERE 1=1
+SELECT * FROM EMP09;
+
+--테이블 구조 삭제
+--데이블 삭제시 무결성 제약조건 체크 
+--삭제대상 테이블이 다른 테이블과 KEY가 연결 되어있을 경우
+--연결된 조건을 확인하고 순서대로 삭제해야 된다. 
+DROP TABLE EMP09;
+
+CREATE TABLE EMP09_1
+AS 
+SELECT EMPNO, ENAME FROM EMP WHERE 1=1
+SELECT * FROM EMP09_1;
+
+-- 테이블의 모든 데이터(로우) 제거 한다. 
+TRUNCATE TABLE EMP09_1;
+
+
+
