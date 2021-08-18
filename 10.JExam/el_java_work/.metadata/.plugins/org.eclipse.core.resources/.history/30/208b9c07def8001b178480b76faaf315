@@ -1,9 +1,0 @@
-package a.b.c.mem.sql;
-
-public abstract class KckMemberSqlMap {
-	public static String getHbeMemberSelectAllQuery();
-	public static String getHbeMemberSelectQuery();
-	public static String getHbeMemberInsertQuery();
-	public static String getHbeMemberUpdateQuery();
-	public static String getHbeMemberDeleteQuery();
-}

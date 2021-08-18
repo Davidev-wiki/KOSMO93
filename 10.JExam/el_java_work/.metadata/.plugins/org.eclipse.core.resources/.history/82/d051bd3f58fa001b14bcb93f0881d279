@@ -1,8 +1,0 @@
-package a.b.c.board.common;
-
-public abstract class KckBoardConnProperty {
-	public Connection getConnection();
-	public void conClose(Conn, pstmt, rsRs);
-	public void conClose(Conn, pstmt);
-	
-}
