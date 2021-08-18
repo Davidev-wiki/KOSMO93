@@ -1,0 +1,15 @@
+package a.b.c.swing.member.sql;
+
+import java.util.ArrayList;
+
+import a.b.c.swing.member.vo.SwingMemberVO;
+
+public abstract class SwingMemberSqlMap {
+	
+	public static String getsmSelectAllQuery()
+	public static String getsmSelectQuery()
+	public static String getsmInsertQuery()
+	public static String getsmUpdateQuery()
+	public static String getsmDeleteQuery()
+	
+}
