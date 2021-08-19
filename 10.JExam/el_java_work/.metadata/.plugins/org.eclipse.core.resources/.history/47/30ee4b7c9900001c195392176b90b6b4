@@ -1,0 +1,16 @@
+package a.b.c.swing.member.service;
+
+import java.util.ArrayList;
+
+import a.b.c.swing.member.vo.SwingMemberVO;
+
+public interface SwingMemberService {
+	
+	// GUI 환경에서 모든 데이터를 조회하는 기능은 구현할 수 없음.
+	public ArrayList<SwingMemberVO> smSelectAll();
+	public ArrayList<SwingMemberVO> smSelect(SwingMemberVO svo);
+	public boolean smInsert();
+	public boolean smUpdate();
+	public boolean smDelete();
+	
+}
