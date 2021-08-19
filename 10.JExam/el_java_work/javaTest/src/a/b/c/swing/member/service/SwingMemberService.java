@@ -8,8 +8,8 @@ public interface SwingMemberService {
 	
 	public ArrayList<SwingMemberVO> smSelectAll();
 	public ArrayList<SwingMemberVO> smSelect(SwingMemberVO svo);
-	public boolean smInsert();
-	public boolean smUpdate();
-	public boolean smDelete();
+	public boolean smInsert(SwingMemberVO svo);
+	public boolean smUpdate(SwingMemberVO svo);
+	public boolean smDelete(SwingMemberVO svo);
 	
 }

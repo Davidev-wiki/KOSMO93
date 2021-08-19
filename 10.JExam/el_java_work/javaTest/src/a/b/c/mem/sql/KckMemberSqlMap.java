@@ -7,7 +7,7 @@ public abstract class KckMemberSqlMap {
 		
 		StringBuffer sb = new StringBuffer();			
 		sb.append(" SELECT  											\n");
-		sb.append("         NVL(MAX(SUBSTR(A.KNUM, -4)), 0)   COMMNO	\n");
+		sb.append("         NVL(MAX(SUBSTR(A.KNUM, -4)), 0) + 1  COMMNO	\n");
 		sb.append(" FROM    KCK_MEMBER A 								\n");	   	  
 
 	    return sb.toString();
