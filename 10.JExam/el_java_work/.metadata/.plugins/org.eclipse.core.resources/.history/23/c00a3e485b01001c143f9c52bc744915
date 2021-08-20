@@ -123,9 +123,9 @@ public class SwingMember extends JFrame {
 		this.add(pa2, BorderLayout.SOUTH);
 
 		// '버튼 1 : 조회'에 이벤트리스너를 추가한다. (이벤트핸들러를 이용하는)
-		// '버튼 2 : 저장'에 이벤트리스너를 추가한다. (이벤트핸들러를 이용하는)
-		// '버튼 3 : 수정'에 이벤트리스너를 추가한다. (이벤트핸들러를 이용하는)
-		// '버튼 4 : 삭제'에 이벤트리스너를 추가한다. (이벤트핸들러를 이용하는)
+		// '버튼 2 : 조회'에 이벤트리스너를 추가한다. (이벤트핸들러를 이용하는)
+		// '버튼 3 : 조회'에 이벤트리스너를 추가한다. (이벤트핸들러를 이용하는)
+		// '버튼 4 : 조회'에 이벤트리스너를 추가한다. (이벤트핸들러를 이용하는)
 		bt1.addActionListener(new EventHandler());
 		bt2.addActionListener(new EventHandler());
 		bt3.addActionListener(new EventHandler());
