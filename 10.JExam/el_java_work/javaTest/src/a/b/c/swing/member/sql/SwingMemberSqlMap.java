@@ -1,15 +1,54 @@
 package a.b.c.swing.member.sql;
 
-import java.util.ArrayList;
-
-import a.b.c.swing.member.vo.SwingMemberVO;
-
 public abstract class SwingMemberSqlMap {
 	
-	public static String getsmSelectAllQuery() {
-		return "";
-	};
+	// 로그인 확인 쿼리문
+	public static String getSmLoginCheckQuery() {
+		
+		StringBuffer sb = new StringBuffer();			
+		sb.append(" SELECT 								\n");
+		sb.append("       COUNT(A.SWNUM)  NCNT 			\n");		
+	    sb.append("	FROM 								\n");	    
+	    sb.append("		  SWING_MEMBER 	A 				\n");
+	    sb.append("	WHERE A.DELETEYN 	= 'Y'			\n");	    
+	    sb.append("	AND   A.SWID 	  	= ?				\n");
+	    sb.append("	AND   A.SWPW  		= ?   			\n");
+
+	    return sb.toString();
+	}
 	
+	// 채번 쿼리문
+	public static String getsmChabunQuery(){
+
+		StringBuffer sb = new StringBuffer();			
+		sb.append(" SELECT  											\n");
+		sb.append("         NVL(MAX(SUBSTR(A.SWNUM, -4)), 0) + 1 COMMNO	\n");
+		sb.append(" FROM    SWING_MEMBER A 								\n");	
+		
+		return sb.toString();
+	}
+
+	// 전체 조회 쿼리문
+	public static String getsmSelectAllQuery() {
+
+		StringBuffer sb = new StringBuffer();			
+		sb.append(" SELECT 								\n");
+		sb.append("      A.SWNUM 		SWNUM 			\n");
+		sb.append("		,A.SWNAME  		SWNAME 			\n");
+		sb.append("		,A.SWID  		SWID 			\n");
+		sb.append("		,A.SWPW  		SWPW			\n");	 	   	    	   
+	    sb.append("		,A.DELETEYN 	DELETEYN		\n");
+	    sb.append("		,TO_CHAR(A.INSERTDATE, 'YYYY-MM-DD')  INSERTDATE	\n");
+	    sb.append("		,TO_CHAR(A.UPDATEDATE, 'YYYY-MM-DD')  UPDATEDATE	\n");	      
+	    sb.append("	FROM 								\n");
+	    sb.append("		 SWING_MEMBER A 				\n");
+	    sb.append("	WHERE DELETEYN = 'Y'				\n");
+	    sb.append("	ORDER BY 1 DESC						\n");
+		
+		return sb.toString();
+	}
+	
+	// 조건 조회 쿼리문 : 회원 번호
 	public static String getsmSelectQuery() {
 		
 		StringBuffer sb = new StringBuffer();
@@ -28,6 +67,47 @@ public abstract class SwingMemberSqlMap {
 		return sb.toString();
 	};
 	
+	// 조건 조회 : 이름
+	public static String getsmSelectNameQuery(){
+		
+		StringBuffer sb = new StringBuffer();			
+		sb.append(" SELECT 								\n");
+		sb.append("      A.SWNUM 		SWNUM 			\n");
+		sb.append("		,A.SWNAME  		SWNAME 			\n");
+		sb.append("		,A.SWID  		SWID 			\n");
+		sb.append("		,A.SWPW  		SWPW			\n");	 	   	    	   
+	    sb.append("		,A.DELETEYN 	DELETEYN		\n");
+	    sb.append("		,TO_CHAR(A.INSERTDATE, 'YYYY-MM-DD')  INSERTDATE	\n");
+	    sb.append("		,TO_CHAR(A.UPDATEDATE, 'YYYY-MM-DD')  UPDATEDATE	\n");	      
+	    sb.append("	FROM 								\n");
+	    sb.append("		 SWING_MEMBER A 				\n");
+	    sb.append("	WHERE DELETEYN = 'Y'				\n");
+	    sb.append("	AND   A.SWNAME LIKE '%' || ? || '%' \n");// placeholder 1	
+	    
+	    return sb.toString();
+	}
+	
+	// 조건 조회 : 아이디
+	public static String getsmSelectIDQuery(){
+		
+		StringBuffer sb = new StringBuffer();			
+		sb.append(" SELECT 								\n");
+		sb.append("      A.SWNUM 		SWNUM 			\n");
+		sb.append("		,A.SWNAME  		SWNAME 			\n");
+		sb.append("		,A.SWID  		SWID 			\n");
+		sb.append("		,A.SWPW  		SWPW			\n");	 	   	    	   
+	    sb.append("		,A.DELETEYN 	DELETEYN		\n");
+	    sb.append("		,TO_CHAR(A.INSERTDATE, 'YYYY-MM-DD')  INSERTDATE	\n");
+	    sb.append("		,TO_CHAR(A.UPDATEDATE, 'YYYY-MM-DD')  UPDATEDATE	\n");	      
+	    sb.append("	FROM 								\n");
+	    sb.append("		 SWING_MEMBER A 				\n");
+	    sb.append("	WHERE DELETEYN   = 'Y'				\n");
+	    sb.append("	AND   A.SWID  LIKE '%' || ? || '%'	\n");// placeholder 1	
+	    
+	    return sb.toString();
+	}	
+	
+	// 등록 쿼리문
 	public static String getsmInsertQuery() {
 		
 		StringBuffer sb = new StringBuffer();
@@ -50,6 +130,7 @@ public abstract class SwingMemberSqlMap {
 		return sb.toString();
 	};
 	
+	// 수정 쿼리문
 	public static String getsmUpdateQuery() {
 		
 		StringBuffer sb = new StringBuffer();
@@ -65,6 +146,7 @@ public abstract class SwingMemberSqlMap {
 		return sb.toString();
 	};
 	
+	// 삭제 쿼리문
 	public static String getsmDeleteQuery() {
 		
 		StringBuffer sb = new StringBuffer();
@@ -79,14 +161,6 @@ public abstract class SwingMemberSqlMap {
 		
 		return sb.toString();
 	};
+
 	
 }
-
-
-
-
-
-
-
-
-

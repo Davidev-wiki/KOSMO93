@@ -6,17 +6,62 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import a.b.c.board.common.KckBoardConnProperty;
+import a.b.c.common.KckConnProperty2;
 import a.b.c.swing.member.sql.SwingMemberSqlMap;
 import a.b.c.swing.member.vo.SwingMemberVO;
 
 public class SwingMemberDAOImpl implements SwingMemberDAO {
 
+	// 전체 조회
 	@Override
 	public ArrayList<SwingMemberVO> smSelectAll() {
 		// TODO Auto-generated method stub
-		return null;
+		System.out.println("SwingMemberDAOImpl.smSelectAll()함수 진입함");
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rsRs = null;
+
+		ArrayList<SwingMemberVO> aList = null;
+
+		try {
+			conn = KckBoardConnProperty.getConnection();
+			pstmt = conn.prepareStatement(SwingMemberSqlMap.getsmSelectAllQuery());
+			
+			rsRs = pstmt.executeQuery();
+
+			if (rsRs != null) {
+
+				aList = new ArrayList<SwingMemberVO>();
+
+				while (rsRs.next()) {
+
+					SwingMemberVO _svo = new SwingMemberVO();
+
+					_svo.setSwnum(rsRs.getString(1));
+					_svo.setSwname(rsRs.getString(2));
+					_svo.setSwid(rsRs.getString(3));
+					_svo.setSwpw(rsRs.getString(4));
+					_svo.setDeleteyn(rsRs.getString(5));
+					_svo.setInsertdate(rsRs.getString(6));
+					_svo.setUpdatedate(rsRs.getString(7));
+
+					aList.add(_svo);
+				}
+			}
+
+			KckBoardConnProperty.conClose(conn, pstmt, rsRs);
+
+		} catch (Exception e) {
+			System.out.println("데이터 조회중 문제가 발생했습니다.");
+		} finally {
+			KckBoardConnProperty.conClose(conn, pstmt, rsRs);
+		}
+
+		return aList;
 	}
 
+	// 조건조회 : 회원 번호
 	@Override
 	public ArrayList<SwingMemberVO> smSelect(SwingMemberVO svo) {
 		// TODO Auto-generated method stub
@@ -67,6 +112,105 @@ public class SwingMemberDAOImpl implements SwingMemberDAO {
 		return aList;
 	}
 
+	// 조건조회 : 이름
+	public ArrayList<SwingMemberVO> smSelectName(SwingMemberVO svo){
+		System.out.println("SwingMemberDAOImpl.smSelectName()함수 진입함");
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rsRs = null;
+
+		ArrayList<SwingMemberVO> aList = null;
+
+		try {
+			conn = KckBoardConnProperty.getConnection();
+			pstmt = conn.prepareStatement(SwingMemberSqlMap.getsmSelectNameQuery());
+			pstmt.clearParameters();
+			pstmt.setString(1, svo.getSwnum());
+
+			rsRs = pstmt.executeQuery();
+
+			if (rsRs != null) {
+
+				aList = new ArrayList<SwingMemberVO>();
+
+				while (rsRs.next()) {
+
+					SwingMemberVO _svo = new SwingMemberVO();
+
+					_svo.setSwnum(rsRs.getString(1));
+					_svo.setSwname(rsRs.getString(2));
+					_svo.setSwid(rsRs.getString(3));
+					_svo.setSwpw(rsRs.getString(4));
+					_svo.setDeleteyn(rsRs.getString(5));
+					_svo.setInsertdate(rsRs.getString(6));
+					_svo.setUpdatedate(rsRs.getString(7));
+
+					aList.add(_svo);
+				}
+			}
+
+			KckBoardConnProperty.conClose(conn, pstmt, rsRs);
+
+		} catch (Exception e) {
+			System.out.println("데이터 조회중 문제가 발생했습니다.");
+		} finally {
+			KckBoardConnProperty.conClose(conn, pstmt, rsRs);
+		}
+
+		return aList;
+	}
+	
+	// 조건조회 : 아이디
+	public ArrayList<SwingMemberVO> smSelectId(SwingMemberVO svo){
+		System.out.println("SwingMemberDAOImpl.smSelectId()함수 진입함");
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rsRs = null;
+
+		ArrayList<SwingMemberVO> aList = null;
+
+		try {
+			conn = KckBoardConnProperty.getConnection();
+			pstmt = conn.prepareStatement(SwingMemberSqlMap.getsmSelectIDQuery());
+			pstmt.clearParameters();
+			pstmt.setString(1, svo.getSwnum());
+
+			rsRs = pstmt.executeQuery();
+
+			if (rsRs != null) {
+
+				aList = new ArrayList<SwingMemberVO>();
+
+				while (rsRs.next()) {
+
+					SwingMemberVO _svo = new SwingMemberVO();
+
+					_svo.setSwnum(rsRs.getString(1));
+					_svo.setSwname(rsRs.getString(2));
+					_svo.setSwid(rsRs.getString(3));
+					_svo.setSwpw(rsRs.getString(4));
+					_svo.setDeleteyn(rsRs.getString(5));
+					_svo.setInsertdate(rsRs.getString(6));
+					_svo.setUpdatedate(rsRs.getString(7));
+
+					aList.add(_svo);
+				}
+			}
+
+			KckBoardConnProperty.conClose(conn, pstmt, rsRs);
+
+		} catch (Exception e) {
+			System.out.println("데이터 조회중 문제가 발생했습니다.");
+		} finally {
+			KckBoardConnProperty.conClose(conn, pstmt, rsRs);
+		}
+
+		return aList;
+	}
+		
+	// 등록
 	@Override
 	public boolean smInsert(SwingMemberVO svo) {
 		// TODO Auto-generated method stub
@@ -85,9 +229,9 @@ public class SwingMemberDAOImpl implements SwingMemberDAO {
 
 			pstmt.clearParameters();
 			pstmt.setString(1, svo.getSwnum());
-			pstmt.setString(2, svo.getSwnum());
-			pstmt.setString(3, svo.getSwnum());
-			pstmt.setString(4, svo.getSwnum());
+			pstmt.setString(2, svo.getSwname());
+			pstmt.setString(3, svo.getSwid());
+			pstmt.setString(4, svo.getSwpw());
 
 			nCnt = pstmt.executeUpdate();
 
@@ -109,6 +253,7 @@ public class SwingMemberDAOImpl implements SwingMemberDAO {
 		return bool;
 	}
 
+	// 수정
 	@Override
 	public boolean smUpdate(SwingMemberVO svo) {
 		// TODO Auto-generated method stub
@@ -150,6 +295,7 @@ public class SwingMemberDAOImpl implements SwingMemberDAO {
 		return bool;
 	}
 
+	// 삭제
 	@Override
 	public boolean smDelete(SwingMemberVO svo) {
 		// TODO Auto-generated method stub
@@ -187,6 +333,44 @@ public class SwingMemberDAOImpl implements SwingMemberDAO {
 		}
 
 		return bool;
+	}
+
+	// 로그인
+	public int smLoginCheck(SwingMemberVO svo) {
+		System.out.println("SwingMemberDAOImpl smLoginCheck() 함수 진입 >>> : ");		
+		
+		// 사용할 객체를 지역변수로 선언하고 초기화 하기 
+		Connection        conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet         rsRs = null;
+		int nCnt = 0;
+		
+		try{
+			conn = KckConnProperty2.getConnection();
+			pstmt = conn.prepareStatement(SwingMemberSqlMap.getSmLoginCheckQuery());
+			System.out.println("로그인 체크  :: \n" + SwingMemberSqlMap.getSmLoginCheckQuery());
+			
+			pstmt.clearParameters();
+			pstmt.setString(1, svo.getSwid());
+			pstmt.setString(2, svo.getSwpw());
+			rsRs = pstmt.executeQuery();
+			
+			if (rsRs !=null){	
+				while (rsRs.next()){
+					nCnt = rsRs.getInt(1);
+				}
+			}
+			
+			KckConnProperty2.conClose(conn, pstmt, rsRs);
+		}catch (Exception sq){
+			System.out.println(" 로그인체크 DB 에러 " + sq.getMessage());
+			System.out.println(" 에러 :: " + sq);
+		}finally{
+			KckConnProperty2.conClose(conn, pstmt, rsRs);
+		}
+		
+		return nCnt;
+		
 	}
 
 }

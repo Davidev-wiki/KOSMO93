@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import a.b.c.board.sql.KckBoardSqlMap;
-import a.b.c.board.vo.KckBoardVO;
 
 public class KckBoardChabun {
 
@@ -26,7 +25,6 @@ public class KckBoardChabun {
 
 			if (rsRs != null) {
 				while (rsRs.next()) {
-					KckBoardVO kvo = new KckBoardVO();
 					commNO = rsRs.getString("COMMNO");
 				}
 			} else {

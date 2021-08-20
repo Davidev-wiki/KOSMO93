@@ -31,6 +31,7 @@ public class KckMemberChabun {
 		
 		try {
 			conn = KckConnProperty2.getConnection();
+			// 이거 채번쿼리 확인해봐야함 뭔가이상한것 같음.
 			pstmt = conn.prepareStatement(KckMemberSqlMap.getKckMemberChabunQuery());
 			System.out.println("회원 채번 쿼리 : KckMemberSqlMap.getKckMemberChabunQuery() >> : ");
 			
@@ -44,7 +45,7 @@ public class KckMemberChabun {
 			}else {
 				System.out.println("채번 쿼리 실패했어요..");
 			}
-			
+			/*
 			// DB에서 가져온 맥스값 ::1
 			System.out.println("commNO 맥스값 1 : " + commNO);
 			
@@ -59,6 +60,7 @@ public class KckMemberChabun {
 			// 업무구분 코드 (M) 붙여주기
 			commNO = KckMemberChabun.BIZ_GUBUN_M.concat(commNO);
 			System.out.println("최종 형식 : " + commNO);
+			*/
 			
 			KckConnProperty2.conClose(conn, pstmt, rsRs);
 			
@@ -73,7 +75,7 @@ public class KckMemberChabun {
 	
 	public static void main(String args[]) {
 		String commNO = KckMemberChabun.ymdNum();
-		System.out.println("commNO :" + commNO);
+		// System.out.println("commNO :" + commNO);
 	}
 	
 }

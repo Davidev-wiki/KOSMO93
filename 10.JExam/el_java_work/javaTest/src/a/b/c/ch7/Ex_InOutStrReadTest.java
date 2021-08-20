@@ -27,7 +27,8 @@ public class Ex_InOutStrReadTest {
 		FileOutputStream fos = null;
 		InputStreamReader isr = null;
 		OutputStreamWriter osw = null;
-		
+		BufferedReader br = null;
+		BufferedWriter bw = null;
 		int data = 0;
 		boolean bFile = false;
 		

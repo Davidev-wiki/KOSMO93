@@ -9,20 +9,21 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
-import java.awt.Container;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import a.b.c.board.common.KckBoardChabun;
-import a.b.c.common.KckMemberChabun;
 import a.b.c.swing.member.service.SwingMemberService;
 import a.b.c.swing.member.service.SwingMemberServiceImpl;
+import a.b.c.swing.member.sql.SwingMemberSqlMap;
 import a.b.c.swing.member.vo.SwingMemberVO;
 
-public class SwingMember extends JFrame {
+// class evnetHandler 삭제
+// [전체조회] [초기화] [종료] 기능 3개 버튼 추가 
+public class SwingMember extends JFrame implements ActionListener {
 
 	// 상수
 	private static final long serialVersionUID = 1223945384484229538L;
@@ -30,8 +31,9 @@ public class SwingMember extends JFrame {
 	// 멤버변수
 	private JLabel la1, la2, la3, la4, la5, la6, la7;
 	private JTextField tf1, tf2, tf3, tf4, tf5, tf6, tf7;
-	private JButton bt1, bt2, bt3, bt4;
+	private JButton bt1, bt2, bt3, bt4, bt5, bt6;
 	private JPanel pa1, pa2;
+	private JButton btClose;
 
 	// 생성자
 	public SwingMember() {
@@ -104,12 +106,18 @@ public class SwingMember extends JFrame {
 		bt2 = new JButton("저장");
 		bt3 = new JButton("수정");
 		bt4 = new JButton("삭제");
+		bt5 = new JButton("전체조회");
+		bt6 = new JButton("초기화");
+		btClose = new JButton("프로그램종료");
 
 		// '패널2'에 버튼 4개를 추가
 		pa2.add(bt1);
 		pa2.add(bt2);
 		pa2.add(bt3);
 		pa2.add(bt4);
+		pa2.add(bt5);
+		pa2.add(bt6);
+		pa2.add(btClose);
 
 		// '텍스트필드 5,6,7번'은 수정가능여부 : 'F'(불가)로 설정
 		// 텍스트필드 5, 6, 7 : 삭제여부, 등록일, 수정일
@@ -117,26 +125,31 @@ public class SwingMember extends JFrame {
 		tf6.setEditable(false);
 		tf7.setEditable(false);
 
-		// '패널 1'과 '패널 2' 를 JFrame에 추가하되,
-		// 각각 '중앙', '하단'에 추가한다.
-		this.add(pa1, BorderLayout.CENTER);
-		this.add(pa2, BorderLayout.SOUTH);
-
 		// '버튼 1 : 조회'에 이벤트리스너를 추가한다. (이벤트핸들러를 이용하는)
 		// '버튼 2 : 저장'에 이벤트리스너를 추가한다. (이벤트핸들러를 이용하는)
 		// '버튼 3 : 수정'에 이벤트리스너를 추가한다. (이벤트핸들러를 이용하는)
 		// '버튼 4 : 삭제'에 이벤트리스너를 추가한다. (이벤트핸들러를 이용하는)
-		bt1.addActionListener(new EventHandler());
-		bt2.addActionListener(new EventHandler());
-		bt3.addActionListener(new EventHandler());
-		bt4.addActionListener(new EventHandler());
+		bt1.addActionListener(this);
+		bt2.addActionListener(this);
+		bt3.addActionListener(this);
+		bt4.addActionListener(this);
+		bt5.addActionListener(this);
+		bt6.addActionListener(this);
+		btClose.addActionListener(this);
 
-		// 새로 생성하는 JFrame의 사이즈를 row 300, col 200 으로 설정.
-		this.setSize(300, 250);
+		// '패널 1'과 '패널 2' 를 JFrame에 추가하되,
+		// 각각 '중앙', '하단'에 추가한다.
+		this.getContentPane().add(pa1, BorderLayout.CENTER);
+		this.getContentPane().add(pa2, BorderLayout.SOUTH);
+
+		// 새로 생성하는 JFrame의 사이즈를 row 580, col 250 으로 설정.
+		this.setSize(580, 250);
 		// 새로 생성하는 JFrame의 위치를 400, 200 위치로 설정
 		this.setLocation(400, 200);
 		// 새로 생성하는 JFrame을 시각적으로 보이게 함.
 		this.setVisible(true);
+		// 사용자가 사이즈를 변경할 수 있게 하는 옵션
+		this.setResizable(false);
 
 		// JFrame 종료에 관한 설정 (원리는 아직 알 수 없음)
 		this.addWindowListener(new WindowAdapter() {
@@ -149,218 +162,273 @@ public class SwingMember extends JFrame {
 
 	}
 
-	// 이벤트가 발생하는 것을 지켜보고 있다가
-	// 이벤트가 발생하면 알맞는 작업을 실행시키는 클래스
-	class EventHandler implements ActionListener {
+	// 전체 조회 - 전체 조회를 위한 클래스, SwingMemberAll() 함수로 보내기
+	public void smSelectAll() {
+		System.out.println("SwingMember :: smSelectAll() 시작함");
 
-		@Override
-		public void actionPerformed(ActionEvent e) {
+		try {
+			// 클래스 생성해야 함
+			new SwingMemberAll();
+		} catch (Exception ex) {
+			System.out.println("조건 중 에러가 >>> : " + ex.getMessage());
+		}
+	}
 
-			// e.getActionCommand? => api 서칭
-			// String.valueof => String으로 바꿔주는 함수
-			// 의역 : e.getActionCommand 실행된 액션이벤트의 커맨드(어떤 종류가 입력되었는지를 나타내는 것?)
-			String btnCmd = String.valueOf(e.getActionCommand());
+	// 조건 조회 - 회원 번호 입력시 데이터에서 값을 가지고 와서 보여주는 기능의 함수.
+	public void smSelect(String swnum) {
+		System.out.println("SwingMember.smSelect()진입함");
 
-			// 입력된 e.getActionCommand : 조회 버튼이 눌린 경우
-			if ("조회".contentEquals(btnCmd)) {
-				System.out.println("[조회] 다음의 이벤트가 발생됨  >> " + btnCmd);
+		try {
 
-				// 회원넘버의 값을 담을 변수 swnum을 사용 전 초기화
-				String swnum = "";
-				// 텍스트필드1에 입력된 값을 swnum변수에 담기
-				swnum = tf1.getText();
-				System.out.println("입력된 회원넘버 swnum : " + swnum);
+			SwingMemberService sms = new SwingMemberServiceImpl();
+			SwingMemberVO svo = null;
+			svo = new SwingMemberVO();
+			svo.setSwnum(swnum);
 
-				try {
+			// 화면 텍스트필드 클리어
+			jtextFileClear();
 
-					// 인터페이스를 통한 작업 전 초기화
-					SwingMemberService sms = new SwingMemberServiceImpl();
+			ArrayList<SwingMemberVO> aList = sms.smSelect(svo);
 
-					// ValueOf 객체를 새로 만들어 회원넘버인 swnum을 세팅하기.
-					SwingMemberVO svo = null;
-					svo = new SwingMemberVO();
-					svo.setSwnum(swnum);
+			if (aList != null && aList.size() > 0) {
 
-					// 하기에 생성한 사용자 정의 함수
-					// 모든 TextField를 빈 값("")으로 초기화 (사용 전 초기화인가?)
-					jtextFileClear();
+				for (int i = 0; i < aList.size(); i++) {
 
-					// VO객체 타입의 배열을 생성, 내부에 인터페이스를 통해 조회한 결과를 담는다.
-					ArrayList<SwingMemberVO> aList = sms.smSelect(svo);
+					SwingMemberVO _svo = aList.get(i);
 
-					// 배열의 값이 null이 아니면서 배열에 1개 이상의 데이터가 존재하는 경우)
-					if (aList != null && aList.size() > 0) {
-
-						// 배열의 내부에 있는 객체의 개수만큼(객체마다) 반복한다.
-						for (int i = 0; i < aList.size(); i++) {
-
-							// 새로 만든 VO객체(_svo)에다가
-							// aList 배열의 i번째 있는 객체(위에 초기화한 svo)의 값을 넣어준다.
-							SwingMemberVO _svo = aList.get(i);
-
-							// 데이터가 이전된 새로운 객체 '_svo'담긴 값을
-							// get함수로 가져와서 텍스트 필드에 각각 올바른 값을 넣어준다.
-							tf1.setText(_svo.getSwnum());
-							tf2.setText(_svo.getSwname());
-							tf3.setText(_svo.getSwid());
-							tf4.setText(_svo.getSwpw());
-							tf5.setText(_svo.getDeleteyn());
-							tf6.setText(_svo.getInsertdate());
-							tf7.setText(_svo.getUpdatedate());
-						}
-					} else {
-						System.out.println("배열에서 데이터를 가져와 세팅하는 중 에러발생!");
-					}
-
-				} catch (Exception e1) {
-					System.out.println("조회중 Error 발생! : " + e1.getMessage());
+					tf1.setText(_svo.getSwnum());
+					tf2.setText(_svo.getSwname());
+					tf3.setText(_svo.getSwid());
+					tf4.setText(_svo.getSwpw());
+					tf5.setText(_svo.getDeleteyn());
+					tf6.setText(_svo.getInsertdate());
+					tf7.setText(_svo.getUpdatedate());
 				}
+			} else {
 
 			}
+		} catch (Exception ex) {
+			System.out.println("조건 중 에러가 >>> : " + ex.getMessage());
+		}
+	}
 
-			// 입력된 e.getActionCommand : 저장 버튼이 눌린 경우
-			if ("저장".equals(btnCmd)) {
-				System.out.println("[저장] 다음의 이벤트가 발생됨  >> " + btnCmd);
+	// 등록 - 회원 번호, 회원 이름, 회원 아이디, 회원 패스워드 입력시 데이터베이스에 저장하는 기능의 함수.
+	public void smInsert(String swnum, String swname, String swid, String swpw) {
+		System.out.println("SwingMember.smInsert()진입함");
 
-				String swnum = "";
-				String swname = "";
-				String swid = "";
-				String swpw = "";
+		try {
 
-				// 채번함수를 불러와서 회원넘버로 설정한다.
-				swnum = KckMemberChabun.ymdNum();
-				// swname에 텍스트필드2 에서 가지고 온 텍스트를 초기화한다.
-				swname = tf2.getText();
-				// swid에 텍스트필드3 에서 가지고 온 텍스트를 초기화한다.
-				swid = tf3.getText();
-				// swpw에 텍스트필드4 에서 가지고 온 텍스트를 초기화한다.
-				swpw = tf4.getText();
+			SwingMemberService sms = new SwingMemberServiceImpl();
+			SwingMemberVO svo = new SwingMemberVO();
+			svo.setSwnum(swnum);
+			svo.setSwname(swname);
+			svo.setSwid(swid);
+			svo.setSwpw(swpw);
 
-				System.out.println("swnum : " + swnum);
-				System.out.println("swname : " + swname);
-				System.out.println("swid : " + swid);
-				System.out.println("swpw : " + swpw);
+			// 화면 텍스트필드 클리어
+			jtextFileClear();
 
-				try {
-					// 서비스 인터페이스 준비
-					SwingMemberService sms = new SwingMemberServiceImpl();
+			boolean bool = sms.smInsert(svo);
 
-					// VO 클래스 준비
-					SwingMemberVO svo = new SwingMemberVO();
+			if (bool) {
+				System.out.println("회원 정보 입력 성공 >>> : " + bool);
 
-					// VO 클래스에 set함수를 이용해 4개 변수의 값을 세팅.
-					svo.setSwnum(swnum);
-					svo.setSwname(swname);
-					svo.setSwid(swid);
-					svo.setSwpw(swpw);
+				JOptionPane.showMessageDialog(this, "회원정보 입력 성공 >>> :  ");
 
-					// 화면의 텍스트필드를 클리어한다.
-					jtextFileClear();
+				this.smSelect(swnum);
+			} else {
+				System.out.println("회원 정보 입력 실패 >>> : " + bool);
+				JOptionPane.showMessageDialog(this, "회원정보 입력 실패 >>> :  ");
+			}
+		} catch (Exception ex) {
+			System.out.println("등록 중 에러가 >>> : " + ex.getMessage());
+		}
+	}
 
-					// Service인터페이스를 통한 결과를 boolean 타입으로 저장한다.
-					boolean bool = sms.smInsert(svo);
+	// 수정 - 회원 번호, 회원 이름 입력시 데이터베이스에 데이터가 수정되는 기능의 함수.
+	public void smUpdate(String swnum, String swname) {
+		System.out.println("SwingMember.smUpdate()진입함");
 
-					if (bool) {
-						System.out.println("회원정보 입력 성공! : : " + bool);
-					} else {
-						System.out.println("회원정보 입력 실패! : : " + bool);
-					}
+		try {
 
-				} catch (Exception e1) {
-					System.out.println("저장할려는에 에러가 발생했어요.. : " + e1);
-				}
+			SwingMemberService sms = new SwingMemberServiceImpl();
+			SwingMemberVO svo = null;
+			svo = new SwingMemberVO();
+			svo.setSwnum(swnum);
+			svo.setSwname(swname);
 
+			// 화면 텍스트필드 클리어
+			jtextFileClear();
+
+			boolean bool = sms.smUpdate(svo);
+
+			if (bool) {
+				System.out.println("회원 정보 수정 성공 >>> : " + bool);
+
+				JOptionPane.showMessageDialog(this, "회원정보 수정 성공 >>> :  ");
+
+				this.smSelect(swnum);
+			} else {
+				System.out.println("회원 정보 수정 실패 >>> : " + bool);
+				JOptionPane.showMessageDialog(this, "회원정보 수정 성공 >>> :  ");
+			}
+		} catch (Exception ex) {
+			System.out.println("수정 중 에러가 >>> : " + ex.getMessage());
+		}
+	}
+
+	// 삭제 - 회원 번호 입력시 데이터베이스에서 조회할 수 없도록 DELETEYN : 'N'으로 변경하는 기능의 함수.
+	public void smDelete(String swnum) {
+		System.out.println("SwingMember.smDelete()진입함");
+
+		try {
+
+			SwingMemberService sms = new SwingMemberServiceImpl();
+			SwingMemberVO svo = null;
+			svo = new SwingMemberVO();
+			svo.setSwnum(swnum);
+
+			// 화면 텍스트필드 클리어
+			jtextFileClear();
+
+			boolean bool = sms.smDelete(svo);
+
+			if (bool) {
+				System.out.println("회원 정보 삭제 성공 >>> : " + bool);
+				JOptionPane.showMessageDialog(this, "회원정보 삭제 성공 >>> :  ");
+			} else {
+				System.out.println("회원 정보 삭제 실패 >>> : " + bool);
+				JOptionPane.showMessageDialog(this, "회원정보 실패 성공 >>> :  ");
 			}
 
-			// 입력된 e.getActionCommand : 수정 버튼이 눌린 경우
-			if ("수정".equals(btnCmd)) {
-				System.out.println("[수정] 다음의 이벤트가 발생됨  >> " + btnCmd);
+		} catch (Exception ex) {
+			System.out.println("삭제 중 에러가 >>> : " + ex.getMessage());
+		}
+	}
 
-				// 이름만 수정하기.
-				String swnum = "";
-				String swname = "";
+	// 이벤트 발생시 수행 로직
+	// ActionListener를 구현하는 별도의 클래스 eventHandler 대신
+	// ActionListener의 함수를 직접 구현함.
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		String btnCmd = String.valueOf(e.getActionCommand());
 
-				// 사용할 변수 초기화
+		if ("조회".equals(btnCmd)) {
+			System.out.println("btnCmd >>> : " + btnCmd + " 시작 >>> : ");
+
+			String swnum = "";
+
+			try {
+
 				swnum = tf1.getText();
-				swname = tf2.getText();
+				System.out.println("swnum >>> : " + swnum);
 
-				System.out.println("입력된 swnum : " + swnum);
-				System.out.println("입력된 swname : " + swname);
+				// 조건 조회 함수 호출
+				this.smSelect(swnum);
 
-				try {
-
-					// 값을 전달하고 받아올 서비스 인터페이스 준비.
-					SwingMemberService sms = new SwingMemberServiceImpl();
-
-					// 값을 저장할 VO 클래스 준비.
-					SwingMemberVO svo = new SwingMemberVO();
-
-					// VO클래스에 set함수를 이용해 값을 저장.
-					svo.setSwnum(swnum);
-					svo.setSwname(swname);
-
-					// 화면의 텍스트 필드를 클리어. (이 코드를 주석처리해도 사라지긴함.)
-					jtextFileClear();
-
-					// swnum과 swname을 세팅한 VO 클래스를
-					// 서비스 인터페이스에 전송하고
-					// 서비스 인터페이스는 DAO로 또 전송한다.
-					// 그 받아온 결과를 boolean 타입으로 저장한다.
-					boolean bool = sms.smUpdate(svo);
-
-					if (bool) {
-						System.out.println("회원정보 수정이 완료되었습니다! >> " + bool);
-					} else {
-						System.out.println("회원정보 수정에 실패했습니다! >> " + bool);
-					}
-
-				} catch (Exception e2) {
-					System.out.println("수정하는 과정에서 에러가 발생했어요! >> " + e2.getMessage());
-				}
-
-			}
-
-			// 입력된 e.getActionCommand : 삭제 버튼이 눌린 경우
-			if ("삭제".equals(btnCmd)) {
-				System.out.println("[삭제] 다음의 이벤트가 발생됨  >> " + btnCmd);
-
-				// 회원 번호를 이용해 해당 정보를 삭제하기.
-				String swnum = "";
-				// 텍스트필드 1에 입력된 회원번호를 가져와 swnum에 초기화.
-				swnum = tf1.getText();
-
-				System.out.println("삭제할 회원 번호 : " + swnum);
-
-				try {
-					// 값을 전달할 서비스 인터페이스 준비
-					SwingMemberService sms = new SwingMemberServiceImpl();
-
-					// 값을 저장할 VO클래스 준비
-					SwingMemberVO svo = new SwingMemberVO();
-
-					// VO클래스에 가져온 swnum의 값을 세팅
-					svo.setSwnum(swnum);
-
-					// 화면 텍스트필드 클리어
-					jtextFileClear();
-
-					// swnum과 swname을 세팅한 VO 클래스를
-					// 서비스 인터페이스에 전송하고
-					// 서비스 인터페이스는 DAO로 또 전송한다.
-					// 그 받아온 결과를 boolean 타입으로 저장한다.
-					boolean bool = sms.smDelete(svo);
-
-					if (bool) {
-						System.out.println("회원정보 삭제 성공했어요 ! : " + bool);
-					} else {
-						System.out.println("회원정보 삭제 실패했어요 ! : " + bool);
-					}
-
-				} catch (Exception e3) {
-					System.out.println("삭제 과정에서 에러가 발생했어요 : " + e3.getMessage());
-				}
+			} catch (Exception ex) {
+				System.out.println("에러가 >>> : " + ex.getMessage());
 			}
 		}
+		if ("저장".equals(btnCmd)) {
+			System.out.println("btnCmd >>> : " + btnCmd + " 시작 >>> : ");
+
+			String swnum = "";
+			String swname = "";
+			String swid = "";
+			String swpw = "";
+
+			try {
+					//강사님 코드 :  SwingMemberChabun.ymdNum();
+				//a.b.c.board.common.KckBoardChabun.gubunNum()
+				swnum = SwingMemberChabun.ymdNum();
+				swname = tf2.getText();
+				swid = tf3.getText();
+				swpw = tf4.getText();
+				System.out.println("swnum >>> : " + swnum);
+				System.out.println("swname >>> : " + swname);
+				System.out.println("swid >>> : " + swid);
+				System.out.println("swpw >>> : " + swpw);
+
+				// 등록 함수 호출
+				this.smInsert(swnum, swname, swid, swpw);
+
+			} catch (Exception ex) {
+				System.out.println("에러가 >>> : " + ex.getMessage());
+			}
+		}
+		if ("수정".equals(btnCmd)) {
+			System.out.println("btnCmd >>> : " + btnCmd + " 시작 >>> : ");
+
+			// 이름만 수정하기
+			String swnum = "";
+			String swname = "";
+
+			try {
+
+				swnum = tf1.getText();
+				swname = tf2.getText();
+
+				System.out.println("swnum >>> : " + swnum);
+				System.out.println("swname >>> : " + swname);
+
+				// 수정 함수 호출
+				this.smUpdate(swnum, swname);
+
+			} catch (Exception ex) {
+				System.out.println("에러가 >>> : " + ex.getMessage());
+			}
+
+		}
+		if ("삭제".equals(btnCmd)) {
+			System.out.println("btnCmd >>> : " + btnCmd + " 시작 >>> : ");
+
+			String swnum = "";
+
+			try {
+
+				swnum = tf1.getText();
+				System.out.println("swnum >>> : " + swnum);
+
+				// 삭제 함수 호출
+				this.smDelete(swnum);
+
+			} catch (Exception ex) {
+				System.out.println("에러가 >>> : " + ex.getMessage());
+			}
+		}
+		if ("전체조회".equals(btnCmd)) {
+			System.out.println("btnCmd >>> : " + btnCmd + " 시작 >>> : ");
+
+			try {
+				// 전체조회 함수 호출
+				this.smSelectAll();
+
+			} catch (Exception ex) {
+				System.out.println("에러가 >>> : " + ex.getMessage());
+			}
+		}
+		if ("초기화".equals(btnCmd)) {
+			System.out.println("btnCmd >>> : " + btnCmd + " 시작 >>> : ");
+
+			try {
+				// 초기화 함수 호출
+				this.jtextFileClear();
+
+			} catch (Exception ex) {
+				System.out.println("에러가 >>> : " + ex.getMessage());
+			}
+		}
+		if ("프로그램종료".equals(btnCmd)) {
+			System.out.println("btnCmd >>> : " + btnCmd + " 시작 >>> : ");
+
+			try {
+				System.exit(0);
+			} catch (Exception ex) {
+				System.out.println("에러가 >>> : " + ex.getMessage());
+			}
+		}
+
 	}
 
 	public void jtextFileClear() {
@@ -378,11 +446,10 @@ public class SwingMember extends JFrame {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		System.out.println("Swing Member 프로그램이 시작됩니다.");
 		System.out.println("회원정보 조회 프로그램을 실행합니다");
 
 		// 생성자 호출
 		new SwingMember();
 	}
-
 }
