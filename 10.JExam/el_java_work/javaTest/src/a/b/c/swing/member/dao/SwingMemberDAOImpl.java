@@ -51,7 +51,6 @@ public class SwingMemberDAOImpl implements SwingMemberDAO {
 			}
 
 			KckBoardConnProperty.conClose(conn, pstmt, rsRs);
-
 		} catch (Exception e) {
 			System.out.println("데이터 조회중 문제가 발생했습니다.");
 		} finally {
@@ -61,7 +60,7 @@ public class SwingMemberDAOImpl implements SwingMemberDAO {
 		return aList;
 	}
 
-	// 조건조회 : 회원 번호
+	// 조건조회 : 일반 (회원 번호로 조회)
 	@Override
 	public ArrayList<SwingMemberVO> smSelect(SwingMemberVO svo) {
 		// TODO Auto-generated method stub
@@ -126,7 +125,10 @@ public class SwingMemberDAOImpl implements SwingMemberDAO {
 			conn = KckBoardConnProperty.getConnection();
 			pstmt = conn.prepareStatement(SwingMemberSqlMap.getsmSelectNameQuery());
 			pstmt.clearParameters();
-			pstmt.setString(1, svo.getSwnum());
+			
+			// 플레이스홀더에 세팅할 값
+			// 물음표 (첫번째, 들어갈 값)
+			pstmt.setString(1, svo.getSwname());
 
 			rsRs = pstmt.executeQuery();
 
@@ -157,6 +159,7 @@ public class SwingMemberDAOImpl implements SwingMemberDAO {
 		} finally {
 			KckBoardConnProperty.conClose(conn, pstmt, rsRs);
 		}
+		System.out.println("SwingMemberDAOImpl.smSelectName()함수 종료함");
 
 		return aList;
 	}
@@ -175,7 +178,7 @@ public class SwingMemberDAOImpl implements SwingMemberDAO {
 			conn = KckBoardConnProperty.getConnection();
 			pstmt = conn.prepareStatement(SwingMemberSqlMap.getsmSelectIDQuery());
 			pstmt.clearParameters();
-			pstmt.setString(1, svo.getSwnum());
+			pstmt.setString(1, svo.getSwid());
 
 			rsRs = pstmt.executeQuery();
 
@@ -224,10 +227,13 @@ public class SwingMemberDAOImpl implements SwingMemberDAO {
 
 		try {
 			conn = KckBoardConnProperty.getConnection();
+			// 요청을 기재해서 보낼 때 쿼리문을 적어보내주는데,
+			// 그 쿼리문 내에는 플레이스 홀더가 있다.
 			pstmt = conn.prepareStatement(SwingMemberSqlMap.getsmInsertQuery());
 			System.out.println("DB에 다음의 쿼리문을 전송했습니다!  >> " + SwingMemberSqlMap.getsmInsertQuery());
 
 			pstmt.clearParameters();
+			//플레이스 홀더 자리에 들어갈 아규먼트는 VO객체로 전달받은 값들이다. 
 			pstmt.setString(1, svo.getSwnum());
 			pstmt.setString(2, svo.getSwname());
 			pstmt.setString(3, svo.getSwid());
@@ -271,9 +277,8 @@ public class SwingMemberDAOImpl implements SwingMemberDAO {
 			System.out.println("DB에 다음의 쿼리문을 전송했습니다!  >> " + SwingMemberSqlMap.getsmUpdateQuery());
 
 			pstmt.clearParameters();
-
-			pstmt.setString(1, svo.getSwnum());
-			pstmt.setString(2, svo.getSwname());
+			pstmt.setString(1, svo.getSwname());
+			pstmt.setString(2, svo.getSwnum());
 
 			nCnt = pstmt.executeUpdate();
 

@@ -5,8 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import a.b.c.common.KckConnProperty2;
-import a.b.c.common.KckMemberChabun;
-import a.b.c.mem.sql.KckMemberSqlMap;
 import a.b.c.swing.member.sql.SwingMemberSqlMap;
 
 public class SwingMemberChabun {
@@ -75,7 +73,7 @@ public static final String BIZ_GUBUN_M = "M"; // 업무구분코드
 	}
 	
 	public static void main(String args[]) {
-		String commNO = KckMemberChabun.ymdNum();
-		// System.out.println("commNO :" + commNO);
+		String a = SwingMemberChabun.ymdNum();
+		System.out.println(a);
 	}
 }

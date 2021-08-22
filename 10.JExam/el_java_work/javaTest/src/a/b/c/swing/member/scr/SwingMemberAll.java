@@ -128,14 +128,14 @@ public class SwingMemberAll extends JFrame implements ActionListener {
 
 			if ("전체".equals(comboStr)){
 				searchStr = jtR.getText();
-				System.out.println("searchStr >>> : " + searchStr);
+				System.out.println("텍스트필드에서 가지고 온 값 searchStr : " + searchStr);
 
 				int columnCnt = columnName.length;
 		
 				try{
 					SwingMemberService sms = new SwingMemberServiceImpl();
 
-					ArrayList<SwingMemberVO> aList =  sms.smSelectAll();
+					ArrayList<SwingMemberVO> aList = sms.smSelectAll();
 				
 					int rowCnt = aList.size();
 					System.out.println("rowCnt >>> : " + rowCnt);
@@ -145,6 +145,7 @@ public class SwingMemberAll extends JFrame implements ActionListener {
 					for (int i=0; i < rowCnt; i++ ){
 						
 						SwingMemberVO _svo = aList.get(i);
+						
 						fieldValue[i][0] = _svo.getSwnum();
 						fieldValue[i][1] = _svo.getSwname();
 						fieldValue[i][2] = _svo.getSwid();
@@ -186,7 +187,7 @@ public class SwingMemberAll extends JFrame implements ActionListener {
 			}
 			if ("이름".equals(comboStr)){
 				searchStr = jtR.getText();
-				System.out.println("searchStr >>> : " + searchStr);
+				System.out.println("텍스트필드에서 가지고온 값 searchStr : " + searchStr);
 
 				int columnCnt = columnName.length;
 		
@@ -197,15 +198,21 @@ public class SwingMemberAll extends JFrame implements ActionListener {
 					svo.setSwname(searchStr);
 					
 					ArrayList<SwingMemberVO> aList =  sms.smSelectName(svo);
-				
+					System.out.println("return값을 정상적으로 받아왔습니다!");
+
+					/*
+					 에러지점
+					 */
 					int rowCnt = aList.size();
-					System.out.println("rowCnt >>> : " + rowCnt);
+					System.out.println("rowCnt : " + rowCnt);
 
 					fieldValue = new Object[rowCnt][columnCnt];
 
 					for (int i=0; i < rowCnt; i++ ){
-						
+						System.out.println("for 반복문이 실행됩니다!");
+
 						SwingMemberVO _svo = aList.get(i);
+						
 						fieldValue[i][0] = _svo.getSwnum();
 						fieldValue[i][1] = _svo.getSwname();
 						fieldValue[i][2] = _svo.getSwid();
@@ -218,7 +225,7 @@ public class SwingMemberAll extends JFrame implements ActionListener {
 					}
 				}
 				catch (Exception ex){
-					System.out.println("에러가 >>> : " + ex.getMessage());
+					System.out.println("에러가 발생했어요! : " + ex.getMessage());
 				}		
 
 				dtm = new DefaultTableModel(fieldValue, columnName);
@@ -228,7 +235,7 @@ public class SwingMemberAll extends JFrame implements ActionListener {
 			}
 			if ("아이디".equals(comboStr)){
 				searchStr = jtR.getText();
-				System.out.println(" searchStr >>> : " + searchStr);
+				System.out.println("텍스트필드에서 가지고온 값 searchStr : " + searchStr);
 
 				int columnCnt = columnName.length;
 		

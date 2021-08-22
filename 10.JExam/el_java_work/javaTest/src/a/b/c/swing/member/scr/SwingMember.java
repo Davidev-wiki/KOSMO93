@@ -18,7 +18,6 @@ import javax.swing.JTextField;
 
 import a.b.c.swing.member.service.SwingMemberService;
 import a.b.c.swing.member.service.SwingMemberServiceImpl;
-import a.b.c.swing.member.sql.SwingMemberSqlMap;
 import a.b.c.swing.member.vo.SwingMemberVO;
 
 // class evnetHandler 삭제
@@ -38,12 +37,16 @@ public class SwingMember extends JFrame implements ActionListener {
 	// 생성자
 	public SwingMember() {
 
+		System.out.println("생성자가 호출되었습니다. 프로그램이 초기화됩니다.");
 		// JFrame 타이틀 세팅(타이틀 : 창 상단 파란색라인에 나오는 이름)
+		System.out.println("JFrame 타이틀을 세팅합니다.");
 		this.setTitle("SwingMember");
 		// JFrame 레이아웃 매니저 "Border" 로 설정하기(중앙+동서남북)
+		System.out.println("JFrame 레이아웃을 세팅합니다.");
 		this.setLayout(new BorderLayout());
 
 		// 라벨, 텍스트필드 삽입용 패널 '패널1'생성
+		System.out.println("JFrame 패널을 세팅합니다.");
 		pa1 = new JPanel();
 		// '패널1'의 색상 : cyan(하늘색)
 		pa1.setBackground(Color.cyan);
@@ -55,9 +58,11 @@ public class SwingMember extends JFrame implements ActionListener {
 
 		// '패널1'의 레이아웃 세팅
 		// : Grid (행렬or테이블형태 : 7행, 2열)
+		System.out.println("패널1 레이아웃을 세팅합니다.");
 		pa1.setLayout(new GridLayout(7, 2));
 
 		// 라벨 7개 생성
+		System.out.println("라벨을 생성합니다.");
 		la1 = new JLabel(" 고객번호 ", JLabel.CENTER);
 		la2 = new JLabel(" 고객명 ", JLabel.CENTER);
 		la3 = new JLabel(" 아이디 ", JLabel.CENTER);
@@ -67,6 +72,7 @@ public class SwingMember extends JFrame implements ActionListener {
 		la7 = new JLabel(" 수정일 ", JLabel.CENTER);
 
 		// 길이가 10인 텍스트필드 7개 생성
+		System.out.println("텍스트필드를 생성합니다.");
 		tf1 = new JTextField(10);
 		tf2 = new JTextField(10);
 		tf3 = new JTextField(10);
@@ -82,6 +88,7 @@ public class SwingMember extends JFrame implements ActionListener {
 		// '라벨5'와 '텍스트필드5'을 추가
 		// '라벨6'와 '텍스트필드6'을 추가
 		// '라벨7'와 '텍스트필드7'을 추가
+		System.out.println("라벨과 텍스트필드를 패널에 추가합니다.");
 		pa1.add(la1);
 		pa1.add(tf1);
 		pa1.add(la2);
@@ -99,9 +106,11 @@ public class SwingMember extends JFrame implements ActionListener {
 
 		// '패널 2'의 레이아웃 세팅
 		// : Flow(한 줄로 나열된 형태)
+		System.out.println("패널2 레이아웃을 세팅합니다.");
 		pa2.setLayout(new FlowLayout(FlowLayout.CENTER));
 
 		// 총 4개의 버튼 생성 버튼1, 버튼2, 버튼3, 버튼4
+		System.out.println("버튼을 생성합니다.");
 		bt1 = new JButton("조회");
 		bt2 = new JButton("저장");
 		bt3 = new JButton("수정");
@@ -111,6 +120,7 @@ public class SwingMember extends JFrame implements ActionListener {
 		btClose = new JButton("프로그램종료");
 
 		// '패널2'에 버튼 4개를 추가
+		System.out.println("버튼을 세팅합니다.");
 		pa2.add(bt1);
 		pa2.add(bt2);
 		pa2.add(bt3);
@@ -129,6 +139,7 @@ public class SwingMember extends JFrame implements ActionListener {
 		// '버튼 2 : 저장'에 이벤트리스너를 추가한다. (이벤트핸들러를 이용하는)
 		// '버튼 3 : 수정'에 이벤트리스너를 추가한다. (이벤트핸들러를 이용하는)
 		// '버튼 4 : 삭제'에 이벤트리스너를 추가한다. (이벤트핸들러를 이용하는)
+		System.out.println("버튼에 이벤트를 추가합니다.");
 		bt1.addActionListener(this);
 		bt2.addActionListener(this);
 		bt3.addActionListener(this);
@@ -139,9 +150,11 @@ public class SwingMember extends JFrame implements ActionListener {
 
 		// '패널 1'과 '패널 2' 를 JFrame에 추가하되,
 		// 각각 '중앙', '하단'에 추가한다.
+		System.out.println("JFrame에 패널을 붙입니다..");
 		this.getContentPane().add(pa1, BorderLayout.CENTER);
 		this.getContentPane().add(pa2, BorderLayout.SOUTH);
 
+		System.out.println("JFrame의 사이즈를 세팅합니다.");
 		// 새로 생성하는 JFrame의 사이즈를 row 580, col 250 으로 설정.
 		this.setSize(580, 250);
 		// 새로 생성하는 JFrame의 위치를 400, 200 위치로 설정
@@ -157,9 +170,10 @@ public class SwingMember extends JFrame implements ActionListener {
 				e.getWindow().setVisible(false);
 				e.getWindow().dispose();
 				System.exit(0);
+				System.out.println("프로그램을 종료합니다.");
 			}
 		});
-
+		System.out.println("생성자가 종료됩니다.");
 	}
 
 	// 전체 조회 - 전체 조회를 위한 클래스, SwingMemberAll() 함수로 보내기
@@ -265,15 +279,15 @@ public class SwingMember extends JFrame implements ActionListener {
 			if (bool) {
 				System.out.println("회원 정보 수정 성공 >>> : " + bool);
 
-				JOptionPane.showMessageDialog(this, "회원정보 수정 성공 >>> :  ");
+				JOptionPane.showMessageDialog(this, "회원정보 수정 성공!");
 
 				this.smSelect(swnum);
 			} else {
 				System.out.println("회원 정보 수정 실패 >>> : " + bool);
-				JOptionPane.showMessageDialog(this, "회원정보 수정 성공 >>> :  ");
+				JOptionPane.showMessageDialog(this, "회원정보 수정 실패!");
 			}
 		} catch (Exception ex) {
-			System.out.println("수정 중 에러가 >>> : " + ex.getMessage());
+			System.out.println("수정 중 에러가 발생했어요 : " + ex.getMessage());
 		}
 	}
 
