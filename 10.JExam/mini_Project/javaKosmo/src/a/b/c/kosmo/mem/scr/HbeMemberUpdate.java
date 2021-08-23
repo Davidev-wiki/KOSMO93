@@ -282,11 +282,12 @@ public class HbeMemberUpdate extends JFrame implements ActionListener {
 		hvo = new HbeMemberVO();
 		hvo.setHnum(hnum);	
 		
-		boolean bool = hs.hmemUpdate(hvo);
+		boolean bool = hs.hmemDelete(hvo);
 		
 		if (bool) {
 			System.out.println("회원정보 삭제 성공  >>> : " + bool);
 			JOptionPane.showMessageDialog(this, "회원정보 삭제 성공 >>> :  ");
+			new HbeMemberAll();
 		}else {
 			System.out.println("회원정보 삭제 실패  >>> : " + bool);
 		}
@@ -364,6 +365,6 @@ public class HbeMemberUpdate extends JFrame implements ActionListener {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		System.out.println("HbeMemberUpdate.main() 함수 시작  >>> : ");
-		new HbeMemberUpdate().hmemSelect("202108050002");
+		new HbeMemberUpdate();
 	}
 }

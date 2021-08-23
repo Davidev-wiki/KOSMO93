@@ -152,6 +152,7 @@ public class HbeBoardDAOImpl implements HbeBoardDAO {
 	public int hboardUpdate(HbeBoardVO hvo) {
 		// TODO Auto-generated method stub
 		System.out.println("HbeBoardDAOImpl hboardUpdate() 함수 진입 >>> : ");
+		HbeBoardVO.printlnHbeBoardVO(hvo);
 		
 		// 사용할 객체를 지역변수로 선언하고 초기화 하기 
 		Connection        conn = null;

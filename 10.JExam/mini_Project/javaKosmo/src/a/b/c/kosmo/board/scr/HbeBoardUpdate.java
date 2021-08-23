@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -26,9 +26,13 @@ import a.b.c.common.HbeBoardChabun;
 import a.b.c.kosmo.board.service.HbeBoardService;
 import a.b.c.kosmo.board.service.HbeBoardServiceImpl;
 import a.b.c.kosmo.board.vo.HbeBoardVO;
+import a.b.c.kosmo.mem.scr.HbeMemberAll;
+import a.b.c.kosmo.mem.service.HbeMemberService;
+import a.b.c.kosmo.mem.service.HbeMemberServiceImpl;
+import a.b.c.kosmo.mem.vo.HbeMemberVO;
 
 
-public class HbeBoard  extends JFrame implements ActionListener {
+public class HbeBoardUpdate  extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -40,7 +44,7 @@ public class HbeBoard  extends JFrame implements ActionListener {
 	private JButton     	jb[];	
 	private JPanel      	jp[];
 	
-	public HbeBoard() {
+	public HbeBoardUpdate() {
 		// JFrame 타이틀 세팅하기
 		this.setTitle(":::게시판:::");
 		
@@ -110,16 +114,18 @@ public class HbeBoard  extends JFrame implements ActionListener {
 			jp[0].add(jb[i]);
 		}
 		
-		jb[0].setText("작성하기");
+		jb[0].setText("수정");
 		jb[0].setBounds(20, 420, 250, 30);		
 		jb[0].setFont(new Font("맑은고딕", Font.BOLD, 15));
 		
-		jb[1].setText("다시");
+		jb[1].setText("삭제");
 		jb[1].setBounds(280, 420, 150, 30);		
 		jb[1].setFont(new Font("맑은고딕", Font.BOLD, 15));
 		
+		
 		// JTextFiled disable : 삭제여부, 등록일, 수정일
 		jt[0].setEditable(false);
+		jt[2].setEditable(false);
 				
 		// JPanel JFrame 붙이기 
 		this.getContentPane().add(jp[0]);		
@@ -138,39 +144,70 @@ public class HbeBoard  extends JFrame implements ActionListener {
 		});
 	}
 
-	// 글 등록
-	public void hboardInsert(String bsubject, String bwriter, String bpw, String bcontents) {
-		System.out.println("HbeBoard.hboardInsert() 함수 시작  >>> : ");
+	// 게시글 조회하기 
+	public void hboardSelect(String bnum) {
+		System.out.println("HbeBoardUpdate hboardSelect() 함수 진입 >>> : " + bnum);
 		
 		HbeBoardService hs = new HbeBoardServiceImpl();
 		HbeBoardVO hvo = null;
 		hvo = new HbeBoardVO();
-		hvo.setBnum(HbeBoardChabun.gubunNum());
-		hvo.setBsubject(bsubject);
-		hvo.setBwriter(bwriter);
-		hvo.setBpw(bpw);
-		hvo.setBcontents(bcontents);
+		hvo.setBnum(bnum);
 		
-		int nCnt = hs.hboardInsert(hvo);
-		
-		if (nCnt == 1) {
-			System.out.println("게시글 등록 성공 >>> : " + nCnt);
-			JOptionPane.showMessageDialog(this, "게시글 등록 성공 >>> :  ");
-			new HbeBoardrAll();
-		}else {
-			System.out.println("글 등록 실패 >>> : " + nCnt);
+		ArrayList<HbeBoardVO> aList = hs.hboardSelect(hvo);
+		System.out.println("" + aList);
+		if (aList !=null && aList.size() > 0) {			
+	
+			HbeBoardVO _hvo = aList.get(0);	
+			jt[0].setText(_hvo.getBnum());
+			jt[1].setText(_hvo.getBsubject());						
+			jt[2].setText(_hvo.getBwriter());			
+			jpf.setText(_hvo.getBpw());				
+			jta.setText(_hvo.getBcontents());					
 		}
 	}
 	
-	// 텍스트 클리어 
-	public void valueClear() {
-		System.out.println("HbeBoard.valueClear() 함수 시작  >>> : ");
-		for (int i=0; i < jt.length; i++) {			
-			jt[i].setText("");
+	// 게시글 수정하기 
+	public void hboardUpdate(String bnum, String bsubject, String bcontents) {
+		System.out.println("HbeBoardUpdate hboardUpdate() 함수 진입 >>> : " + bnum);
+		
+		HbeBoardService hs = new HbeBoardServiceImpl();
+		HbeBoardVO hvo = null;
+		hvo = new HbeBoardVO();
+		hvo.setBnum(bnum);
+		hvo.setBsubject(bsubject);
+		hvo.setBcontents(bcontents);
+			
+		int nCnt = hs.hboardUpdate(hvo);
+		
+		if (nCnt > 0) {
+			System.out.println("게시글 수정 성공  >>> : " + nCnt);
+			JOptionPane.showMessageDialog(this, "게시글 수정 성공 >>> :  ");
+			new HbeBoardrAll();
+		}else {
+			System.out.println("게시글 수정 실패  >>> : " + nCnt);
 		}
-		jpf.setText("");
-		jta.setText("");
 	}
+
+	// 게시글 삭제하기 
+	public void hboardDelete(String bnum) {
+		System.out.println("HbeBoardUpdate hboardDelete() 함수 진입 >>> : " + bnum);
+		
+		HbeBoardService hs = new HbeBoardServiceImpl();
+		HbeBoardVO hvo = null;
+		hvo = new HbeBoardVO();
+		hvo.setBnum(bnum);;	
+		
+		int nCnt = hs.hboardDelete(hvo);
+		
+		if (nCnt > 0) {
+			System.out.println("게시글 삭제 성공  >>> : " + nCnt);
+			JOptionPane.showMessageDialog(this, "게시글 삭제 성공 >>> :  ");
+			new HbeBoardrAll();
+		}else {
+			System.out.println("게시글 삭제 실패  >>> : " + nCnt);
+		}
+	}
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub		
@@ -180,34 +217,34 @@ public class HbeBoard  extends JFrame implements ActionListener {
 		Object jbCaption = e.getActionCommand();
 		
 		if (jb[0] == obj) {
-			System.out.println("작성하기 버튼 클릭 >>> : " + jbCaption);
+			System.out.println("수정하기 버튼 클릭 >>> : " + jbCaption);
 			
-			String bsubject = "";
-			String bwriter = "";			
-			String bpw = "";
+			String bnum = "";
+			String bsubject = "";							
 			String bcontents = "";
 		
-			bsubject = jt[0].getText();
-			bwriter = jt[1].getText();			
-			bpw = jpf.getText();
+			bnum = jt[0].getText();
+			bsubject = jt[1].getText();								
 			bcontents = jta.getText();
 		
-			System.out.println("bsubject >>> : " + bsubject);
-			System.out.println("bwriter >>> : " + bwriter);
-			System.out.println("bpw >>> : " + bpw);
+			System.out.println("bnum >>> : " + bnum);
+			System.out.println("bsubject >>> : " + bsubject);						
 			System.out.println("bcontents >>> : " + bcontents);
 						
-			this.hboardInsert(bsubject, bwriter, bpw, bcontents);
+			this.hboardUpdate(bnum, bsubject, bcontents);
 		}
 		
 		if (jb[1] == obj) {	
-			System.out.println("다시버튼 버튼 클릭 >>> : ");	
-			this.valueClear();
+			System.out.println("삭제하기 버튼 클릭 >>> : ");	
+			String bnum = "";
+			bnum = jt[0].getText();
+			System.out.println("bnum >>> : " + bnum);
+			this.hboardDelete(bnum);
 		}				
 	}
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		new HbeBoard();
+		new HbeBoardUpdate();
 	}
 }
