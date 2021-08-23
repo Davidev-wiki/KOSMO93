@@ -116,7 +116,7 @@ public abstract class CodeUtil {
 		return ss;
 	}
 	
-	// 전화번호 
+	// 핸드폰번호 
 	public static String hp(String s) {
 
 		String s0 = "";
