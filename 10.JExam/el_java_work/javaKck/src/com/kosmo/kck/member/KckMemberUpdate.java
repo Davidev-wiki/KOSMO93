@@ -357,12 +357,17 @@ public class KckMemberUpdate extends JFrame implements ActionListener {
 		}
 		
 		// 회원 삭제 기능
-		public void kmemDelete(String knum) {
+		public void kmemDelete(String kemail) {
 			System.out.println("KckMemberUpdate.kmemDelete() 진입");
 			
 			KckMemberService kms = new KckMemberServiceImpl();
 			KckMemberVO kvo = new KckMemberVO();
-			kvo.setKnum(knum);
+			
+			String s1 = jtField[4].getText();
+			String s2 = jtField[5].getText();
+			String email = s1+"@"+s2;
+			
+			kvo.setKemail(email);
 			
 			boolean bool = kms.kmemDelete(kvo);
 			

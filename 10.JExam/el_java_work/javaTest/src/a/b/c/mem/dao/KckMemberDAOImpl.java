@@ -128,7 +128,7 @@ public class KckMemberDAOImpl implements KckMemberDAO {
 	public boolean kmemInsert(KckMemberVO kvo) {
 		// TODO Auto-generated method stub
 		System.out.println("KckMemberDAOImpl.kmemInsert()함수 진입");
-		KckMemberVO.printlnKckMemberVO(kvo);
+		//KckMemberVO.printlnKckMemberVO(kvo);
 		
 		// 사용할 객체를 지역변수로 선언하고 초기화 하기 
 		Connection conn = null;

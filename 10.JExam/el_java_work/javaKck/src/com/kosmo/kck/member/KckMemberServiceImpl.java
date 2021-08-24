@@ -23,7 +23,11 @@ public class KckMemberServiceImpl implements KckMemberService {
 	@Override
 	public boolean kmemInsert(KckMemberVO kvo) {
 		// TODO Auto-generated method stub
-		return false;
+		System.out.println("KckMemberServiceImpl.kmemInsert() 진입");
+
+		KckMemberDAO kdao = new KckMemberDAOImpl();
+		boolean bool = kdao.kmemInsert(kvo);
+		return bool;
 	}
 
 	@Override
@@ -35,7 +39,11 @@ public class KckMemberServiceImpl implements KckMemberService {
 	@Override
 	public boolean kmemDelete(KckMemberVO kvo) {
 		// TODO Auto-generated method stub
-		return false;
+		System.out.println("KckMemberServiceImpl.kmemDelete() 진입");
+
+		KckMemberDAO kdao = new KckMemberDAOImpl();
+		boolean bool = kdao.kmemDelete(kvo);
+		return bool;
 	}
 
 	@Override

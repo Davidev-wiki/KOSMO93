@@ -295,7 +295,7 @@ public class KckMember extends JFrame implements ActionListener {
 				System.out.println("사용 가능한 아이디입니다!" + bool);
 				JOptionPane.showMessageDialog(this, "사용가능한 아이디 입니다 >>> :  ");
 				jt[2].setText(kvo.getKid());
-				jt[2].setEditable(false);
+				jt[2].setEditable(true);
 			}
 
 		} catch (Exception e) {
@@ -317,6 +317,7 @@ public class KckMember extends JFrame implements ActionListener {
 
 			String knum = KckMemberChabun.ymdNum();
 			System.out.println("생성된 회원번호 : " + knum);
+			kvo.setKnum(knum);
 			kvo.setKname(kname);
 			kvo.setKid(kid);
 			kvo.setKpw(kpw);
@@ -331,7 +332,7 @@ public class KckMember extends JFrame implements ActionListener {
 			kvo.setKskill(kskill);
 			kvo.setKjob(kjob);
 			kvo.printlnKckMemberVO(kvo);
-
+			
 			boolean bool = kms.kmemInsert(kvo);
 
 			if (bool) {
@@ -414,28 +415,15 @@ public class KckMember extends JFrame implements ActionListener {
 		
 	}
 
-	// 회원 수정 기능
+	// 회원 수정 기능 => 수정 가능 범위를 먼저 설정해야 하는데.. 시간이 없으니까 패스 
 	public void kmemUpdate(String knum, String kemail, String kaddr, String khobby, String kjob) {
-		
+		new KckMemberUpdate();
 	}
 
-	// 회원 삭제 기능
-	public void kmemDelete(String knum) {
-		System.out.println("KckMember.kmemDelete() 진입");
-		
-		KckMemberService kms = new KckMemberServiceImpl();
-		KckMemberVO kvo = new KckMemberVO();
-		kvo.setKnum(knum);
-		
-		boolean bool = kms.kmemDelete(kvo);
-		
-		if(bool) {
-			System.out.println("회원 삭제 성공!" + bool);
-			JOptionPane.showMessageDialog(this, "회원삭제 수정 성공! ");
-			new KckMemberAll();
-		}else {
-			System.out.println("회원 삭제에 실패했어요.." + bool);
-		}	}
+	// 회원 삭제 기능 => 게시판 새 창으로 연결하기 ==> 가입했던 이메일 입력시 삭제되도록 하기
+	public void kmemDelete(String kemail) {
+		new KckMemberUpdate();
+	}
 
 	// 텍스트필드의 값 초기화
 	public void valueClear() {

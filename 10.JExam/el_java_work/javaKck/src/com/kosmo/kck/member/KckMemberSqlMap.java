@@ -215,7 +215,7 @@ public abstract class KckMemberSqlMap {
 		sb.append("	SET  								\n");
 		sb.append("		   DELETEYN 	= 'N'			\n");
 		sb.append("		  ,UPDATEDATE 	= SYSDATE		\n");
-		sb.append("	WHERE  KNUM 		= ?				\n"); // placeholder 1
+		sb.append("	WHERE  KEMAIL 		=  ?			\n"); // placeholder 1
 		sb.append("	AND    DELETEYN 	= 'Y'  			\n");
 
 		return sb.toString();

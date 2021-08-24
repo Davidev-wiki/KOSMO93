@@ -73,7 +73,58 @@ public class KckMemberDAOImpl implements KckMemberDAO {
 	@Override
 	public boolean kmemInsert(KckMemberVO kvo) {
 		// TODO Auto-generated method stub
-		return false;
+		System.out.println("KckMemberDAOImpl.kmemInsert() 진입");
+		
+		// 사용할 객체를 지역변수로 선언하고 초기화 하기 
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int nCnt = 0;
+		boolean bool = false;
+		
+		try {			
+
+			conn = KckConnProperty.getConnection();
+			System.out.println("conn.getAutoCommit() >>> : " + conn.getAutoCommit());
+			
+			pstmt = conn.prepareStatement(KckMemberSqlMap.getKckMemberInsertQuery());
+			System.out.println("입력하기 >>> : \n"+ KckMemberSqlMap.getKckMemberInsertQuery());
+  			
+			// 파라미터 클리어 꼭 하기 
+			pstmt.clearParameters();
+			
+			pstmt.setString(1, kvo.getKnum()); 
+			pstmt.setString(2, kvo.getKname());
+			pstmt.setString(3, kvo.getKid());  
+			pstmt.setString(4, kvo.getKpw());
+			pstmt.setString(5, kvo.getKbirth());
+			pstmt.setString(6, kvo.getKgender());
+			pstmt.setString(7, kvo.getKtel());
+			pstmt.setString(8, kvo.getKhp());			
+			pstmt.setString(9, kvo.getKemail());
+			pstmt.setString(10, kvo.getKaddr());
+			pstmt.setString(11, kvo.getKhobby());
+			pstmt.setString(12, kvo.getKphoto());
+			pstmt.setString(13, kvo.getKskill());
+			pstmt.setString(14, kvo.getKjob());
+		
+			nCnt = pstmt.executeUpdate();						
+			if (!conn.getAutoCommit()) conn.commit();			
+			
+			// 왜 nCnt가 1 증가했는가??
+			System.out.println("nCnt : " + nCnt + " 건 등록 완료 되었습니다. ");
+			
+			if (nCnt > 0) { bool = true;}
+			
+			KckConnProperty.conClose(conn, pstmt);
+		}catch(Exception e) {
+			System.out.println("입력 디비연동에 문제가 생겼습니다.  : " + e);
+		}finally {
+			try {
+				KckConnProperty.conClose(conn, pstmt);				
+			}catch(Exception e2) {}
+		}
+				
+		return bool;
 	}
 
 	@Override
@@ -85,8 +136,44 @@ public class KckMemberDAOImpl implements KckMemberDAO {
 	@Override
 	public boolean kmemDelete(KckMemberVO kvo) {
 		// TODO Auto-generated method stub
-		return false;
-	}
+		System.out.println("KckMemberDAOImpl.kmemDelete() 진입");
+		
+		// 사용할 객체를 지역변수로 선언하고 초기화 하기 
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int nCnt = 0;
+		boolean bool = false;
+		
+		try {			
+
+			conn = KckConnProperty.getConnection();
+			System.out.println("conn.getAutoCommit() >>> : " + conn.getAutoCommit());
+			
+			pstmt = conn.prepareStatement(KckMemberSqlMap.getKckMemberDeleteQuery());
+			System.out.println("입력하기 >>> : \n"+ KckMemberSqlMap.getKckMemberDeleteQuery());
+  			
+			// 파라미터 클리어 꼭 하기 
+			pstmt.clearParameters();
+			pstmt.setString(1, kvo.getKemail());
+
+			nCnt = pstmt.executeUpdate();						
+			if (!conn.getAutoCommit()) conn.commit();			
+			
+			// 왜 nCnt가 1 증가했는가??
+			System.out.println("nCnt : " + nCnt + " 건 삭제 완료 되었습니다. ");
+			
+			if (nCnt > 0) { bool = true;}
+			
+			KckConnProperty.conClose(conn, pstmt);
+		}catch(Exception e) {
+			System.out.println("입력 디비연동에 문제가 생겼습니다.  : " + e);
+		}finally {
+			try {
+				KckConnProperty.conClose(conn, pstmt);				
+			}catch(Exception e2) {}
+		}
+				
+		return bool;	}
 
 	@Override
 	public ArrayList<KckMemberVO> kmemSelectName(KckMemberVO kvo) {
