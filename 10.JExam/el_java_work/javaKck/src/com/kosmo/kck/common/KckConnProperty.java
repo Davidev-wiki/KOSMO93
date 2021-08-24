@@ -13,7 +13,7 @@ public abstract class KckConnProperty {
 	// 2. 데이터베이스 연결 url
 	// 3. 계정명
 	// 4. 계정명의 패스워드
-	private static final String ORCL_JDBC_DIRVER = "oracle.jdbc.driver.OracleDriver";
+	private static final String ORCL_JDBC_DRIVER = "oracle.jdbc.driver.OracleDriver";
 	private static final String ORCL_URL = "jdbc:oracle:thin:@localhost:1521:orclKOSMO00";
 	private static final String ORCL_USER = "kck00";
 	private static final String ORCL_PASS = "kck1234";
@@ -27,14 +27,15 @@ public abstract class KckConnProperty {
 
 		try {
 			// 1. 첫번째 라인에서 ojdbc6.jar 에서 oracle.jdbc.driver.OracleDriver 클래스를 찾아서 메모리에 올려 놓는다. 
-			Class.forName(KckConnProperty.ORCL_JDBC_DIRVER);
+			Class.forName(KckConnProperty.ORCL_JDBC_DRIVER);
 			
 			// 2. 두번째 라인에서 java.sql.Connection 인터페이스를 
 			//    상속해서 Oracle Vender에서  jdbc 드라이버를 만드는 팀에서 실현한 oracle.jdbc.driver.T4CConnection@2d38eb89 클래스로 
 			//    우리가 제공한 datasource 연결정보를 가지고 Ex_OracleTest_1 클래스와 orclKOSMO00.scott 계정에 연결을 한다. 
 			//    두 객체(자바어플 과 데이터베이스)가 연결이 되면 자동커밋(auto commit)으로 세션이 열리게 된다. 
-			conn = DriverManager.getConnection(KckConnProperty.ORCL_URL, KckConnProperty.ORCL_USER,
-					KckConnProperty.ORCL_PASS);
+			conn = DriverManager.getConnection(   KckConnProperty.ORCL_URL
+												, KckConnProperty.ORCL_USER
+												, KckConnProperty.ORCL_PASS);
 
 		} catch (Exception e) {
 			System.out.println(

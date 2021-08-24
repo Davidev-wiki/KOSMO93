@@ -7,9 +7,11 @@ public class KckMemberServiceImpl implements KckMemberService {
 	@Override
 	public ArrayList<KckMemberVO> kmemselectAll() {
 		// TODO Auto-generated method stub
-		System.out.println("KckMemberServiceImpl.kmemselectAll() 실행");
+		System.out.println("KckMemberServiceImpl.kmemselectAll() 진입");
+		
 		KckMemberDAO kdao = new KckMemberDAOImpl();
-		return kdao.kmemselectAll();
+		ArrayList<KckMemberVO> aList = kdao.kmemselectAll();
+		return aList;
 	}
 
 	@Override

@@ -7,4 +7,6 @@
 <typeInfo handle="=javaTest/src&lt;a.b.c.board.service{KckBoardService.java[KckBoardService" modifiers="513" timestamp="1628654343596"/>
 <typeInfo handle="=javaTest/src&lt;a.b.c.swing.member.service{SwingMemberService.java[SwingMemberService" modifiers="513" timestamp="1629448608001"/>
 <typeInfo handle="=javaTest/src&lt;a.b.c.swing.member.dao{SwingMemberDAO.java[SwingMemberDAO" modifiers="513" timestamp="1629448793072"/>
+<typeInfo handle="=javaKck/src&lt;com.kosmo.kck.member{KckMemberService.java[KckMemberService" modifiers="513" timestamp="1629774721022"/>
+<typeInfo handle="=javaKck/src&lt;com.kosmo.kck.member{KckMemberDAO.java[KckMemberDAO" modifiers="513" timestamp="1629774739586"/>
 </typeInfoHistroy>

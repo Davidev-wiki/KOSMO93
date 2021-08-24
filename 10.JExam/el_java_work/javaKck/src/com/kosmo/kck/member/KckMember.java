@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -52,12 +53,11 @@ public class KckMember extends JFrame implements ActionListener {
 		jp = new JPanel[2];
 		jp[0] = new JPanel();
 		jp[0].setBorder(new EtchedBorder());
-		jp[0].setBounds(0, 0, 420, 880);
+		jp[0].setBounds(0, 0, 620, 880);
 		jp[0].setBackground(Color.cyan);
 		jp[0].setLayout(null);
 
 		// 콤보박스, 라이오버튼, 텍스트필드, 라벨 초기화
-
 		// 콤보박스 초기화 : why 5?
 		jc = new JComboBox[5];
 
@@ -220,7 +220,7 @@ public class KckMember extends JFrame implements ActionListener {
 		jp[0].add(jlM);
 
 		// 버튼
-		jb = new JButton[3];
+		jb = new JButton[5];
 		for (int i = 0; i < jb.length; i++) {
 			jb[i] = new JButton();
 			jb[i].addActionListener(this);
@@ -232,12 +232,20 @@ public class KckMember extends JFrame implements ActionListener {
 		jb[0].setFont(new Font("맑은고딕", Font.BOLD, 15));
 
 		jb[1].setText("가입하기");
-		jb[1].setBounds(20, 780, 250, 30);
+		jb[1].setBounds(20, 780, 100, 30);
 		jb[1].setFont(new Font("맑은고딕", Font.BOLD, 15));
 
-		jb[2].setText("다시");
-		jb[2].setBounds(280, 780, 100, 30);
+		jb[2].setText("초기화");
+		jb[2].setBounds(180, 780, 100, 30);
 		jb[2].setFont(new Font("맑은고딕", Font.BOLD, 15));
+
+		jb[3].setText("수정하기");
+		jb[3].setBounds(340, 780, 100, 30);
+		jb[3].setFont(new Font("맑은고딕", Font.BOLD, 15));
+
+		jb[4].setText("삭제하기");
+		jb[4].setBounds(490, 780, 100, 30);
+		jb[4].setFont(new Font("맑은고딕", Font.BOLD, 15));
 
 		// JTextFiled disable : 삭제여부, 등록일, 수정일
 		jt[0].setEditable(false);
@@ -248,9 +256,9 @@ public class KckMember extends JFrame implements ActionListener {
 		// JPanel JFrame 붙이기
 		this.getContentPane().add(jp[0]);
 
-		this.setSize(420, 880);
+		this.setSize(620, 870);
 		this.setLocation(200, 100);
-		this.setResizable(false);
+		this.setResizable(true);
 		this.setVisible(true);
 
 		// JFrame 닫기
@@ -339,6 +347,96 @@ public class KckMember extends JFrame implements ActionListener {
 
 	}
 
+	// 회원 조회 기능
+	public void kmemSelect(String knum) {
+		
+		KckMemberService kms = new KckMemberServiceImpl();
+		KckMemberVO kvo = new KckMemberVO();
+		kvo.setKnum(knum);
+		
+		ArrayList<KckMemberVO> aList = kms.kmemselect(kvo);
+		
+		// 데이터가 잘 들어왔나 체크
+		if(aList != null && aList.size() > 0) {
+			
+			// 데이터 전이
+			KckMemberVO _kvo = aList.get(0);
+			
+			// 조회해서 VO를 이용해 가져온 데이터를
+			// 텍스트필드에 세팅하기.
+			jt[0].setText(_kvo.getKnum());
+			jt[1].setText(_kvo.getKname());
+			jt[2].setText(_kvo.getKid());
+			jt[3].setText(_kvo.getKpw());
+			jt[4].setText(_kvo.getKbirth());
+			
+			// 성별
+			String kgender = _kvo.getKgender();
+			
+			if("01".equals(kgender)) {
+				kgender = "여자";
+			} else {
+				kgender = "남자";
+			}
+			jt[5].setText(_kvo.getKgender());
+			
+			// 전화번호, 휴대폰 번호
+			jt[6].setText(_kvo.getKtel());
+			jt[7].setText(_kvo.getKhp());
+			
+			// 이메일, split으로 앞뒤로 잘라서
+			// email 배열에 담아놓고 텍스트필드에 세팅
+			String kemail = _kvo.getKemail();
+		    String email[] = kemail.split("@");
+		    jtField[0].setText(email[0]);
+		    jtField[1].setText(email[1]);
+			
+		    // 주소
+			jt[9].setText(_kvo.getKaddr());
+			
+			// 취미
+			jc[3].setSelectedIndex(CodeUtil.getComboIndex(_kvo.getKhobby()));
+			
+			// 사진
+			jt[11].setText(_kvo.getKphoto());
+			
+			// 특기
+			jt[12].setText(_kvo.getKskill());
+
+			// 직업
+			jc[4].setSelectedIndex(CodeUtil.getComboIndex(_kvo.getKjob()));
+		    
+			// 삭제여부, 수정일, 업데이트일
+			jt[14].setText(_kvo.getDeleteyn());
+			jt[15].setText(_kvo.getInsertdate());
+			jt[16].setText(_kvo.getUpdatedate());			
+		}
+		
+	}
+
+	// 회원 수정 기능
+	public void kmemUpdate(String knum, String kemail, String kaddr, String khobby, String kjob) {
+		
+	}
+
+	// 회원 삭제 기능
+	public void kmemDelete(String knum) {
+		System.out.println("KckMember.kmemDelete() 진입");
+		
+		KckMemberService kms = new KckMemberServiceImpl();
+		KckMemberVO kvo = new KckMemberVO();
+		kvo.setKnum(knum);
+		
+		boolean bool = kms.kmemDelete(kvo);
+		
+		if(bool) {
+			System.out.println("회원 삭제 성공!" + bool);
+			JOptionPane.showMessageDialog(this, "회원삭제 수정 성공! ");
+			new KckMemberAll();
+		}else {
+			System.out.println("회원 삭제에 실패했어요.." + bool);
+		}	}
+
 	// 텍스트필드의 값 초기화
 	public void valueClear() {
 
@@ -364,21 +462,22 @@ public class KckMember extends JFrame implements ActionListener {
 			} else {
 				jt[i].setText("");
 			}
-			jt[2].setEditable(true);
+			// Deleted "jt[2].setEditable(true);" by updating. 
 		}
 	}
 
+	// 오버로딩한 함수
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
+
 		System.out.println("KckMember.actionPerformed() 진입");
-		
+
 		// 이벤트를 가져와서 오브젝트에 초기화함.
 		Object obj = e.getSource();
 		Object jbCaption = e.getActionCommand();
-		
+
 		// 가져온 이벤트가 버튼의 0번째(='중복확인')인 경우
-		if(jb[0]==obj) {
+		if (jb[0] == obj) {
 			System.out.println("중복확인 버튼이 선택되었습니다. : " + jbCaption);
 			// 아이디 값 입력할 수 있는 창 소환
 			// 입력된 값을 가져와서 변수에담아
@@ -387,65 +486,65 @@ public class KckMember extends JFrame implements ActionListener {
 			this.kmemIdCheck(kid);
 		}
 		// 가져온 이벤트가 버튼의 1번째(='가입하기')인 경우
-		if(jb[1]==obj) {
+		if (jb[1] == obj) {
 			System.out.println("가입하기 버튼이 선택되었습니다. : " + jbCaption);
 			// 가입 창 소환
 			// 텍스트필드에 입력된 문자열을 변수에 담는다.
 			String kname = jt[1].getText();
 			String kid = jt[2].getText();
 			String kpw = jt[3].getText();
-			
+
 			// 생년월일 (문자숫자를 연결하는 작업)
 			String kbirth = "";
 			kbirth = String.valueOf(jc[0].getSelectedItem());
 			kbirth = kbirth.concat(String.valueOf(jcBirth[0].getSelectedItem()));
 			kbirth = kbirth.concat(String.valueOf(jcBirth[1].getSelectedItem()));
-		
+
 			// 성별 (라디오버튼 선택에 따라 밸류 부여)
 			String kgender = "";
-			if(jr[0].isSelected()) {
+			if (jr[0].isSelected()) {
 				System.out.println("선택된 성별 : " + jr[0].getText());
 				kgender = "01";
 			} else {
 				System.out.println("선택된 성별 : " + jr[1].getText());
 				kgender = "02";
 			}
-			
+
 			// 전화번호 (텍스트필드 입력값을 연결)
 			String ktel = "";
 			ktel = String.valueOf(jc[1].getSelectedItem());
 			ktel = ktel.concat(jtField[0].getText());
 			ktel = ktel.concat(jtField[1].getText());
-			
+
 			// 핸드폰 번호 (텍스트필드 입력값을 연결)
 			String khp = "";
 			khp = String.valueOf(jc[2].getSelectedItem());
 			khp = khp.concat(jtField[2].getText());
 			khp = khp.concat(jtField[3].getText());
-			
+
 			// 이메일 (텍스트필드 입력값을 @문자로 연결)
 			String kemail = "";
 			kemail = jtField[4].getText();
 			kemail = kemail.concat("@");
 			kemail = kemail.concat(jtField[5].getText());
-			
-			// 주소 
+
+			// 주소
 			String kaddr = jt[9].getText();
-			
-		    // 취미 setHobby함수로 문자열을 문자 숫자 값으로 초기화하기
+
+			// 취미 setHobby함수로 문자열을 문자 숫자 값으로 초기화하기
 			String khobby = "";
 			khobby = CodeUtil.setHobby(String.valueOf(jc[3].getSelectedItem()));
-			
+
 			// 사진
 			String kphoto = jt[11].getText();
-			
+
 			// 특기
 			String kskill = jt[12].getText();
-			
-			// 직업 setJob함수로 문자열을 문자 숫자로 바꿔서 초기화함 
-			String kjob = "";			
+
+			// 직업 setJob함수로 문자열을 문자 숫자로 바꿔서 초기화함
+			String kjob = "";
 			kjob = CodeUtil.setJob(String.valueOf(jc[4].getSelectedItem()));
-			
+
 			// 출력해보기
 			System.out.println("kname : " + kname);
 			System.out.println("kid : " + kid);
@@ -460,19 +559,31 @@ public class KckMember extends JFrame implements ActionListener {
 			System.out.println("kphoto : " + kphoto);
 			System.out.println("kskill : " + kskill);
 			System.out.println("kjob : " + kjob);
-			
+
 			// kmemInsert()함수 실행하기.
-			this.kmemInsert(kname, kid, kpw
-					      , kbirth, kgender, ktel
-					      , khp, kemail, kaddr
-					      , khobby, kphoto, kskill, kjob);
+			this.kmemInsert(kname, kid, kpw, kbirth, kgender, ktel, khp, kemail, kaddr, khobby, kphoto, kskill, kjob);
 		}
-		
+
 		// 가져온 이벤트가 버튼의 2번째(='다시')인 경우
-		if(jb[2]==obj) {
+		if (jb[2] == obj) {
 			System.out.println("다시 버튼이 선택되었습니다. : " + jbCaption);
 			// 텍스트필드 초기화 함수 실행
 			this.valueClear();
+		}
+
+		// 가져온 이벤트가 버튼의 3번째(='수정하기')인 경우
+		if (jb[3] == obj) {
+			System.out.println("수정하기 버튼이 선택되었습니다. : " + jbCaption);
+			// 텍스트필드 초기화 함수 실행
+			new KckMemberUpdate();
+		}
+
+		// 가져온 이벤트가 버튼의 4번째(='삭제하기')인 경우
+		if (jb[4] == obj) {
+			System.out.println("삭제하기 버튼이 선택되었습니다. : " + jbCaption);
+			// 텍스트필드 초기화 함수 실행
+			String knum = jt[0].getText();
+			this.kmemDelete(knum);
 		}
 	}
 

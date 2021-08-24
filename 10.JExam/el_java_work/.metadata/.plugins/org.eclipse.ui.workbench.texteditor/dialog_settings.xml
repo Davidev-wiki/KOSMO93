@@ -1,45 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="KCK_MEMBER"/>
+		<item key="selection" value="kms"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="hms"/>
+			<item value="hvo"/>
+			<item value=" hvo"/>
+			<item value=" hmem"/>
+			<item value="setH"/>
+			<item value=".getH"/>
+			<item value="_hvo"/>
+			<item value=".hmem"/>
+			<item value="Hbe"/>
+			<item value="jtFiled"/>
+			<item value="hm"/>
+			<item value="&quot;h"/>
+			<item value=" h"/>
 			<item value="K_MEMBER"/>
 			<item value="printlnKckMemberVO"/>
-			<item value="Hbe"/>
-			<item value="hm"/>
-			<item value="hv"/>
-			<item value="tH"/>
-			<item value="hvo"/>
-			<item value="hbe"/>
-			<item value="kvo"/>
-			<item value="H"/>
-			<item value="HBE"/>
-			<item value=".H"/>
-			<item value="hmem"/>
-			<item value="print"/>
-			<item value="&quot;, &quot;"/>
 		</list>
 		<list key="replacehistory">
-			<item value="KCK_MEMBER"/>
-			<item value="Kck"/>
-			<item value="km"/>
-			<item value="kv"/>
-			<item value="tK"/>
+			<item value="kms"/>
 			<item value="kvo"/>
+			<item value=" kvo"/>
+			<item value=" kmem"/>
+			<item value="setK"/>
+			<item value=".getK"/>
 			<item value="_kvo"/>
-			<item value="K"/>
-			<item value="KCK"/>
-			<item value=" K"/>
-			<item value=".K"/>
-			<item value="kmem"/>
-			<item value="println"/>
-			<item value=" "/>
-			<item value="()&quot;"/>
+			<item value=".kmem"/>
+			<item value="Kck"/>
+			<item value="jtField"/>
+			<item value="km"/>
+			<item value="&quot;k"/>
+			<item value=" k"/>
+			<item value="KCK_MEMBER"/>
+			<item value="kv"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
