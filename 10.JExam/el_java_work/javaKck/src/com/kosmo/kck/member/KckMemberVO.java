@@ -1,5 +1,7 @@
 package com.kosmo.kck.member;
 
+import com.kosmo.kck.common.CodeUtil;
+
 public class KckMemberVO {
 
 	private String knum;
@@ -189,7 +191,7 @@ public class KckMemberVO {
 
 	// KckMemberVO print()함수
 	public static void printKckMemberVO(KckMemberVO kvo) {
-		
+
 		System.out.print(kvo.getKnum() + ",");
 		System.out.print(kvo.getKname() + ",");
 		System.out.print(kvo.getKid() + ",");
@@ -204,10 +206,10 @@ public class KckMemberVO {
 		System.out.print(kvo.getKphoto() + ",");
 		System.out.print(kvo.getKskill() + ",");
 		System.out.print(CodeUtil.job(kvo.getKgender()) + ",");
-		System.out.print(kvo.getDeleteyn()() + ",");
+		System.out.print(kvo.getDeleteyn() + ",");
 		System.out.print(kvo.getInsertdate() + ",");
 		System.out.println(kvo.getUpdatedate());
-		
+
 	}
 
 	// KckMemberVO println()함수
@@ -217,18 +219,19 @@ public class KckMemberVO {
 		System.out.println("kvo.getKname : " + kvo.getKname());
 		System.out.println("kvo.getKid : " + kvo.getKid());
 		System.out.println("kvo.getKpw : " + kvo.getKpw());
-		System.out.println("kvo.getKbirth : " + CodeUtil.birth(kvo.getKbirth());
-		System.out.println("kvo.getKgender : " + CodeUtil.gender(kvo.getKgender());
-		System.out.println("kvo.getKtel : " + CodeUtil.tel(kvo.getKtel());
-		System.out.println("kvo.getKhp : " + CodeUtil.hp(kvo.getKhp());
+		System.out.println("kvo.getKbirth : " + CodeUtil.birth(kvo.getKbirth()));
+		System.out.println("kvo.getKgender : " + CodeUtil.gender(kvo.getKgender()));
+		System.out.println("kvo.getKtel : " + CodeUtil.tel(kvo.getKtel()));
+		System.out.println("kvo.getKhp : " + CodeUtil.hp(kvo.getKhp()));
 		System.out.println("kvo.getKemail : " + kvo.getKemail());
 		System.out.println("kvo.getKaddr : " + kvo.getKaddr());
-		System.out.println("kvo.getKhobby : " + CodeUtil.hobby(kvo.getKhobby());
+		System.out.println("kvo.getKhobby : " + CodeUtil.hobby(kvo.getKhobby()));
 		System.out.println("kvo.getKphoto : " + kvo.getKphoto());
 		System.out.println("kvo.getKskill : " + kvo.getKskill());
-		System.out.println("kvo.getKjob : " + CodeUtil.job(kvo.getKjob());
+		System.out.println("kvo.getKjob : " + CodeUtil.job(kvo.getKjob()));
 		System.out.println("kvo.getDeleteyn : " + kvo.getDeleteyn());
 		System.out.println("kvo.getInsertdate : " + kvo.getInsertdate());
 		System.out.println("kvo.getUpdatedate : " + kvo.getUpdatedate());
-	
+
 	}
+}

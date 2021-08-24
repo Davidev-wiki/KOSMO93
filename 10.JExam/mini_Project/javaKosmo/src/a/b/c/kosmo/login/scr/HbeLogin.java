@@ -197,6 +197,8 @@ public class HbeLogin extends JFrame implements ActionListener{
 			
 			hid = jtM.getText();
 			hpw = jpfM.getText();
+			char[] hpwChar = jpfM.getPassword();
+			hpw = new String(hpwChar);
 			System.out.println("hid >>> : " + hid);
 			System.out.println("hpw >>> : " + hpw);
 			
