@@ -31,6 +31,7 @@ public abstract class DateUtil {
 	}
 
 	// '년도'를 나타내는 숫자 1,2,3.. 앞에 '0'을 붙여주는 코드
+	// 출력 및 실행 테스트 해보기
 	public static String[] comboYear() {
 		int currentYear = Integer.parseInt(DateUtil.yyyy());
 		int firstYear = 1900;

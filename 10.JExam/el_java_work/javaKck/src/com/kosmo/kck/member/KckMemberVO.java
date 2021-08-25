@@ -4,23 +4,23 @@ import com.kosmo.kck.common.CodeUtil;
 
 public class KckMemberVO {
 
-	private String knum;
-	private String kname;
-	private String kid;
-	private String kpw;
-	private String kbirth;
-	private String kgender;
-	private String ktel;
-	private String khp;
-	private String kemail;
-	private String kaddr;
-	private String khobby;
-	private String kphoto;
-	private String kskill;
-	private String kjob;
-	private String deleteyn;
-	private String insertdate;
-	private String updatedate;
+	private String knum;    	// 1
+	private String kname;    	// 2
+	private String kid;    		// 3
+	private String kpw;    		// 4
+	private String kbirth;      // 5
+	private String kgender;     // 6
+	private String ktel;    	// 7
+	private String khp;    		// 8
+	private String kemail;    	// 9
+	private String kaddr;    	// 10
+	private String khobby;    	// 11
+	private String kphoto;    	// 12
+	private String kskill;    	// 13
+	private String kjob;    	// 14
+	private String deleteyn;    // 15
+	private String insertdate;  // 16
+	private String updatedate;  // 17
 
 	// »ý¼ºÀÚ
 	public KckMemberVO() {

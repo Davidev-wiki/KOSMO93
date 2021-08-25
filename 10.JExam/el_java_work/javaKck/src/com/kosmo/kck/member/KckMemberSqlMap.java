@@ -190,17 +190,47 @@ public abstract class KckMemberSqlMap {
 	// 정보 수정
 	public static String getKckMemberUpdateQuery() {
 
-		StringBuffer sb = new StringBuffer();
+		/*
+		 * 수정 가능하게 해줄 필드
+
+			kvo.setKnum(kname);  1
+			kvo.setKid(kid);  2
+			kvo.setKpw(kpw);3
+			kvo.setKbirth(kbirth);4
+			kvo.setKgender(kgender);5
+			kvo.setKtel(ktel);6
+			kvo.setKhp(khp);7
+			kvo.setKemail(kemail);8
+			kvo.setKaddr(kaddr);9
+			
 		sb.append("	UPDATE  							\n");
-		sb.append("		   	 KCK_MEMBER 			    \n");
+		sb.append("		   KCK_BOARD 			    	\n");
 		sb.append("	SET  								\n");
-		sb.append("			 KEMAIL 		= ?			\n"); // placeholder 1
-		sb.append("			,KADDR			= ?			\n"); // placeholder 2
-		sb.append("			,KHOBBY 		= ? 		\n"); // placeholder 3
-		sb.append("			,KJOB   		= ?			\n"); // placeholder 4
-		sb.append("		  	,UPDATEDATE 	= SYSDATE	\n");
-		sb.append("	WHERE  	 KNUM 			= ?			\n"); // placeholder 5
-		sb.append("	AND    	 DELETEYN 		= 'Y'  		\n");
+		sb.append("		   BSUBJECT	  		= ?			\n");
+		sb.append("		  ,BCONTENTS		= ?			\n");
+		sb.append("		  ,BWRITER		    = ?			\n");
+		sb.append("		  ,UPDATEDATE 		= SYSDATE	\n");
+		sb.append("	WHERE  BNUM 			= ?			\n");
+		sb.append("	AND    DELETEYN 		= 'Y'  		\n");
+		 */
+		StringBuffer sb = new StringBuffer();
+		sb.append("	UPDATE  								\n");
+		sb.append("		   	 KCK_MEMBER 			    	\n");
+		sb.append("	SET  									\n");
+		sb.append("			 KNAME  			= ?			\n"); // placeholder 1
+		sb.append("			,KID				= ?			\n"); // placeholder 2
+		sb.append("			,KPW 				= ? 		\n"); // placeholder 3
+		sb.append("			,KBIRTH 	  		= ?			\n"); // placeholder 4
+		sb.append("			,KGENDER   			= ?			\n"); // placeholder 5
+		sb.append("			,KTEL   			= ?			\n"); // placeholder 6
+		sb.append("			,KHP  				= ?			\n"); // placeholder 7
+		sb.append("			,KEMAIL   			= ?			\n"); // placeholder 8
+		sb.append("			,KADDR   			= ?			\n"); // placeholder 9
+		sb.append("			,KHOBBY   			= ?			\n"); // placeholder 10
+		sb.append("			,KJOB   			= ?			\n"); // placeholder 11
+		sb.append("		  	,UPDATEDATE 		= SYSDATE	\n");
+		sb.append("	WHERE  	 DELETEYN 			= 'Y'		\n"); 
+		sb.append("	AND    	 KID 				=  ?  		\n"); // placeholder 12
 
 		return sb.toString();
 
@@ -210,13 +240,13 @@ public abstract class KckMemberSqlMap {
 	public static String getKckMemberDeleteQuery() {
 
 		StringBuffer sb = new StringBuffer();
-		sb.append("	UPDATE  							\n");
-		sb.append("		   KCK_MEMBER 			    	\n");
-		sb.append("	SET  								\n");
-		sb.append("		   DELETEYN 	= 'N'			\n");
-		sb.append("		  ,UPDATEDATE 	= SYSDATE		\n");
-		sb.append("	WHERE  KEMAIL 		=  ?			\n"); // placeholder 1
-		sb.append("	AND    DELETEYN 	= 'Y'  			\n");
+		sb.append("	UPDATE  								\n");
+		sb.append("		   KCK_MEMBER 			    		\n");
+		sb.append("	SET  									\n");
+		sb.append("		   DELETEYN 		= 'N'			\n");
+		sb.append("		  ,UPDATEDATE 		= SYSDATE		\n");
+		sb.append("	WHERE  KID 				= ?				\n"); // placeholder 1
+		sb.append("	AND    DELETEYN 		= 'Y'  			\n");
 
 		return sb.toString();
 

@@ -8,7 +8,7 @@ public class KckMemberServiceImpl implements KckMemberService {
 	public ArrayList<KckMemberVO> kmemselectAll() {
 		// TODO Auto-generated method stub
 		System.out.println("KckMemberServiceImpl.kmemselectAll() 진입");
-		
+
 		KckMemberDAO kdao = new KckMemberDAOImpl();
 		ArrayList<KckMemberVO> aList = kdao.kmemselectAll();
 		return aList;
@@ -33,7 +33,11 @@ public class KckMemberServiceImpl implements KckMemberService {
 	@Override
 	public boolean kmemUpdate(KckMemberVO kvo) {
 		// TODO Auto-generated method stub
-		return false;
+		System.out.println("KckMemberServiceImpl.kmemUpdate() 진입");
+
+		KckMemberDAO kdao = new KckMemberDAOImpl();
+		boolean bool = kdao.kmemUpdate(kvo);
+		return bool;
 	}
 
 	@Override

@@ -195,10 +195,10 @@ public class KckMemberAll extends JFrame implements ActionListener {
 			System.out.println("TableCell actionPerformed() 함수 진입  : ");
 
 			if (jb == e.getSource()) {
-				String hnum = String.valueOf(jt.getValueAt(jt.getSelectedRow(), 0));
-				System.out.println("hnum  : " + hnum);
-				KckMemberUpdate hmu = new KckMemberUpdate();
-				hmu.kmemSelect(hnum);
+				String knum = String.valueOf(jt.getValueAt(jt.getSelectedRow(), 0));
+				System.out.println("knum  : " + knum);
+				KckMemberUpdate kmu = new KckMemberUpdate();
+				kmu.kmemSelect(knum);
 			}
 		}
 	} // end of TableCell

@@ -58,11 +58,11 @@ public class KckMember extends JFrame implements ActionListener {
 		jp[0].setLayout(null);
 
 		// 콤보박스, 라이오버튼, 텍스트필드, 라벨 초기화
-		// 콤보박스 초기화 : why 5?
+		// 콤보박스1 : 5개, 생년월일에서 년도, 전화번호, 휴대폰번호, 취미, 직업 용도
 		jc = new JComboBox[5];
 
-		// 콤보박스 : 생년월일에서 월, 일
-		jcBirth = new JComboBox[5];
+		// 콤보박스2 : 생년월일에서 월, 일 용도 (5개-> 2개만 만들어도 상관없는 듯 해서 바꿈)
+		jcBirth = new JComboBox[2];
 
 		// 라이오버튼 : 여자, 남자
 		jr = new JRadioButton[2];
@@ -70,20 +70,27 @@ public class KckMember extends JFrame implements ActionListener {
 		// 텍스트필드
 		jtField = new JTextField[6];
 		jt = new JTextField[17];
+		
+		// y축 위치 조절 변수 
 		int ty = 80;
+		
+		// 배열의 길이인 17만큼 반복
 		for (int i = 0; i < jt.length; i++) {
-
+			
+			//
 			if (4 == i || 5 == i || 6 == i || 7 == i || 8 == i || 10 == i || 13 == i) {
 				System.out.println("KckMember.텍스트필드 세팅 초기화중 : " + i);
-				// 생년월일
+				// 생년월일 : 콤보박스
 				if (4 == i) {
+					// 연도
 					String[] years = DateUtil.comboYear();
 					jc[0] = new JComboBox<String>(years);
 					jp[0].add(jc[0]);
 					jc[0].setBackground(Color.white);
 					jc[0].setSelectedIndex(0);
 					jc[0].setBounds(130, 240, 80, 30);
-
+					
+					// 월
 					String[] months = DateUtil.comboMonth();
 					jcBirth[0] = new JComboBox<String>(months);
 					jp[0].add(jcBirth[0]);
@@ -91,6 +98,7 @@ public class KckMember extends JFrame implements ActionListener {
 					jcBirth[0].setSelectedIndex(0);
 					jcBirth[0].setBounds(220, 240, 65, 30);
 
+					// 일
 					String[] days = DateUtil.comboDay();
 					jcBirth[1] = new JComboBox<String>(days);
 					jp[0].add(jcBirth[1]);
@@ -98,10 +106,10 @@ public class KckMember extends JFrame implements ActionListener {
 					jcBirth[1].setSelectedIndex(0);
 					jcBirth[1].setBounds(295, 240, 65, 30);
 				}
-				// 성별
+				// 성별 : 라디오버튼
 				if (5 == i) {
 					ButtonGroup bg = new ButtonGroup();
-
+					
 					JPanel jpGender = new JPanel();
 					jpGender.setLayout(new FlowLayout(FlowLayout.LEADING));
 					jpGender.setBackground(Color.white);
@@ -194,11 +202,13 @@ public class KckMember extends JFrame implements ActionListener {
 				jt[i].setBounds(130, ty, 140, 30);
 				jp[0].add(jt[i]);
 			}
+			// y축 위치 조절 변수 
 			ty += 40;
 		}
 
 		// 라벨 초기화
 		jl = new JLabel[17];
+		// y축 위치 조절 변수 
 		int ly = 80;
 		for (int i = 0; i < jl.length; i++) {
 			jl[i] = new JLabel();
@@ -417,19 +427,20 @@ public class KckMember extends JFrame implements ActionListener {
 
 	// 회원 수정 기능 => 수정 가능 범위를 먼저 설정해야 하는데.. 시간이 없으니까 패스 
 	public void kmemUpdate(String knum, String kemail, String kaddr, String khobby, String kjob) {
-		new KckMemberUpdate();
+		new KckMemberAll();
 	}
 
 	// 회원 삭제 기능 => 게시판 새 창으로 연결하기 ==> 가입했던 이메일 입력시 삭제되도록 하기
 	public void kmemDelete(String kemail) {
-		new KckMemberUpdate();
+		new KckMemberAll();
 	}
 
 	// 텍스트필드의 값 초기화
 	public void valueClear() {
 
 		System.out.println("KckMember.valueClear() 진입");
-
+		// jt.length : jt배열의 길이. 상단에 [17] 로 생성.
+		// 
 		for (int i = 0; i < jt.length; i++) {
 			if (4 == i || 5 == i || 6 == i || 7 == i || 8 == i || 10 == i || 13 == i) {
 				jc[0].setSelectedIndex(0);
@@ -519,7 +530,9 @@ public class KckMember extends JFrame implements ActionListener {
 			// 주소
 			String kaddr = jt[9].getText();
 
-			// 취미 setHobby함수로 문자열을 문자 숫자 값으로 초기화하기
+			// 취미 
+			// 배열에 담긴 밸류 세팅하기 : setHobby 함수 호출. 
+			// '문자열'을 로직에 따라 '문자 숫자'로 바꾼다.
 			String khobby = "";
 			khobby = CodeUtil.setHobby(String.valueOf(jc[3].getSelectedItem()));
 
@@ -529,7 +542,9 @@ public class KckMember extends JFrame implements ActionListener {
 			// 특기
 			String kskill = jt[12].getText();
 
-			// 직업 setJob함수로 문자열을 문자 숫자로 바꿔서 초기화함
+			// 직업 
+			// 배열에 담긴 밸류 세팅하기 : setJob 함수 호출. 
+			// '문자열'을 로직에 따라 '문자 숫자'로 바꾼다.
 			String kjob = "";
 			kjob = CodeUtil.setJob(String.valueOf(jc[4].getSelectedItem()));
 
@@ -562,22 +577,24 @@ public class KckMember extends JFrame implements ActionListener {
 		// 가져온 이벤트가 버튼의 3번째(='수정하기')인 경우
 		if (jb[3] == obj) {
 			System.out.println("수정하기 버튼이 선택되었습니다. : " + jbCaption);
-			// 텍스트필드 초기화 함수 실행
-			new KckMemberUpdate();
+			// 전체조회 창에서 '수정/삭제' 버튼을 눌러서 수정하는 로직.
+			// 전체 조회 창 팝업
+			new KckMemberAll();
 		}
 
 		// 가져온 이벤트가 버튼의 4번째(='삭제하기')인 경우
 		if (jb[4] == obj) {
 			System.out.println("삭제하기 버튼이 선택되었습니다. : " + jbCaption);
-			// 텍스트필드 초기화 함수 실행
-			String knum = jt[0].getText();
-			this.kmemDelete(knum);
+			// 전체조회 창에서 '수정/삭제' 버튼을 눌러서 삭제하는 로직.
+			// 전체 조회 창 팝업
+			new KckMemberAll();
 		}
 	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		System.out.println("KckMember.main()함수 시작");
+		// 회원 가입 창 팝업
 		new KckMember();
 	}
 
