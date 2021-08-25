@@ -191,7 +191,8 @@ public class KckMemberVO {
 
 	// KckMemberVO print()함수
 	public static void printKckMemberVO(KckMemberVO kvo) {
-
+		System.out.println("KckMemberVO.printKckMemberVO()함수 진입");
+		
 		System.out.print(kvo.getKnum() + ",");
 		System.out.print(kvo.getKname() + ",");
 		System.out.print(kvo.getKid() + ",");
@@ -214,6 +215,7 @@ public class KckMemberVO {
 
 	// KckMemberVO println()함수
 	public static void printlnKckMemberVO(KckMemberVO kvo) {
+		System.out.println("KckMemberVO.printlnKckMemberVO()함수 진입");
 
 		System.out.println("kvo.getKnum : " + kvo.getKnum());
 		System.out.println("kvo.getKname : " + kvo.getKname());

@@ -32,7 +32,14 @@ public abstract class CodeUtil {
 
 	// ---------- 게시판 ----------
 	// 게시판 정보 라벨
-
+	public static final String[] board_label = {"글번호", "글제목", "작성자", "비밀번호", "글내용"};
+	public static final String[] board_selectall_label = {"글번호", "글제목", "작성자", "비밀번호", "글내용", 
+														  "Y/N", "등록일", "수정일", "수정/삭제"};
+	
+	public static final String[] board_combo_cpation = {"----------", "전체", "글제목", "작성자"};
+	public static final String[] board_jbtn_cpation = {"작성하기", "글목록"};	
+	
+	
 	// ---------- 함수 ----------
 	// 생년 월일을 아래 형태로 변환하기.
 	// 입력되는 문자 : 19881215
