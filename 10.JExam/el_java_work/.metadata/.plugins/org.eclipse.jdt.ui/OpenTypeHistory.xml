@@ -9,4 +9,6 @@
 <typeInfo handle="=javaTest/src&lt;a.b.c.swing.member.dao{SwingMemberDAO.java[SwingMemberDAO" modifiers="513" timestamp="1629448793072"/>
 <typeInfo handle="=javaKck/src&lt;com.kosmo.kck.member{KckMemberService.java[KckMemberService" modifiers="513" timestamp="1629774721022"/>
 <typeInfo handle="=javaKck/src&lt;com.kosmo.kck.member{KckMemberDAO.java[KckMemberDAO" modifiers="513" timestamp="1629774739586"/>
+<typeInfo handle="=javaKck/src&lt;com.kosmo.kck.board{KckBoardService.java[KckBoardService" modifiers="513" timestamp="1629873353994"/>
+<typeInfo handle="=javaKck/src&lt;com.kosmo.kck.board{KckBoardDAO.java[KckBoardDAO" modifiers="513" timestamp="1629873388989"/>
 </typeInfoHistroy>

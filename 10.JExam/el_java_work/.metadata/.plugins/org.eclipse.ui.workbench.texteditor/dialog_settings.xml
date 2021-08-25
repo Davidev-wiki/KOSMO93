@@ -1,45 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="KckMemberAll"/>
+		<item key="selection" value="_k"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="KckMemberAll"/>
-			<item value="yyyy"/>
-			<item value=" &gt;&gt;&gt;"/>
-			<item value="목록"/>
-			<item value="hms"/>
-			<item value="hvo"/>
-			<item value=" hvo"/>
-			<item value=" hmem"/>
-			<item value="setH"/>
-			<item value=".getH"/>
-			<item value="_hvo"/>
-			<item value=".hmem"/>
-			<item value="Hbe"/>
-			<item value="jtFiled"/>
-			<item value="hm"/>
+			<item value="_h"/>
+			<item value="k"/>
+			<item value="));"/>
+			<item value="ntln"/>
+			<item value="sy"/>
+			<item value=")"/>
+			<item value="kvo"/>
+			<item value="jcBirth"/>
+			<item value="&apos;?&apos;"/>
+			<item value="TableCell"/>
+			<item value="TableTableCell"/>
+			<item value="Table"/>
+			<item value="Table Cell"/>
+			<item value="true"/>
+			<item value="false"/>
 		</list>
 		<list key="replacehistory">
+			<item value="_k"/>
+			<item value="System.out.println(&quot;kvo.getB()  :  &quot; "/>
+			<item value=") + &quot; : &quot;);"/>
+			<item value="nt"/>
+			<item value="Sy"/>
+			<item value="));"/>
+			<item value=");"/>
+			<item value="system.out.println(kvo"/>
+			<item value="?"/>
+			<item value="false"/>
+			<item value="true"/>
 			<item value=" "/>
 			<item value="kms"/>
 			<item value="kvo"/>
 			<item value=" kvo"/>
-			<item value=" kmem"/>
-			<item value="setK"/>
-			<item value=".getK"/>
-			<item value="_kvo"/>
-			<item value=".kmem"/>
-			<item value="Kck"/>
-			<item value="jtField"/>
-			<item value="km"/>
-			<item value="&quot;k"/>
-			<item value=" k"/>
-			<item value="KCK_MEMBER"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">

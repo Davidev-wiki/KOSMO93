@@ -1,9 +1,0 @@
-package a.b.c.swing.member.service;
-
-public interface SwingMemberService {
-	public ArrayList<SwingMemberVO> smSelectAll();
-	public ArrayList<SwingMemberVO> smSelect();
-	public ArrayList<SwingMemberVO> smInsert();
-	public ArrayList<SwingMemberVO> smUpdate();
-	public ArrayList<SwingMemberVO> smDelete();
-}
