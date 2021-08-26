@@ -263,6 +263,7 @@ public class KckBoardAll extends JFrame implements ActionListener {
 		System.out.println("rowCnt >>> : " + rowCnt);		
 		this.jtablePrint(aList, rowCnt, columnCnt);		
 	}	
+	
 	// jTable 프린트
 	public void jtablePrint(ArrayList<KckBoardVO> aList, int rowCnt, int columnCnt) {
 		System.out.println("KckBoardAll.kboardSelectAll()함수 진입 : ");

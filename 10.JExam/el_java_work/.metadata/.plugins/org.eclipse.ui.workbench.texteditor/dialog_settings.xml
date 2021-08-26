@@ -1,45 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="_k"/>
+		<item key="selection" value="kmem"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="hmem"/>
+			<item value="Hbe"/>
+			<item value="public"/>
+			<item value="kbe"/>
+			<item value="hs"/>
+			<item value="hb"/>
+			<item value="hvo"/>
+			<item value="1"/>
+			<item value="Hb"/>
+			<item value="hbo"/>
 			<item value="_h"/>
 			<item value="k"/>
 			<item value="));"/>
 			<item value="ntln"/>
 			<item value="sy"/>
-			<item value=")"/>
-			<item value="kvo"/>
-			<item value="jcBirth"/>
-			<item value="&apos;?&apos;"/>
-			<item value="TableCell"/>
-			<item value="TableTableCell"/>
-			<item value="Table"/>
-			<item value="Table Cell"/>
-			<item value="true"/>
-			<item value="false"/>
 		</list>
 		<list key="replacehistory">
+			<item value="kmem"/>
+			<item value="Kck"/>
+			<item value=""/>
+			<item value="ks"/>
+			<item value="kb"/>
+			<item value="kvo"/>
+			<item value="public "/>
+			<item value="Kb"/>
+			<item value="kbo"/>
+			<item value="kbs"/>
 			<item value="_k"/>
 			<item value="System.out.println(&quot;kvo.getB()  :  &quot; "/>
 			<item value=") + &quot; : &quot;);"/>
 			<item value="nt"/>
 			<item value="Sy"/>
-			<item value="));"/>
-			<item value=");"/>
-			<item value="system.out.println(kvo"/>
-			<item value="?"/>
-			<item value="false"/>
-			<item value="true"/>
-			<item value=" "/>
-			<item value="kms"/>
-			<item value="kvo"/>
-			<item value=" kvo"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
