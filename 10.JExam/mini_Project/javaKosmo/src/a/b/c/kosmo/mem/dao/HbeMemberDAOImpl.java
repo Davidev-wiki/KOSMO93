@@ -417,8 +417,8 @@ public class HbeMemberDAOImpl implements HbeMemberDAO {
 		try {
 			
 			conn = HbeConnProperty.getConnection();
-			pstmt = conn.prepareStatement(HbeMemberSqlMap.getHbeMemberSelectNameQuery());
-			System.out.println("조건조회 :: 회원이름 :: \n" + HbeMemberSqlMap.getHbeMemberSelectNameQuery());
+			pstmt = conn.prepareStatement(HbeMemberSqlMap.getHbeMemberSelectIdQuery());
+			System.out.println("조건조회 :: 회원아이디 :: \n" + HbeMemberSqlMap.getHbeMemberSelectIdQuery());
 			
 			pstmt.clearParameters();
 			// 플레이스홀더에 바인딩한 변수를 세팅한다. 

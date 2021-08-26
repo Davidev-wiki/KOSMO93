@@ -17,6 +17,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -29,6 +30,7 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
 
 import a.b.c.common.CodeUtil;
+import a.b.c.kosmo.board.scr.HbeBoardrAll;
 import a.b.c.kosmo.mem.service.HbeMemberService;
 import a.b.c.kosmo.mem.service.HbeMemberServiceImpl;
 import a.b.c.kosmo.mem.vo.HbeMemberVO;
@@ -54,6 +56,15 @@ public class HbeMemberAll extends JFrame implements ActionListener{
 	String comboStr;
 	String searchStr;
 	
+	// 싱글톤 패턴 : Singleton Pattern
+	private static HbeMemberAll hmemAll;	
+	public static HbeMemberAll getInstance() {
+		if (hmemAll == null) {
+			hmemAll = new HbeMemberAll();
+		}
+		return hmemAll;
+	}
+	
 	// 생성자 
 	@SuppressWarnings("unchecked")
 	public HbeMemberAll() {
@@ -65,7 +76,7 @@ public class HbeMemberAll extends JFrame implements ActionListener{
 		jlR.setHorizontalAlignment(SwingConstants.CENTER);
 
 		jcR = new JComboBox<String>(CodeUtil.combo_cpation);
-		jcR.setSelectedIndex(1);
+		jcR.setSelectedIndex(0);
 		jcR.addActionListener(this);
 
 		jtR = new JTextField();
@@ -82,16 +93,13 @@ public class HbeMemberAll extends JFrame implements ActionListener{
 		// JTable 붙이는 규칙 
 		columnName = CodeUtil.member_selectall_value;				
 		
-		this.hmemSelectAll();		
-		
 		dtm = new DefaultTableModel(fieldValue, columnName);
 		jt = new JTable(dtm);
 		jt.setEnabled(true);
-		jsPain = new JScrollPane(jt);		
+		jsPain = new JScrollPane(jt);
 		
-		this.jtableRender();
+		this.hmemSelectAll();
 //################################################
-		
 		
 		jpR[0].add(jlR);
 		jpR[0].add(jcR);		
@@ -167,6 +175,7 @@ public class HbeMemberAll extends JFrame implements ActionListener{
 		
 		// 생성자 
 		public TableCell(){			
+		
 			jb = new JButton("수정/삭제");			
 	//		jc.addActionListener(e -> {
 	//			System.out.println(jt.getValueAt(jt.getSelectedRow(), 2));
@@ -209,59 +218,13 @@ public class HbeMemberAll extends JFrame implements ActionListener{
 		}
 	} // end of TableCell 	
 //################################# 끝	
-	
-	public void hmemSelectAll() {
-		System.out.println("HbeMemberAll hmemSelectAll() 함수 진입 >>> : ");
-		
-		HbeMemberService hms = new HbeMemberServiceImpl();
-		ArrayList<HbeMemberVO> aList =  hms.hmemSelectAll();
-	
-		int columnCnt = columnName.length;
-		int rowCnt = aList.size();
-		System.out.println("rowCnt >>> : " + rowCnt);		
-		this.jtablePrint(aList, rowCnt, columnCnt);		
-	}
-	
-	// 회원 이름 검색
-	public void hmemSelectName(String searchStr) {
-		System.out.println("HbeMemberAll hmemSelectName() 함수 진입 >>> : ");
-		
-		HbeMemberService hms = new HbeMemberServiceImpl();
-		HbeMemberVO hvo = null;
-		hvo = new HbeMemberVO();
-		hvo.setHname(searchStr);
-		ArrayList<HbeMemberVO> aList =  hms.hmemSelectName(hvo);
-	
-		int columnCnt = columnName.length;
-		int rowCnt = aList.size();
-		System.out.println("rowCnt >>> : " + rowCnt);		
-		this.jtablePrint(aList, rowCnt, columnCnt);	
-	}
-	
-	// 회원 아이디 검색
-	public void hmemSelectId(String searchStr) {
-		System.out.println("HbeMemberAll hmemSelectId() 함수 진입 >>> : ");
-		
-		HbeMemberService hms = new HbeMemberServiceImpl();
-		HbeMemberVO hvo = null;
-		hvo = new HbeMemberVO();
-		hvo.setHid(searchStr);
-		ArrayList<HbeMemberVO> aList =  hms.hmemSelectId(hvo);
-	
-		int columnCnt = columnName.length;
-		int rowCnt = aList.size();
-		System.out.println("rowCnt >>> : " + rowCnt);		
-		this.jtablePrint(aList, rowCnt, columnCnt);					
-	}
-	
+
 	// JTable 프린트 
 	public void jtablePrint(ArrayList<HbeMemberVO> aList, int rowCnt, int columnCnt) {
 		System.out.println("HbeMemberAll jtablePrint() 함수 진입 >>> : ");
 		
 		fieldValue = new Object[rowCnt][columnCnt];
-
-		for (int i=0; i < rowCnt; i++ ){
-			
+		for (int i=0; i < rowCnt; i++ ){			
 			HbeMemberVO _hvo = aList.get(i);
 			fieldValue[i][0] = _hvo.getHnum();
 			fieldValue[i][1] = _hvo.getHname();
@@ -282,7 +245,72 @@ public class HbeMemberAll extends JFrame implements ActionListener{
 			fieldValue[i][16] = _hvo.getUpdatedate();	
 		}
 	}
+		
+	// 회원 전체 검색
+	public void hmemSelectAll() {
+		System.out.println("HbeMemberAll hmemSelectAll() 함수 진입 >>> : ");
+		
+		HbeMemberService hms = new HbeMemberServiceImpl();
+		ArrayList<HbeMemberVO> aList =  hms.hmemSelectAll();
 	
+		int columnCnt = columnName.length;
+		int rowCnt = aList.size();
+		System.out.println("전체조회 :: rowCnt >>> : " + rowCnt);	
+		
+		this.jtablePrint(aList,rowCnt, columnCnt);		
+		
+		dtm = new DefaultTableModel(fieldValue, columnName);
+		jt.setModel(dtm);		
+		this.jtableRender();
+		
+		return;
+	}
+	
+	// 회원 이름 검색
+	public void hmemSelectName(String searchStr) {
+		System.out.println("HbeMemberAll hmemSelectName() 함수 진입 >>> : ");
+		
+		HbeMemberService hms = new HbeMemberServiceImpl();
+		HbeMemberVO hvo = null;
+		hvo = new HbeMemberVO();
+		hvo.setHname(searchStr);
+		ArrayList<HbeMemberVO> aList =  hms.hmemSelectName(hvo);
+	
+		int columnCnt = columnName.length;
+		int rowCnt = aList.size();
+		System.out.println("회원이름 조회 :: rowCnt >>> : " + rowCnt);	
+		
+		this.jtablePrint(aList, rowCnt, columnCnt);		
+		
+		dtm = new DefaultTableModel(fieldValue, columnName);
+		jt.setModel(dtm);		
+		this.jtableRender();
+		
+		return;
+	}
+	
+	// 회원 아이디 검색
+	public void hmemSelectId(String searchStr) {
+		System.out.println("HbeMemberAll hmemSelectId() 함수 진입 >>> : ");
+		
+		HbeMemberService hms = new HbeMemberServiceImpl();
+		HbeMemberVO hvo = null;
+		hvo = new HbeMemberVO();
+		hvo.setHid(searchStr);
+		ArrayList<HbeMemberVO> aList =  hms.hmemSelectId(hvo);
+	
+		int columnCnt = columnName.length;
+		int rowCnt = aList.size();
+		System.out.println("회원아이디 조회 :: rowCnt >>> : " + rowCnt);	
+		
+		this.jtablePrint(aList, rowCnt, columnCnt);		
+		
+		dtm = new DefaultTableModel(fieldValue, columnName);
+		jt.setModel(dtm);		
+		this.jtableRender();
+		
+		return;	
+	}	
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -296,44 +324,64 @@ public class HbeMemberAll extends JFrame implements ActionListener{
 			}
 			if ("아이디".equals(comboStr)){
 				jtR.setVisible(true);
+				jtR.setText("");
 			}
 			if ("이름".equals(comboStr)){
 				jtR.setVisible(true);
+				jtR.setText("");
 			}
 		}
 		
 		// 조회 버튼 이벤트 
 		if (jbR == e.getSource()) {
 			String searchStr = jtR.getText();
-
+			
 			if ("전체".equals(comboStr)){
 				System.out.println("searchStr >>> : " + searchStr);
 				
-				this.hmemSelectAll();				
-			}
+				this.hmemSelectAll();
+			}			
+			
 			if ("이름".equals(comboStr)){				
-				System.out.println("searchStr >>> : " + searchStr);
-								
-				this.hmemSelectName(searchStr);
+				
+				if (searchStr !=null && searchStr.length() > 0) {				
+					System.out.println("이름 :: searchStr >>> : " + searchStr);
+					
+					this.hmemSelectName(searchStr);	
+				}else {
+					JOptionPane.showMessageDialog(this, "검색 조건 이름을 입력하세요 >>> :  ");
+				}
 			}
 			if ("아이디".equals(comboStr)){
-				System.out.println(" searchStr >>> : " + searchStr);
-				this.hmemSelectId(searchStr);				
+				
+				if (searchStr !=null && searchStr.length() > 0) {
+					System.out.println("아이디 :: searchStr >>> : " + searchStr);
+					
+					this.hmemSelectId(searchStr);
+				}else {
+					JOptionPane.showMessageDialog(this, "검색 조건 아이디를 입력하세요 >>> :  ");
+				}				
 			}
 		}
 		
 		// 버튼 
 		if (jtBtn[0] == e.getSource()) {
 			System.out.println("회원 가입하기 >>> : ");
+			this.setVisible(false);
+			this.dispose();
+			new HbeMember();
 		}	
 		if (jtBtn[1] == e.getSource()) {
 			System.out.println("회원 목록보기 >>> : ");
+			
+			jcR.setSelectedIndex(0);		
+			this.hmemSelectAll();
 		}
 	}
 	
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		new HbeMemberAll();
+		HbeMemberAll.getInstance();
 	}
 }

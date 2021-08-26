@@ -17,6 +17,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -57,9 +58,19 @@ public class HbeBoardrAll extends JFrame implements ActionListener{
 	String comboStr;
 	String searchStr;
 	
+	// 싱글톤 패턴 : Singleton Pattern
+	private static HbeBoardrAll hboardAll;	
+	public static HbeBoardrAll getInstance() {
+		if (hboardAll == null) {
+			hboardAll = new HbeBoardrAll();
+		}
+		return hboardAll;
+	}
+	
 	// 생성자 
 	@SuppressWarnings("unchecked")
 	public HbeBoardrAll() {
+		
 		this.setTitle("게시글 검색하기");
 		this.getContentPane().setLayout(new BorderLayout(10, 10));
 
@@ -68,7 +79,7 @@ public class HbeBoardrAll extends JFrame implements ActionListener{
 		jlR.setHorizontalAlignment(SwingConstants.CENTER);
 
 		jcR = new JComboBox<String>(CodeUtil.board_combo_cpation);
-		jcR.setSelectedIndex(1);
+		jcR.setSelectedIndex(0);
 		jcR.addActionListener(this);
 
 		jtR = new JTextField();
@@ -85,14 +96,12 @@ public class HbeBoardrAll extends JFrame implements ActionListener{
 		// JTable 붙이는 규칙 
 		columnName = CodeUtil.board_selectall_label;			
 		
-		this.hboardSelectAll();		
-		
 		dtm = new DefaultTableModel(fieldValue, columnName);
 		jt = new JTable(dtm);
 		jt.setEnabled(true);
 		jsPain = new JScrollPane(jt);		
 		
-		this.jtableRender();
+		this.hboardSelectAll();		
 //################################################
 		
 		
@@ -130,6 +139,7 @@ public class HbeBoardrAll extends JFrame implements ActionListener{
 			}
 		});
 	}
+	
 	
 	public void jtableRender() {
 //		################################# 시작 	
@@ -212,52 +222,69 @@ public class HbeBoardrAll extends JFrame implements ActionListener{
 //################################# 끝	
 	
 	public void hboardSelectAll() {
-		System.out.println("HbeMemberAll hboardSelectAll() 함수 진입 >>> : ");
+		System.out.println("HbeBoardrAll hboardSelectAll() 함수 진입 >>> : ");
 		
 		HbeBoardService hs = new HbeBoardServiceImpl();	
 		ArrayList<HbeBoardVO> aList = hs.hboardSelectAll();	
 		int columnCnt = columnName.length;
-		int rowCnt = aList.size();
-		System.out.println("rowCnt >>> : " + rowCnt);		
+		int rowCnt = aList.size();	
+		System.out.println("게시판 전체 조회 :: rowCnt >>> : " + rowCnt);		
+
+		this.jtablePrint(aList,rowCnt, columnCnt);				
+		dtm = new DefaultTableModel(fieldValue, columnName);
+		jt.setModel(dtm);		
+		this.jtableRender();
 		
-		this.jtablePrint(aList, rowCnt, columnCnt);		
+		return;
 	}
 	
 	// 글제목 검색
 	public void hboardSelectSubject(String searchStr) {
-		System.out.println("HbeMemberAll hmemSelectName() 함수 진입 >>> : ");
+		System.out.println("HbeBoardrAll hboardSelectSubject() 함수 진입 >>> : ");
 		
 		HbeBoardService hs = new HbeBoardServiceImpl();	
 		HbeBoardVO hvo = null;
 		hvo = new HbeBoardVO();
-		//hvo.setHname(searchStr);
-		ArrayList<HbeBoardVO> aList =  hs.hboardSelectAll();
+		hvo.setBsubject(searchStr);
+		ArrayList<HbeBoardVO> aList =  hs.hboardSelectSubject(hvo);
 	
 		int columnCnt = columnName.length;
 		int rowCnt = aList.size();
-		System.out.println("rowCnt >>> : " + rowCnt);		
-		this.jtablePrint(aList, rowCnt, columnCnt);	
+		System.out.println("게시판 글제목 검색 :: rowCnt >>> : " + rowCnt);		
+		
+		this.jtablePrint(aList, rowCnt, columnCnt);
+		dtm = new DefaultTableModel(fieldValue, columnName);
+		jt.setModel(dtm);		
+		this.jtableRender();
+		
+		return;
 	}
 	
 	// 작성자 검색
 	public void hboardSelectWriter(String searchStr) {
-		System.out.println("HbeMemberAll hmemSelectId() 함수 진입 >>> : ");
+		System.out.println("HbeBoardrAll hboardSelectWriter() 함수 진입 >>> : ");
 		
 		HbeBoardService hs = new HbeBoardServiceImpl();	
 		HbeBoardVO hvo = null;
 		hvo = new HbeBoardVO();
-		//hvo.setHname(searchStr);
-		ArrayList<HbeBoardVO> aList =  hs.hboardSelectAll();
+		hvo.setBwriter(searchStr);
+		ArrayList<HbeBoardVO> aList =  hs.hboardSelectWriter(hvo);
 	
 		int columnCnt = columnName.length;
 		int rowCnt = aList.size();
-		System.out.println("rowCnt >>> : " + rowCnt);		
-		this.jtablePrint(aList, rowCnt, columnCnt);					
+		System.out.println("게시판 작성자 검색 :: rowCnt >>> : " + rowCnt);
+		
+		this.jtablePrint(aList, rowCnt, columnCnt);
+		dtm = new DefaultTableModel(fieldValue, columnName);
+		jt.setModel(dtm);		
+		this.jtableRender();
+		
+		return;
 	}
 	
 	// JTable 프린트 
 	public void jtablePrint(ArrayList<HbeBoardVO> aList, int rowCnt, int columnCnt) {
-		System.out.println("HbeMemberAll jtablePrint() 함수 진입 >>> : ");
+		System.out.println("HbeBoardrAll jtablePrint() 함수 진입 >>> : ");
 		
 		fieldValue = new Object[rowCnt][columnCnt];
 
@@ -287,9 +314,11 @@ public class HbeBoardrAll extends JFrame implements ActionListener{
 			}
 			if ("글제목".equals(comboStr)){
 				jtR.setVisible(true);
+				jtR.setText("");
 			}
 			if ("작성자".equals(comboStr)){
 				jtR.setVisible(true);
+				jtR.setText("");
 			}
 		}
 		
@@ -303,28 +332,43 @@ public class HbeBoardrAll extends JFrame implements ActionListener{
 				this.hboardSelectAll();	
 			}
 			if ("글제목".equals(comboStr)){				
-				System.out.println("searchStr >>> : " + searchStr);
-								
-				this.hboardSelectSubject(searchStr);
+				
+				if (searchStr !=null && searchStr.length() > 0) {				
+					System.out.println("글제목 :: searchStr >>> : " + searchStr);
+					
+					this.hboardSelectSubject(searchStr);	
+				}else {
+					JOptionPane.showMessageDialog(this, "검색 조건 글제목을 입력하세요 >>> :  ");
+				}
 			}
 			if ("작성자".equals(comboStr)){
-				System.out.println(" searchStr >>> : " + searchStr);
-				this.hboardSelectWriter(searchStr);				
+				
+				if (searchStr !=null && searchStr.length() > 0) {				
+					System.out.println("작성자 :: searchStr >>> : " + searchStr);
+					
+					this.hboardSelectWriter(searchStr);	
+				}else {
+					JOptionPane.showMessageDialog(this, "검색 조건 작성자를 입력하세요 >>> :  ");
+				}
 			}
 		}
 		
 		// 버튼 
 		if (jtBtn[0] == e.getSource()) {
 			System.out.println("글 작성하기  >>> : ");
+			new HbeBoard();
 		}	
 		if (jtBtn[1] == e.getSource()) {
 			System.out.println("글 목록보기 >>> : ");
+			
+			jcR.setSelectedIndex(0);
+			this.hboardSelectAll();
 		}
 	}
 	
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		new HbeBoardrAll();
+		HbeBoardrAll.getInstance();
 	}
 }

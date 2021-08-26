@@ -116,7 +116,7 @@ public class KckBoardVO {
 		System.out.println("kvo.getBnum()  :  " + kvo.getBnum());
 		System.out.println("kvo.getBsubject()  :  " + kvo.getBsubject());
 		System.out.println("kvo.getBwriter()  :  " + kvo.getBwriter());
-		System.out.println("kvo.getBconotents()  :  " + kvo.getBcontents());
+		System.out.println("kvo.getBcontents()  :  " + kvo.getBcontents());
 		System.out.println("kvo.getBpw()  :  " + kvo.getBpw());
 		System.out.println("kvo.getDeleteyn()  :  " + kvo.getDeleteyn());
 		System.out.println("kvo.getInsertdate()  :  " + kvo.getInsertdate());

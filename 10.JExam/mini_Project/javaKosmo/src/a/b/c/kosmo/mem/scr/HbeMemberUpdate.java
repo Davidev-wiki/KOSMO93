@@ -1,7 +1,6 @@
 package a.b.c.kosmo.mem.scr;
 
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,7 +8,6 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
-import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -22,8 +20,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EtchedBorder;
 
 import a.b.c.common.CodeUtil;
-import a.b.c.common.DateUtil;
-import a.b.c.common.HbeMemberChabun;
+import a.b.c.kosmo.board.scr.HbeBoardrAll;
 import a.b.c.kosmo.mem.service.HbeMemberService;
 import a.b.c.kosmo.mem.service.HbeMemberServiceImpl;
 import a.b.c.kosmo.mem.vo.HbeMemberVO;
@@ -267,7 +264,12 @@ public class HbeMemberUpdate extends JFrame implements ActionListener {
 		if (bool) {
 			System.out.println("회원정보 수정 성공  >>> : " + bool);
 			JOptionPane.showMessageDialog(this, "회원정보 수정 성공 >>> :  ");
-			new HbeMemberAll();
+			
+			this.setVisible(false);
+			this.dispose();
+			
+			HbeMemberAll hmemAll = HbeMemberAll.getInstance();
+			hmemAll.hmemSelectAll();
 		}else {
 			System.out.println("회원정보  수정 실패  >>> : " + bool);
 		}
@@ -286,8 +288,13 @@ public class HbeMemberUpdate extends JFrame implements ActionListener {
 		
 		if (bool) {
 			System.out.println("회원정보 삭제 성공  >>> : " + bool);
-			JOptionPane.showMessageDialog(this, "회원정보 삭제 성공 >>> :  ");
-			new HbeMemberAll();
+			JOptionPane.showMessageDialog(this, "회원정보 삭제 성공 >>> :  ");	
+			
+			this.setVisible(false);
+			this.dispose();
+			
+			HbeMemberAll hmemAll = HbeMemberAll.getInstance();
+			hmemAll.hmemSelectAll();
 		}else {
 			System.out.println("회원정보 삭제 실패  >>> : " + bool);
 		}

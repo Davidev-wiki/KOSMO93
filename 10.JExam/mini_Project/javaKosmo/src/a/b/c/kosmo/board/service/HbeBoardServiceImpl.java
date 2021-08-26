@@ -53,4 +53,21 @@ public class HbeBoardServiceImpl implements HbeBoardService {
 		return hdao.hboardDelete(hvo);
 	}
 
+	@Override
+	public ArrayList<HbeBoardVO> hboardSelectSubject(HbeBoardVO hvo) {
+		// TODO Auto-generated method stub
+		System.out.println("HbeBoardServiceImpl hboardSelectSubject() 함수 진입 >>> : ");
+		
+		HbeBoardDAO hdao = new HbeBoardDAOImpl();		
+		return hdao.hboardSelectSubject(hvo);
+	}
+
+	@Override
+	public ArrayList<HbeBoardVO> hboardSelectWriter(HbeBoardVO hvo) {
+		// TODO Auto-generated method stub
+		System.out.println("HbeBoardServiceImpl hboardSelectWriter() 함수 진입 >>> : ");
+		
+		HbeBoardDAO hdao = new HbeBoardDAOImpl();		
+		return hdao.hboardSelectWriter(hvo);
+	}
 }

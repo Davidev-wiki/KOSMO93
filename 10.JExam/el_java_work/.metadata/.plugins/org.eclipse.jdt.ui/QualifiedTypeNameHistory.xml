@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="a.b.c.swing.member.dao.SwingMemberDAO"/>
 <fullyQualifiedTypeName name="a.b.c.swing.member.dao.SwingMemberDAOImpl"/>
 <fullyQualifiedTypeName name="a.b.c.board.common.KckBoardConnProperty"/>
@@ -43,7 +42,6 @@
 <fullyQualifiedTypeName name="com.kosmo.kck.board.KckBoardSqlMap"/>
 <fullyQualifiedTypeName name="com.kosmo.kck.common.KckConnProperty"/>
 <fullyQualifiedTypeName name="com.kosmo.kck.common.KckBoardChabun"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.awt.event.WindowAdapter"/>
 <fullyQualifiedTypeName name="java.awt.event.WindowEvent"/>
 <fullyQualifiedTypeName name="java.awt.Font"/>
@@ -60,4 +58,6 @@
 <fullyQualifiedTypeName name="com.kosmo.kck.common.CodeUtil"/>
 <fullyQualifiedTypeName name="java.awt.BorderLayout"/>
 <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
+<fullyQualifiedTypeName name="java.util.Scanner"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
 </qualifiedTypeNameHistroy>

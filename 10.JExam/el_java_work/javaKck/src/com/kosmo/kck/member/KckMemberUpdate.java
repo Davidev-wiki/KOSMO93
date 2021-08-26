@@ -225,7 +225,7 @@ public class KckMemberUpdate extends JFrame implements ActionListener {
 		}
 	}
 
-	// 회원 등록 기능
+	// 회원 등록 기능 : 현재 프로그램에 있으나 마나한 기능
 	public void kmemInsert(String kname, String kid, String kpw, String kbirth, String kgender, String ktel, String khp,
 			String kemail, String kaddr, String khobby, String kphoto, String kskill, String kjob) {
 
@@ -269,7 +269,7 @@ public class KckMemberUpdate extends JFrame implements ActionListener {
 
 	}
 
-	// 회원 조회 기능
+	// 회원 조회 기능 : 현재 프로그램에 있으나 마나한 기능
 	public void kmemSelect(String knum) {
 
 		System.out.println("KckMemberUpdate.kmemSelect() 진입");

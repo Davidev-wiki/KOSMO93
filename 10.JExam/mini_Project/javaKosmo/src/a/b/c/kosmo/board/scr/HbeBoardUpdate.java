@@ -22,15 +22,9 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EtchedBorder;
 
 import a.b.c.common.CodeUtil;
-import a.b.c.common.HbeBoardChabun;
 import a.b.c.kosmo.board.service.HbeBoardService;
 import a.b.c.kosmo.board.service.HbeBoardServiceImpl;
 import a.b.c.kosmo.board.vo.HbeBoardVO;
-import a.b.c.kosmo.mem.scr.HbeMemberAll;
-import a.b.c.kosmo.mem.service.HbeMemberService;
-import a.b.c.kosmo.mem.service.HbeMemberServiceImpl;
-import a.b.c.kosmo.mem.vo.HbeMemberVO;
-
 
 public class HbeBoardUpdate  extends JFrame implements ActionListener {
 
@@ -182,7 +176,12 @@ public class HbeBoardUpdate  extends JFrame implements ActionListener {
 		if (nCnt > 0) {
 			System.out.println("게시글 수정 성공  >>> : " + nCnt);
 			JOptionPane.showMessageDialog(this, "게시글 수정 성공 >>> :  ");
-			new HbeBoardrAll();
+			
+			this.setVisible(false);
+			this.dispose();
+			
+			HbeBoardrAll hboardAll = HbeBoardrAll.getInstance();
+			hboardAll.hboardSelectAll();
 		}else {
 			System.out.println("게시글 수정 실패  >>> : " + nCnt);
 		}
@@ -202,7 +201,12 @@ public class HbeBoardUpdate  extends JFrame implements ActionListener {
 		if (nCnt > 0) {
 			System.out.println("게시글 삭제 성공  >>> : " + nCnt);
 			JOptionPane.showMessageDialog(this, "게시글 삭제 성공 >>> :  ");
-			new HbeBoardrAll();
+			
+			this.setVisible(false);
+			this.dispose();
+			
+			HbeBoardrAll hboardAll = HbeBoardrAll.getInstance();
+			hboardAll.hboardSelectAll();		
 		}else {
 			System.out.println("게시글 삭제 실패  >>> : " + nCnt);
 		}

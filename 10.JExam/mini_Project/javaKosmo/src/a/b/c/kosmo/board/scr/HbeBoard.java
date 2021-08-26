@@ -155,8 +155,14 @@ public class HbeBoard  extends JFrame implements ActionListener {
 		
 		if (nCnt == 1) {
 			System.out.println("게시글 등록 성공 >>> : " + nCnt);
-			JOptionPane.showMessageDialog(this, "게시글 등록 성공 >>> :  ");
-			new HbeBoardrAll();
+			JOptionPane.showMessageDialog(this, "게시글 등록 성공 >>> :  ");	
+			
+			this.setVisible(false);
+			this.dispose();
+			
+			HbeBoardrAll hboardAll = HbeBoardrAll.getInstance();
+			hboardAll.hboardSelectAll();
+			
 		}else {
 			System.out.println("글 등록 실패 >>> : " + nCnt);
 		}
@@ -187,9 +193,11 @@ public class HbeBoard  extends JFrame implements ActionListener {
 			String bpw = "";
 			String bcontents = "";
 		
-			bsubject = jt[0].getText();
-			bwriter = jt[1].getText();			
-			bpw = jpf.getText();
+			bsubject = jt[1].getText();
+			bwriter = jt[2].getText();			
+//			bpw = jpf.getText();
+			char bpwChar[] = jpf.getPassword();
+			bpw = new String(bpwChar);
 			bcontents = jta.getText();
 		
 			System.out.println("bsubject >>> : " + bsubject);

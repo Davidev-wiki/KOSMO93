@@ -11,4 +11,7 @@ public interface HbeBoardDAO {
 	public int hboardInsert(HbeBoardVO hvo);
 	public int hboardUpdate(HbeBoardVO hvo);
 	public int hboardDelete(HbeBoardVO hvo);
+		
+	public ArrayList<HbeBoardVO> hboardSelectSubject(HbeBoardVO hvo);
+	public ArrayList<HbeBoardVO> hboardSelectWriter(HbeBoardVO hvo);
 }

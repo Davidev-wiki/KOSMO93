@@ -115,5 +115,47 @@ public abstract class HbeBoardSqlMap {
 					
 		return sb.toString();	
 	};
+	
+	// 제목 조회
+	public static String getHboardSelectSubjectQueryMap() {
+		
+		StringBuffer sb = new StringBuffer();			
+		sb.append(" SELECT 									\n");
+		sb.append("      A.BNUM 		BNUM 				\n");
+		sb.append("		,A.BSUBJECT  	BSUBJECT 			\n");
+		sb.append("		,A.BWRITER  	BWRITER 			\n");
+		sb.append("		,A.BCONTENTS  	BCONTENTS			\n");	 
+	    sb.append("		,A.BPW  		BPW   				\n");	    	    
+	    sb.append("		,A.DELETEYN 	BDELETEYN			\n");
+	    sb.append("		,TO_CHAR(A.INSERTDATE, 'YYYY-MM-DD')  INSERTDATE	\n");
+	    sb.append("		,TO_CHAR(A.UPDATEDATE, 'YYYY-MM-DD')  UPDATEDATE	\n");	      
+	    sb.append("	FROM 									\n");
+	    sb.append("		 HBE_BOARD A 						\n");
+	    sb.append("	WHERE DELETEYN = 'Y'					\n");
+	    sb.append("	AND   A.BSUBJECT  LIKE '%' || ? || '%'  \n"); 
 
+	    return sb.toString();
+	};
+	
+	// 작성자 조회
+	public static String getHboardSelectWriterQueryMap() {
+		
+		StringBuffer sb = new StringBuffer();			
+		sb.append(" SELECT 									\n");
+		sb.append("      A.BNUM 		BNUM 				\n");
+		sb.append("		,A.BSUBJECT  	BSUBJECT 			\n");
+		sb.append("		,A.BWRITER  	BWRITER 			\n");
+		sb.append("		,A.BCONTENTS  	BCONTENTS			\n");	 
+	    sb.append("		,A.BPW  		BPW   				\n");	    	    
+	    sb.append("		,A.DELETEYN 	BDELETEYN			\n");
+	    sb.append("		,TO_CHAR(A.INSERTDATE, 'YYYY-MM-DD')  INSERTDATE	\n");
+	    sb.append("		,TO_CHAR(A.UPDATEDATE, 'YYYY-MM-DD')  UPDATEDATE	\n");	      
+	    sb.append("	FROM 									\n");
+	    sb.append("		 HBE_BOARD A 						\n");
+	    sb.append("	WHERE DELETEYN = 'Y'					\n");
+	    sb.append("	AND   A.BWRITER  LIKE '%' || ? || '%'   \n"); 
+
+	    return sb.toString();
+	};
+	
 }

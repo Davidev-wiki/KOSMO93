@@ -33,7 +33,7 @@ public abstract class CodeUtil {
 	
 	// 회원전체 조회 ------------------------------------------------------------------------
 	// 회원조회 라벨 
-	public static final String[] combo_cpation = {"----------", "전체", "이름", "아이디"};
+	public static final String[] combo_cpation = {"전체", "이름", "아이디"};
 	public static final String[] jbtn_cpation = {"회원등록", "회원목록"};
 	
 	// 게시판  ------------------------------------------------------------------------
@@ -42,7 +42,7 @@ public abstract class CodeUtil {
 	public static final String[] board_selectall_label = {"글번호", "글제목", "작성자", "비밀번호", "글내용", 
 														  "Y/N", "등록일", "수정일", "수정/삭제"};
 	
-	public static final String[] board_combo_cpation = {"----------", "전체", "글제목", "작성자"};
+	public static final String[] board_combo_cpation = {"전체", "글제목", "작성자"};
 	public static final String[] board_jbtn_cpation = {"작성하기", "글목록"};	
 	
 	// 생년월일 

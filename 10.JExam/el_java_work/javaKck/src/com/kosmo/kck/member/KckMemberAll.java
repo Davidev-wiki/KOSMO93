@@ -50,6 +50,17 @@ public class KckMemberAll extends JFrame implements ActionListener {
 
 	String comboStr;
 	String searchStr;
+	
+	/*
+		8/25 싱글톤 패턴이 추가됨
+	private static KckMemberAll kmemAll;	
+	public static KckMemberAll getInstance() {
+		if (kmemAll == null) {
+			kmemAll = new KckMemberAll();
+		}
+		return kmemAll;
+	}
+	*/
 
 	// 생성자
 	@SuppressWarnings("unchecked")
@@ -318,10 +329,19 @@ public class KckMemberAll extends JFrame implements ActionListener {
 		// 버튼
 		if (jtBtn[0] == e.getSource()) {
 			System.out.println("회원 가입하기 : ");
+			// 08/25 추가된 부분
+			this.setVisible(false);
+			this.dispose();
+			// ---------------
 			new KckMember();
 		}
 		if (jtBtn[1] == e.getSource()) {
 			System.out.println("회원 목록보기 : ");
+			
+			// 08/25 싱글톤패턴과 함께 추가된 부분
+			// jcR.setSelectedIndex(0);		
+			// this.kmemSelectAll();
+			// ------------------------
 		}
 		if (jtBtn[3] == e.getSource()) {
 			System.out.println("수정하기 : ");

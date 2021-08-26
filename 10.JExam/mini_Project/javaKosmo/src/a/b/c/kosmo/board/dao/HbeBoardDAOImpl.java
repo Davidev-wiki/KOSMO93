@@ -218,4 +218,105 @@ public class HbeBoardDAOImpl implements HbeBoardDAO {
 		return nCnt;
 	}
 
+	@Override
+	public ArrayList<HbeBoardVO> hboardSelectSubject(HbeBoardVO hvo) {
+		// TODO Auto-generated method stub
+		System.out.println("HbeBoardDAOImpl hboardSelectSubject() 함수 진입 >>> : ");		
+		
+		// 사용할 객체를 지역변수로 선언하고 초기화 하기 
+		Connection        conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet         rsRs = null;
+		
+		ArrayList<HbeBoardVO> aList = null;
+		
+		try{
+			conn = HbeConnProperty.getConnection();
+			pstmt = conn.prepareStatement(HbeBoardSqlMap.getHboardSelectSubjectQueryMap());
+			System.out.println("조건조회 글제목 :: \n" + HbeBoardSqlMap.getHboardSelectSubjectQueryMap());
+			
+			pstmt.clearParameters();
+			pstmt.setString(1, hvo.getBsubject());
+			rsRs = pstmt.executeQuery();
+			
+			if (rsRs !=null){	
+				aList = new ArrayList<HbeBoardVO>();
+			
+				while (rsRs.next()){
+					
+					HbeBoardVO _hvo = new HbeBoardVO();
+					_hvo.setBnum(rsRs.getString(1));
+					_hvo.setBsubject(rsRs.getString(2));
+					_hvo.setBwriter(rsRs.getString(3));
+					_hvo.setBcontents(rsRs.getString(4));
+					_hvo.setBpw(rsRs.getString(5));					
+					_hvo.setDeleteyn(rsRs.getString(6));
+					_hvo.setInsertdate(rsRs.getString(7));
+					_hvo.setUpdatedate(rsRs.getString(8));
+					
+					aList.add(_hvo);
+				}
+			}
+			
+			HbeConnProperty.conClose(conn, pstmt, rsRs);
+		}catch (Exception sq){
+			System.out.println(" 전체조회 DB 에러 " + sq.getMessage());
+			System.out.println(" 에러 :: " + sq);
+		}finally{
+			HbeConnProperty.conClose(conn, pstmt, rsRs);	
+		}
+		
+		return aList;
+	}
+
+	@Override
+	public ArrayList<HbeBoardVO> hboardSelectWriter(HbeBoardVO hvo) {
+		// TODO Auto-generated method stub
+		System.out.println("HbeBoardDAOImpl hboardSelectWriter() 함수 진입 >>> : ");		
+		
+		// 사용할 객체를 지역변수로 선언하고 초기화 하기 
+		Connection        conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet         rsRs = null;
+		
+		ArrayList<HbeBoardVO> aList = null;
+		
+		try{
+			conn = HbeConnProperty.getConnection();
+			pstmt = conn.prepareStatement(HbeBoardSqlMap.getHboardSelectWriterQueryMap());
+			System.out.println("조건조회 작성자:: \n" + HbeBoardSqlMap.getHboardSelectWriterQueryMap());
+			
+			pstmt.clearParameters();
+			pstmt.setString(1, hvo.getBwriter());
+			rsRs = pstmt.executeQuery();
+			
+			if (rsRs !=null){	
+				aList = new ArrayList<HbeBoardVO>();
+			
+				while (rsRs.next()){
+					
+					HbeBoardVO _hvo = new HbeBoardVO();
+					_hvo.setBnum(rsRs.getString(1));
+					_hvo.setBsubject(rsRs.getString(2));
+					_hvo.setBwriter(rsRs.getString(3));
+					_hvo.setBcontents(rsRs.getString(4));
+					_hvo.setBpw(rsRs.getString(5));					
+					_hvo.setDeleteyn(rsRs.getString(6));
+					_hvo.setInsertdate(rsRs.getString(7));
+					_hvo.setUpdatedate(rsRs.getString(8));
+					
+					aList.add(_hvo);
+				}
+			}
+			
+			HbeConnProperty.conClose(conn, pstmt, rsRs);
+		}catch (Exception sq){
+			System.out.println(" 전체조회 DB 에러 " + sq.getMessage());
+			System.out.println(" 에러 :: " + sq);
+		}finally{
+			HbeConnProperty.conClose(conn, pstmt, rsRs);	
+		}
+		
+		return aList;
+	}	
 }

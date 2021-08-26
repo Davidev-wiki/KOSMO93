@@ -115,8 +115,8 @@ public class KckBoardUpdate extends JFrame implements ActionListener {
 		jb[1].setBounds(280, 420, 150, 30);
 		jb[1].setFont(new Font("맑은고딕", Font.BOLD, 15));
 
-		// JTextFiled disable : 삭제여부, 등록일, 수정일
-		jt[0].setEditable(false);
+		// JTextFiled disable
+		jt[0].setEditable(true);
 		jt[2].setEditable(false);
 
 		// JPanel JFrame 붙이기
@@ -168,11 +168,12 @@ public class KckBoardUpdate extends JFrame implements ActionListener {
 		KckBoardService kbs = new KckBoardServiceImpl();
 
 		KckBoardVO kvo = new KckBoardVO();
-		kvo.setBnum(bnum);
+
 		kvo.setBsubject(bsubject);
 		kvo.setBcontents(bcontents);
+		kvo.setBnum(bnum);
 
-		int nCnt = kbs.kboardInsert(kvo);
+		int nCnt = kbs.kboardUpdate(kvo);
 
 		if (nCnt > 0) {
 			System.out.println("게 시글 수정 성공  >>> : " + nCnt);
@@ -192,7 +193,7 @@ public class KckBoardUpdate extends JFrame implements ActionListener {
 		KckBoardVO kvo = new KckBoardVO();
 		kvo.setBnum(bnum);
 
-		int nCnt = kbs.kboardInsert(kvo);
+		int nCnt = kbs.kboardDelete(kvo);
 
 		if (nCnt > 0) {
 			System.out.println("게 시글 삭제 성공  >>> : " + nCnt);
