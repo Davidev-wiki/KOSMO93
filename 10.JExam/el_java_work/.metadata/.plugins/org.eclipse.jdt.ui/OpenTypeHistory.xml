@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <typeInfoHistroy>
-<typeInfo handle="=javaTest/C:\/Program Files\/Java\/jdk1.8.0_291\/jre\/lib\/rt.jar=/javadoc_location=/https:\/\/docs.oracle.com\/javase\/8\/docs\/api\/=/&lt;java.lang(Runnable.class[Runnable" modifiers="1537" timestamp="1624936104041"/>
-<typeInfo handle="=javaTest/src&lt;a.b.c.mem.dao{KckMemberDAO.java[KckMemberDAO" modifiers="513" timestamp="1628561873752"/>
-<typeInfo handle="=javaTest/src&lt;a.b.c.mem.service{KckMemberService.java[KckMemberService" modifiers="513" timestamp="1628653046751"/>
-<typeInfo handle="=javaTest/src&lt;a.b.c.board.dao{KckBoardDAO.java[KckBoardDAO" modifiers="513" timestamp="1628654329659"/>
-<typeInfo handle="=javaTest/src&lt;a.b.c.board.service{KckBoardService.java[KckBoardService" modifiers="513" timestamp="1628654343596"/>
-<typeInfo handle="=javaTest/src&lt;a.b.c.swing.member.service{SwingMemberService.java[SwingMemberService" modifiers="513" timestamp="1629448608001"/>
-<typeInfo handle="=javaTest/src&lt;a.b.c.swing.member.dao{SwingMemberDAO.java[SwingMemberDAO" modifiers="513" timestamp="1629448793072"/>
-<typeInfo handle="=javaKck/src&lt;com.kosmo.kck.member{KckMemberService.java[KckMemberService" modifiers="513" timestamp="1629774721022"/>
-<typeInfo handle="=javaKck/src&lt;com.kosmo.kck.member{KckMemberDAO.java[KckMemberDAO" modifiers="513" timestamp="1629774739586"/>
+<typeInfo handle="=javaKck/src&lt;com.kosmo.kck.login{KckLoginService.java[KckLoginService" modifiers="513" timestamp="1630068528863"/>
+<typeInfo handle="=javaKck/src&lt;com.kosmo.kck.login{KckLoginDAO.java[KckLoginDAO" modifiers="513" timestamp="1630068774123"/>
 <typeInfo handle="=javaKck/src&lt;com.kosmo.kck.board{KckBoardService.java[KckBoardService" modifiers="513" timestamp="1629873353994"/>
-<typeInfo handle="=javaKck/src&lt;com.kosmo.kck.board{KckBoardDAO.java[KckBoardDAO" modifiers="513" timestamp="1629873388989"/>
 </typeInfoHistroy>

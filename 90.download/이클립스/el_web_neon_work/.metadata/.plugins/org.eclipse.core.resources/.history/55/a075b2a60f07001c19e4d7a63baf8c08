@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<!-- 공부할 때는 EUC-KR과 UTF-8을 혼용하지만
+	  실무에선 UTF-8만 사용. -->
+
+<title>정예지 공부방</title>
+</head>
+<body>
+
+	<h3>정예지 공부방</h3>
+	<hr>
+	<table>
+		<caption>카카오이미지들</caption>
+
+			<tr>
+				<td><img src="/WebContent/img_kakaofriends/02 (2).png"></td>
+				<td><img src="/WebContent/img_kakaofriends/01 (2).png"></td>
+				<td><img src="/WebContent/img_kakaofriends/02.png"></td>
+			</tr>
+			<tr>
+				<td><img src="/WebContent/img_kakaofriends/02.png"></td>
+				<td><img src="/WebContent/img_kakaofriends/02.png"></td>
+				<td><img src="/WebContent/img_kakaofriends/02.png"></td>
+			</tr>
+			<tr>
+				<td><img src="/WebContent/img_kakaofriends/02.png"></td>
+				<td><img src="/WebContent/img_kakaofriends/02.png"></td>
+				<td><img src="/WebContent/img_kakaofriends/02.png"></td>
+			</tr>
+
+	</table> 
+	<hr>
+</body>
+</html>

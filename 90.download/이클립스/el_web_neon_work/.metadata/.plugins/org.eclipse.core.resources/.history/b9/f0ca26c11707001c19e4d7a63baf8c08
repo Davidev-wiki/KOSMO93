@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<!-- 이 HTML 문서는 HTML5.0 HTML문서이다. -->
+<html>
+<!-- html태그는 html 문서의 root 태그이다.(대가리)
+	 HTML문서 전체를 가지고 있는 태그이다.
+	 (*중요)태그는 root html 태그를 기준으로 [배열]로 되어있다. -->
+<head>
+<!-- 현재 HTML문서 정보를 담고있다.
+	  제목
+	  외부 링크파일
+	  언어 설정
+	  화면에 보이지 않는 내용을 정의하는 태그 -->
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style type="text/css"></style>
+<script type="text/javascript"></script>
+</head>
+<body>
+<!-- 눈으로 보이는 영역 -->
+</body>
+</html>

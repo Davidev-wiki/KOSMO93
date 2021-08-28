@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+<<<<<<< HEAD:10.JExam/el_java_work/Test/.project
+	<name>Test</name>
+=======
+	<name>javaKck</name>
+>>>>>>> c384430ce3c73949606039296e89ddec7e9dc675:10.JExam/mini_Project/javaKck/.project
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+	</natures>
+</projectDescription>
