@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="kLogin"/>
+		<item key="selection" value="kLo"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="hLo"/>
+			<item value="Hbe"/>
+			<item value="jpM"/>
 			<item value="hLogin"/>
 			<item value="hls"/>
 			<item value="setk"/>
@@ -16,15 +19,15 @@
 			<item value="hmM"/>
 			<item value="hpw"/>
 			<item value="hid"/>
-			<item value="Hbe"/>
 			<item value="kL"/>
 			<item value="hL"/>
 			<item value="setH"/>
 			<item value="getH"/>
-			<item value="hm"/>
-			<item value="hv"/>
 		</list>
 		<list key="replacehistory">
+			<item value="kLo"/>
+			<item value="Kck"/>
+			<item value="jpm"/>
 			<item value="kLogin"/>
 			<item value="kls"/>
 			<item value="setK"/>
@@ -33,13 +36,10 @@
 			<item value="kmM"/>
 			<item value="kpw"/>
 			<item value="kid"/>
-			<item value="Kck"/>
 			<item value="kL"/>
 			<item value="km"/>
 			<item value="kv"/>
 			<item value="kd"/>
-			<item value="kmem"/>
-			<item value=""/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">

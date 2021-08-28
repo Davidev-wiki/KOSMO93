@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="a.b.c.common.KckMemberChabun"/>
-<fullyQualifiedTypeName name="java.io.BufferedWriter"/>
-<fullyQualifiedTypeName name="a.b.c.common.KckConnProperty2"/>
-<fullyQualifiedTypeName name="a.b.c.swing.member.service.SwingMemberServiceImpl"/>
-<fullyQualifiedTypeName name="a.b.c.swing.member.service.SwingMemberService"/>
-<fullyQualifiedTypeName name="a.b.c.swing.member.vo.SwingMemberVO"/>
-<fullyQualifiedTypeName name="a.b.c.swing.member.sql.SwingMemberSqlMap"/>
 <fullyQualifiedTypeName name="java.sql.DriverManager"/>
 <fullyQualifiedTypeName name="java.sql.Date"/>
 <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
@@ -17,7 +10,6 @@
 <fullyQualifiedTypeName name="com.kosmo.kck.common.KckMemberChabun"/>
 <fullyQualifiedTypeName name="com.kosmo.kck.member.KckMemberSqlMap"/>
 <fullyQualifiedTypeName name="com.kosmo.kck.board.KckBoardSqlMap"/>
-<fullyQualifiedTypeName name="java.awt.Font"/>
 <fullyQualifiedTypeName name="javax.swing.JTextArea"/>
 <fullyQualifiedTypeName name="java.util.Scanner"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
@@ -41,17 +33,9 @@
 <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
 <fullyQualifiedTypeName name="java.sql.ResultSet"/>
 <fullyQualifiedTypeName name="com.kosmo.kck.common.KckConnProperty"/>
-<fullyQualifiedTypeName name="javax.swing.JPanel"/>
-<fullyQualifiedTypeName name="javax.swing.JLabel"/>
 <fullyQualifiedTypeName name="javax.swing.JTextField"/>
 <fullyQualifiedTypeName name="javax.swing.JPasswordField"/>
-<fullyQualifiedTypeName name="javax.swing.JButton"/>
-<fullyQualifiedTypeName name="javax.swing.JFrame"/>
-<fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
-<fullyQualifiedTypeName name="java.awt.Color"/>
-<fullyQualifiedTypeName name="javax.swing.border.EtchedBorder"/>
 <fullyQualifiedTypeName name="javax.swing.border.TitledBorder"/>
-<fullyQualifiedTypeName name="javax.swing.SwingConstants"/>
 <fullyQualifiedTypeName name="java.awt.Toolkit"/>
 <fullyQualifiedTypeName name="java.awt.Dimension"/>
 <fullyQualifiedTypeName name="java.awt.event.WindowAdapter"/>
@@ -59,5 +43,21 @@
 <fullyQualifiedTypeName name="com.kosmo.kck.member.KckMemberVO"/>
 <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
 <fullyQualifiedTypeName name="com.kosmo.kck.member.KckMember"/>
+<fullyQualifiedTypeName name="javax.swing.JFrame"/>
+<fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
+<fullyQualifiedTypeName name="java.awt.CardLayout"/>
+<fullyQualifiedTypeName name="javax.swing.JPanel"/>
+<fullyQualifiedTypeName name="javax.swing.JLabel"/>
+<fullyQualifiedTypeName name="javax.swing.JButton"/>
 <fullyQualifiedTypeName name="java.awt.event.ActionEvent"/>
+<fullyQualifiedTypeName name="java.awt.Color"/>
+<fullyQualifiedTypeName name="javax.swing.border.EmptyBorder"/>
+<fullyQualifiedTypeName name="javax.swing.SwingConstants"/>
+<fullyQualifiedTypeName name="javax.swing.border.EtchedBorder"/>
+<fullyQualifiedTypeName name="java.awt.Font"/>
+<fullyQualifiedTypeName name="com.kosmo.kck.login.KckLogin_Panel"/>
+<fullyQualifiedTypeName name="javax.swing.event.MenuEvent"/>
+<fullyQualifiedTypeName name="java.io.File"/>
+<fullyQualifiedTypeName name="com.kosmo.kck.util.CalculatorGUI"/>
+<fullyQualifiedTypeName name="com.kosmo.kck.util.Ex_DigitalClock"/>
 </qualifiedTypeNameHistroy>
