@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;org.w3c.dom.svg_1.1.0.v201011041433&apos;" deleteContents="false" description="Delete resource &apos;org.w3c.dom.svg_1.1.0.v201011041433&apos;" element1="/org.w3c.dom.svg_1.1.0.v201011041433" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1630313175027"/>
+</session>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="org.w3c.dom.svg_1.1.0.v201011041433">
+        <wb-resource deploy-path="/" source-path="/ejbModule" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/" source-path="/ImportedClasses"/>
+        <property name="java-output-path" value="/org.w3c.dom.svg_1.1.0.v201011041433/build/classes"/>
+    </wb-module>
+</project-modules>

@@ -12,6 +12,10 @@ Hello Jsp ~~~
 	String mid = request.getParameter("mid");
 	out.println(mid);
 	System.out.println("mid >>> : " + mid);
+	
+	String mpw = request.getParameter("mpw");
+	out.println(mpw);
+	System.out.println("mpw >>> : " + mpw);
 %>
 </body>
 </html>
