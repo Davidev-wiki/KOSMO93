@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+	alert("자바스크립트 함수");
+	
+	function formFunction(){
+		alert("formFunction 함수 진입함~!");
+		console.log("formFunction 함수 진입함!");
+		
+		alert("mname : " + document.getDataForm.mname.value);
+		alert("maddr : " + document.getDataForm.maddr.value);
+		
+		alert(document.getDataForm.action);
+		alert(document.getDataForm.method);
+		alert(document.getDataForm.enctype);
+		
+		document.getDataForm.action = "http://localhost:8088/testWeb/jsp/getData.jsp";
+		document.getDataForm.method = "GET";
+		document.getDataForm.enctype = "application/x-www-form-urlencoded";
+		document.getDataForm.submit();
+		
+	}
+	
+</script>
+</head>
+<body>
+<!-- 
+1. action : URL : Specifies where to send the form-data when a form is submitted
+				    현재 클라이언트 html의  form 태그에 바인딩 된 데이터를 가지고 
+			            웹서버의 특정 페이지 url을 적는 속성 값이다. 
+2. method : get
+		    post
+		    
+3. enctype : application/X-www-form-urlencoded()
+			 
+
+ -->
+<form id="getDataForm" name="getDataForm"
+	  action="http://localhost:8088/testWeb/jsp/getData.jsp"
+	  method="GET"
+	  enctype="application/x-www-form-urlencoded">
+	이름 : <input type="text" id="mname" name="mname"> <br>
+	주소 : <input type="text" id="maddr" name="maddr"> <br>
+	<!-- 
+	<input type="submit" value="보내기"> 
+	-->
+	<input type="button" value="보내기" style="Color:red" onclick="formFunction()">
+	<input type="reset" value="다시">
+</form>
+</body>
+</html>
