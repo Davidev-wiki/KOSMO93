@@ -7,6 +7,8 @@
 <title>getData</title>
 </head>
 <body>
+<% request.setCharacterEncoding("EUC-KR"); %>
+
 <% 
 	String mname = request.getParameter("mname");
 	String maddr = request.getParameter("maddr");

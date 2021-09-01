@@ -84,6 +84,11 @@ Web Browser : 크롬 : 자동 업데이트 : 늘 최신버전 유지 한다.
 			html 
 				head 부분 보여지고
 				body 부분 보여진다. 
+			
+			parsing 을 한다. 
+				html --> html 엔진
+				css --> css 엔진
+				javaScript --> javaScript 엔진 
 
 	자바스크립트가 웹 브라우저를 
 		봄 : BOM : Browser of Model 
@@ -95,3 +100,45 @@ Web Browser : 크롬 : 자동 업데이트 : 늘 최신버전 유지 한다.
 		Window : 
 
 웹서버 : Tomcat Coytte(아파치 httpd 웹서버)
+
+
+한글 인코딩 : 탐갯 기준으로 설명 
+====================
+웹브라우저에서 웹서버로 데이터 전송할 때 한글 인코딩을 해야 한다.
+
+인코딩 방식은 두가지로 만 한다. 
+1. EUC-KR
+2. UTF-8
+
+인코딩 기준은 
+form 태그의 method 어튜리뷰트의 값이 GET 하고 POST 일 때 다르게 해야 한다. 
+
+form 태그 method="GET" 
+======================
+이클립스 - Project Explorer - Servsers - Tomcat v8.5 Server at localhost-config
+- server.xml
+단 : 두개 중 하나만 사용하기 
+
+인코딩을 EUC-KR
+<Connector connectionTimeout="20000" 
+			port="8088" 
+			protocol="HTTP/1.1" 
+			redirectPort="8443" 
+			URIEncoding="EUC-KR"/>
+
+인코딩을 UTF-8
+<Connector connectionTimeout="20000" 
+			port="8088" 
+			protocol="HTTP/1.1" 
+			redirectPort="8443" 
+			URIEncoding="UTF-8"/>
+
+단 : server.xml 에서 파일 내용을 수정하면 tomcat 를 리스타트 해야 한다. MUST 
+이클립스 하단 Servers 탭에서 
+Tomcat v8.5 Server at localhost [] 링크를 우클릭 해서 서버 리스타트 하기 
+
+form 태그 method="POST" 
+======================
+jsp 페이지 에서 
+jps 페이지의 <BODY>태그 바로 밑에 아래 코드 삽입
+<% request.setCharacterEncoding("EUC-KR"); %>
