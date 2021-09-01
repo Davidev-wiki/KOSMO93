@@ -8,10 +8,6 @@
 </head>
 <body>
 <% 
-	
-	System.out.println(request.getRemoteAddr());
-	System.out.println(request.getRemoteHost());
-
 	String mname = request.getParameter("mname");
 	String maddr = request.getParameter("maddr");
 	
