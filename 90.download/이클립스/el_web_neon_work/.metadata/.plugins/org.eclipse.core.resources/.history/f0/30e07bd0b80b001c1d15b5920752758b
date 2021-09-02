@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>게시판</title>
+</head>
+<body>
+<form name="boardWrite" id="boardWrite">
+<table border="1" align="center">
+	<tr>
+		<td colspan="2" align="center">
+			<font size="4" style="color=blue"> 게시판 글쓰기 </font>
+			<img src="/testWeb/img/ase.gif" width="25" height="25">
+		</td>
+	</tr>
+	<tr>
+		<td align="center">글 번호</td>
+		<td><input type="text" name="bnum" id="bnum" size="20" readonly></td>
+	</tr>
+	<tr>
+		<td>
+		</td>
+		<td>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		</td>
+		<td>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		</td>
+		<td>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		</td>
+		<td>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		</td>
+		<td>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		</td>
+		<td>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		</td>
+	</tr>
+</table>
+</form>
+</body>
+</html>
