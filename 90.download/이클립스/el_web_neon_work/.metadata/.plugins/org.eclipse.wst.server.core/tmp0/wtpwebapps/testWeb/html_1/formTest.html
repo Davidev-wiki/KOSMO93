@@ -3,10 +3,16 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
+
+
 <!-- jQuery CDN 소환 -->
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+
 <!-- DAUM 주소록 OPEN API CDN 소환 -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+
+
 <script type="text/javascript">
 	alert("자바스크립트 블럭 시작--");
 	
@@ -17,7 +23,7 @@
 		// 이름
 
 		// 아이디 중복체크(버튼 클릭시 if 조건1, else 조건2 )
-		$("$midbtn").click(function(){
+		$("#midbtn").click(function(){
 			alert("아이디 중복체크 버튼이 눌렸습니다.");
 			console.log("ID Overlap Check");
 			
@@ -30,7 +36,7 @@
 		});
 		
 		// 비밀번호 체크
-		$("pwCheck").click(function(){
+		$("#pwCheck").click(function(){
 			console.log("비밀번호 체크 버튼이 눌렸습니다.");
 			// var pw = $("#mpw"); 여기 쓰인 'mpw'는 id 밸류인가 name 밸류인가?
 			// var pw_r = $("mpw_r");
@@ -61,7 +67,7 @@
 		
 		// 생년월일 (추후 문법 공부 필요.)
 		$("#mbirth").on("input", function(){
-			var m = $("mbirth");
+			var m = $("#mbirth");
 			if (m.val().length > m.maxlength){
 				m.value = m.value.slice(0, m.maxlength);
 			}
@@ -89,7 +95,7 @@
 		$('#memail2').change(function(){
 			$("#memail2 option : selected").each(function(){
 				if($(this).val() == '1'){ // 직접 입력인 경우
-					var aa = $("memail1").val();
+					var aa = $("#memail1").val();
 				// alert("aa : " + aa);
 				$("#memail1").val(''); // 값 초기화
 				$("#memail1").attr("readonly", false); // 활성화
@@ -117,11 +123,11 @@
 		// 사진
 		
 		// 폼태그의 데이터를 jsp로 보내기.
+		// -----------------------------------------------------------------------여기서 $btn = id이다.
 		$("#btn").click(function(){
 			alert("form 보내기 버튼이 클릭됨.");
 			console.log(btn click() 함수 진입);
-			
-			$("memForm")
+			$("#memForm")
 			.attr({
 				"action":"/testWeb/jsp/formTest.jsp",
 			    "method":"GET",
@@ -130,7 +136,11 @@
 		});
 	});
 </script>
+
+
 </head>
+
+
 <body>
 <h3 align="center">회원 가입</h3>
 <hr>
