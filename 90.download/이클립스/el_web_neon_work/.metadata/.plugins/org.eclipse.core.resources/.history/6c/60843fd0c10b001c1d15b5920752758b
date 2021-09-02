@@ -17,15 +17,15 @@
 	System.out.println("mid : " + mid);
 	System.out.println("mpw : " + mpw);
 	
-	if("abc".equals(mid) && "abc1234".equals(mpw)){
+	if("abc".equals(mid)) && "abc1234".equals(mpw)){
 %>
 			<script>
 				alert("로그인 성공");
 				location.href="http://localhost:8088/testWeb/html_1/formTest_1.html";
 			</script>
 
-<% 
-	} else{
+<% } else{
+	
 %>
 			<script>
 				alert("로그인 실패");
@@ -34,5 +34,6 @@
 <% 
 	}
 %>
+	
 </body>
 </html>

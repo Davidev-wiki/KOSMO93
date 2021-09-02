@@ -13,18 +13,14 @@
 		alert("제이쿼리 진입함");
 		$("#mid").attr("placeholder", "아이디");
 		$("#mpw").attr("placeholder", "비밀번호");
-		
 		$("#btn").click(function() {
-			console.log("버튼이 선택되었습니당");
-			
-			$("#loginForm").attr({
-				"action" : "/testWeb/jsp/formTest_2.jsp",
-				"method" : "POST",
-				"enctype" : "application/x-www-form-urlencoded"
-			}).submit();
-		});
+			console.log("버튼이 선택되었습니당")
+		}).attr({
+			"action" : "/testWeb/jsp/formTest_2.jsp",
+			"method" : "POST",
+			"enctype" : "application/x-www-form-urlencoded"
+		}).submit();
 	});
-		
 </script>
 </head>
 <body>

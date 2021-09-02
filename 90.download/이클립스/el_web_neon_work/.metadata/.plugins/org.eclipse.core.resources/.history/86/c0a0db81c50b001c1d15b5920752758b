@@ -9,7 +9,7 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		
-		// comfirm 이 어디잇냐..?
+		// comfirm 이 어디잇냐
 		$("#comfirm").click(function(){
 			console.log("mcomfirm : ");
 			alert("mcomfirm : ");
