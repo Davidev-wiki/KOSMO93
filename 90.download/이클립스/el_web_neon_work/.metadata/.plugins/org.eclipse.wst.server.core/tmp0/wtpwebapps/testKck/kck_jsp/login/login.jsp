@@ -21,7 +21,7 @@
 %>
 		<script>
 			alert("로그인 성공");
-			location.href="http://localhost:8088/testWeb/html_1/formTest_1.html";
+			location.href="http://localhost:8088/testKosmo/kosmo/board/board.html";
 		</script>
 <%		
 		

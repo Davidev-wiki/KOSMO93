@@ -56,3 +56,5 @@
 0:0:0:0:0:0:0:1 - - [02/Sep/2021:18:08:40 +0900] "GET /testKck/kck/notice/notice.html HTTP/1.1" 200 2101
 0:0:0:0:0:0:0:1 - - [02/Sep/2021:18:08:58 +0900] "GET /testKck/index.html HTTP/1.1" 200 490
 0:0:0:0:0:0:0:1 - - [02/Sep/2021:18:09:05 +0900] "GET /testKck/kck/login/login.html HTTP/1.1" 304 -
+127.0.0.1 - - [02/Sep/2021:18:54:52 +0900] "GET / HTTP/1.1" 404 807
+0:0:0:0:0:0:0:1 - - [02/Sep/2021:18:54:53 +0900] "GET /testKck/index.html HTTP/1.1" 304 -
