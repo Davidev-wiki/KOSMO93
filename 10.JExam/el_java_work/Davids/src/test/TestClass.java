@@ -1,7 +1,12 @@
 package test;
 
 public class TestClass {
-
+	
+	// enum 테스트
+	enum Week {
+		MON, TUE, WED, THU, FRI, SAT, SUN
+	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
@@ -55,6 +60,65 @@ public class TestClass {
 			}
 		}
 		
+		// enum & switch
+		System.out.println("enumerate week.sat : " + Week.SAT);
+		Week nowWeek = Week.SAT;
+		
+		switch(nowWeek) {
+			case MON:
+				System.out.println("오늘은 월요일 입니다.");
+				break;
+			case TUE:
+				System.out.println("오늘은 화요일 입니다.");
+				break;
+			case WED:
+				System.out.println("오늘은 수요일 입니다.");
+				break;
+			case THU:
+				System.out.println("오늘은 목요일 입니다.");
+				break;
+			case FRI:
+				System.out.println("오늘은 금요일 입니다.");
+				break;
+			case SAT:
+				System.out.println("오늘은 토요일 입니다.");
+				break;
+			case SUN:
+				System.out.println("오늘은 일요일 입니다.");
+				break;
+			default:
+				System.out.println("오늘은 일요일 입니다.");
+		}
+		
+		
+		// while & do-while
+		//int i=0;
+		//while(i<10) {
+		//	System.out.println("i : " + i);
+		//	i++;
+		//}
+		
+		//do {
+		//	System.out.println("(do-while) i :" + i);
+		//	i++;
+		//} while(i<10);
+		
+		
+		int[] sale = {157, 209, 251, 312};
+		
+		System.out.println("sale[0] : " + sale[0]);
+		System.out.println("sale[1] : " + sale[1]);
+		System.out.println("sale[2] : " + sale[2]);
+		System.out.println("sale[3] : " + sale[3]);
+
+		
+		int[][] sales = {{63, 84, 140, 130}, {157, 209, 251, 312}};
+		
+		for (int i=0; i<2; i++) {
+			for(int j=0; j<4; j++) {
+				System.out.println("sales["+i+"]["+j+"] : " + sales[i][j]);
+			}
+		}
 		
 	}
 }
