@@ -1,0 +1,35 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.util.ArrayList" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>jsp Tags</title>
+</head>
+<body>
+<h3> JSP tags(element) 사용법</h3>
+<hr>
+<%-- jsp 주석 
+: 웹 브라우저(클라이언트)로 넘어가지 않음. 
+서버에서만 보인다. --%>
+<%
+	out.println("여기는 스크립틀릿 영역이다. <br>");
+	out.println("여기에 자바 코드를 구현한다. <br>");
+	out.println("1. jsp 내장형 오브젝트 : request, response <br>");
+	out.println("2. Servlet 코드 <br>");
+	out.println("3. java 코드 <br>");
+	out.println("4. 프로그램 실행 결과만 클라이언트로 리턴한다. <br>");
+	
+	out.println(new Date() + "<br>");
+	
+%>
+
+<%= "여기는 표현식 영역이다." %><br>
+<%= "브라우저에 출력하는 역할이다." %><br>
+<%= "스크립틀릿 영역에서 사용하는 out.println()과 같은 역할이다." %><br>
+<%= new Date() %><br>
+
+<%@ include file="testjsp.jsp" %>
+</body>
+</html>

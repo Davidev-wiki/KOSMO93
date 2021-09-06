@@ -1,0 +1,30 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html PUBLIC
+		  "-//W3C//DTD HTML 4.01 Transitional//EN" 
+		  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+</script>
+
+<style type="text/css">
+
+</style>
+</head>
+<body>
+<hr>
+<%
+	out.println("스크립틀릿 태그 테스트!");
+	out.println("이 부분은 서버사이드 스크립트 영역이다. 웹브라우저에서 ");
+
+%>
+</body>
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+<test>test!</test>
+</root>
+</html>

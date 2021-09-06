@@ -1,0 +1,15 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>jsp Tags</title>
+</head>
+<body>
+<h3> JSP tags(element) 사용법</h3>
+<hr>
+<%-- jsp 주석 
+: 웹 브라우저(클라이언트)로 넘어가지 않음. 
+서버에서만 보인다. --%>
+</body>
+</html>
