@@ -2,6 +2,7 @@ package a.b.c.com.kosmo.board.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Enumeration;
 
 import javax.servlet.RequestDispatcher;
@@ -26,6 +27,7 @@ import a.b.c.com.kosmo.board.vo.BoardVO;
 public class BoardController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	@SuppressWarnings("unchecked")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
@@ -52,6 +54,7 @@ public class BoardController extends HttpServlet {
 				int maxPostSize = CommonUtils.BOARD_IMG_FILE_SIZE;
 				String encoding = CommonUtils.BOARD_IMG_ENCODE;
 				
+				// getContentType()은 "인자"와 동일한 게 있으면 true/false를 반환함.
 				boolean bool = request.getContentType().toLowerCase().startsWith("multipart/form-data");
 				
 				if(bool){
@@ -114,14 +117,119 @@ public class BoardController extends HttpServlet {
 				}
 			} // 글 등록 end
 			
-			
 			// 글 전체 조회
+			if("SALL".equals(isudType)){
+				System.out.println("게시판 글 전체 조회 진입_isudType : " + isudType);
+				
+				// 서비스 호출
+				BoardService bs = new BoardServiceImpl();
+				ArrayList<BoardVO> aListAll = bs.boardSelectAll();
+				
+				if(aListAll != null && aListAll.size() > 0){
+					
+					request.setAttribute("aListAll", aListAll);
+					// bookselectAll.jsp 만들어야 함
+					// api 찾아보기
+					RequestDispatcher rd = request.getRequestDispatcher("/kck/board/bookSelectAll.jsp");
+					rd.forward(request, response);
+					
+				} else	{
+					out.println("<script>");
+					// 전체 조회로 받아온 데이터가 없으면 다시 서블릿 전체 조회 페이지로 보내기
+					out.println("location.href='/testKck/board?ISUD_TYPE=SALL'");
+					out.println("<script>");
+
+				}			
+			} // 글 등록 end
+			
 			// 글 조건 조회
+			if("S".equals(isudType) || "U".equals(isudType) || "D".equals(isudType)){
+				System.out.println("글 조건 조회 : S or U or D isudType : " + isudType);
+				
+				String bnum = request.getParameter("bnumCheck");
+				
+				if(bnum != null && bnum.length() > 0){
+					System.out.println("글 번호 : " + bnum);
+					
+					BoardService bs = new BoardServiceImpl();
+					BoardVO bvo = null;
+					bvo = new BoardVO();
+					
+					bvo.setBnum(bnum);
+					
+					ArrayList<BoardVO> aListS = bs.boardSelect(bvo);
+					
+					if(aListS != null &&  aListS.size() > 0){
+						System.out.println("aListS.size : " + aListS.size());
+						
+						// setAAttribute,rd api 찾아보기
+						request.setAttribute("aListS", aListS);
+						// jsp 파일 만들어야 함. 웹서버 경로임.
+						RequestDispatcher rd = request.getRequestDispatcher("/kck/board/boardSelect.jsp");
+						rd.forward(request, response);
+					
+					} else {
+						out.println("<script>");
+						out.println("alert('글 조회 실패')");
+						// 서블릿이 참조하는 웹 컨테이너 경로, 전체 조회 링크로 보내버린다.
+						out.println("location.href='/testkck/board?ISUD_TYPE=SALL'");
+						out.println("</script>");
+					}
+					
+				} else{
+					System.out.println("글 번호가 없어요..");
+				}
+			} // 글 조건 조회 end
+			
 			// 글 수정
+			if("UOK".equals(isudType)){
+				System.out.println("글 수정 isudType : " + isudType);
+				
+				String bnum = request.getParameter("bnum");
+				String bsubject = request.getParameter("bsubject");
+				String bmemo = request.getParameter("bmemo");
+				
+				System.out.println("bnum : " + bnum);
+				System.out.println("bsubject : " + bsubject);
+				System.out.println("bmemo : " + bmemo);
+				
+				BoardService bs = new BoardServiceImpl();
+				BoardVO bvo = null;
+				bvo = new BoardVO();
+				
+				bvo.setBnum(bnum);
+				bvo.setBsubject(bsubject);
+				bvo.setBmemo(bmemo);
+				
+				boolean bUpdate = bs.boardUpdate(bvo);
+				
+				if(bUpdate) { // true;
+					System.out.println("정상적으로 수정 되었습니다." + bUpdate);
+					request.setAttribute("bUpdate", new Boolean(bUpdate));
+					// 웹 서버에 있는 .jsp 경로로 보내버린다.
+					RequestDispatcher rd = request.getRequestDispatcher("/kck/board/boardUpdate.jsp");
+					rd.forward(request, response);
+					
+				} else { // false; 정상적으로 수정되지 않은 경우
+					System.out.println("글 수정 실패!");
+					out.println("<script>");
+					out.println("alert('글 수정 실패')");
+					// 전체조회 서블릿 페이지로 이동시킨다.
+					out.println("location.href='/testkck/board?isudtype=SALL'");
+					out.println("</script>");
+				}
+				
+			}
+			
+			
 			// 글 삭제
 			
 		}
-	}
+			
+
+
+			
+		}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

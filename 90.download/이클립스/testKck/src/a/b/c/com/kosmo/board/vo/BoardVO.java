@@ -91,4 +91,34 @@ public class BoardVO {
 		this.updatedate = updatedate;
 	}
 	
+	// 프린트 함수 : 깡통에 있는 데이터를 콘솔에 출력해주는 함수.
+	// print : 전체 조회용
+	public static void printBoardVO(BoardVO bvo){
+
+		System.out.print(bvo.getBnum() + " : ");
+		System.out.print(bvo.getBsubject() + " : ");
+		System.out.print(bvo.getBwriter() + " : ");
+		System.out.print(bvo.getBpw() + " : ");
+		System.out.print(bvo.getBmemo() + " : ");
+		System.out.print(bvo.getDeleteyn() + " : ");
+		System.out.print(bvo.getInsertdate() + " : ");
+		System.out.println(bvo.getUpdatedate());
+	
+	}
+	
+	// println : 조건 조회용
+	public static void printlnBoardVO(BoardVO bvo){
+		
+		System.out.println("bvo.getBnum() : " + bvo.getBnum());
+		System.out.println("bvo.getBsubject() : " + bvo.getBsubject());
+		System.out.println("bvo.getBwriter() : " + bvo.getBwriter());
+		System.out.println("bvo.getBpw() : " + bvo.getBpw());
+		System.out.println("bvo.getBmemo() : " + bvo.getBmemo());
+		System.out.println("bvo.getDeleteyn() : " + bvo.getDeleteyn());
+		System.out.println("bvo.getInsertdate() : " + bvo.getInsertdate());
+		System.out.println("bvo.getUpdatedate() : " + bvo.getUpdatedate());
+
+	}
+
+	
 }

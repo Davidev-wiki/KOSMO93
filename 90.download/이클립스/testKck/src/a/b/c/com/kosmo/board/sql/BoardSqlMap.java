@@ -3,17 +3,59 @@ package a.b.c.com.kosmo.board.sql;
 public class BoardSqlMap {
 
 	// 전체조회 쿼리문
-	public static String getBoardSelectAllQuery(){
-		return null;
+	public static String getBoardSelectAllQuery() {
+		System.out.println("BoardSqlMap.getBoardSelectAllQuery()함수 진입");
+
+		StringBuffer sb = new StringBuffer();
+
+		sb.append("  SELECT  								\n");
+		sb.append("      A.BNUM 		BNUM 				\n");
+		sb.append("      ,A.BSUBJECT 	BSUBJECT 			\n");
+		sb.append("      ,A.BWRITER 	BWRITER 			\n");
+		sb.append("      ,A.BPW 		BPW 				\n");
+		sb.append("      ,A.BMEMO 		BMEMO 				\n");
+		sb.append("      ,A.BPHOTO 		BPHOTO 				\n");
+		sb.append("      ,A.DELETEYN 		DELETEYN 		\n");
+		sb.append("      ,TO_CHAR(A.INSERTDATE, 'YYYY-MM-DD')  INSERTDATE 	\n");
+		sb.append("      ,TO_CHAR(A.UPDATEDATE, 'YYYY-MM-DD')  UPDATEDATE 	\n");
+		sb.append("  FROM 		 							\n");
+		sb.append("  MVC_BOARD A 		 					\n");
+		sb.append("  WHERE A.DELETEYN = 'Y' 				\n");
+		sb.append("  ORDER BY 1 DESC 		 				\n");
+
+		return sb.toString();
 	}
+
 	// 조건조회 쿼리문
-	public static String getBoardSelectQuery(){
-		return null;
-	}
-	// 글 등록 쿼리문
-	public static String getBoardInsertQuery(){
+	public static String getBoardSelectQuery() {
+		System.out.println("BoardSqlMap.getBoardSelectQuery()함수 진입");
+
 		StringBuffer sb = new StringBuffer();
 		
+		sb.append(" SELECT 								\n");
+		sb.append("      A.BNUM 		BNUM 			\n");
+		sb.append("		,A.BSUBJECT  	BSUBJECT 		\n");
+		sb.append("		,A.BWRITER  	BWRITER 		\n");
+		sb.append("		,A.BPW  		BPW   			\n");
+		sb.append("		,A.BMEMO  		BMEMO			\n");
+		sb.append("		,A.BPHOTO  		BPHOTO			\n");
+		sb.append("		,A.DELETEYN  	DELETEYN		\n");
+		sb.append("		,TO_CHAR(A.INSERTDATE, 'YYYY-MM-DD')  INSERTDATE	\n");
+		sb.append("		,TO_CHAR(A.UPDATEDATE, 'YYYY-MM-DD')  UPDATEDATE	\n");
+		sb.append("	FROM 								\n");
+		sb.append("		 MVC_BOARD A 					\n");
+		sb.append("	WHERE A.DELETEYN = 'Y'				\n");
+		sb.append("	AND   A.BNUM 	 =  ?  				\n");
+
+		return sb.toString();
+	}
+
+	// 글 등록 쿼리문
+	public static String getBoardInsertQuery() {
+		System.out.println("BoardSqlMap.getBoardInsertQuery()함수 진입");
+
+		StringBuffer sb = new StringBuffer();
+
 		sb.append("	INSERT INTO 						\n");
 		sb.append("		MVC_BOARD 				    	\n");
 		sb.append("		          (			    		\n");
@@ -38,16 +80,30 @@ public class BoardSqlMap {
 		sb.append("						,SYSDATE 		\n");
 		sb.append("						,SYSDATE 		\n");
 		sb.append("	                )                   \n");
-		
-		return sb.toString(); 
+
+		return sb.toString();
 	}
-	
+
 	// 글 업데이트 쿼리문
-	public static String getBoardUpdateQuery(){
-		return null;
+	public static String getBoardUpdateQuery() {
+		System.out.println("BoardSqlMap.getBoardUpdateQuery()함수 진입");
+
+		StringBuffer sb = new StringBuffer();
+
+		sb.append("	UPDATE		 						\n");
+		sb.append("		MVC_BOARD 				    	\n");
+		sb.append("	SET						    		\n");
+		sb.append("     	 BSUBJECT 		= ?			\n");// placeholder 1
+		sb.append("			,BMEMO 			= ?			\n");// placeholder 2
+		sb.append("			,UPDATEDATE 	= SYSDATE	\n");
+		sb.append("	WHERE 	 BNUM 			= ?  		\n");// placeholder 3
+		sb.append("	AND		 DELETEYN 		= 'Y'		\n");
+
+		return sb.toString();
 	}
+
 	// 글 삭제 쿼리문
-	public static String getBoardDeleteQuery(){
+	public static String getBoardDeleteQuery() {
 		return null;
 	}
 

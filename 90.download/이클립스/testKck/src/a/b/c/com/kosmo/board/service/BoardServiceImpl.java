@@ -11,19 +11,24 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public ArrayList<BoardVO> boardSelectAll() {
 		// TODO Auto-generated method stub
-		return null;
+		System.out.println("BoardServiceImpl.boardSelectAll()함수 진입");
+		BoardDAO bdao = new BoardDAOImpl();
+		return bdao.boardSelectAll();
 	}
 
 	@Override
 	public ArrayList<BoardVO> boardSelect(BoardVO bvo) {
 		// TODO Auto-generated method stub
-		return null;
+		System.out.println("BoardServiceImpl.boardSelect()함수 진입");
+		BoardDAO bdao = new BoardDAOImpl();
+		return bdao.boardSelect(bvo);
 	}
 
 	@Override
 	public boolean boardInsert(BoardVO bvo) {
 		// TODO Auto-generated method stub
-		
+		System.out.println("BoardServiceImpl.boardInsert()함수 진입");
+
 		BoardDAO bdao = new BoardDAOImpl();
 		return bdao.boardInsert(bvo);
 	}
@@ -31,7 +36,10 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public boolean boardUpdate(BoardVO bvo) {
 		// TODO Auto-generated method stub
-		return false;
+		System.out.println("BoardServiceImpl.boardUpdate()함수 진입");
+
+		BoardDAO bdao = new BoardDAOImpl();
+		return bdao.boardUpdate(bvo);
 	}
 
 	@Override
