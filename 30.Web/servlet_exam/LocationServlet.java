@@ -44,6 +44,8 @@ public class LocationServlet extends HttpServlet {
 
 		// dispather.html 폼태그에서 넘어온 input 태그의 hidden 타입 값을 받는다.
 		String isudtype = req.getParameter("isudtype");
+		String empno = req.getParameter("empno");
+		String ename = req.getParameter("ename");
 		
 		if (isudtype !=null && isudtype.length() > 0){
 			isudtype = isudtype.toUpperCase();
@@ -69,13 +71,11 @@ public class LocationServlet extends HttpServlet {
 						evo.setComm(rsRs.getString(7));
 						evo.setDeptno(rsRs.getString(8));
 						
-						aList.add(evo);
-						
+						aList.add(evo);						
 					}
 					//aList = null;
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					// e.printStackTrace();
+					// TODO Auto-generated catch block 
 					System.out.println("에러가 >>> : " + e.getMessage());
 				}
 				
@@ -102,8 +102,35 @@ public class LocationServlet extends HttpServlet {
 			
 			if ("S".equals(isudtype)){
 				System.out.println("조건조회 isudtype >>> : " + isudtype);				
-				out.println("<h3>조건조회 실행 블럭</h3><br>");				
+				out.println("<h3>조건조회 실행 블럭</h3><br>");		
+
+				int nCnt = 0;
 				
+				try {
+					Class.forName("oracle.jdbc.driver.OracleDriver");
+					Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orclKOSMO00", "scott","tiger");
+					Statement stmt = conn.createStatement();
+					ResultSet rsRs = stmt.executeQuery("SELECT COUNT(EMPNO) NCNT FROM EMP WHERE EMPNO = " + empno + " AND ENAME = " + "'" + ename + "'");
+					while (rsRs.next()){
+						nCnt = rsRs.getInt(1);					
+					}
+				} catch (Exception e) {
+					System.out.println("에러가 >>> : " + e.getMessage());
+				}
+				
+				if (1 == nCnt){					
+					// dispatherSelect.jsp 로 보내는 ArrayList 객체 세팅
+					req.setAttribute("nCnt", new Integer(nCnt));
+					// RequestDispatcher 인터페이스 에서 사용하는 getRequestDispatcher 함수에서는 
+					// Context 경로를 사용하지  않음
+					RequestDispatcher rd = req.getRequestDispatcher("/cgiTest/dispatherSelect.jsp");
+					rd.forward(req, res);								
+				}else{
+					out.println("<script>");
+					out.println("alert('데이터 조회 실패')");
+					out.println("location.href='/testKosmo/cgiTest/dispather.html'");
+					out.println("</script>");
+				}							
 			}
 			
 		}else{
@@ -119,5 +146,4 @@ public class LocationServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
 }

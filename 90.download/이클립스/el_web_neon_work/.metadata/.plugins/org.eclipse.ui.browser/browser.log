@@ -1,5 +1,0 @@
-
-9월 07, 2021 12:20:59.64 NEW SESSION
-9월 07, 2021 12:20:59.64 [11508:3848:0907/122059.639:ERROR:external_registry_loader_win.cc(158)] File C:\Users\david\AppData\Local\Google\Drive\user_default\apdfllckaahabafndbhieahigkjlhalf_live.crx for key Software\Google\Chrome\Extensions\apdfllckaahabafndbhieahigkjlhalf does not exist or is not readable.
-9월 07, 2021 12:21:02.48 [11508:11732:0907/122102.484:ERROR:device_event_log_impl.cc(214)] [12:21:02.483] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
-9월 07, 2021 12:21:02.48 [11508:11732:0907/122102.484:ERROR:device_event_log_impl.cc(214)] [12:21:02.484] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
