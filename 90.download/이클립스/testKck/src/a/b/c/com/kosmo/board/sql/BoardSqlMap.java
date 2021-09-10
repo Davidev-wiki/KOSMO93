@@ -2,6 +2,18 @@ package a.b.c.com.kosmo.board.sql;
 
 public class BoardSqlMap {
 
+	// Max채번 쿼리
+	public static String getMaxChabunQuery(){
+		
+		StringBuffer sb = new StringBuffer();
+		
+		sb.append("SELECT 										  	\n");
+		sb.append("	  NVL(MAX(SUBSTR(A.BNUM, -4)), 0) + 1 MAXNUM 	\n");
+		sb.append("FROM  MVC_BOARD A 								\n");
+		
+		return sb.toString();
+	}
+	
 	// 전체조회 쿼리문
 	public static String getBoardSelectAllQuery() {
 		System.out.println("BoardSqlMap.getBoardSelectAllQuery()함수 진입");
@@ -104,7 +116,20 @@ public class BoardSqlMap {
 
 	// 글 삭제 쿼리문
 	public static String getBoardDeleteQuery() {
-		return null;
+		System.out.println("BoardSqlMap.getBoardDeleteQuery()함수 진입");
+
+		StringBuffer sb = new StringBuffer();
+
+		//update mvc_model set deleteyn='n', updatedate=sysdate where bnum=? and  deleteyn='y'
+		sb.append("	UPDATE  							\n");	
+		sb.append("		   MVC_BOARD 			    	\n");	
+		sb.append("	SET  								\n");
+	    sb.append("		   DELETEYN 	= 'N'			\n");	    	   
+	    sb.append("		  ,UPDATEDATE 	= SYSDATE		\n");
+		sb.append("	WHERE  BNUM	 		= ?				\n");	    
+		sb.append("	AND    DELETEYN 	= 'Y'  			\n");
+		
+		return sb.toString();
 	}
 
 }

@@ -45,7 +45,10 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public boolean boardDelete(BoardVO bvo) {
 		// TODO Auto-generated method stub
-		return false;
+		System.out.println("BoardServiceImpl.boardDelete()함수 진입");
+		
+		BoardDAO bdao = new BoardDAOImpl();
+		return bdao.boardDelete(bvo);
 	}
 
 }

@@ -213,7 +213,40 @@ public class BoardDAOImpl implements BoardDAO {
 	@Override
 	public boolean boardDelete(BoardVO bvo) {
 		// TODO Auto-generated method stub
-		return false;
+		System.out.println("BoardDAOImpl.boardDelete()함수 진입");
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int nCnt = 0;
+		boolean bool = false;
+
+		try {
+			conn = ConnProperty.getConnection();
+			pstmt = conn.prepareStatement(BoardSqlMap.getBoardDeleteQuery());
+			System.out.println("Delete Query : " + BoardSqlMap.getBoardDeleteQuery());
+
+			pstmt.clearParameters();
+			pstmt.setString(1, bvo.getBnum());
+
+			nCnt = pstmt.executeUpdate();
+			if (!conn.getAutoCommit())
+				conn.commit();
+			System.out.println("nCnt : " + nCnt + "건 삭제 되었습니다.");
+
+			if (nCnt > 0) {
+				bool = true;
+			}
+
+			ConnProperty.conClose(conn, pstmt);
+
+		} catch (Exception e) {
+			System.out.println("DB에 접속해 삭제중 에러가 발생했어요 : " + e);
+		} finally {
+			ConnProperty.conClose(conn, pstmt);
+
+		}
+
+		return bool;
 	}
 
 }
