@@ -15,9 +15,14 @@
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="fileupload"/>
+			<item value="C:\00.KOSMO93\30.Web\el_web_neon _work\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\testKosmo\fileupload\board"/>
+			<item value="testKosmo\fileupload\board"/>
+			<item value="if"/>
+			<item value="body"/>
+			<item value="bDelete"/>
+			<item value="bInsert"/>
 			<item value="bnumCheck"/>
-			<item value="dispather"/>
-			<item value="Kosmo"/>
 		</list>
 		<list key="replacehistory">
 			<item value="Kck"/>
@@ -27,7 +32,7 @@
 		<item value="275" key="DIALOG_WIDTH"/>
 		<item value="1|맑은 고딕|9.0|0|WINDOWS|1|-24|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕" key="DIALOG_FONT_NAME"/>
 		<item value="370" key="DIALOG_HEIGHT"/>
-		<item value="229" key="DIALOG_X_ORIGIN"/>
-		<item value="210" key="DIALOG_Y_ORIGIN"/>
+		<item value="347" key="DIALOG_X_ORIGIN"/>
+		<item value="211" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>

@@ -26,7 +26,7 @@ public abstract class GetChabun {
 	// 게시판 글 번호  
 	public static String getBoardChabun(String type) {
 		
-		return BIZ_GUBUN_M.concat(numPad(type, ""));
+		return BIZ_GUBUN_BD.concat(numPad(type, GetBoardMaxNum.getMaxNum()));
 	}
 	
 	// 게시판 댓글 글 번호  

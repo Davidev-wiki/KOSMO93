@@ -16,12 +16,14 @@
 			alert("boardBtn click() 함수 진입 >>> : ");
 			console.log("boardBtn click() 함수 진입 >>> : ");
 			
-			// attr() vs prop()
+			var v1 = $("#ISUD_TYPE").val();
+			alert("v1의 값 :  " + v1);
+			
 			$("#boardWrite")
 			.attr({
-					"action":"/testWeb/jsp/formTest_1.jsp",
-				    "method":"GET",
-				    "enctype":"application/x-www-form-urlencoded"
+					"action":"/testKck/board?ISUD_TYPE="+v1,
+				    "method":"POST",
+				    "enctype":"multipart/form-data"
 			       })
 			.submit();	
 		});		
@@ -35,7 +37,7 @@
 		<td colspan="2" align="center">	
 						
 			<font size="4" style="color:blue;">게시판 글쓰기</font> 
-			<img src="/testWeb/img/ase.gif" width="25" height="25" alt="image">		
+			<img src="/testKck/img/ase.gif" width="25" height="25" alt="image">		
 		</td>				
 	</tr>
 	<tr>
@@ -81,14 +83,14 @@
 			<input type="button" value="보내기" id="boardBtn" > 
 		 -->					
 		<button type="button" id="boardBtn">
-			<img src="/testWeb/img/ase.gif" width="25" height="25" alt="image">	
+			<img src="/testKck/img/ase.gif" width="25" height="25" alt="image">	
 			보내기
 		</button>
 		<!-- 
 			<input type="reset" value="다시">
 		 -->
 		<button type="reset">
-			<img src="/testWeb/img/b-baa.gif" width="25" height="25" alt="image">	
+			<img src="/testKck/img/b-baa.gif" width="25" height="25" alt="image">	
 			다시
 		</button>
 	</td>				

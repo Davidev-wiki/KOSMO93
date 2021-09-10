@@ -108,11 +108,14 @@ public class BoardController extends HttpServlet {
 
 						if (bInsert) {
 							request.setAttribute("bInsert", new Boolean(bInsert));
-							RequestDispatcher rd = request.getRequestDispatcher("/kosmo/board/boardInsert.jsp");
+							// RequestDispatcher인터페이스에서 사용하는 함수인, 
+							// getRequestDispatcher는 Context경로를 사용하지 않음.
+							// 웹 컨테이너 경로를 이용함.
+							RequestDispatcher rd = request.getRequestDispatcher("\\testKck\\kck\\board\\boardInsert.jsp");
 							rd.forward(request, response);
 						} else {
 							out.println("<script>");
-							out.println("location.href='/testKck/kck/board/board.html'");
+							out.println("location.href='//testKck//kck//board//board.html'");
 							out.println("</script>");
 						}
 
