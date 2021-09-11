@@ -1,0 +1,26 @@
+package a.b.c.com.kosmo.board.sql;
+
+public class BoardSqlMap {
+
+	// 전체조회 쿼리문
+	public static String getBoardSelectAllQuery(){
+		return null;
+	}
+	// 조건조회 쿼리문
+	public static String getBoardSelectQuery(){
+		return null;
+	}
+	// 글 등록 쿼리문
+	public static String getBoardInsertQuery(){
+		return null; 
+	}
+	// 글 업데이트 쿼리문
+	public static String getBoardUpdateQuery(){
+		return null;
+	}
+	// 글 삭제 쿼리문
+	public static String getBoardDeleteQuery(){
+		return null;
+	}
+
+}

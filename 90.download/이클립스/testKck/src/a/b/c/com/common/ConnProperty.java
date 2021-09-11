@@ -10,8 +10,8 @@ public abstract class ConnProperty {
 	// 상수 선언 :  4type thin 드라이브 사용
 	// 데이터베이스 연결 정보 : DataSource 라고 부른다. 
 	public static final String KOS_URL = "jdbc:oracle:thin:@localhost:1521:orclKOSMO00";
-	public static final String KOS_USER = "hbe00";
-	public static final String KOS_PASS = "hbe1234";	
+	public static final String KOS_USER = "kck00";
+	public static final String KOS_PASS = "kck1234";	
 	public static final String KOS_DRIVER = "oracle.jdbc.driver.OracleDriver";
 		
 	public static Connection getConnection() {		
