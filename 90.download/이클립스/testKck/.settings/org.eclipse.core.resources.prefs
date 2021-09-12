@@ -1,2 +1,3 @@
 eclipse.preferences.version=1
-encoding//WebContent/kck/board/bookSelectAll.jsp=EUC-KR
+encoding//WebContent/kck/board/boardSelectAll.jsp=EUC-KR
+encoding//WebContent/kck/book/bookSelectAll.jsp=EUC-KR

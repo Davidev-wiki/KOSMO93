@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move &apos;bookSelectAll.jsp&apos; to &apos;book&apos;" description="Move &apos;bookSelectAll.jsp&apos; to &apos;book&apos;" destination="WebContent/kck/book" element1="WebContent/kck/board/bookSelectAll.jsp" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="1" stamp="1631427937320" updateReferences="true"/>
+</session>

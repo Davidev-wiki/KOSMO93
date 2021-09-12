@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.jst.jsp.ui.internal.preferences.ui.JSPTemplatePreferencePage$JSPEditTemplateDialog_dialogBounds">
+		<item value="606" key="DIALOG_WIDTH"/>
+		<item value="1|맑은 고딕|9.0|0|WINDOWS|1|-24|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕" key="DIALOG_FONT_NAME"/>
+		<item value="435" key="DIALOG_HEIGHT"/>
+		<item value="469" key="DIALOG_X_ORIGIN"/>
+		<item value="76" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item value="false" key="isRegEx"/>
+		<item value="" key="selection"/>
+		<item value="false" key="casesensitive"/>
+		<item value="false" key="incremental"/>
+		<item value="true" key="wrap"/>
+		<item value="false" key="wholeword"/>
+		<list key="findhistory">
+			<item value="testKosmo/fileupload/board"/>
+			<item value="fileupload/board"/>
+			<item value="Kosmo"/>
+			<item value="SALL"/>
+			<item value="HTML의 form태그에서 hidden type의 ISUD_TYPE을 확인하세요"/>
+			<item value="fileupload"/>
+			<item value="C:\00.KOSMO93\30.Web\el_web_neon _work\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\testKosmo\fileupload\board"/>
+			<item value="testKosmo\fileupload\board"/>
+		</list>
+		<list key="replacehistory">
+			<item value="Kck"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item value="275" key="DIALOG_WIDTH"/>
+		<item value="1|맑은 고딕|9.0|0|WINDOWS|1|-24|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕" key="DIALOG_FONT_NAME"/>
+		<item value="370" key="DIALOG_HEIGHT"/>
+		<item value="-11" key="DIALOG_X_ORIGIN"/>
+		<item value="237" key="DIALOG_Y_ORIGIN"/>
+	</section>
+</section>
