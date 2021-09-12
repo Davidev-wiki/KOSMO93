@@ -138,7 +138,7 @@ public class BoardController extends HttpServlet {
 					request.setAttribute("aListAll", aListAll);
 					// bookselectAll.jsp 만들어야 함
 					// api 찾아보기
-					RequestDispatcher rd = request.getRequestDispatcher("/kck/board/bookSelectAll.jsp");
+					RequestDispatcher rd = request.getRequestDispatcher("/kck/board/boardSelectAll.jsp");
 					rd.forward(request, response);
 
 				} else {
