@@ -1,0 +1,54 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>b_0</title>
+</head>
+<body>
+<h3>b_0</h3><br>
+setAttribute(java.lang.String, java.lang.Oject)
+:: getAttribute(java.lang.String)
+<hr>
+<%
+	
+		// 여기서 참조하는 request는
+		// 'request scope'를 의미하는 객체이다.
+		// setAttribute("abc", "최세라")
+		// : 객체 ["최세라"]에다가 "abc"라는 이름 속성을 부여한다.
+		request.setAttribute("abc", "최세라");
+		
+		// "abc"라는 이름을 가진 속성의 데이터를 
+		// request scope 내에서 찾은 다음에
+		// String 타입으로 변경하고나서
+		// abc라는 변수에 담는다.
+		String abc = String.valueOf(request.getAttribute("abc"));
+		
+		// 출력해보기
+		// 결과 추측 : 객체타입 최세라
+		// 결과 : 최세라
+		out.println("저장된 abc의 값 : " + abc);
+		
+		ArrayList<String> aList = new ArrayList<String>();
+		aList.add("오재영");
+		aList.add("25");
+		aList.add("Studying in Kosmo");
+		aList.add("HOWONDONG");
+		
+		// request Area 내 "오재영" 정보가 담긴 String 배열 aList에
+		// "aListRequest"라는 속성을 부여한다.
+		request.setAttribute("aListRequest", aList);
+
+		// request Area 내 "aListRequest" 라는 이름을 가진 데이터를 찾아
+		// 객체 타입 변수 obj에 초기화한다.
+		Object obj = request.getAttribute("aListRequest");
+		
+		// ojb가 없으면 리턴한다?
+		if(obj==null) return;
+		
+		
+		
+%>
+
+</body>
+</html>	

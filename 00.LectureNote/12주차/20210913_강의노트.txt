@@ -34,10 +34,11 @@ html : 클라이언트 사이드 스크립트
 servlet, jsp : 서버사이드 스크립트 
 service, dao : 자바
 query : 오라클 
-
+#########################################
 CGI 방식
 정적 : 모두가 같은 내용을 보는 페이지 
 동적 : 나만 다른 사람과 다르게 보여지는 페이지 
+#########################################
 
 #########################################
 jsp에서는 웹 어플리케이션 프로그램을
@@ -55,7 +56,7 @@ JSP : Java Server Page : 서버 페이지를 이동하는 기술
 jsp는 웹 애플리케이션을 프로그램을 만들 때 
 각각의 페이지를 시킬 때 이 페이지영역을 객체화 하는데 
 
-page Scope : 페이지의 영역 : Object 개념 
+page Scope : 페이지의 영역 : Object 개념 : 객체 개념
 ------------------------------------
 
 Scope 영역 : 데이터를 어디까지 사용할 것 인가 ? 
@@ -72,23 +73,49 @@ jsp 가 웹 브라우저에서 페이지를 이동시키는 기술
 이전 요청한 데이터를 사용하기 위해서 
 cgi 프로그램에서는 session 개념을 이용한다. 
 
+
+#######################################################
+파라미터(parameter : key=value) vs 속성(attribute : 객체)
+---------------------------------------
+파라미터 :	String만 사용가능, request 에서만 저장 가능
+속성 :	String, Object, Array 다양한 객체 사용가능
+		pageContext, reuqest, session, application 에서도 사용가능 
+#######################################################
+
+
 1. page Scope : pageContext 객체 : page
 	: 자기 페이지에서만 사용
 	<%@ page import="java.util.ArrayList"
 
-	:	요청한 페이지에서 : 보여지눈 페이지에서만 데이터가 사용가능 
+	:	요청한 페이지에서 : 보여지는 페이지에서만 데이터가 사용가능 
 	:	다른 페이지로 이동하면 데이터를 사용할 수 없다. 
 
 2. request Scope  : request 객체 
 	:	요청한 페이지에서 데이터를 받아서 사용
 	:	데이터를 요청하면 요청받은 페이지에서 그 요청한 데이타를 사용할 수 있다. 
 
+		요청(request)할 때 마다 만들어지는 객체 
+		getParameter(), 
+		setAttribute(), getAttribute() 사용가능
+
+
 3. session Scope : session 객체 : JSESSIONID
 	:	어떤 페이지에서 session 을 설정하면 
 		여러개의 다른 페이지에서 이 데이터를 사용할 수 있다. 
 		특정한 것만 
 
+		클라이언트별로 만들어지는 객체 
+		클라이언트 단에서 새로운 요청이 있어도 
+		session 객체에 속성으로 그대로 유지한다.
+		setAttribute(), getAttribute() 사용가능
+
+
 4. application Scope : application 객체  
 	:	어떤 페이지에서 application을 설정하면 
 		여러개의 다른 페이지에서 이 데이터를 사용할 수 있다. 
 		누구다 다 
+
+		탐캣(WAS) 구동시 webConext 별로 만들어지는 객체
+		탐캣(WAS) 중지시 객체가 없어진다.
+		getParameter(), 
+		setAttribute(), getAttribute() 사용가능
