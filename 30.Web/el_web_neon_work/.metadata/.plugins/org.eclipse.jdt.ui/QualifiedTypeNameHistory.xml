@@ -3,11 +3,9 @@
 <fullyQualifiedTypeName name="a.b.c.cgitest.EmpVO"/>
 <fullyQualifiedTypeName name="a.b.c.com.kosmo.board.dao.BoardDAO"/>
 <fullyQualifiedTypeName name="a.b.c.com.kosmo.board.dao.BoardDAOImpl"/>
-<fullyQualifiedTypeName name="java.io.PrintWriter"/>
 <fullyQualifiedTypeName name="a.b.c.com.common.CommonUtils"/>
 <fullyQualifiedTypeName name="com.oreilly.servlet.MultipartRequest"/>
 <fullyQualifiedTypeName name="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"/>
-<fullyQualifiedTypeName name="java.util.Enumeration"/>
 <fullyQualifiedTypeName name="a.b.c.com.kosmo.board.service.BoardService"/>
 <fullyQualifiedTypeName name="a.b.c.com.kosmo.board.service.BoardServiceImpl"/>
 <fullyQualifiedTypeName name="a.b.c.com.kosmo.board.vo.BoardVO"/>
@@ -23,4 +21,6 @@
 <fullyQualifiedTypeName name="java.sql.Connection"/>
 <fullyQualifiedTypeName name="a.b.c.com.kosmo.book.sql.BookSqlMap"/>
 <fullyQualifiedTypeName name="a.b.c.com.common.ConnProperty"/>
+<fullyQualifiedTypeName name="java.io.PrintWriter"/>
+<fullyQualifiedTypeName name="java.util.Enumeration"/>
 </qualifiedTypeNameHistroy>

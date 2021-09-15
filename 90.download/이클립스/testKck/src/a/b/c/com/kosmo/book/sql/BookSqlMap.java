@@ -30,6 +30,16 @@ public class BookSqlMap {
 
 		StringBuffer sb = new StringBuffer();
 		
+		
+		return sb.toString();
+	}
+
+	// 글 등록 쿼리문
+	public static String getBookInsertQuery() {
+		System.out.println("BookSqlMap.getBookSelectQuery()함수 진입");
+
+		StringBuffer sb = new StringBuffer();
+
 		sb.append("	INSERT INTO 						\n");
 		sb.append("		KCK_BOOK (			    		\n");
 		sb.append("      			 BNUM 				\n");
@@ -56,17 +66,6 @@ public class BookSqlMap {
 	    sb.append("						,SYSDATE 		\n"); // placeholder 10
 	    sb.append("						,SYSDATE 		\n"); // placeholder 11	
 		sb.append("	              )						\n");
-		
-		return sb.toString();
-	}
-
-	// 글 등록 쿼리문
-	public static String getBookInsertQuery() {
-		System.out.println("BookSqlMap.getBookSelectQuery()함수 진입");
-
-		StringBuffer sb = new StringBuffer();
-
-		
 
 		return sb.toString();
 	}
