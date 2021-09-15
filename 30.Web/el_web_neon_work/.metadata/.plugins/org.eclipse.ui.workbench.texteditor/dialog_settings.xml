@@ -9,22 +9,24 @@
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="isudType" key="selection"/>
+		<item value="" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="orad"/>
+			<item value="Board"/>
 			<item value="Stu"/>
 			<item value="isudType"/>
 			<item value="aListS"/>
 			<item value="testKosmo/fileupload/board"/>
 			<item value="fileupload/board"/>
 			<item value="Kosmo"/>
-			<item value="SALL"/>
-			<item value="HTML의 form태그에서 hidden type의 ISUD_TYPE을 확인하세요"/>
 		</list>
 		<list key="replacehistory">
+			<item value="ook"/>
+			<item value="Book"/>
 			<item value="Kck"/>
 		</list>
 	</section>

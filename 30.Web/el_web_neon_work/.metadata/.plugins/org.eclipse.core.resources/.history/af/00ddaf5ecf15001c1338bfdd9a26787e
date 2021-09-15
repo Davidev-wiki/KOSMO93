@@ -1,0 +1,79 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>cgiFormJsp</title>
+</head>
+<body>
+<h3>cgiFormJsp</h3>
+<h3>header</h3>
+<hr>
+<% 
+	request.setCharacterEncoding("EUC-KR") 
+%>
+	<%-- 요청한 웹 브라우저에서 header 정보 추출하기 --%>
+
+<%
+	Enumeration<String> em = request.getHeaderNames();
+	while(em.hasMoreElements()){
+		String name = em.nextElement();
+		String value = request.getHeader(name);
+		out.println(name + " : " + value + "<br>");
+		System.out.println(name + " : " + value);
+		
+	}
+%>
+<h3>getParameter</h3>
+<!--
+http://localhost:8088/testKosmo/cgiForm/cgiFormJsp.jsp
+?mname=111
+&mid=1111
+&mpw=111
+&mhp=111
+&mgender=M
+&mhobby=book
+&mhobby=sports&mhobby=mugic&mhobby=trable
+&mlocal=gunggido
+&mmsg=11111
+&isudtype=I
+-->
+<hr>
+<%
+	String method = request.getMethod();
+	String isudtype= request.getParameter("isudtype");
+	if(isudtype != null) isudtype.toUpperCase();
+	
+	if(isudtype != null && isudtype.length() > 0){
+		
+		String mname = request.getParameter("mname");
+		String mid = request.getParameter("mid");
+		String mpw = request.getParameter("mpw");
+		String mid = request.getParameter("mgender");
+		
+		String mhobby = "";
+		String hobby [] = request.getParameterValues("mhobby");
+		if(hobby != null){
+			for(int i=0; hobby.length; i++){
+				mhobby += hobby[i] + ",";
+			}
+		}
+		
+		String mlocal = request.getParameter("mlocal");
+		String mmsg = request.getParameter("mmsg");
+		
+		out.println("mname : " + mname);
+		out.println("mid : " + mid);
+		out.println("mpw : " + mpw);
+		out.println("mgender : " + mgender);
+		out.println("mhobby : " + mhobby);
+		out.println("mlocal : " + mlocal);
+		out.println("mmsg : " + mmsg);
+
+	
+	} else {
+		System.out.println("데이터를 정확히 입력해 전송해주세요");
+	}
+%>
+</body>
+</html>

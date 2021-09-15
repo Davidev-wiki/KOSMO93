@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="a.b.c.cgitest.EmpVO"/>
-<fullyQualifiedTypeName name="java.sql.Connection"/>
 <fullyQualifiedTypeName name="a.b.c.com.kosmo.board.dao.BoardDAO"/>
 <fullyQualifiedTypeName name="a.b.c.com.kosmo.board.dao.BoardDAOImpl"/>
 <fullyQualifiedTypeName name="java.io.PrintWriter"/>
@@ -14,9 +13,14 @@
 <fullyQualifiedTypeName name="a.b.c.com.kosmo.board.vo.BoardVO"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.sql.ResultSet"/>
-<fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
 <fullyQualifiedTypeName name="a.b.c.com.kosmo.board.sql.BoardSqlMap"/>
-<fullyQualifiedTypeName name="a.b.c.com.common.ConnProperty"/>
 <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
 <fullyQualifiedTypeName name="a.b.c.com.common.GetChabun"/>
+<fullyQualifiedTypeName name="a.b.c.com.kosmo.book.vo.BookVO"/>
+<fullyQualifiedTypeName name="a.b.c.com.kosmo.book.dao.BookDAO"/>
+<fullyQualifiedTypeName name="a.b.c.com.kosmo.book.dao.BookDAOImpl"/>
+<fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+<fullyQualifiedTypeName name="java.sql.Connection"/>
+<fullyQualifiedTypeName name="a.b.c.com.kosmo.book.sql.BookSqlMap"/>
+<fullyQualifiedTypeName name="a.b.c.com.common.ConnProperty"/>
 </qualifiedTypeNameHistroy>
