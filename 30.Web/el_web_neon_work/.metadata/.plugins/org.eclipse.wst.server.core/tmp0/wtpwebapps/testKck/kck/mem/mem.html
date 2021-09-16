@@ -55,13 +55,14 @@
 			}
 		});
 		
-		// 성별
+		// 성별---------------------------------------------------
+
 		
 		// 생년월일
 		$("#mbirth").on("input", function(){
 			var m = $("#mbirth");
 			if (m.val().length > m.maxlength){
-				m.valu = m.value.slice(0, m.maxlength);
+				m.value = m.value.slice(0, m.maxlength);
 			}
 		});
         // 월 
@@ -102,7 +103,7 @@
 				oncomplete: function(data) {
 				    $("#mzonecode").val(data.zonecode); //5자리 새우편번호 사용
 				    $("#mroadaddress").val(data.roadAddress); //도로명 주소
-				    $("#mgibunaddress").val(data.jibunAddress); //지번주소			
+				    $("#mgibunaddress").val(data.gibunAddress); //지번주소			
 				}
 			}).open();
 		});
@@ -111,18 +112,69 @@
 		// 소개글 		
 		// 사진 
 		
-		// 폼태그 데이터 JSP 보내기 
+		// HTML에서  JSP로 <form>태그를 이용해 보내는 데이터 : 13개?   <--------- > DB에 저장되는 총 컬럼 수 : 19개 
+		//					<HTML>
+		// 			mnum, mname, mid, mpw							
+		// 			mgender, mbirth, mhp, mtel
+		// 			memail, mzonecode, 
+		// 			mroadaddress, mgibunaddress
+		// 			minfo
+		// 					<etc>
+		// 			mhobby(controller) 
+		// 			mphoto(context)
+		// 			madmin(controller)
+		// 			deleteyn(SqlMap)
+		// 			insertdate(SqlMap)
+		// 			updatedate(SqlMap)
+		
 		$("#btn").click(function(){
 			alert("btn click() 함수 진입 >>> : ");
-			console.log("btn click() 함수 진입 >>> : ");
+			alert("mnum : " + mnum);                 	 // mnum : 						[object HTMLInputElement]
+			alert("mname : " + mname);              	 // mname : 					[object HTMLInputElement]
+			alert("mid : " + mid);						 // mid : 						[object HTMLInputElement]
+			alert("mpw : " + mpw);					 	 // mpw : 						[object HTMLInputElement]
+			alert("mgender : " + mgender);			 	 // mgender : 		[object HTMLCollection]
+			alert("mbirth : " + mbirth);            	 // mbirth : 					[object HTMLInputElement]
+			alert("mhp : " + mhp);					   	 // mhp : 			[object HTMLSelectElement]
+			alert("mtel : " + mtel);				  	 // mtel : 			[object HTMLSelectElement]
+			alert("memail : " + memail);			  	 // memail : 					[object HTMLInputElement]
+			alert("mzonecode : " + mzonecode);		  	 // mzonecode : 				[object HTMLInputElement]
+			alert("mroadaddress : " + mroadaddress);  	 // mroadaddress : 				[object HTMLInputElement]
+			alert("mgibunaddress : " + mgibunaddress);	 // mgibunaddress : 			[object HTMLInputElement]
+			//alert("mhobby : " + mhobby)				 // error 발생 : Uncaught ReferenceError: mhobby is not defined
+			alert("minfo : " + minfo);				     // minfo : 		[object HTMLTextAreaElement]
+			//alert("mphoto : " + mphoto);				 // error 발생 : Uncaught ReferenceError: mphoto is not defined
+			//alert("madmin : " + madmin);				 // error 발생 : Uncaught ReferenceError: mphoto is not defined
+			//alert("deleteyn : " + deleteyn);			 // error 발생 : Uncaught ReferenceError: mphoto is not defined 
+			//alert("insertdate : " + insertdate);		 // error 발생 : Uncaught ReferenceError: mphoto is not defined 
+			//alert("updatedate : " + updatedate);		 // error 발생 : Uncaught ReferenceError: mphoto is not defined
 			
-			$("#memForm")
-			.attr({
-					"action":"/testWeb/jsp/formTest.jsp",
-				    "method":"GET",
-				    "enctype":"application/x-www-form-urlencoded"
-			       })
-			.submit();	
+			
+			console.log("btn click() 함수 진입 >>> : ");
+			console.log("mnum : " + mnum.value);
+			console.log("mname : " + mname.value);
+			console.log("mid : " + mid.value);
+			console.log("mpw : " + mpw.value);
+			console.log("mgender : " + document.memForm.mpw.value[0]);
+			console.log("mbirth : " + mbirth.value);
+			console.log("mhp : " + mhp.value);
+			console.log("mtel : " + mtel.value);
+			console.log("memail : " + memail.value);
+			console.log("mzonecode : " + mzonecode.value);
+			console.log("mroadaddress : " + mroadaddress.value);
+			console.log("mgibunaddress : " + mgibunaddress.value);
+			console.log("minfo : " + minfo.value);
+			console.log("mhobby : " + document.getElementByName(""));
+			console.log("mphoto : " + document.getElementByNames("mphoto"));
+		
+			
+			//$("#memForm")
+			//.attr({
+			//		"action":"/testWeb/jsp/formTest.jsp",
+			//	    "method":"GET",
+			//	    "enctype":"application/x-www-form-urlencoded"
+			//       })
+			//.submit();	
 		});
 	});
 </script>	
@@ -135,7 +187,7 @@
 <tr>
 	<td colspan="2" align="center">					
 		KOSMO 93기 
-		<img src="/testWeb/img/ase.gif" width="25" height="25" alt="image">
+		<img src="/testKck/img/ase.gif" width="25" height="25" alt="image">
 	</td>
 </tr>
 <tr>
@@ -247,7 +299,7 @@
  <tr>
 	<td>사진</td>
 	<td> 
-		<input type="file" name="mphoto"  /><br>
+		<input type="file" name="mphoto" id="mphoto1" /><br>
     </td>
 </tr>
 <tr>
