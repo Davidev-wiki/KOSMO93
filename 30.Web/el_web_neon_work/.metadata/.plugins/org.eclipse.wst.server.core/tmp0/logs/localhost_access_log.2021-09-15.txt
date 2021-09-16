@@ -48,3 +48,7 @@
 0:0:0:0:0:0:0:1 - - [15/Sep/2021:17:26:01 +0900] "GET /testKck/img/ase.gif HTTP/1.1" 200 3083
 0:0:0:0:0:0:0:1 - - [15/Sep/2021:17:26:24 +0900] "POST /testKck/book?isudtype=I HTTP/1.1" 500 1669
 0:0:0:0:0:0:0:1 - - [15/Sep/2021:17:30:35 +0900] "POST /testKck/book?isudtype=I HTTP/1.1" 500 1669
+127.0.0.1 - - [15/Sep/2021:17:32:48 +0900] "GET / HTTP/1.1" 404 807
+0:0:0:0:0:0:0:1 - - [15/Sep/2021:17:32:49 +0900] "GET /testKck/kck/book/book.html HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [15/Sep/2021:17:33:03 +0900] "POST /testKck/book?isudtype=I HTTP/1.1" 200 62
+0:0:0:0:0:0:0:1 - - [15/Sep/2021:17:33:03 +0900] "GET /testKck/book/book.html HTTP/1.1" 404 837

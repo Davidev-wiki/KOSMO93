@@ -90,9 +90,9 @@ public class BookController extends HttpServlet {
 				String bauth = "";
 				String isbn = "";
 				String bcomp = "";
-				String bcover = "";
 				String bqty = "";
 				String bprice = "";
+				String bcover = "";
 				
 				/*
 				 	POST 방식에서 request.getParameter()메서드를
@@ -185,7 +185,7 @@ public class BookController extends HttpServlet {
 				bvo.setBcover(bcover);
 				
 				// 로그 찍어보기!!!!!!!!!!
-				BookVO.printlnBookVO(bvo);
+				// BookVO.printlnBookVO(bvo);
 				
 				// Insert함수로 보낸 요청에 대한 결과 값을 받아
 				// int 타입 nCnt 변수에 저장
@@ -217,6 +217,25 @@ public class BookController extends HttpServlet {
 			// 도서 정보 전체 조회
 			// 데이터 요청시 입력된 isudtype의 값이 "SALL"인 경우
 			if ("SALL".equals(isudtype)) {
+				System.out.println("데이터 요청에 입력된 isudtype 출력 값 : " + isudtype);
+				
+				BookService bs = new BookServiceImpl();
+				BookVO bvo = new BookVO();
+				
+				ArrayList<BookVO> aListAll = bs.bookSelectAll();
+				
+				if(aListAll != null && aListAll.size() > 0){
+					
+					request.setAttribute("aListAll", aListAll);
+					RequestDispatcher rd = request.getRequestDispatcher("/kck/book/bookSelectAll.jsp");
+					rd.forward(request, response);
+				} else {
+					out.println("<script>");
+					out.println("location.href='testKck/book?isudtype=SALL'");
+					out.println("</script>");
+				}
+				
+				
 			}
 
 			// 도서 정보 조건 조회 ('S' or 'U' or 'D')

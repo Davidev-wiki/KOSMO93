@@ -22,13 +22,20 @@ public class BookDAOImpl implements BookDAO {
 		ArrayList<BookVO> aList = null;
 		
 		try{
+			
 			conn = ConnProperty.getConnection();
+			
 			pstmt = conn.prepareStatement(BookSqlMap.getBookSelectAllQuery());
+			
+			System.out.println("bookSelectAll의 Query값 : " + BookSqlMap.getBookSelectAllQuery());
+			
 			rsRs = pstmt.executeQuery();
 			
+			System.out.println("Query문 실행한 후 받아온 rsRs의 값 : " + rsRs);
+
 			if(rsRs != null){
 				
-				aList = ArrayList<BookVO>();
+				aList = new ArrayList<BookVO>();
 				
 				while(rsRs.next()){
 					
@@ -37,7 +44,7 @@ public class BookDAOImpl implements BookDAO {
 					bvo.setBnum(rsRs.getString(1));
 					bvo.setBtitle(rsRs.getString(2));
 					bvo.setBauth(rsRs.getString(3));
-					bvo.setisbn(rsRs.getString(4));
+					bvo.setIsbn(rsRs.getString(4));
 					bvo.setBcomp(rsRs.getString(5));
 					bvo.setBprice(rsRs.getString(6));
 					bvo.setBqty(rsRs.getString(7));
@@ -58,6 +65,8 @@ public class BookDAOImpl implements BookDAO {
 			ConnProperty.conClose(conn, pstmt, rsRs);
 		}
 		
+		System.out.println("BookDAOImpl.bookSelectAll() 종료");
+
 		return aList;
 	}
 
@@ -65,6 +74,8 @@ public class BookDAOImpl implements BookDAO {
 	public ArrayList<BookVO> bookSelect(BookVO bvo) {
 		// TODO Auto-generated method stub
 		System.out.println("BookDAOImpl.bookSelect() 진입");
+		
+		System.out.println("BookDAOImpl.bookSelect() 종료");
 
 		return aList;
 	}
@@ -85,7 +96,7 @@ public class BookDAOImpl implements BookDAO {
 
 			pstmt = conn.prepareStatement(BookSqlMap.getBookInsertQuery());
 			
-			System.out.println("bookInsert Query : " + BookSqlMap.getBookInsertQuery());
+			System.out.println("getBookInsert Query : \n" + BookSqlMap.getBookInsertQuery());
 			
 			pstmt.clearParameters();
 			
@@ -95,11 +106,12 @@ public class BookDAOImpl implements BookDAO {
 			pstmt.setString(4, bvo.getIsbn());
 			pstmt.setString(5, bvo.getBcomp());
 			pstmt.setString(6, bvo.getBprice());
-			pstmt.setString(7, bvo.getDeleteyn());
-			pstmt.setString(8, bvo.getInsertdate());
-			pstmt.setString(9, bvo.getInsertdate());
+			pstmt.setString(7, bvo.getBqty());
+			pstmt.setString(8, bvo.getBcover());
 			
 			nCnt = pstmt.executeUpdate();
+			
+			System.out.println("가져온 nCnt 의 값 : " + nCnt);
 			
 			// getAutoCommit() : 이 Connection 객체에 대한 현재 자동 커밋 모드를 검색합니다. 
 			// return 값 : 이 Connection 객체의 자동 커밋 모드의 현재 상태
@@ -110,7 +122,7 @@ public class BookDAOImpl implements BookDAO {
 			ConnProperty.conClose(conn, pstmt);
 			
 		} catch(Exception e){
-			System.out.println("");
+			System.out.println("DB에 입력하는데 문제가 발생했습니다. : " + e);
 			
 		} finally{
 			ConnProperty.conClose(conn, pstmt);
@@ -123,6 +135,8 @@ public class BookDAOImpl implements BookDAO {
 	public int bookUpdate(BookVO bvo) {
 		// TODO Auto-generated method stub
 		System.out.println("BookDAOImpl.bookUpdate() 진입");
+		
+		System.out.println("BookDAOImpl.bookUpdate() 종료");
 
 		return 0;
 	}
@@ -131,6 +145,8 @@ public class BookDAOImpl implements BookDAO {
 	public int bookDelete(BookVO bvo) {
 		// TODO Auto-generated method stub
 		System.out.println("BookDAOImpl.bookDelete() 진입");
+		
+		System.out.println("BookDAOImpl.bookDelete() 종료");
 
 		return 0;
 	}

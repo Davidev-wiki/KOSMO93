@@ -21,6 +21,22 @@ public class BookSqlMap {
 		
 		StringBuffer sb = new StringBuffer();
 
+		sb.append(" SELECT 															\n");
+		sb.append("   		  A.BNUM 								BNUM			\n");
+		sb.append("   		 ,A.BTITLE 								BTITLE			\n");
+		sb.append("   		 ,A.BAUTH 								BAUTH			\n");
+		sb.append("   		 ,A.ISBN 								BISBN			\n");
+		sb.append("   		 ,A.BCOMP 								BCOMP			\n");
+		sb.append("   		 ,A.BPRICE 								BPRICE			\n");
+		sb.append("   		 ,A.BQTY 								BQTY			\n");
+		sb.append("   		 ,A.BCOVER 								BCOVER			\n");
+		sb.append("   		 ,A.DELETEYN 							DELETEYN		\n");
+		sb.append("   		 ,TO_CHAR(A.INSERTDATE, 'YYYY-MM-DD')	INSERTDATE		\n");
+		sb.append("   		 ,TO_CHAR(A.UPDATEDATE, 'YYYY-MM-DD')	UPDATEDATE		\n");
+		sb.append(" FROM	KCK_BOOK A												\n");
+		sb.append(" WHERE 	A.DELETEYN=								'Y'				\n");
+		sb.append(" ORDER BY 1 DESC													\n");
+		
 		return sb.toString();
 	}
 
@@ -36,20 +52,20 @@ public class BookSqlMap {
 
 	// 글 등록 쿼리문
 	public static String getBookInsertQuery() {
-		System.out.println("BookSqlMap.getBookSelectQuery()함수 진입");
+		System.out.println("BookSqlMap.getBookInsertQuery()함수 진입");
 
 		StringBuffer sb = new StringBuffer();
-
+		
 		sb.append("	INSERT INTO 						\n");
 		sb.append("		KCK_BOOK (			    		\n");
-		sb.append("      			 BNUM 				\n");
-		sb.append("					,BTITLE 			\n");
-		sb.append("					,BAUTH 				\n");
-	    sb.append("					,ISBN   			\n");	    
-	    sb.append("					,BCOMP 				\n");	    
-	    sb.append("					,BPRICE				\n");	    
-	    sb.append("					,BQTY 				\n");
-	    sb.append("					,BCOVER   			\n");	    
+		sb.append("      			 BNUM 				\n"); // Data 1
+		sb.append("					,BTITLE 			\n"); // Data 2
+		sb.append("					,BAUTH 				\n"); // Data 3
+	    sb.append("					,ISBN   			\n"); // Data 4	    
+	    sb.append("					,BCOMP 				\n"); // Data 5	    
+	    sb.append("					,BPRICE				\n"); // Data 6	    
+	    sb.append("					,BQTY 				\n"); // Data 7
+	    sb.append("					,BCOVER   			\n"); // Data 8	    
 	    sb.append("					,DELETEYN			\n");
 	    sb.append("					,INSERTDATE			\n");
 	    sb.append("					,UPDATEDATE	)		\n");
@@ -72,7 +88,7 @@ public class BookSqlMap {
 
 	// 글 업데이트 쿼리문
 	public static String getBookUpdateQuery() {
-		System.out.println("BookSqlMap.getBookSelectQuery()함수 진입");
+		System.out.println("BookSqlMap.getBookUpdateQuery()함수 진입");
 
 		StringBuffer sb = new StringBuffer();
 
@@ -83,7 +99,7 @@ public class BookSqlMap {
 
 	// 글 삭제 쿼리문
 	public static String getBookDeleteQuery() {
-		System.out.println("BookSqlMap.getBookSelectQuery()함수 진입");
+		System.out.println("BookSqlMap.getBookDeleteQuery()함수 진입");
 
 		StringBuffer sb = new StringBuffer();
 
