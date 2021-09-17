@@ -1,0 +1,5 @@
+package a.b.c.com.kosmo.mem.vo;
+
+public class MemberVO {
+
+}

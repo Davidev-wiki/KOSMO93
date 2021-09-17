@@ -77,7 +77,6 @@
         	if (i < 10){ i = '0'+i;}
             $("#mbirth2").append("<option value='"+ i +"'>"+ i + "</option>");
         }
-
 		
 		// 핸드폰		
 		// 전화번호
@@ -127,6 +126,17 @@
 		// 			insertdate(SqlMap)
 		// 			updatedate(SqlMap)
 		
+		//			mgender 는 radio type, mgender라는 이름으로 value만 F, M 으로 나뉜다.
+		// 			mbirth 는 mbirth(출생연도) mbirth1(월) mbirth2(일)로 나뉜다.
+		// 			mhp 는 가운데자리 mhp1, 마지막자리 mhp2가 추가된다. 
+		// 			mtel 은 가운데자리 mtel1, 마지막자리 mtel2가 추가된다.
+		//			memail은 메일 뒷자리 memail1이 추가된다.
+		// 			mzonecode는 우편번호이고, 도로명주소는 mroadaddress
+		// 			도로명주소의 상세주소는 mroadaddressdetail,
+		// 			지번 주소는 mginunaddress이다.
+		// 			취미는 mhobby 의 이름으로 mh1, mh2 .. mh5까지의 밸류가 있다.
+		// 			사진은 file로 올라온다.
+		
 		$("#btn").click(function(){
 			alert("btn click() 함수 진입 >>> : ");
 			alert("mnum : " + mnum);                 	 // mnum : 						[object HTMLInputElement]
@@ -150,23 +160,26 @@
 			//alert("updatedate : " + updatedate);		 // error 발생 : Uncaught ReferenceError: mphoto is not defined
 			
 			
-			console.log("btn click() 함수 진입 >>> : ");
+			console.log("btn click() 함수 진입 log : ");
 			console.log("mnum : " + mnum.value);
 			console.log("mname : " + mname.value);
 			console.log("mid : " + mid.value);
 			console.log("mpw : " + mpw.value);
-			console.log("mgender : " + document.memForm.mpw.value[0]);
+			//console.log("mgender : " + document.memForm.mpw.value[0]);
 			console.log("mbirth : " + mbirth.value);
+			console.log("mbirth1 : " + mbirth1.value);
 			console.log("mhp : " + mhp.value);
+			console.log("mhp1 : " + mhp1.value);
+			console.log("mhp2 : " + mhp2.value);
 			console.log("mtel : " + mtel.value);
 			console.log("memail : " + memail.value);
 			console.log("mzonecode : " + mzonecode.value);
 			console.log("mroadaddress : " + mroadaddress.value);
 			console.log("mgibunaddress : " + mgibunaddress.value);
 			console.log("minfo : " + minfo.value);
-			console.log("mhobby : " + document.getElementByName(""));
-			console.log("mphoto : " + document.getElementByNames("mphoto"));
-		
+			//console.log("mhobby : " + document.getElementByName(""));
+			//console.log("mphoto : " + document.getElementByNames("mphoto"));
+			
 			
 			//$("#memForm")
 			//.attr({
@@ -260,7 +273,7 @@
 	<td>이메일</td>
 	<td>		
 		<input type="text" name="memail"  id="memail" style="width:100px"/>
-		@ <input type="text" name="memail1" id="memail1" style="width:100px" placeholder="직접입력" />
+		@<input type="text" name="memail1" id="memail1" style="width:100px" placeholder="직접입력" />
 		<select name="memail2" id="memail2">
         	 <option value="1" selected>직접입력</option>
        		 <option value="naver.com">naver.com</option>	       	   
