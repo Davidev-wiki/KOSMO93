@@ -4,4 +4,8 @@
 <typeInfo handle="=testKck/src&lt;a.b.c.com.kosmo.board.dao{BoardDAO.java[BoardDAO" modifiers="513" timestamp="1631153948304"/>
 <typeInfo handle="=testKck/src&lt;a.b.c.com.kosmo.book.service{BookService.java[BookService" modifiers="513" timestamp="1631609161623"/>
 <typeInfo handle="=testKck/src&lt;a.b.c.com.kosmo.book.dao{BookDAO.java[BookDAO" modifiers="513" timestamp="1631609505198"/>
+<typeInfo handle="=testKck/src&lt;a.b.c.com.kosmo.mem.service{MemberService.java[MemberService" modifiers="513" timestamp="1631847278837"/>
+<typeInfo handle="=testKck/C:\/Program Files\/Apache Software Foundation\/Tomcat 8.5\/lib\/catalina-tribes.jar&lt;org.apache.catalina.tribes(Member.class[Member" modifiers="1537" timestamp="1628525834000"/>
+<typeInfo handle="=testKck/src&lt;a.b.c.com.kosmo.mem.dao{MemberDAO.java[MemberDAO" modifiers="513" timestamp="1631847295694"/>
+<typeInfo handle="=testKck/C:\/Program Files\/Java\/jdk1.8.0_291\/jre\/lib\/rt.jar&lt;java.lang.reflect(Member.class[Member" modifiers="1537" timestamp="1624936104041"/>
 </typeInfoHistroy>

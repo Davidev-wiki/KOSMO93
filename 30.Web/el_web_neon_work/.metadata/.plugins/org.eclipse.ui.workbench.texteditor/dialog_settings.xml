@@ -9,29 +9,30 @@
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="alert" key="selection"/>
+		<item value="hp" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="birth"/>
+			<item value="EUC-KR"/>
+			<item value="hobby"/>
+			<item value="gender"/>
+			<item value="tel"/>
+			<item value="ISUD"/>
 			<item value="console.log"/>
 			<item value=";"/>
-			<item value="private S"/>
-			<item value="out"/>
-			<item value="orad"/>
-			<item value="Board"/>
-			<item value="Stu"/>
-			<item value="isudType"/>
 		</list>
 		<list key="replacehistory">
+			<item value="hp"/>
+			<item value="UTF-8"/>
+			<item value="photo"/>
+			<item value="info"/>
+			<item value="hobby"/>
+			<item value="email"/>
+			<item value="tel"/>
 			<item value="alert"/>
-			<item value=" = &quot;&quot;;"/>
-			<item value="S"/>
-			<item value="System.out"/>
-			<item value="ook"/>
-			<item value="Book"/>
-			<item value="Kck"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
