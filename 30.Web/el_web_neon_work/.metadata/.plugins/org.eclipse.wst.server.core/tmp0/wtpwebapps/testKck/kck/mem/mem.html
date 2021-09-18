@@ -1,50 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>íšŒì›ê°€ì… í¼</title>
-<!-- jQuery CDN ë¶ˆëŸ¬ì˜¤ê¸°  -->
+<meta charset="EUC-KR">
+<title>È¸¿ø°¡ÀÔ Æû</title>
+<!-- jQuery CDN ºÒ·¯¿À±â  -->
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
-<!-- ë‹¤ìŒ ì£¼ì†Œë¡ OPEN API CDN ë¶ˆëŸ¬ì˜¤ê¸°  -->
+<!-- ´ÙÀ½ ÁÖ¼Ò·Ï OPEN API CDN ºÒ·¯¿À±â  -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 
 <script type="text/javascript">
-	alert("ìë°”ìŠ¤í¬ë¦½íŠ¸ ë¸”ëŸ­ ì‹œì‘ >>> : ")
+	alert("ÀÚ¹Ù½ºÅ©¸³Æ® ºí·° ½ÃÀÛ >>> : ")
 
 	$(document).ready(function(){	
-		alert("ì œì´ì¿¼ë¦¬ ë¸”ëŸ­ ì‹œì‘ >>> : ")
-		// íšŒì›ë²ˆí˜¸ 		
-		// ì´ë¦„
+		alert("Á¦ÀÌÄõ¸® ºí·° ½ÃÀÛ >>> : ")
+		// È¸¿ø¹øÈ£ 		
+		// ÀÌ¸§
 		
-		// ì•„ì´ë”” ì¤‘ë³µì²´í¬		
+		// ¾ÆÀÌµğ Áßº¹Ã¼Å©		
 		$("#midbtn").click(function(){		
-			alert("idCheck >>> : Ajax ë°°ì›Œì„œ í•  ì˜ˆì •ì„ ã…‹ ");		
+			alert("idCheck >>> : Ajax ¹è¿ö¼­ ÇÒ ¿¹Á¤ÀÓ ¤» ");		
 			console.log("idCheck >>> : ");
 			
 			let midVal = $("#mid").val();
 			if (midVal == '') {
-				alert("ì¤‘ë³µ ì²´í¬í•  ì•„ì´ë””ë¥¼ ì…ë ¥í•˜ì„¸ìš” >>> : ");
+				alert("Áßº¹ Ã¼Å©ÇÒ ¾ÆÀÌµğ¸¦ ÀÔ·ÂÇÏ¼¼¿ä >>> : ");
 				$("#mid").focus();
 				return false;
 			}
 		});
 		
-		// ë¹„ë°€ë²ˆí˜¸ ì²´í¬ 
+		// ºñ¹Ğ¹øÈ£ Ã¼Å© 
 		$("#pwCheck").click(function(){
-			console.log(" pwCheck í•¨ìˆ˜ ì§„ì…");
+			console.log(" pwCheck ÇÔ¼ö ÁøÀÔ");
 			// var pw = $("#mpw");
 			// var pw_r = $("#mpw_r");
 			var pw = document.getElementById("mpw").value;
 			var pw_r = document.getElementById("mpw_r").value;			
 			alert(pw + " : " + pw_r);
 			if(pw == pw_r) {
-				alert("ë¹„ë°€ë²ˆí˜¸ê°€ ê°™ìŠµë‹ˆë‹¤.");
+				alert("ºñ¹Ğ¹øÈ£°¡ °°½À´Ï´Ù.");
 				// pw_r.val('');
 				document.memForm.mpw_r.value = "";
 				$("#mgender").focus();						
 				return true;
 			} else {
-				alert("ë¹„ë°€ë²ˆí˜¸ê°€ ë‹¤ë¦…ë‹ˆë‹¤.");
+				alert("ºñ¹Ğ¹øÈ£°¡ ´Ù¸¨´Ï´Ù.");
 				// pw.val('');
 				// pw_r.val('');
 				document.memForm.mpw.value = "";
@@ -55,63 +55,63 @@
 			}
 		});
 		
-		// ì„±ë³„---------------------------------------------------
+		// ¼ºº°---------------------------------------------------
 
 		
-		// ìƒë…„ì›”ì¼
+		// »ı³â¿ùÀÏ
 		$("#mbirth").on("input", function(){
 			var m = $("#mbirth");
 			if (m.val().length > m.maxlength){
 				m.value = m.value.slice(0, m.maxlength);
 			}
 		});
-        // ì›” 
-        $("#mbirth1").append("<option value=''>ì›”--- </option>");
+        // ¿ù 
+        $("#mbirth1").append("<option value=''>¿ù--- </option>");
         for(var i = 1; i <= 12; i++){
         	if (i < 10){ i = '0'+i;}
             $("#mbirth1").append("<option value='"+ i +"'>"+ i + "</option>");
         }
-        // ì¼ 
-        $("#mbirth2").append("<option value=''>ì¼ ---</option>");
+        // ÀÏ 
+        $("#mbirth2").append("<option value=''>ÀÏ ---</option>");
         for(var i = 1; i <= 31; i++){
         	if (i < 10){ i = '0'+i;}
             $("#mbirth2").append("<option value='"+ i +"'>"+ i + "</option>");
         }
 		
-		// í•¸ë“œí°		
-		// ì „í™”ë²ˆí˜¸
+		// ÇÚµåÆù		
+		// ÀüÈ­¹øÈ£
 		
-		// ì´ë©”ì¼ 
+		// ÀÌ¸ŞÀÏ 
 		$('#memail2').change(function(){	
 		$("#memail2 option:selected").each(function () {
-			if($(this).val()== '1'){ //ì§ì ‘ì…ë ¥ì¼ ê²½ìš° 
+			if($(this).val()== '1'){ //Á÷Á¢ÀÔ·ÂÀÏ °æ¿ì 
 					var aa = $("#memail1").val();
 					//alert("aa >>> : " + aa);
-					$("#memail1").val(''); //ê°’ ì´ˆê¸°í™” 
-					$("#memail1").attr("readonly",false); //í™œì„±í™” 				
-			}else{ //ì§ì ‘ì…ë ¥ì´ ì•„ë‹ê²½ìš° 
-					$("#memail1").val($(this).text()); //ì„ íƒê°’ ì…ë ¥ 
-					$("#memail1").attr("readonly",true); //ë¹„í™œì„±í™” 
+					$("#memail1").val(''); //°ª ÃÊ±âÈ­ 
+					$("#memail1").attr("readonly",false); //È°¼ºÈ­ 				
+			}else{ //Á÷Á¢ÀÔ·ÂÀÌ ¾Æ´Ò°æ¿ì 
+					$("#memail1").val($(this).text()); //¼±ÅÃ°ª ÀÔ·Â 
+					$("#memail1").attr("readonly",true); //ºñÈ°¼ºÈ­ 
 			}}); 
 		}); 	
 		
-		// ìš°í¸ë²ˆí˜¸	
+		// ¿ìÆí¹øÈ£	
 		$("#zonecode").click(function(){
 			console.log("zonecode >>> : ");
 			new daum.Postcode({
 				oncomplete: function(data) {
-				    $("#mzonecode").val(data.zonecode); //5ìë¦¬ ìƒˆìš°í¸ë²ˆí˜¸ ì‚¬ìš©
-				    $("#mroadaddress").val(data.roadAddress); //ë„ë¡œëª… ì£¼ì†Œ
-				    $("#mgibunaddress").val(data.gibunAddress); //ì§€ë²ˆì£¼ì†Œ			
+				    $("#mzonecode").val(data.zonecode); //5ÀÚ¸® »õ¿ìÆí¹øÈ£ »ç¿ë
+				    $("#mroadaddress").val(data.roadAddress); //µµ·Î¸í ÁÖ¼Ò
+				    $("#mgibunaddress").val(data.gibunAddress); //Áö¹øÁÖ¼Ò			
 				}
 			}).open();
 		});
 		
-		// ì·¨ë¯¸		
-		// ì†Œê°œê¸€ 		
-		// ì‚¬ì§„ 
+		// Ãë¹Ì		
+		// ¼Ò°³±Û 		
+		// »çÁø 
 		
-		// HTMLì—ì„œ  JSPë¡œ <form>íƒœê·¸ë¥¼ ì´ìš©í•´ ë³´ë‚´ëŠ” ë°ì´í„° : 13ê°œ?   <--------- > DBì— ì €ì¥ë˜ëŠ” ì´ ì»¬ëŸ¼ ìˆ˜ : 19ê°œ 
+		// HTML¿¡¼­  JSP·Î <form>ÅÂ±×¸¦ ÀÌ¿ëÇØ º¸³»´Â µ¥ÀÌÅÍ : 13°³?   <--------- > DB¿¡ ÀúÀåµÇ´Â ÃÑ ÄÃ·³ ¼ö : 19°³ 
 		//					<HTML>
 		// 			mnum, mname, mid, mpw							
 		// 			mgender, mbirth, mhp, mtel
@@ -126,16 +126,16 @@
 		// 			insertdate(SqlMap)
 		// 			updatedate(SqlMap)
 		
-		//			mgender ëŠ” radio type, mgenderë¼ëŠ” ì´ë¦„ìœ¼ë¡œ valueë§Œ F, M ìœ¼ë¡œ ë‚˜ë‰œë‹¤.
-		// 			mbirth ëŠ” mbirth(ì¶œìƒì—°ë„) mbirth1(ì›”) mbirth2(ì¼)ë¡œ ë‚˜ë‰œë‹¤.
-		// 			mhp ëŠ” ê°€ìš´ë°ìë¦¬ mhp1, ë§ˆì§€ë§‰ìë¦¬ mhp2ê°€ ì¶”ê°€ëœë‹¤. 
-		// 			mtel ì€ ê°€ìš´ë°ìë¦¬ mtel1, ë§ˆì§€ë§‰ìë¦¬ mtel2ê°€ ì¶”ê°€ëœë‹¤.
-		//			memailì€ ë©”ì¼ ë’·ìë¦¬ memail1ì´ ì¶”ê°€ëœë‹¤.
-		// 			mzonecodeëŠ” ìš°í¸ë²ˆí˜¸ì´ê³ , ë„ë¡œëª…ì£¼ì†ŒëŠ” mroadaddress
-		// 			ë„ë¡œëª…ì£¼ì†Œì˜ ìƒì„¸ì£¼ì†ŒëŠ” mroadaddressdetail,
-		// 			ì§€ë²ˆ ì£¼ì†ŒëŠ” mginunaddressì´ë‹¤.
-		// 			ì·¨ë¯¸ëŠ” mhobby ì˜ ì´ë¦„ìœ¼ë¡œ mh1, mh2 .. mh5ê¹Œì§€ì˜ ë°¸ë¥˜ê°€ ìˆë‹¤.
-		// 			ì‚¬ì§„ì€ fileë¡œ ì˜¬ë¼ì˜¨ë‹¤.
+		//			mgender ´Â radio type, mgender¶ó´Â ÀÌ¸§À¸·Î value¸¸ F, M À¸·Î ³ª´¶´Ù.
+		// 			mbirth ´Â mbirth(Ãâ»ı¿¬µµ) mbirth1(¿ù) mbirth2(ÀÏ)·Î ³ª´¶´Ù.
+		// 			mhp ´Â °¡¿îµ¥ÀÚ¸® mhp1, ¸¶Áö¸·ÀÚ¸® mhp2°¡ Ãß°¡µÈ´Ù. 
+		// 			mtel Àº °¡¿îµ¥ÀÚ¸® mtel1, ¸¶Áö¸·ÀÚ¸® mtel2°¡ Ãß°¡µÈ´Ù.
+		//			memailÀº ¸ŞÀÏ µŞÀÚ¸® memail1ÀÌ Ãß°¡µÈ´Ù.
+		// 			mzonecode´Â ¿ìÆí¹øÈ£ÀÌ°í, µµ·Î¸íÁÖ¼Ò´Â mroadaddress
+		// 			µµ·Î¸íÁÖ¼ÒÀÇ »ó¼¼ÁÖ¼Ò´Â mroadaddressdetail,
+		// 			Áö¹ø ÁÖ¼Ò´Â mginunaddressÀÌ´Ù.
+		// 			Ãë¹Ì´Â mhobby ÀÇ ÀÌ¸§À¸·Î mh1, mh2 .. mh5±îÁöÀÇ ¹ë·ù°¡ ÀÖ´Ù.
+		// 			»çÁøÀº file·Î ¿Ã¶ó¿Â´Ù.
 		
 		$("#btn").click(function(){
 			
@@ -145,7 +145,7 @@
 			console.log("mpw : " + document.memForm.mpw.value);
 			console.log("mpw_r : " + document.memForm.mpw_r.value);
 			
-			// ì„±ë³„
+			// ¼ºº°
 			var mgender_check = document.getElementsByName('mgender');
 			for(var i=0; i < mgender_check.length; i++){
 				if(mgender_check[i] == true){
@@ -153,32 +153,32 @@
 				}
 			}
 			
-			// ìƒì¼
+			// »ıÀÏ
 			console.log("mbirth : " + document.memForm.mbirth.value);
 			console.log("mbirth1 : " + document.memForm.mbirth1.value);
 			console.log("mbirth2 : " + document.memForm.mbirth2.value);
 			
-			// í•¸ë“œí°
+			// ÇÚµåÆù
 			console.log("mhp : " + document.memForm.mhp.value);
 			console.log("mhp1 : " + document.memForm.mhp1.value);
 			console.log("mhp2 : " + document.memForm.mhp2.value);
 
-			// ì „í™”
+			// ÀüÈ­
 			console.log("mtel : " + document.memForm.mtel.value);
 			console.log("mtel1 : " + document.memForm.mtel1.value);
 			console.log("mtel2 : " + document.memForm.mtel2.value);
 		
-			// ì´ë©”ì¼
+			// ÀÌ¸ŞÀÏ
 			console.log("memail : " + document.memForm.memail.value);
 			console.log("memail1 : " + document.memForm.memail1.value);
 
-			// ì£¼ì†Œ
+			// ÁÖ¼Ò
 			console.log("mzonecode : " + document.memForm.mzonecode.value);
 			console.log("mroadaddress >>> : " + document.memForm.mroadaddress.value);
 			console.log("mroadaddressdetail >>> : " + document.memForm.mroadaddressdetail.value);
 			console.log("mjibunaddress >>> : " + document.memForm.mjibunaddress.value);
 			
-			// ì·¨ë¯¸
+			// Ãë¹Ì
 			var mhobby_check = document.getElementsByName("mhobby");
 			for (var i=0; i < mhobby_check.length; i++){
 				if(mhobby_check[i] == true){
@@ -186,22 +186,22 @@
 				}
 			}
 			
-			// ì†Œê°œê¸€
+			// ¼Ò°³±Û
 			console.log("minfo : " + document.memForm.minfo.value);
 			
-			// ì‚¬ì§„
+			// »çÁø
 			console.log("mphoto : " + document.memForm.mphoto.value);
 			
 			// ISUD_TYPE
-			let v1 = $("ISUD_TYPE").val();
+			let v1 = $("#ISUD_TYPE").val();
 			alert("v1 : " + v1);
 			
 			// SUBMIT
 			$("#memForm")
 			.attr({
 					"action":"/testKck/mem?ISUD_TYPE="+v1,
-				    "method":"GET",
-				    "enctype":"application/x-www-form-urlencoded"
+				    "method":"POST",
+				    "enctype":"multipart/form-data"
 			       })
 			.submit();	
 		});
@@ -209,57 +209,57 @@
 </script>	
 </head>
 <body>
-<h3 align="center">íšŒì› ê°€ì…</h3>
+<h3 align="center">È¸¿ø °¡ÀÔ</h3>
 <hr>
 <form name="memForm" id="memForm">
 <table border="1" align="center">
 <tr>
 	<td colspan="2" align="center">					
-		KOSMO 93ê¸° 
+		KOSMO 93±â 
 		<img src="/testKck/img/ase.gif" width="25" height="25" alt="image">
 	</td>
 </tr>
 <tr>
-	<td>íšŒì›ë²ˆí˜¸</td>
+	<td>È¸¿ø¹øÈ£</td>
 	<td><input type="text" name="mnum" id="mnum" readonly/></td>
  </tr>
 <tr>
-	<td>ì´ë¦„</td>
+	<td>ÀÌ¸§</td>
 	<td><input type="text" name="mname" id="mname"/></td>
 </tr>
 <tr>
-	<td>ì•„ì´ë””</td>
+	<td>¾ÆÀÌµğ</td>
 	<td>
-		<input type="text" name="mid" id="mid" placeholder="ì•„ì´ë””ì²´í¬" style="width:100px" />
-		<input type="button" name="midbtn" id="midbtn" value="ì•„ì´ë””ì¤‘ë³µí™•ì¸"  />
+		<input type="text" name="mid" id="mid" placeholder="¾ÆÀÌµğÃ¼Å©" style="width:100px" />
+		<input type="button" name="midbtn" id="midbtn" value="¾ÆÀÌµğÁßº¹È®ÀÎ"  />
 	</td>
 </tr>
 <tr>
-	<td>íŒ¨ìŠ¤ì›Œë“œ</td>
+	<td>ÆĞ½º¿öµå</td>
 	<td>
 		<input type="text" name="mpw" id="mpw" style="width:100px" /><br/>
-		<input type="text" name="mpw_r" id="mpw_r" placeholder="ë¹„ë°€ë²ˆí˜¸í™•ì¸" style="width:100px" />
-		<input type="button" value="ë¹„ë°€ë²ˆí˜¸í™•ì¸" id="pwCheck"/><br/>
+		<input type="text" name="mpw_r" id="mpw_r" placeholder="ºñ¹Ğ¹øÈ£È®ÀÎ" style="width:100px" />
+		<input type="button" value="ºñ¹Ğ¹øÈ£È®ÀÎ" id="pwCheck"/><br/>
 	</td>
 </tr>
 <tr>
-	<td>ì„±ë³„</td>
+	<td>¼ºº°</td>
 	<td> 
-		<input type="radio" name="mgender" id="mgender" value="F" checked /> ì—¬ì
-      	<input type="radio" name="mgender" id="mgender" value="M" /> ë‚¨ì
+		<input type="radio" name="mgender" id="mgender" value="F" checked /> ¿©ÀÚ
+      	<input type="radio" name="mgender" id="mgender" value="M" /> ³²ÀÚ
     </td>
 </tr>
 <tr>
-	<td>ìƒë…„ì›”ì¼</td>
+	<td>»ı³â¿ùÀÏ</td>
 	<td>		
 		<input type="text" name="mbirth" id=mbirth 
-		       placeholder="ë…„(4ì)" maxlength="4" style="width:50px"/>
+		       placeholder="³â(4ÀÚ)" maxlength="4" style="width:50px"/>
 		<select name="mbirth1" id="mbirth1"></select>
         <select name="mbirth2" id="mbirth2"></select>
 	</td>
 </tr>
 <tr>
-	<td>í•¸ë“œí°</td>
+	<td>ÇÚµåÆù</td>
 	<td>
 		<select name="mhp" id="mhp">
         	<option value="010">010</option>
@@ -272,7 +272,7 @@
 	</td>
 </tr>
 <tr>
-	<td>ì „í™”ë²ˆí˜¸</td>
+	<td>ÀüÈ­¹øÈ£</td>
 	<td>
 		<select name="mtel" id="mtel">
         	<option value="02">02</option>
@@ -286,12 +286,12 @@
 	</td>
 </tr>
 <tr>
-	<td>ì´ë©”ì¼</td>
+	<td>ÀÌ¸ŞÀÏ</td>
 	<td>		
 		<input type="text" name="memail"  id="memail" style="width:100px"/>
-		@<input type="text" name="memail1" id="memail1" style="width:100px" placeholder="ì§ì ‘ì…ë ¥" />
+		@<input type="text" name="memail1" id="memail1" style="width:100px" placeholder="Á÷Á¢ÀÔ·Â" />
 		<select name="memail2" id="memail2">
-        	 <option value="1" selected>ì§ì ‘ì…ë ¥</option>
+        	 <option value="1" selected>Á÷Á¢ÀÔ·Â</option>
        		 <option value="naver.com">naver.com</option>	       	   
       		 <option value="gmail.com">gmail.com</option>
       		 <option value="daum.net">daum.net</option>	       	   
@@ -299,34 +299,34 @@
 	</td>
 </tr>
 <tr>
- 	<td>ì£¼ì†Œ</td>
+ 	<td>ÁÖ¼Ò</td>
  	<td>
- 		<input type="text" name="mzonecode" id="mzonecode" placeholder="ìš°í¸ë²ˆí˜¸" style="width:50px">
- 		<input type="button" name="zonecode" id="zonecode" value="ìš°í¸ë²ˆí˜¸ ì°¾ê¸°"><br>	 	
- 		<input type="text" name="mroadaddress" id="mroadaddress" placeholder="ë„ë¡œëª…ì£¼ì†Œ" style="width:250px"><br>	 	
- 		<input type="text" name="mroadaddressdetail" id="mroadaddressdetail" placeholder="ë„ë¡œëª…ì£¼ì†Œ ìƒì„¸ì£¼ì†Œ" style="width:250px"><br>	 	
- 		<input type="text" name="mjibunaddress" id="mjibunaddress" placeholder="ì§€ë²ˆì£¼ì†Œ" style="width:250px">
+ 		<input type="text" name="mzonecode" id="mzonecode" placeholder="¿ìÆí¹øÈ£" style="width:50px">
+ 		<input type="button" name="zonecode" id="zonecode" value="¿ìÆí¹øÈ£ Ã£±â"><br>	 	
+ 		<input type="text" name="mroadaddress" id="mroadaddress" placeholder="µµ·Î¸íÁÖ¼Ò" style="width:250px"><br>	 	
+ 		<input type="text" name="mroadaddressdetail" id="mroadaddressdetail" placeholder="µµ·Î¸íÁÖ¼Ò »ó¼¼ÁÖ¼Ò" style="width:250px"><br>	 	
+ 		<input type="text" name="mjibunaddress" id="mjibunaddress" placeholder="Áö¹øÁÖ¼Ò" style="width:250px">
  	</td>
 </tr>	 
 <tr>
-	<td>ì·¨ë¯¸</td>
+	<td>Ãë¹Ì</td>
 	<td> 
-		<input type="checkbox" name="mhobby" value="mh1" />ì•Œê³ ë¦¬ì¦˜		      
-        <input type="checkbox" name="mhobby" value="mh2" />ì½”ë”©
-        <input type="checkbox" name="mhobby" value="mh3" />ë¶„ì„ì„¤ê³„<br>
-        <input type="checkbox" name="mhobby" value="mh4" />ë°ì´í„°ë² ì´ìŠ¤
-        <input type="checkbox" name="mhobby" value="mh5" />ìŠ¤í¬ë¦½íŠ¸
+		<input type="checkbox" name="mhobby" value="mh1" />¾Ë°í¸®Áò		      
+        <input type="checkbox" name="mhobby" value="mh2" />ÄÚµù
+        <input type="checkbox" name="mhobby" value="mh3" />ºĞ¼®¼³°è<br>
+        <input type="checkbox" name="mhobby" value="mh4" />µ¥ÀÌÅÍº£ÀÌ½º
+        <input type="checkbox" name="mhobby" value="mh5" />½ºÅ©¸³Æ®
     </td>
 </tr>	 
 <tr>
-	<td>ì†Œê°œê¸€</td>
+	<td>¼Ò°³±Û</td>
 	<td>
-		<textarea name="minfo" id="minfo" rows="5" cols="50">ë‚´ ì†Œê°œê¸€					
+		<textarea name="minfo" id="minfo" rows="5" cols="50">³» ¼Ò°³±Û					
 		</textarea>
 	</td>
  </tr>
  <tr>
-	<td>ì‚¬ì§„</td>
+	<td>»çÁø</td>
 	<td> 
 		<input type="file" name="mphoto" id="mphoto1" /><br>
     </td>
@@ -334,8 +334,8 @@
 <tr>
 	<td colspan="2">
 		<input type="hidden" name="ISUD_TYPE" id="ISUD_TYPE" value="I"> 			
-		<button type="button" id="btn">ë³´ë‚´ê¸°</button>
-		<button type="reset">ë‹¤ì‹œ </button>	
+		<button type="button" id="btn">º¸³»±â</button>
+		<button type="reset">´Ù½Ã </button>	
 	</td>				
 </tr>
 </table>				 		        		     

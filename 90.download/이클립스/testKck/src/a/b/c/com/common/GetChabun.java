@@ -20,7 +20,7 @@ public abstract class GetChabun {
 	// 회원 번호 
 	public static String getMemChabun(String type) {		
 		
-		return BIZ_GUBUN_M.concat(numPad(type, ""));
+		return BIZ_GUBUN_M.concat(numPad(type, GetMemberMaxNum.getMaxNum()));
 	}
 	
 	// 게시판 글 번호  

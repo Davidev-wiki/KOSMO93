@@ -24,16 +24,13 @@ import a.b.c.com.kosmo.mem.vo.MemberVO;
 @WebServlet("/mem")
 public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 	throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.setCharacterEncoding("UTF-8");
-		response.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=UTF-8");
+		request.setCharacterEncoding("EUC-KR");
+		response.setCharacterEncoding("EUC-KR");
+		response.setContentType("text/html; charset=EUC-KR");
 		
 		PrintWriter out = response.getWriter();
 		
@@ -144,75 +141,110 @@ public class MemberController extends HttpServlet {
 						MemberVO mvo = null;
 						mvo = new MemberVO();
 						
+						// 회원 번호 (mnum) 세팅
 						String mnum = GetChabun.getMemChabun("d");
 						System.out.println("빈 객체에 세팅할 mnum 값 : " + mnum);
 						mvo.setMnum(mnum);
 
-						String mname = request.getParameter("mname");
+						// 회원 이름 (mname) 세팅
+						// request.getParameter() 이용시 값을 가져오지 못함.
+						String mname = fu.getParameter("mname");
 						System.out.println("빈 객체에 세팅할 mname 값: " + mname);
 						mvo.setMname(mname);
 						
-						String mid = request.getParameter("mid");
+						// 회원 아이디 (mid) 세팅
+						// request.getParameter() 이용시 값을 가져오지 못함.
+						String mid = fu.getParameter("mid");
 						System.out.println("빈 객체에 세팅할 mid 값 : " + mid);
 						mvo.setMid(mid);
 						
-						String mpw = request.getParameter("mpw");
+						// 회원 비밀번호 (mpw) 세팅
+						// request.getParameter() 이용시 값을 가져오지 못함.
+						String mpw = fu.getParameter("mpw");
 						System.out.println("빈 객체에 세팅할 mpw 값 : " + mpw);
 						mvo.setMpw(mpw);
 						
+						// 회원 성별 (mgender) 세팅
 						String mgender = request.getParameter("mgender");
 						System.out.println("빈 객체에 세팅할 mgender 값 : " + mgender);
 						mvo.setMgender(mgender);
 						
-						String mbirth = request.getParameter("mbirth") + request.getParameter("mbirth1") + request.getParameter("mbirth2");
+						// 회원 생년월일 (mbirth) 세팅
+						String mbirth = fu.getParameter("mbirth");
+						String mbirth1 = fu.getParameter("mbirth1");
+						String mbirth2 = fu.getParameter("mbirth2");
+						mbirth = mbirth + mbirth1 + mbirth2;
 						System.out.println("빈 객체에 세팅할 mbirth 값 : " + mbirth);
 						mvo.setMbirth(mbirth);
 						
-						String mhp = request.getParameter("mhp") + request.getParameter("mhp1") + request.getParameter("mhp2");
+						// 회원 휴대전화번호 (mhp) 세팅
+						String mhp = fu.getParameter("mhp");
+						String mhp1 = fu.getParameter("mhp1");
+						String mhp2 = fu.getParameter("mhp2");
+						mhp = mhp + mhp1 + mhp2;
 						System.out.println("빈 객체에 세팅할 mhp 값 : " + mhp);
 						mvo.setMhp(mhp);
 						
-						String mtel = request.getParameter("mtel") + request.getParameter("mtel1") + request.getParameter("mtel2");
+						// 회원 전화번호 (mtel) 세팅
+						String mtel = fu.getParameter("mtel");
+						String mtel1 = fu.getParameter("mtel1");
+						String mtel2 = fu.getParameter("mtel2");
+						mtel = mtel + mtel1 + mtel2;
 						System.out.println("빈 객체에 세팅할 mtel 값 : " + mtel);
 						mvo.setMtel(mtel);
 						
-						String memail = request.getParameter("memail") + request.getParameter("memail1");
+						// 회원 이메일 (memail) 세팅
+						String memail = fu.getParameter("memail");
+						String memail1 = fu.getParameter("memail1");
+						memail = memail + memail1;
 						System.out.println("빈 객체에 세팅할 memail 값 : " + memail);
 						mvo.setMemail(memail);
 						
-						String mzonecode = request.getParameter("mzonecode");
+						// 회원 우편번호(mzonecode) 세팅
+						String mzonecode = fu.getParameter("mzonecode");
 						System.out.println("빈 객체에 세팅할 mzonecode 값 : " + mzonecode);
 						mvo.setMzonecode(mzonecode);
 						
-						String mroadaddress = request.getParameter("mroadaddress").concat("@").concat(request.getParameter("mroadaddressdetail"));
+						// 회원 도로명 주소 (mroadaddress) 세팅
+						// FileUploadUtil의 참조변수 fu를 이용하지 않으면,
+						// 즉 fu로는 데이터를 가져오지 않음.
+						String mroadaddress = fu.getParameter("mroadaddress");
+						String mroadaddressdetail = fu.getParameter("mroadaddressdetail");
+						mroadaddress = mroadaddress.concat("@").concat(mroadaddressdetail);
 						System.out.println("빈 객체에 세팅할 mroadaddress 값 : " + mroadaddress);
 						mvo.setMroadaddress(mroadaddress);
 						
+						// 회원 지번 주소 (mjibunaddress) 세팅
 						String mjibunaddress = request.getParameter("mjibunaddress");
 						System.out.println("빈 객체에 세팅할 mjibunaddress 값 : " + mjibunaddress);
 						mvo.setMjibunaddress(mjibunaddress);
 						
-						String[] hobby = request.getParameterValues("mhobby");
+						// 회원 취미 (mhobby) 세팅
+						String[] hobby = fu.getParameterValues("mhobby");
 						String mhobby = "";
-						for (int i=0; i<hobby.length; i++){
+						for (int i=0; i < hobby.length; i++){
 							mhobby += hobby[i] + ",";
 						}
 						System.out.println("빈 객체에 세팅할 mhobby 값 : " + mhobby);
 						mvo.setMhobby(mhobby);
 						
-						String minfo = request.getParameter("minfo");
+						// 회원 소개글 (minfo) 세팅
+						String minfo = fu.getParameter("minfo");
 						System.out.println("빈 객체에 세팅할 minfo 값 : " + minfo);
 						mvo.setMinfo(minfo);
 						
+						// 회원이 업로드한 사진 (mphoto) 세팅
 						ArrayList<String> aFileName = fu.getFileNames();
 						String mphoto = aFileName.get(0);
 						System.out.println("빈 객체에 세팅할 mphoto 값 : " + mphoto);
 						mvo.setMphoto(mphoto);
 						
+						// 관리자 번호 세팅
 						String madmin = "00"; // 관리자 코드
 						mvo.setMadmin(madmin);
 						
-						System.out.println("setting된 객체 mvo : ");
+						// 세팅된 객체 mvo 출력
+						System.out.println("-------- setting된 객체 mvo -------");
 						MemberVO.printlnMemberVO(mvo);
 						
 						
@@ -221,11 +253,13 @@ public class MemberController extends HttpServlet {
 						if(bInsert) {  // 정상
 							System.out.println("서비스에 전달했던 결과를 정상적으로 받아왔어요 : " + bInsert);
 							request.setAttribute("bInsert", new Boolean(bInsert));
-							RequestDispatcher rd = request.getRequestDispatcher("/testKck/mem/memInsert.jsp");
+							// 여기서 지정해주는 경로? : C:/../wtwebapps/testKck/kck/mem/memInsert.jsp
+							RequestDispatcher rd = request.getRequestDispatcher("/kck/mem/memInsert.jsp");
 							rd.forward(request, response);
 							
 						} else {  // 실패
 							out.println("<script>");
+							// 여기도 같은 경로를 가르킨다?
 							out.println("location.href='/testKck/kck/mem/mem.html'");
 							out.println("</script>");
 						}

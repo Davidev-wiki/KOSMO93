@@ -4,7 +4,14 @@ public abstract class MemberSqlMap {
 	
 	// MaxChabun 쿼리 
 	public static String getMaxChabunQuery() {
-		return "";
+		
+		StringBuffer sb = new StringBuffer();
+		
+		sb.append(" SELECT  /*+ INDEX_DESC(A SYS_C0012126) */ 			\n");
+		sb.append("         NVL(MAX(SUBSTR(A.MNUM, -4)), 0) + 1 MAXNUM	\n");
+		sb.append(" FROM    MVC_MEMBER A 								\n");
+		
+		return sb.toString();
 	}
 	
 	// 전체 조회
@@ -37,7 +44,7 @@ public abstract class MemberSqlMap {
 		sb.append("					,MEMAIL 			\n"); // COLUMN 9		
 	    sb.append("					,MZONECODE   		\n"); // COLUMN 10
 	    sb.append("					,MROADADDRESS 		\n"); // COLUMN 11
-	    sb.append("					,MGIBUNADDRESS 		\n"); // COLUMN 12
+	    sb.append("					,MJIBUNADDRESS 		\n"); // COLUMN 12
 		sb.append("					,MHOBBY 			\n"); // COLUMN 13
 	    sb.append("					,MINFO   			\n"); // COLUMN 14
 		sb.append("					,MPHOTO 			\n"); // COLUMN 15
