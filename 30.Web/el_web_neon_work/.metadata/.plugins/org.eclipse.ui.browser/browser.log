@@ -4,3 +4,7 @@
 9월 13, 2021 17:38:22.38 [20116:21208:0913/173822.388:ERROR:device_event_log_impl.cc(214)] [17:38:22.388] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
 9월 13, 2021 17:50:24.60 [20116:21208:0913/175024.601:ERROR:account_info_fetcher.cc(62)] OnGetTokenFailure: Invalid credentials (credentials rejected by client).
 9월 14, 2021 06:55:37.55 [20116:21208:0914/065537.553:ERROR:device_event_log_impl.cc(214)] [06:55:37.553] USB: usb_service_win.cc:258 Failed to get device driver name: 요소가 없습니다. (0x490)
+
+9월 19, 2021 17:28:30.86 NEW SESSION
+9월 19, 2021 17:28:30.86 [15936:7416:0919/172830.865:ERROR:external_registry_loader_win.cc(158)] File C:\Users\david\AppData\Local\Google\Drive\user_default\apdfllckaahabafndbhieahigkjlhalf_live.crx for key Software\Google\Chrome\Extensions\apdfllckaahabafndbhieahigkjlhalf does not exist or is not readable.
+9월 19, 2021 17:28:34.59 [15936:13708:0919/172834.594:ERROR:device_event_log_impl.cc(214)] [17:28:34.594] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)

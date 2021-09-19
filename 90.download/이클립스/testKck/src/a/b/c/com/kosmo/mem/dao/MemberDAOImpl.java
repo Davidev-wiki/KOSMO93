@@ -2,6 +2,7 @@ package a.b.c.com.kosmo.mem.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import a.b.c.com.common.ConnProperty;
@@ -13,7 +14,70 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public ArrayList<MemberVO> memberSelectAll() {
 		// TODO Auto-generated method stub
-		return null;
+		System.out.println("MemberDAOImpl.memberSelectAll() 진입");
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rsRs = null;
+		
+		ArrayList<MemberVO> aList = null;
+		
+		try {
+			
+			conn = ConnProperty.getConnection();
+			pstmt = conn.prepareStatement(MemberSqlMap.getMemberSelectAllQuery());
+			
+			System.out.println("전체조회 \n" + MemberSqlMap.getMemberSelectAllQuery());			
+			
+			rsRs = pstmt.executeQuery();			
+			
+			if (rsRs !=null) {
+				
+				aList = new ArrayList<MemberVO>();
+				
+				while (rsRs.next()) {
+					
+					MemberVO _mvo = new MemberVO();
+					
+					_mvo.setMnum(rsRs.getString(1)); 
+					_mvo.setMname(rsRs.getString(2)); 
+					_mvo.setMid(rsRs.getString(3));
+					_mvo.setMpw(rsRs.getString(4));
+					_mvo.setMgender(rsRs.getString(5));
+					_mvo.setMbirth(rsRs.getString(6));
+					_mvo.setMhp(rsRs.getString(7));					
+					_mvo.setMtel(rsRs.getString(8));
+					_mvo.setMemail(rsRs.getString(9));					
+					_mvo.setMzonecode(rsRs.getString(10));
+					_mvo.setMroadaddress(rsRs.getString(11));
+					_mvo.setMjibunaddress(rsRs.getString(12));					
+					_mvo.setMhobby(rsRs.getString(13));
+					_mvo.setMinfo(rsRs.getString(14));
+					_mvo.setMphoto(rsRs.getString(15));					
+					_mvo.setMadmin(rsRs.getString(16));
+					_mvo.setDeleteyn(rsRs.getString(17));
+					_mvo.setInsertdate(rsRs.getString(18));
+					_mvo.setUpdatedate(rsRs.getString(19));
+					
+					aList.add(_mvo);
+					MemberVO.printlnMemberVO(_mvo);
+				}				
+			}
+			
+			ConnProperty.conClose(conn, pstmt, rsRs);
+			
+		}catch(Exception e) {
+			
+			System.out.println("DB에서 전체 조회중 에러가 발생했어요.. : " + e.getMessage());
+		}finally {
+			
+			ConnProperty.conClose(conn, pstmt, rsRs);
+			
+		}
+		
+		System.out.println("MemberDAOImpl.memberSelectAll() 종료");
+
+		return aList;
 	}
 
 	@Override
@@ -72,7 +136,7 @@ public class MemberDAOImpl implements MemberDAO {
 			
 		}catch(Exception e){
 			
-			System.out.println("DB에 Insert하는데 문제가 발생했어요! : " + e);
+			System.out.println("DB에 Insert하는데 문제가 발생했어요! : " + e.getMessage());
 			
 		}finally{
 			

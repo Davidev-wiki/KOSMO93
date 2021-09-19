@@ -213,6 +213,8 @@ public class MemberVO {
 	// print 함수 : 전체 조회용
 	public static void printMemberVO(MemberVO mvo){
 		
+		System.out.println("MemberVO.printMemberVO()함수 진입");
+		
 		System.out.print(mvo.getMnum() 			+ ", ");
 		System.out.print(mvo.getMname() 		+ ", ");
 		System.out.print(mvo.getMid()			+ ", ");
@@ -233,11 +235,15 @@ public class MemberVO {
 		System.out.print(mvo.getInsertdate() 	+ ", ");
 		System.out.println(mvo.getUpdatedate());
 		
+		System.out.println("MemberVO.printMemberVO()함수 종료");
+
 	}
 	
 	// println 함수 : 조건 조회용
 	public static void printlnMemberVO(MemberVO mvo){
 		
+		System.out.println("MemberVO.printlnMemberVO()함수 진입");
+
 		System.out.println("mvo.getMnum() 				>>> : " + mvo.getMnum());
 		System.out.println("mvo.getMname() 				>>> : " + mvo.getMname());
 		System.out.println("mvo.getMid() 				>>> : " + mvo.getMid());
@@ -257,6 +263,9 @@ public class MemberVO {
 		System.out.println("mvo.getDeleteyn() 			>>> : " + mvo.getDeleteyn());
 		System.out.println("mvo.getInsertdate() 		>>> : " + mvo.getInsertdate());
 		System.out.println("mvo.getUpdatedate() 		>>> : " + mvo.getUpdatedate());
+	
+		System.out.println("MemberVO.printlnMemberVO()함수 종료");
+
 	}	
 	
 }

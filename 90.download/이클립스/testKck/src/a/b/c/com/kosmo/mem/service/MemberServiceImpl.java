@@ -11,7 +11,11 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public ArrayList<MemberVO> memberSelectAll() {
 		// TODO Auto-generated method stub
-		return null;
+		
+		System.out.println("MemberServiceImpl.memberSelectAll() 진입");
+		
+		MemberDAO mdao = new MemberDAOImpl();
+		return mdao.memberSelectAll();
 	}
 
 	@Override
@@ -23,6 +27,8 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public boolean memberInsert(MemberVO mvo) {
 		// TODO Auto-generated method stub
+		
+		System.out.println("MemberServiceImpl.memberInsert() 진입");
 		
 		MemberDAO mdao = new MemberDAOImpl();
 		return mdao.memberInsert(mvo);

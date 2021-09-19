@@ -4,6 +4,7 @@ public abstract class MemberSqlMap {
 	
 	// MaxChabun 쿼리 
 	public static String getMaxChabunQuery() {
+		System.out.println("MemberSqlMap.getMaxChabunQuery() 함수 진입");
 		
 		StringBuffer sb = new StringBuffer();
 		
@@ -11,12 +12,47 @@ public abstract class MemberSqlMap {
 		sb.append("         NVL(MAX(SUBSTR(A.MNUM, -4)), 0) + 1 MAXNUM	\n");
 		sb.append(" FROM    MVC_MEMBER A 								\n");
 		
+		System.out.println("MemberSqlMap.getMaxChabunQuery() 함수 종료");
+		
 		return sb.toString();
 	}
 	
 	// 전체 조회
 	public static String getMemberSelectAllQuery(){
-		return "";
+		
+		System.out.println("MemberSqlMap.getMemberSelectAllQuery() 함수 진입");
+		
+		StringBuffer sb = new StringBuffer();
+		
+		sb.append(" SELECT 									\n");
+		sb.append("      A.MNUM 			MNUM 			\n");
+		sb.append("		,A.MNAME  			MNAME 			\n");
+		sb.append("		,A.MID  			MID 			\n");
+	    sb.append("		,A.MPW  			MPW   			\n");
+	    sb.append("		,A.MGENDER  		MGENDER 		\n");
+	    sb.append("		,A.MBIRTH  			MBIRTH 			\n");
+	    sb.append("		,A.MHP  			MHP 			\n");
+	    sb.append("		,A.MTEL  			MTEL   			\n");	   
+		sb.append("		,A.MEMAIL  			MEMAIL 			\n");		
+	    sb.append("		,A.MZONECODE  		MZONECODE   	\n");
+	    sb.append("		,A.MROADADDRESS  	MROADADDRESS 	\n");
+	    sb.append("		,A.MGIBUNADDRESS  	MGIBUNADDRESS 	\n");
+		sb.append("		,A.MHOBBY  			MHOBBY 			\n");
+	    sb.append("		,A.MINFO  			MINFO   		\n");
+		sb.append("		,A.MPHOTO  			MPHOTO 			\n");
+	    sb.append("		,A.MADMIN  			MADMIN   		\n");
+	    sb.append("		,A.DELETEYN 		DELETEYN		\n");
+	    sb.append("		,TO_CHAR(A.INSERTDATE, 'YYYY-MM-DD')  INSERTDATE	\n");
+	    sb.append("		,TO_CHAR(A.UPDATEDATE, 'YYYY-MM-DD')  UPDATEDATE	\n");	    
+	    sb.append("	FROM 								\n");
+	    sb.append("		 MVC_MEMBER A 					\n");
+	    sb.append("	WHERE DELETEYN = 'Y'				\n");
+	    sb.append("	ORDER BY 1 DESC						\n");
+
+		
+		System.out.println("MemberSqlMap.getMemberSelectAllQuery() 함수 종료");
+		
+		return sb.toString();
 	} 
 	
 	// 회원번호 조건조회
