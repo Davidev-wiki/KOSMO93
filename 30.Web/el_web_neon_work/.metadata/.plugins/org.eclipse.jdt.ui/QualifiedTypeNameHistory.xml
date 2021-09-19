@@ -15,7 +15,6 @@
 <fullyQualifiedTypeName name="a.b.c.com.kosmo.book.service.BookService"/>
 <fullyQualifiedTypeName name="a.b.c.com.kosmo.book.service.BookServiceImpl"/>
 <fullyQualifiedTypeName name="a.b.c.com.kosmo.book.vo.BookVO"/>
-<fullyQualifiedTypeName name="java.sql.ResultSet"/>
 <fullyQualifiedTypeName name="a.b.c.com.kosmo.book.sql.BookSqlMap"/>
 <fullyQualifiedTypeName name="a.b.c.com.kosmo.mem.dao.MemberDAO"/>
 <fullyQualifiedTypeName name="a.b.c.com.kosmo.mem.dao.MemberDAOImpl"/>
@@ -35,4 +34,5 @@
 <fullyQualifiedTypeName name="a.b.c.com.common.GetChabun"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
+<fullyQualifiedTypeName name="java.sql.ResultSet"/>
 </qualifiedTypeNameHistroy>

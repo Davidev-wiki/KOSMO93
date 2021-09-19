@@ -27,9 +27,9 @@
 		System.out.println("회원 정보 등록이 완료되었습니다! : " + bool);	 
 	
 %>
-<script>
-		location.href="/testKck/mem?ISUD_TYPE=SALL";
-</script>
+		<script>
+				location.href="/testKck/mem?ISUD_TYPE=SALL";
+		</script>
 <% 
 	}else{
 		

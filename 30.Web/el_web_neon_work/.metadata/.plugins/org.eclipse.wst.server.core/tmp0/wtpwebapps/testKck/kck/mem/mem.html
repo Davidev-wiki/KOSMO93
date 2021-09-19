@@ -199,7 +199,7 @@
 			// SUBMIT
 			$("#memForm")
 			.attr({
-					"action":"/testKck/mem?isudtype="+v1,
+					"action":"/testKck/mem?ISUD_TYPE="+v1,
 				    "method":"POST",
 				    "enctype":"multipart/form-data"
 			       })
@@ -245,8 +245,8 @@
 <tr>
 	<td>성별</td>
 	<td> 
-		<input type="radio" name="mgender" id="mgender" value="F" checked /> 여자
-      	<input type="radio" name="mgender" id="mgender" value="M" /> 남자
+		<input type="radio" name="mgender" id="mgender" value="01" checked /> 여자
+      	<input type="radio" name="mgender" id="mgender" value="02" /> 남자
     </td>
 </tr>
 <tr>
@@ -311,11 +311,11 @@
 <tr>
 	<td>취미</td>
 	<td> 
-		<input type="checkbox" name="mhobby" value="mh1" />알고리즘		      
-        <input type="checkbox" name="mhobby" value="mh2" />코딩
-        <input type="checkbox" name="mhobby" value="mh3" />분석설계<br>
-        <input type="checkbox" name="mhobby" value="mh4" />데이터베이스
-        <input type="checkbox" name="mhobby" value="mh5" />스크립트
+		<input type="checkbox" name="mhobby" value="01" />알고리즘		      
+        <input type="checkbox" name="mhobby" value="02" />코딩
+        <input type="checkbox" name="mhobby" value="03" />분석설계<br>
+        <input type="checkbox" name="mhobby" value="04" />데이터베이스
+        <input type="checkbox" name="mhobby" value="05" />스크립트
     </td>
 </tr>	 
 <tr>
@@ -328,7 +328,7 @@
  <tr>
 	<td>사진</td>
 	<td> 
-		<input type="file" name="mphoto" id="mphoto1" /><br>
+		<input type="file" name="mphoto" /><br>
     </td>
 </tr>
 <tr>

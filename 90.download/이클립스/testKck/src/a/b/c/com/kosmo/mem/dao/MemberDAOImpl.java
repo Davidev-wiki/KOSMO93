@@ -31,7 +31,7 @@ public class MemberDAOImpl implements MemberDAO {
 			
 			rsRs = pstmt.executeQuery();			
 			
-			if (rsRs !=null) {
+			if (rsRs != null) {
 				
 				aList = new ArrayList<MemberVO>();
 				
@@ -68,7 +68,8 @@ public class MemberDAOImpl implements MemberDAO {
 			
 		}catch(Exception e) {
 			
-			System.out.println("DB에서 전체 조회중 에러가 발생했어요.. : " + e.getMessage());
+			System.out.println("DB에서 전체 조회중(또는 쿼리에서) 에러가 발생했어요.. : " + e.getMessage());
+		
 		}finally {
 			
 			ConnProperty.conClose(conn, pstmt, rsRs);

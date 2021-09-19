@@ -15,6 +15,9 @@ public class MemberServiceImpl implements MemberService {
 		System.out.println("MemberServiceImpl.memberSelectAll() 진입");
 		
 		MemberDAO mdao = new MemberDAOImpl();
+
+		System.out.println("MemberServiceImpl.memberSelectAll() 리턴");
+
 		return mdao.memberSelectAll();
 	}
 
@@ -31,6 +34,9 @@ public class MemberServiceImpl implements MemberService {
 		System.out.println("MemberServiceImpl.memberInsert() 진입");
 		
 		MemberDAO mdao = new MemberDAOImpl();
+		
+		System.out.println("MemberServiceImpl.memberInsert() 리턴");  
+
 		return mdao.memberInsert(mvo);
 	}
 

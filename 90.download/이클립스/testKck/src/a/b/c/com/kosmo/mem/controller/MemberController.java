@@ -165,7 +165,7 @@ public class MemberController extends HttpServlet {
 						mvo.setMpw(mpw);
 						
 						// 회원 성별 (mgender) 세팅
-						String mgender = request.getParameter("mgender");
+						String mgender = fu.getParameter("mgender");
 						System.out.println("빈 객체에 세팅할 mgender 값 : " + mgender);
 						mvo.setMgender(mgender);
 						
@@ -247,7 +247,6 @@ public class MemberController extends HttpServlet {
 						System.out.println("-------- setting된 객체 mvo -------");
 						MemberVO.printlnMemberVO(mvo);
 						
-						
 						boolean bInsert = ms.memberInsert(mvo);
 						
 						if(bInsert) {  // 정상
@@ -274,7 +273,7 @@ public class MemberController extends HttpServlet {
 			}
 			
 		// 회원정보 전체 조회 ("SALL")
-			if("I".equals(isudType)){
+			if("SALL".equals(isudType)){
 				System.out.println("입력된 isudType : " + isudType);
 				
 				// 서비스 호출한 뒤, 결과는 객체타입 배열에 초기화
@@ -283,7 +282,7 @@ public class MemberController extends HttpServlet {
 				MemberService ms = new MemberServiceImpl();
 				ArrayList<MemberVO> aListAll = ms.memberSelectAll();
 				
-				if (aListAll !=null && aListAll.size() > 0) {
+				if (aListAll != null && aListAll.size() > 0) {
 					
 					request.setAttribute("aListAll", aListAll);					
 					RequestDispatcher rd= request.getRequestDispatcher("/kck/mem/memSelectAll.jsp");

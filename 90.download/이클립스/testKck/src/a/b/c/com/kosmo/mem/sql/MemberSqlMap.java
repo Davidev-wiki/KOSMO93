@@ -36,7 +36,7 @@ public abstract class MemberSqlMap {
 		sb.append("		,A.MEMAIL  			MEMAIL 			\n");		
 	    sb.append("		,A.MZONECODE  		MZONECODE   	\n");
 	    sb.append("		,A.MROADADDRESS  	MROADADDRESS 	\n");
-	    sb.append("		,A.MGIBUNADDRESS  	MGIBUNADDRESS 	\n");
+	    sb.append("		,A.MJIBUNADDRESS  	MJIBUNADDRESS 	\n");
 		sb.append("		,A.MHOBBY  			MHOBBY 			\n");
 	    sb.append("		,A.MINFO  			MINFO   		\n");
 		sb.append("		,A.MPHOTO  			MPHOTO 			\n");
