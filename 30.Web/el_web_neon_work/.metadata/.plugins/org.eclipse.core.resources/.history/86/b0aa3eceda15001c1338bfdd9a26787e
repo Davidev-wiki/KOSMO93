@@ -1,0 +1,102 @@
+package a.b.c.cgiForm;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Enumeration;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class CgiFormServlet
+ */
+@WebServlet("/form")
+public class CgiFormServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+
+		request.setCharacterEncoding("EUC-KR");
+		response.setCharacterEncoding("EUC-KR");
+		response.setContentType("text/html; charset=EUC-KR");
+
+		PrintWriter out = response.getWriter();
+
+		out.println("<html><head><title>cgiFormServlet</title></head><body>");
+		out.println("<h3>cgiFormServlet</h3>header<hr>");
+
+		String isudtype = request.getParameter("isudtype");
+		if (isudtype != null)
+			isudtype.toUpperCase();
+
+		if (isudtype != null && isudtype.length() > 0) {
+
+			System.out.println("isudtype : " + isudtype);
+			System.out.println("remoteIP : " + request.getRemoteAddr());
+			System.out.println("method : " + request.getMethod());
+
+			if ("I".equals(isudtype)) {
+
+				Enumeration<String> em = request.getAttributeNames();
+
+				while (em.hasMoreElements()) {
+
+					String name = em.nextElement();
+					String value = request.getHeader(name);
+					out.println(name + " : " + value + "<br>");
+					System.out.println(name + " : " + value);
+				}
+
+				out.println("<br>getParameter<hr>");
+
+				String mname = request.getParameter("mname");
+				String mid = request.getParameter("mid");
+				String mpw = request.getParameter("mpw");
+				String mgender = request.getParameter("mgender");
+
+				String mhobby = "";
+				String hobby[] = request.getParameterValues("mhobby");
+				if (hobby != null) {
+					for (int i = 0; i < hobby.length; i++) {
+						mhobby += hobby[i] + ",";
+					}
+				}
+
+				String mlocal = request.getParameter("mlocal");
+				String mmsg = request.getParameter("mmsg");
+
+				out.println("mname : " + mname);
+				out.println("mid : " + mid);
+				out.println("mpw : " + mpw);
+				out.println("mgender : " + mgender);
+				out.println("mhobby : " + mhobby);
+				out.println("mlocal : " + mlocal);
+				out.println("mmsg : " + mmsg);
+
+			} else {
+				System.out.println("isudtype이 잘못되었네요.");
+			}
+			out.println("</body></html>");
+		}
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

@@ -1,0 +1,63 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="EUC-KR"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="a.b.c.com.kosmo.mem.vo.MemberVO"%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>글 전체 조회</title>
+</head>
+<body>
+	<%
+		request.setCharacterEncoding("EUC-KR");
+	%>
+	SELECT ALL
+	<%
+		Object obj = request.getAttribute("aListAll");
+		if (obj == null)
+			return;
+
+		ArrayList<MemberVO> aList = (ArrayList<MemberVO>) obj;
+		int nCnt = aList.size();
+		out.println("전체 조회 건 수 : " + nCnt + "건");
+	%>
+	<table>
+		<tr>
+			<td colspan="2"><font size="4" color="blue"> <img
+					src="/testKck/img/ase.gif" width="25" height="25" alter="image">
+					MEMBER TEST
+			</font></td>
+		</tr>
+	</table>
+	<hr>
+	<hr>
+	<form name="memSelectAllForm" id="memSelectAllForm">
+		<table border="1">
+			<thead>
+				<tr>
+					<td class="tt"><input type="checkbox" name="chkAll"
+						id="chkAll"></td>
+					<td class="tt">순번</td>
+					<td class="tt">회원번호</td>
+					<td class="tt">이름</td>
+					<td class="tt">아이디</td>
+					<td class="tt">성별</td>
+					<td class="tt">생년월일</td>
+					<td class="tt">핸드폰</td>
+					<td class="tt">이메일</td>
+					<td class="tt">주소</td>
+					<td class="tt">취미</td>
+					<td class="tt">사진</td>
+					<td class="tt">수정일</td>
+
+				</tr>
+
+			</thead>
+
+		</table>
+
+	</form>
+</body>
+</html>

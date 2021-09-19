@@ -1,0 +1,50 @@
+//package
+package a.b.c.ch5;
+//import
+
+public class Ex_Refer_1
+{
+	//상수
+	//멤버변수
+	//생성자
+	public Ex_Refer_1(){
+		
+	}
+	//함수
+	public void referMethod(TestVO tvo){
+		System.out.println("\n >> referMethod 함수 시작 입니다.");
+		System.out.println("referMethod 함수 내에서 tvo 의 주소값 : " + tvo);
+	}
+	public void primerMethod(int i, int i1){
+		System.out.println("\n >> primerMethod 함수 시작 입니다.");
+		System.out.println("primerMethod 함수 내에서 i 의 주소값 : " + i);
+		System.out.println("primerMethod 함수 내에서 i1 의 주소값 : " + i1);
+	}
+
+
+	// main() 함수 : 프로그램 시작점
+	public static void main(String[] args) {
+		//TODO Auto-generated method stub.
+		
+		// 지역변수
+		int i = 11;
+		int i1 = 22;
+		
+		// Ex_Refer_1 클래스타입의 변수 ef1에 Ex_Refer_1클래스를 새로 담는다?;
+		Ex_Refer_1 ef1 = new Ex_Refer_1();
+		System.out.println("\n >> ef1 의 주소값 : " + ef1);
+		ef1.primerMethod(i, i1);
+				
+		// TestVO 클래스타입의 변수 tvo에 TestVO클래스를 메모리에 올려놓고 쓸 수 있게 만든 상태?;
+		TestVO tvo = new TestVO();
+		System.out.println("\n >> tvo 의 주소값 : " + tvo);
+		ef1.referMethod(tvo);
+
+		// tvo 참조변수에 담긴 메모리에 올라간 TestVO 클래스의 getSval()함수 호출
+		System.out.println("main :: tvo.getSval() >>> : " + tvo.getSval());
+		System.out.println("main :: tvo.getIval() >>> : " + tvo.getIval());
+		tvo.setSval("test");
+		tvo.setIval("test00");
+		ef1.referMethod(tvo);
+	}
+}

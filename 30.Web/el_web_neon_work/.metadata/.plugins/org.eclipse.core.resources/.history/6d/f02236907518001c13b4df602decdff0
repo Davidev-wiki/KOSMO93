@@ -1,0 +1,157 @@
+package a.b.c.com.kosmo.mem.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
+import a.b.c.com.common.ConnProperty;
+import a.b.c.com.kosmo.mem.sql.MemberSqlMap;
+import a.b.c.com.kosmo.mem.vo.MemberVO;
+
+public class MemberDAOImpl implements MemberDAO {
+
+	@Override
+	public ArrayList<MemberVO> memberSelectAll() {
+		// TODO Auto-generated method stub
+		System.out.println("MemberDAOImpl.memberSelectAll() 진입");
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rsRs = null;
+		ArrayList<MemberVO> aList = null;
+		
+		try{
+			
+			conn = ConnProperty.getConnection();
+			pstmt = conn.prepareStatement(MemberSqlMap.getMemberSelectAllQuery());
+			System.out.println("실행된 전체 조회 쿼리문 : " + Member);
+			rsRs = pstmt.executeQuery();
+			
+			if(rsRs != null){
+				
+				aList = new ArrayList<MemberVO>();
+				
+				while(rsRs.next()){
+					
+					MemberVO mvo = new MemberVO();
+					
+					mvo.setMnum(rsRs.getString(1));
+					mvo.setMname(rsRs.getString(2));
+					mvo.setMid(rsRs.getString(3));
+					mvo.setMpw(rsRs.getString(4));
+					mvo.setMgender(rsRs.getString(5));
+					mvo.setMbirth(rsRs.getString(6));
+					mvo.setMhp(rsRs.getString(7));
+					mvo.setMtel(rsRs.getString(8));
+					mvo.setMemail(rsRs.getString(9));
+					mvo.setMzonecode(rsRs.getString(10));
+					mvo.setMroadaddress(rsRs.getString(11));
+					mvo.setMjibunaddress(rsRs.getString(12));
+					mvo.setMhobby(rsRs.getString(13));
+					mvo.setMinfo(rsRs.getString(14));
+					mvo.setMphoto(rsRs.getString(15));
+					mvo.setMadmin(rsRs.getString(16));
+					mvo.setDeleteyn(rsRs.getString(17));
+					mvo.setInsertdate(rsRs.getString(18));
+					mvo.setUpdatedate(rsRs.getString(19));
+
+					aList.add(mvo);
+				}
+			}
+			
+			ConnProperty.conClose(conn, pstmt, rsRs);
+		
+		} catch(Exception e){
+			System.out.println("DB에서 데이터를 가져오는 중 에러가 발생했어요! : " + e);
+		} finally{
+			ConnProperty.conClose(conn, pstmt, rsRs);
+		}
+		
+		System.out.println("MemberDAOImpl.memberSelectAll() 종료");
+
+		return aList;
+	}
+
+	@Override
+	public ArrayList<MemberVO> memberSelect(MemberVO mvo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean memberInsert(MemberVO mvo) {
+		// TODO Auto-generated method stub
+		System.out.println("MemberDAOImpl.memberInsert() 진입");
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		int nCnt = 0;
+		boolean bool = false;
+		
+		
+		try{
+			
+			conn = ConnProperty.getConnection();
+			System.out.println("커넥션의 오토커밋 여부 : " + conn.getAutoCommit());
+			
+			pstmt = conn.prepareStatement(MemberSqlMap.getMemberInsertQuery());
+			System.out.println("실행된 쿼리문 : " + MemberSqlMap.getMemberInsertQuery());
+			
+			// pstmt실행 전 쿼리 데이터에 파라미터 전달하기
+			pstmt.clearParameters();
+			pstmt.setString(1, mvo.getMnum());
+			pstmt.setString(2, mvo.getMname()); 
+			pstmt.setString(3, mvo.getMid());   
+			pstmt.setString(4, mvo.getMpw());
+			pstmt.setString(5, mvo.getMgender());
+			pstmt.setString(6, mvo.getMbirth());
+			pstmt.setString(7, mvo.getMhp());
+			pstmt.setString(8, mvo.getMtel());						
+			pstmt.setString(9, mvo.getMemail());
+			pstmt.setString(10, mvo.getMzonecode());
+			pstmt.setString(11, mvo.getMroadaddress());
+			pstmt.setString(12, mvo.getMjibunaddress());
+			pstmt.setString(13, mvo.getMhobby());
+			pstmt.setString(14, mvo.getMinfo());
+			pstmt.setString(15, mvo.getMphoto());
+			pstmt.setString(16, mvo.getMadmin());
+			
+			nCnt = pstmt.executeUpdate();
+			System.out.println("업데이트 실행  : " + nCnt + "건 완료!");
+			if(!conn.getAutoCommit()) conn.getAutoCommit();
+			
+			if (nCnt > 0) {
+				bool = true;
+			}
+			
+			ConnProperty.conClose(conn, pstmt);
+			
+		}catch(Exception e){
+			
+			System.out.println("DB에 Insert하는데 문제가 발생했어요! : " + e);
+			
+		}finally{
+			
+			ConnProperty.conClose(conn, pstmt);
+		}
+		
+		System.out.println("MemberDAOImpl.memberInsert() 종료");
+	
+		return bool;
+	}
+
+	@Override
+	public boolean memberUpdate(MemberVO mvo) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean memberDelete(MemberVO mvo) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

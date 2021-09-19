@@ -1,0 +1,2 @@
+수 9월 8 2021 10:44:43 오전 - CloudFoundryServer.modifyModules(...): add: { testWeb [org.eclipse.jst.jee.server:testWeb/jst.web]} remove: {}
+수 9월 8 2021 10:45:18 오전 - CloudFoundryServerBehaviour.publishModule(...): ADDED { testWeb [org.eclipse.jst.jee.server:testWeb/jst.web]}

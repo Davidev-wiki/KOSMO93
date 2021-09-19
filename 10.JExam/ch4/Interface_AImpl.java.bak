@@ -1,0 +1,9 @@
+
+package a.b.c.ch4;
+
+public class Interface_AImpl implements Interface_A {
+	
+	public void interface_a() {
+		System.out.println("\n>> 여기는 Interface_AImpl클래스입니다..interface_a() 함수호출시 출력되는 문장입니다! ");
+	}
+}

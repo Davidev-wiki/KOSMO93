@@ -1,0 +1,55 @@
+// package
+package a.b.c.ch3;
+
+// import
+
+
+public class ExFlow_5 
+{
+	// 상수 
+	// 멤버변수
+	// 생성자
+
+	// 함수 
+
+	// main() 함수 : 프로그램 시작점
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub.
+
+		// 지역변수, 기초자료형변수 
+		int ranking = 1;
+		// 지역변수, 기초자료형변수
+		char medalColor = '\u0000'; // 유니코드로 초기화 
+
+		switch (ranking)
+		{
+			case 1: medalColor = 'G';					
+					break;
+			case 2: medalColor = 'S';
+					break;
+			case 3: medalColor = 'B';
+					break;
+			default:
+					medalColor = 'A';
+		}
+
+		System.out.println(ranking + "등 메달의 색깔은 " + medalColor + "입니다.");
+
+		int ranking = 3;
+		// 지역변수, 참조변수
+		String mColor = "";
+		switch (ranking)
+		{
+			case 1: mColor = "금메달";
+					break;
+			case 2: mColor = "은메달";
+					break;
+			case 3: mColor = "동메달";
+					break;
+			default:
+					mColor = "일반메달";
+		}
+
+		System.out.println(ranking + "등 메달의 색깔은 " + mColor + "입니다.");
+	}
+}

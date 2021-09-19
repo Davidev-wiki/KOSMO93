@@ -1,0 +1,53 @@
+package a.b.c.ch1;
+
+public class Ex_Const {
+
+	// 멤버 변수 
+	int i;
+	char c;
+	double d;
+	boolean b;
+	String s;
+
+	// 생성자 
+	//public Ex_Const(){
+	//	System.out.println("Ex_Const() 생성자 >>> : ");
+	//}
+
+	public static void main(String[] args){
+		/*  
+
+			<객체의 생성 및 실행 과정>
+
+			1. Ex_Const 클래스를 사용하기 위해 선언
+			2. Ex_Const 사용을 위해 변수를 선언 | '참조변수' | 'Reference Variable' |
+			3. = : 대입 연산자
+			4. new : new 키워드(연산자). JVM이 new를 보면 광분함.
+							 new 키워드 뒤에 있는 '생성자 Ex_Const()'를 소스 코드에서 찾기 시작함.
+							 '생성자 Ex_Const()'를 찾으면 바로 메모리에 로드함.
+							 메모리에 로드하면서 멤버 필드에 있는 변수들을 디폴트 값으로 초기화 한다.					 
+
+		*/
+		System.out.println("--------------------------------");
+
+		Ex_Const ex_c = new Ex_Const();
+		System.out.println("ex_c 주소값 >>> : " + ex_c);
+		System.out.println("ex_c.i >>> : " + ex_c.i);
+		System.out.println("ex_c.c >>> : " + ex_c.c);
+		System.out.println("ex_c.d >>> : " + ex_c.d);
+		System.out.println("ex_c.b >>> : " + ex_c.b);
+		System.out.println("ex_c.s >>> : " + ex_c.s);
+
+		System.out.println("--------------------------------");
+
+		Ex_Const ex_c_1 = new Ex_Const();
+		System.out.println("ex_c_1 주소값 >>> : " + ex_c_1);
+		System.out.println("ex_c_1.i >>> : " + ex_c_1.i);
+		System.out.println("ex_c_1.c >>> : " + ex_c_1.c);
+		System.out.println("ex_c_1.d >>> : " + ex_c_1.d);
+		System.out.println("ex_c_1.b >>> : " + ex_c_1.b);
+		System.out.println("ex_c_1.s >>> : " + ex_c_1.s);
+
+	} // end of main 함수 
+
+} // end of Ex_Const 클래스
