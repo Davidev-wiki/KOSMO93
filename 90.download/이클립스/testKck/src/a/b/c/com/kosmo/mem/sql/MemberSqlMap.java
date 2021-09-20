@@ -57,7 +57,38 @@ public abstract class MemberSqlMap {
 	
 	// 회원번호 조건조회
 	public static String getMemberSelectQuery(){
-		return "";
+		System.out.println("MemberSqlMap.getMemberSelectQuery() 함수 시작");
+
+		StringBuffer sb = new StringBuffer();
+		
+		sb.append(" SELECT 									\n");
+		sb.append("      A.MNUM 			MNUM 			\n");
+		sb.append("		,A.MNAME  			MNAME 			\n");
+		sb.append("		,A.MID  			MID 			\n");
+	    sb.append("		,A.MPW  			MPW   			\n");
+	    sb.append("		,A.MGENDER  		MGENDER 		\n");
+	    sb.append("		,A.MBIRTH  			MBIRTH 			\n");
+	    sb.append("		,A.MHP  			MHP 			\n");
+	    sb.append("		,A.MTEL  			MTEL   			\n");	   
+		sb.append("		,A.MEMAIL  			MEMAIL 			\n");		
+	    sb.append("		,A.MZONECODE  		MZONECODE   	\n");
+	    sb.append("		,A.MROADADDRESS  	MROADADDRESS 	\n");
+	    sb.append("		,A.MJIBUNADDRESS  	MJIBUNADDRESS 	\n");
+		sb.append("		,A.MHOBBY  			MHOBBY 			\n");
+	    sb.append("		,A.MINFO  			MINFO   		\n");
+		sb.append("		,A.MPHOTO  			MPHOTO 			\n");
+	    sb.append("		,A.MADMIN  			MADMIN   		\n");
+	    sb.append("		,A.DELETEYN 		DELETEYN		\n");
+	    sb.append("		,TO_CHAR(A.INSERTDATE, 'YYYY-MM-DD')  INSERTDATE	\n");
+	    sb.append("		,TO_CHAR(A.UPDATEDATE, 'YYYY-MM-DD')  UPDATEDATE	\n");	    
+	    sb.append("	FROM 								\n");
+	    sb.append("		 MVC_MEMBER A 					\n");
+	    sb.append("	WHERE DELETEYN = 'Y'				\n");
+	    sb.append("	AND   A.MNUM   = ?					\n");// placeholder 1
+		
+		System.out.println("MemberSqlMap.getMemberSelectQuery() 함수 종료");
+		
+		return sb.toString();
 	} 
 	
 	// 회원 등록

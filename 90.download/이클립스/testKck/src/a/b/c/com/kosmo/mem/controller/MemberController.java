@@ -261,8 +261,7 @@ public class MemberController extends HttpServlet {
 							// 여기도 같은 경로를 가르킨다?
 							out.println("location.href='/testKck/kck/mem/mem.html'");
 							out.println("</script>");
-						}
-						
+						}					
 						
 					} else { // 파일 업로드에 실패한 경우
 						System.out.println("파일 업로드에 실패했어요..");
@@ -295,20 +294,54 @@ public class MemberController extends HttpServlet {
 				}		
 			}
 			
-		// 회원 조건 조회 ("S")
-			if("I".equals(isudType)){
+		// 회원 조건 조회 ("S || U || D")
+			if("S".equals(isudType) || "U".equals(isudType) || "D".equals(isudType)){
+				System.out.println("입력된 isudType : " + isudType);
+				
+				// mnumCheck : memSelectAll.jsp에 있는 체크박스의 name
+				String mnum = request.getParameter("mnumCheck");
+				
+				if (mnum != null && mnum.length() > 0){
+					System.out.println("가져온 회원 번호 : " + mnum);
+				
+					MemberService ms = new MemberServiceImpl();
+					
+					MemberVO mvo = new MemberVO();
+					
+					mvo.setMnum(mnum);
+					
+					ArrayList<MemberVO> aListS = ms.memberSelect(mvo);
+					
+					if(aListS != null && aListS.size() > 0){
+						// select.jsp로 보내서 조회화면 보여주기
+						System.out.println("조회 결과 aListS.size() : " + aListS.size());
+						
+						request.setAttribute("aListS", aListS);
+						RequestDispatcher rd = request.getRequestDispatcher("/testKck/kck/mem/memSelect.jsp");
+						rd.forward(request, response);
+						
+					} else {
+						// 컨트롤러를 통해 다시 전체 조회화면으로.
+						out.println("<script>");
+						out.println("alert('조회에 실패했어요..')");
+						out.println("location.href='/testKck/mem?ISUD_TYPE=SALL'");
+						out.println("</script>");
+					}
+					
+				} else {
+					System.out.println("선택된 글 번호가 없네요..");
+				}
+				
+			}
+			
+		// 회원 수정 ("UOK")
+			if("U".equals(isudType)){
 				System.out.println("입력된 isudType : " + isudType);
 				
 			}
 			
-		// 회원 수정 ("U")
-			if("I".equals(isudType)){
-				System.out.println("입력된 isudType : " + isudType);
-				
-			}
-			
-		// 회원 삭제 ("D")
-			if("I".equals(isudType)){
+		// 회원 삭제 ("DOK")
+			if("D".equals(isudType)){
 				System.out.println("입력된 isudType : " + isudType);
 				
 			}

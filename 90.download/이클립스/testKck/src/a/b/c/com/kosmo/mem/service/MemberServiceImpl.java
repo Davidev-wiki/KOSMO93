@@ -24,7 +24,14 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public ArrayList<MemberVO> memberSelect(MemberVO mvo) {
 		// TODO Auto-generated method stub
-		return null;
+		
+		System.out.println("MemberServiceImpl.memberSelect() 진입");
+		
+		MemberDAO mdao = new MemberDAOImpl();
+
+		System.out.println("MemberServiceImpl.memberSelect() 리턴");
+
+		return mdao.memberSelect(mvo);
 	}
 
 	@Override

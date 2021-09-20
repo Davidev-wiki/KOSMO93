@@ -123,7 +123,7 @@ SELECT ALL
 <td calspan="2">
 <font size="4" color="blue">
 	<img src="/testKck/img/ase.gif" width="25" height="25" alter="image">
-	BOARD TEST
+	MEMBER TEST
 </font>
 </td>
 </tr>
