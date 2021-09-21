@@ -144,7 +144,7 @@ public class MemberDAOImpl implements MemberDAO {
 		} finally{
 			ConnProperty.conClose(conn, pstmt, rsRs);
 		}
-		System.out.println("MemberDAOImpl.memberSelectAll() 종료");
+		System.out.println("MemberDAOImpl.memberSelect() 종료");
 
 		return aList;
 	}

@@ -18,12 +18,9 @@
 <fullyQualifiedTypeName name="a.b.c.com.kosmo.book.sql.BookSqlMap"/>
 <fullyQualifiedTypeName name="a.b.c.com.kosmo.mem.dao.MemberDAO"/>
 <fullyQualifiedTypeName name="a.b.c.com.kosmo.mem.dao.MemberDAOImpl"/>
-<fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
 <fullyQualifiedTypeName name="java.sql.Connection"/>
 <fullyQualifiedTypeName name="a.b.c.com.kosmo.mem.sql.MemeberSqlMap"/>
-<fullyQualifiedTypeName name="a.b.c.com.common.ConnProperty"/>
 <fullyQualifiedTypeName name="java.lang.StringBuffer"/>
-<fullyQualifiedTypeName name="a.b.c.com.kosmo.mem.sql.MemberSqlMap"/>
 <fullyQualifiedTypeName name="java.io.PrintWriter"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="a.b.c.com.common.CommonUtils"/>
@@ -33,6 +30,9 @@
 <fullyQualifiedTypeName name="a.b.c.com.kosmo.mem.vo.MemberVO"/>
 <fullyQualifiedTypeName name="a.b.c.com.common.GetChabun"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
-<fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
+<fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
 <fullyQualifiedTypeName name="java.sql.ResultSet"/>
+<fullyQualifiedTypeName name="a.b.c.com.common.ConnProperty"/>
+<fullyQualifiedTypeName name="a.b.c.com.kosmo.mem.sql.MemberSqlMap"/>
+<fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
 </qualifiedTypeNameHistroy>

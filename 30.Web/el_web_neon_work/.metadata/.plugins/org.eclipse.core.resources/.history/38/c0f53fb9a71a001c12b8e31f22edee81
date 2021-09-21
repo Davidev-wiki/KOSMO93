@@ -1,0 +1,152 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page import= java.util.ArrayList; %>
+<%@ page import= a.b.c.com.kosmo.mem.vo.MemberVO; %>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>글 전체 조회</title>
+<style type="text/css">
+	* {
+		margin: 0 auto;
+		/*text-align: center;*/
+	}
+	
+	div {
+		margin: 50px 0px 0px 100px;
+	}			
+
+	td, th {
+		 padding: 5px;
+	}
+	
+	.tt {
+		text-align: center;
+	}
+	
+	.photo {
+		border:1px solid red;
+		width: 160px;
+		height: 180px;
+		display: block;
+		margin-reft: auto;
+		margin-rigth; auto;
+	}
+</style>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<!-- 다음 주소록 OPEN API CDN 소환  -->
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function(){
+		
+		// 이메일 (천천히 다시 살펴보기)
+		$("#memail2").change(function(){
+			$("$memail2 option:selected").each(function(){
+				if("1" == $(this).val(){
+					var aa = $("#memail1").val();
+					$("#memail1").val('');
+					$("#memail1").attr("readonly",false);
+				}else{
+					$("#memail1").val($(this).text());
+					$("#memail1").attr("readonly",true);
+				}
+			})
+		});
+			
+		// 우편번호 : daum 지도 API 와 연결(천천히 다시 살펴보기)
+		$("#zonecode").click(function(){
+			console.log("zonecode 진입 ");
+			new daum.Postcode({
+				oncomplete: function(data){
+					$("#mzonecode").val(data.zonecode);
+					$("#mroadaddress").val(data.roadAddress);
+					$("#mjibunaddress").val(data.jibunAddress);
+				}
+			}).open();
+		});
+	});
+	
+	function memUpdate(actionUpdate){
+		console.log("memSelect.jsp.memberUpdate() 진입 / actionUpdate : " + actionUpdate);
+	
+		if("U" == actionUpdate){
+			var v1 = "UOK";
+			document.memUpdateForm.action="/testKck/mem?ISUD_TYPE="+v1;
+		}
+		
+		if("D" == actionUpdate){
+			var v2 = "DOK";
+			document.memUpdateForm.action="/testKck/mem?ISUD_TYPE="+v2;
+		}
+		
+		document.memUpdateForm.method="POST";
+		document.memUpdateForm.enctype="application/x-www-form-urlencoded";
+		document.memUpdateForm.submit();
+		
+	}
+	
+	// 조회창에서 '등록' or '조회' 버튼을 누른 경우
+	function checkAction(actionName){
+		console.log("memSelect.jsp.checkAction() 진입");
+		
+		if('I' == actionName){
+			location.href="testKck/kck/mem/mem.html";
+		}
+		if('SALL' == actionName){
+			location.href="testKck/mem?ISUD_TYPE=SALL";
+		}
+	}
+	
+</script>
+
+</head>
+<body onload="compCheck()">
+<% request.setCharacterEncoding("EUC-KR"); %>
+SELECT
+<%
+	Object obj = request.getAttribute("aListS");
+	if (obj == null) return;
+	
+	ArryaList<MemberVO> aList = (ArryaList<MemberVO>)obj;
+	
+	
+%>
+<hr>
+<div>
+<form name="memUpdateForm" id="memUpdateForm">
+<table border="1">
+<script>
+function compCheck(){
+	
+	console.log("compCheck 진입 "); 
+
+	// 성별
+	var gen = "<%= mgender %>";
+	console.log("gen : " + gen);
+	if ('01' == gen){
+		document.getElementsByName("mgender")[0].checked = true;
+	} 
+	if ('02' == gen){
+		document.getElementsByName("mgender")[1].checked = true;
+	}
+	
+	// 이메일
+	var email = "<%= memail %>";
+	
+	
+	
+	// 취미
+	
+}
+</script>
+<tr>
+<td>회원번호</td>
+<td><input type="text" name="mnum" id="mnum" value="<%= mvo.getMnum() %>" readonly />
+
+</table>
+</form>
+</div>
+</body>
+</html>

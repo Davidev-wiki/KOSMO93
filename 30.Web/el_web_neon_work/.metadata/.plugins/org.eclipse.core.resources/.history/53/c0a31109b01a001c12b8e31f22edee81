@@ -1,0 +1,245 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="EUC-KR"%>
+<%@ page import=java.util.ArrayList;%
+	>
+<%@ page import=a.b.c.com.kosmo.mem.vo.MemberVO;%>
+<%@page import="a.b.c.com.common.CodeUtil"%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>글 전체 조회</title>
+<style type="text/css">
+* {
+	margin: 0 auto;
+	/*text-align: center;*/
+}
+
+div {
+	margin: 50px 0px 0px 100px;
+}
+
+td, th {
+	padding: 5px;
+}
+
+.tt {
+	text-align: center;
+}
+
+.photo {
+	border: 1px solid red;
+	width: 160px;
+	height: 180px;
+	display: block;
+	margin-reft: auto;
+	margin-rigth;
+	auto;
+}
+</style>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<!-- 다음 주소록 OPEN API CDN 소환  -->
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function(){
+		
+		// 이메일 (천천히 다시 살펴보기)
+		$("#memail2").change(function(){
+			$("$memail2 option:selected").each(function(){
+				if("1" == $(this).val(){
+					var aa = $("#memail1").val();
+					$("#memail1").val('');
+					$("#memail1").attr("readonly",false);
+				}else{
+					$("#memail1").val($(this).text());
+					$("#memail1").attr("readonly",true);
+				}
+			})
+		});
+			
+		// 우편번호 : daum 지도 API 와 연결(천천히 다시 살펴보기)
+		$("#zonecode").click(function(){
+			console.log("zonecode 진입 ");
+			new daum.Postcode({
+				oncomplete: function(data){
+					$("#mzonecode").val(data.zonecode);
+					$("#mroadaddress").val(data.roadAddress);
+					$("#mjibunaddress").val(data.jibunAddress);
+				}
+			}).open();
+		});
+	});
+	
+	function memUpdate(actionUpdate){
+		console.log("memSelect.jsp.memberUpdate() 진입 / actionUpdate : " + actionUpdate);
+	
+		if("U" == actionUpdate){
+			var v1 = "UOK";
+			document.memUpdateForm.action="/testKck/mem?ISUD_TYPE="+v1;
+		}
+		
+		if("D" == actionUpdate){
+			var v2 = "DOK";
+			document.memUpdateForm.action="/testKck/mem?ISUD_TYPE="+v2;
+		}
+		
+		document.memUpdateForm.method="POST";
+		document.memUpdateForm.enctype="application/x-www-form-urlencoded";
+		document.memUpdateForm.submit();
+		
+	}
+	
+	// 조회창에서 '등록' or '조회' 버튼을 누른 경우
+	function checkAction(actionName){
+		console.log("memSelect.jsp.checkAction() 진입");
+		
+		if('I' == actionName){
+			location.href="testKck/kck/mem/mem.html";
+		}
+		if('SALL' == actionName){
+			location.href="testKck/mem?ISUD_TYPE=SALL";
+		}
+	}
+	
+</script>
+
+</head>
+<body onload="compCheck()">
+	<%
+		request.setCharacterEncoding("EUC-KR");
+	%>
+	SELECT
+	<%
+		// 조회한 데이터 중에서 코드 변환작업이 필요한 변수들만 따로 작업한다.
+		// 코드 변환 작업은 다른 클래스를 이용해서 변환한다.
+		// 성별, 생년월일, 휴대폰, 전화번호, 이메일, 주소, 취미
+
+		Object obj = request.getAttribute("aListS");
+		if (obj == null)
+			return;
+
+		ArrayList<MemberVO> aList = (ArrayList<MemberVO>) obj;
+
+		int nCnt = aList.size();
+
+		out.println("조건 조회 후 받은 데이터 건 수 : " + nCnt + " 건");
+
+		String mgender = "";
+		String mbirth = "";
+		String mhp = "";
+		String mtel = "";
+		String memail = "";
+		String mzonecode = "";
+		String mroadaddress = "";
+		String mroadaddressdetail = "";
+		String mjibunaddress = "";
+		String mhobby = "";
+
+		// 빈 객체 생성
+		MemberVO mvo = null;
+
+		if (nCnt == 1) {
+			// 배열에 들어온 첫 번째 객체를  빈 객체에 초기화.
+			mvo = aList.get(0);
+
+			// 성별 : 들어온 객체에 있는 데이터 그대로 초기화
+			mgender = mvo.getMgender();
+			// 생년월일 : CodeUtil을 이용해 변환
+			mbirth = CodeUtil.birth(mvo.getMbirth());
+			// 핸드폰 : CodeUtil을 이용해 변환
+			mhp = CodeUtil.hp(mvo.getMhp());
+			// 전화번호 : CodeUtil을 이용해 변환
+			mtel = CodeUtil.tel(mvo.getMtel());
+			// 이메일 : 들어온 객체에 있는 데이터 그대로 초기화
+			memail = mvo.getMemail();
+			// 주소
+			mzonecode = mvo.getMzonecode();
+			String addr[] = mroadaddress.split("@");
+			mroadaddress = addr[0];
+			mroadaddressdetail = addr[1];
+			mjibunaddress = mvo.getMjibunaddress();
+			// 취미
+			mhobby = mvo.getMhobby();
+
+		}
+	%>
+	<hr>
+	<div>
+		<form name="memUpdateForm" id="memUpdateForm">
+			<table border="1">
+				<script>
+function compCheck(){
+	
+	console.log("compCheck 진입 "); 
+
+	// 성별
+	var gen = "<%=mgender%>";
+	console.log("gen : " + gen);
+	if ('01' == gen){
+		document.getElementsByName("mgender")[0].checked = true;
+	} 
+	if ('02' == gen){
+		document.getElementsByName("mgender")[1].checked = true;
+	}
+	
+	// 이메일
+	var email = "<%=memail%>";
+	var emails = email.split('@');
+	document.getElementById("memail").value = emails[0];
+	document.getElementById("memail1").value = emails[1];
+	
+	// 취미 : 객체에 숫자 형태로 저장되어있는듯 (01, 02, 03, 04, 05)
+	var hobs = "<%=mhobby%>";
+	console.log("hobs : " + hobs);
+	// 배열에 들어있는것들을 ',' 기준으로 나누어 변수(=>배열 형태)에 저장 
+	var hob = hobs.split(',');
+	// 취미 배열에 들어있는 목록을 순서대로 1개씩 출력하고 분기 처리.
+	for (var m=0; m < hob.length; m++){
+		var hobValue = hob[m];
+		console.log("hobValue : " + hobValue);
+		
+		// 취미가 '01' 일 때 mhobby의 첫 번째 체크를 true 로 변경. 
+		if ('01' == hobValue){
+			document.getElementsByName("mhobby")[0].checked = true;
+		}
+		if ('02' == hobValue){
+			document.getElementsByName("mhobby")[1].checked = true;
+		}
+		if ('03' == hobValue){
+			document.getElementsByName("mhobby")[2].checked = true;
+		}
+		if ('04' == hobValue){
+			document.getElementsByName("mhobby")[3].checked = true;
+		}
+		if ('05' == hobValue){
+			document.getElementsByName("mhobby")[4].checked = true;
+		}
+	}
+}
+</script>
+				<tr>
+					<td colspan="3" align="center"><font size="4"
+						style="color: blue;">회원정보 수정 && 삭제</font> <img alt="image"
+						src="/testKck/img/ase.gif" width="25" height="25"></td>
+				</tr>
+
+				<tr>
+					<td>회원번호</td>
+					<td><input type="text" name="mnum" id="mnum"
+						value="<%=mvo.getMnum()%>" readonly /></td>
+					<td rowspan="5"><img class="photo"
+						src="/testKck/fileupload/member/<%=mvo.getMphoto() %>" alt="image">
+					</td>
+				</tr>
+				<tr>
+					<td>이름</td>
+					<td>
+					<input type="text" name="mname" id="mname" value="<%=mvo.getMname() %>" readonly />
+					</td>
+			</table>
+		</form>
+	</div>
+</body>
+</html>
