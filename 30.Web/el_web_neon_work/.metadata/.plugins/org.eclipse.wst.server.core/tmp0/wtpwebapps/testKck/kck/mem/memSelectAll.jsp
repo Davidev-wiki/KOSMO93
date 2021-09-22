@@ -14,7 +14,8 @@
 		margin: 0 auto;
 		/*text-align: center;*/
 	}
-	
+				
+
 	td, th {
 		 padding: 5px;
 	}
@@ -66,13 +67,14 @@
 			}			
 		});
 		
+	
 		// 삭제하기 
 		$("#D").click(function(){			
 			
 			var nCnt = chkInfo();
 			if (nCnt == 0){	
 				console.log('체크박스를 체크하세요');
-				alert('체크박스를 체크하 세요');
+				alert('체크박스를 체크하세요');
 			}else{				
 				// jQuery 버전 
 				var v2 = $("#ISUD_TYPE").val('D');
@@ -90,7 +92,7 @@
 	          		nCnt++;
 	          	}		          			            
 	        }			
-			console.log('박스에 체크된 개수 nCnt : ' + nCnt);			
+			console.log('nCnt >>> : ' + nCnt);			
 			return nCnt;
 		}
 		

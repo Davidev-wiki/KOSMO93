@@ -71,7 +71,7 @@
 	});
 
 	function memUpdate(actionUpdate){
-		console.log("boardUpdate 진입 >>> : " + actionUpdate);
+		console.log("memUpdate 진입 >>> : " + actionUpdate);
 				
 		if ('U' == actionUpdate){
 			var v1 = "UOK";		
@@ -80,7 +80,7 @@
 		
 		if ('D' == actionUpdate){
 			var v2 = "DOK";
-			document.boardUpdateForm.action="/testKck/mem?ISUD_TYPE="+v2;
+			document.memUpdateForm.action="/testKck/mem?ISUD_TYPE="+v2;
 		}
 		
 		document.memUpdateForm.method="POST";
@@ -92,7 +92,7 @@
 		console.log("actionName 진입 >>> : " + actionName);
 		
 		if ('I' == actionName){	
-			location.href="/testKck/kck/mem/mem.html";
+			location.href="/testKck/kosmo/mem/mem.html";
 		}
 		if ('SALL' == actionName){			
 			location.href="/testKck/mem?ISUD_TYPE=SALL";
@@ -109,7 +109,7 @@ SELECT
 	
 	ArrayList<MemberVO> aList = (ArrayList<MemberVO>)obj;
 	int nCnt = aList.size();
-	out.println(":::: 조건 조회 >>> : " + nCnt + " 건");
+	out.println("조건 조회  : " + nCnt + " 건");
 		
 	String mgender = "";
 	String mbirth = "";

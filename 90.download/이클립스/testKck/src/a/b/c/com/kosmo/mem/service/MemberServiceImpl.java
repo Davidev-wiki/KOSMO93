@@ -50,13 +50,27 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public boolean memberUpdate(MemberVO mvo) {
 		// TODO Auto-generated method stub
-		return false;
+		
+		System.out.println("MemberServiceImpl.memberUpdate() 진입");
+		
+		MemberDAO mdao = new MemberDAOImpl();
+		
+		System.out.println("MemberServiceImpl.memberUpdate() 리턴");  
+
+		return mdao.memberUpdate(mvo);
 	}
 
 	@Override
 	public boolean memberDelete(MemberVO mvo) {
 		// TODO Auto-generated method stub
-		return false;
+		
+		System.out.println("MemberServiceImpl.memberDelete() 진입");
+		
+		MemberDAO mdao = new MemberDAOImpl();
+		
+		System.out.println("MemberServiceImpl.memberDelete() 리턴");  
+
+		return mdao.memberDelete(mvo);
 	}
 
 }

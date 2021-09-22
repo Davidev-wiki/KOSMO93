@@ -150,14 +150,55 @@ public abstract class MemberSqlMap {
 	
 	// 회원 수정
 	public static String getMemberUpdateQuery(){
+		System.out.println("MemberSqlMap.getMemberUpdateQuery() 진입");	
 		
-		return "";
+		StringBuffer sb = new StringBuffer();
+		
+		/*
+		sb.append("	UPDATE		 						\n");
+		sb.append("		MVC_BOARD 				    	\n");
+		sb.append("	SET						    		\n");
+		sb.append("     	 BSUBJECT 		= ?			\n");// placeholder 1
+		sb.append("			,BMEMO 			= ?			\n");// placeholder 2
+		sb.append("			,UPDATEDATE 	= SYSDATE	\n");
+		sb.append("	WHERE 	 BNUM 			= ?  		\n");// placeholder 3
+		sb.append("	AND		 DELETEYN 		= 'Y'		\n");
+		 * */
+		
+		sb.append(" UPDATE 								\n");
+		sb.append("		   	 MVC_MEMBER 			    \n");	
+		sb.append("	SET  								\n");		
+		sb.append("			 MEMAIL 		= ?			\n"); // placeholder 1	  
+		sb.append("			,MZONECODE   	= ?			\n"); // placeholder 2	
+		sb.append("			,MROADADDRESS 	= ?			\n"); // placeholder 3	
+		sb.append("			,MJIBUNADDRESS 	= ?			\n"); // placeholder 4			   
+		sb.append("			,MHOBBY 		= ? 		\n"); // placeholder 5	        	
+	    sb.append("		  	,UPDATEDATE 	= SYSDATE	\n");
+		sb.append("	WHERE  	 MNUM 			= ?			\n"); // placeholder 6	    
+		sb.append("	AND    	 DELETEYN 		= 'Y'  		\n");
+		
+		System.out.println("MemberSqlMap.getMemberUpdateQuery() 종료");	
+
+		return sb.toString();
 	}
 	
 	// 회원 삭제
 	public static String getMemberDeleteQuery(){
+		System.out.println("MemberSqlMap.getMemberDeleteQuery() 진입");	
 		
-		return "";
+		StringBuffer sb = new StringBuffer();
+
+		sb.append(" UPDATE 									\n");
+		sb.append("		   	 MVC_MEMBER 			    	\n");	
+		sb.append("	SET  									\n");		
+		sb.append("	  		DELETEYN		='N'			\n");
+		sb.append("		  ,UPDATEDATE 		= SYSDATE		\n");
+		sb.append("	WHERE  	 MNUM 			= ?				\n"); // placeholder 1   
+		sb.append("	AND    DELETEYN 		= 'Y'  			\n");
+		
+		System.out.println("MemberSqlMap.getMemberDeleteQuery() 종료");	
+
+		return sb.toString();
 	}
 	
 }

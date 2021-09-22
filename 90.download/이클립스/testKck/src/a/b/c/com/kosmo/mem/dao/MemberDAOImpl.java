@@ -188,7 +188,7 @@ public class MemberDAOImpl implements MemberDAO {
 			pstmt.setString(16, mvo.getMadmin());
 			
 			nCnt = pstmt.executeUpdate();
-			System.out.println("업데이트 실행  : " + nCnt + "건 완료!");
+			System.out.println("등록 실행  : " + nCnt + "건 완료!");
 			if(!conn.getAutoCommit()) conn.getAutoCommit();
 			
 			if (nCnt > 0) {
@@ -199,7 +199,7 @@ public class MemberDAOImpl implements MemberDAO {
 			
 		}catch(Exception e){
 			
-			System.out.println("DB에 Insert하는데 문제가 발생했어요! : " + e.getMessage());
+			System.out.println("DB에 등록하는데 문제가 발생했어요! : " + e.getMessage());
 			
 		}finally{
 			
@@ -214,13 +214,100 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public boolean memberUpdate(MemberVO mvo) {
 		// TODO Auto-generated method stub
-		return false;
+		System.out.println("MemberDAOImpl.memberUpdate() 진입");
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int nCnt = 0;
+		boolean bool = false;
+		
+		
+		try{
+			
+			conn = ConnProperty.getConnection();
+			System.out.println("커넥션의 오토커밋 여부 : " + conn.getAutoCommit());
+			
+			pstmt = conn.prepareStatement(MemberSqlMap.getMemberUpdateQuery());
+			System.out.println("실행된 쿼리문 : " + MemberSqlMap.getMemberUpdateQuery());
+			
+			// pstmt실행 전 쿼리 데이터에 파라미터 전달하기
+			pstmt.clearParameters();
+			pstmt.setString(1, mvo.getMemail());
+			pstmt.setString(2, mvo.getMzonecode()); 
+			pstmt.setString(3, mvo.getMroadaddress());   
+			pstmt.setString(4, mvo.getMjibunaddress());
+			pstmt.setString(5, mvo.getMhobby());
+			pstmt.setString(6, mvo.getMnum());
+			
+			nCnt = pstmt.executeUpdate();
+			System.out.println("업데이트 실행  : " + nCnt + "건 완료!");
+			if(!conn.getAutoCommit()) conn.getAutoCommit();
+			
+			if (nCnt > 0) {
+				bool = true;
+			}
+			
+			ConnProperty.conClose(conn, pstmt);
+			
+		}catch(Exception e){
+			
+			System.out.println("DB에서 수정하는데 문제가 발생했어요! : " + e.getMessage());
+			
+		}finally{
+			
+			ConnProperty.conClose(conn, pstmt);
+		}
+		
+		System.out.println("MemberDAOImpl.memberUpdate() 종료");
+	
+		return bool;
 	}
 
 	@Override
 	public boolean memberDelete(MemberVO mvo) {
 		// TODO Auto-generated method stub
-		return false;
+		System.out.println("MemberDAOImpl.memberDelete() 진입");
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int nCnt = 0;
+		boolean bool = false;
+		
+		
+		try{
+			
+			conn = ConnProperty.getConnection();
+			System.out.println("커넥션의 오토커밋 여부 : " + conn.getAutoCommit());
+			
+			pstmt = conn.prepareStatement(MemberSqlMap.getMemberDeleteQuery());
+			System.out.println("실행된 쿼리문 : " + MemberSqlMap.getMemberDeleteQuery());
+			
+			// pstmt실행 전 쿼리 데이터에 파라미터 전달하기
+			pstmt.clearParameters();
+			pstmt.setString(1, mvo.getMnum());
+			
+			nCnt = pstmt.executeUpdate();
+			System.out.println("삭제 실행  : " + nCnt + "건 완료!");
+			if(!conn.getAutoCommit()) conn.getAutoCommit();
+			
+			if (nCnt > 0) {
+				bool = true;
+			}
+			
+			ConnProperty.conClose(conn, pstmt);
+			
+		}catch(Exception e){
+			
+			System.out.println("DB에 연결해서 삭제하는데 문제가 발생했어요! : " + e.getMessage());
+			
+		}finally{
+			
+			ConnProperty.conClose(conn, pstmt);
+		}
+		
+		System.out.println("MemberDAOImpl.memberDelete() 종료");
+	
+		return bool;
 	}
 
 }

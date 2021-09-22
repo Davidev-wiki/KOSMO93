@@ -20,7 +20,7 @@
 	
 %>
 	<script>
-		location.href="/testKck/board?ISUD_TYPE=SALL";
+		location.href="/testKck/mem?ISUD_TYPE=SALL";
 	</script>
 <%
 	}else{
