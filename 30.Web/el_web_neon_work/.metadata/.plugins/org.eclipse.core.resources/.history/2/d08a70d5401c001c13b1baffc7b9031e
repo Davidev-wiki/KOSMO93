@@ -1,0 +1,5 @@
+package a.b.c.com.kosmo.login.dao;
+
+public interface LoginDAO {
+
+}
