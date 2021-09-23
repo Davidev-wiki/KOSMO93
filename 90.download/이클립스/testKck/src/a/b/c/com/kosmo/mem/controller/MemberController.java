@@ -143,7 +143,7 @@ public class MemberController extends HttpServlet {
 						mvo = new MemberVO();
 
 						// 회원 번호 (mnum) 세팅
-						String mnum = GetChabun.getMemChabun("d");
+						String mnum = GetChabun.getMemberChabun("d");
 						System.out.println("빈 객체에 세팅할 mnum 값 : " + mnum);
 						mvo.setMnum(mnum);
 

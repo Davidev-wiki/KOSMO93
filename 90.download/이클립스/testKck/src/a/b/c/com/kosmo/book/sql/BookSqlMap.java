@@ -10,14 +10,14 @@ public class BookSqlMap {
 				
 		sb.append(" SELECT  /*+ INDEX_DESC(SYS_C0011177) */ 			\n");
 		sb.append("         NVL(MAX(SUBSTR(A.BNUM, -4)), 0) + 1 MAXNUM	\n");
-		sb.append(" FROM    TEST_BOOK A 								\n");
+		sb.append(" FROM    KCK_BOOK A 								\n");
 		
 		return sb.toString();
 	}
 	
 	// 전체조회 쿼리문
 	public static String getBookSelectAllQuery() {
-		System.out.println("BookSqlMap.getBoardSelectAllQuery()함수 진입");
+		System.out.println("BookSqlMap.getBookSelectAllQuery()함수 진입");
 		
 		StringBuffer sb = new StringBuffer();
 
@@ -46,6 +46,21 @@ public class BookSqlMap {
 
 		StringBuffer sb = new StringBuffer();
 		
+		sb.append(" SELECT 															\n");
+		sb.append("   		  A.BNUM 								BNUM			\n");
+		sb.append("   		 ,A.BTITLE 								BTITLE			\n");
+		sb.append("   		 ,A.BAUTH 								BAUTH			\n");
+		sb.append("   		 ,A.ISBN 								BISBN			\n");
+		sb.append("   		 ,A.BCOMP 								BCOMP			\n");
+		sb.append("   		 ,A.BPRICE 								BPRICE			\n");
+		sb.append("   		 ,A.BQTY 								BQTY			\n");
+		sb.append("   		 ,A.BCOVER 								BCOVER			\n");
+		sb.append("   		 ,A.DELETEYN 							DELETEYN		\n");
+		sb.append("   		 ,TO_CHAR(A.INSERTDATE, 'YYYY-MM-DD')	INSERTDATE		\n");
+		sb.append("   		 ,TO_CHAR(A.UPDATEDATE, 'YYYY-MM-DD')	UPDATEDATE		\n");
+		sb.append(" FROM	KCK_BOOK A												\n");
+		sb.append(" WHERE 	A.DELETEYN=								'Y'				\n");
+		sb.append(" AND     A.BNUM = 								 ?				\n");
 		
 		return sb.toString();
 	}
@@ -91,8 +106,15 @@ public class BookSqlMap {
 		System.out.println("BookSqlMap.getBookUpdateQuery()함수 진입");
 
 		StringBuffer sb = new StringBuffer();
-
-
+		// 가격 & 수량만 업데이트 가능
+		sb.append("	UPDATE  							\n");	
+		sb.append("		   	 KCK_BOOK 			    	\n");	
+		sb.append("	SET  								\n");		
+		sb.append("			 BPRICE 		= ?			\n");	    	    
+		sb.append("			,BQTY			= ?			\n");	    
+	    sb.append("		  	,UPDATEDATE 	= SYSDATE	\n");
+		sb.append("	WHERE  	 BNUM 			= ?			\n");	    
+		sb.append("	AND    	 DELETEYN 		= 'Y'  		\n");
 
 		return sb.toString();
 	}
@@ -103,7 +125,13 @@ public class BookSqlMap {
 
 		StringBuffer sb = new StringBuffer();
 
-
+		sb.append("	UPDATE  							\n");	
+		sb.append("		   	 KCK_BOOK 			    	\n");	
+		sb.append("	SET  								\n");		
+		sb.append("		   DELETEYN 	= 'N'			\n");	    	   
+		sb.append("		  ,UPDATEDATE 	= SYSDATE		\n");
+		sb.append("	WHERE  	 BNUM 			= ?			\n");	    
+		sb.append("	AND    	 DELETEYN 		= 'Y'  		\n");
 		
 		return sb.toString();
 	}

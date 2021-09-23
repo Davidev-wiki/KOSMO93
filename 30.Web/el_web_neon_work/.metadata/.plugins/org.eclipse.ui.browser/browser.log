@@ -15,3 +15,6 @@
 9월 19, 2021 18:32:28.03 [15936:18164:0919/183228.032:ERROR:connection_factory_impl.cc(429)] Failed to connect to MCS endpoint with error -106
 9월 19, 2021 19:57:18.64 [15936:13708:0919/195718.380:ERROR:device_event_log_impl.cc(214)] [19:57:18.381] USB: usb_service_win.cc:258 Failed to get device driver name: 요소가 없습니다. (0x490)
 9월 19, 2021 22:01:21.74 [15936:18164:0919/220121.741:ERROR:connection_factory_impl.cc(429)] Failed to connect to MCS endpoint with error -106
+
+9월 22, 2021 23:10:20.53 NEW SESSION
+9월 22, 2021 23:10:20.53 [2028:17628:0922/231020.528:ERROR:external_registry_loader_win.cc(158)] File C:\Users\david\AppData\Local\Google\Drive\user_default\apdfllckaahabafndbhieahigkjlhalf_live.crx for key Software\Google\Chrome\Extensions\apdfllckaahabafndbhieahigkjlhalf does not exist or is not readable.

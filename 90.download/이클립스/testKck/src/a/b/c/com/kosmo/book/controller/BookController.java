@@ -209,7 +209,7 @@ public class BookController extends HttpServlet {
 					// 등록에 실패하면 다시 등록하는 화면으로 보내버린다.
 					System.out.println("도서 등록에 실패했어요.");
 					out.println("<script>");
-					out.println("location.href='/testKck/book/book.html'");
+					out.println("location.href='/testKck/kck/book/book.html'");
 					out.println("</script>");
 				}
 			}
@@ -229,31 +229,112 @@ public class BookController extends HttpServlet {
 					request.setAttribute("aListAll", aListAll);
 					RequestDispatcher rd = request.getRequestDispatcher("/kck/book/bookSelectAll.jsp");
 					rd.forward(request, response);
+					
 				} else {
 					out.println("<script>");
-					out.println("location.href='testKck/book?isudtype=SALL'");
+					out.println("location.href='/testKck/book?isudtype=SALL'");
 					out.println("</script>");
 				}
-				
-				
+
 			}
 
 			// 도서 정보 조건 조회 ('S' or 'U' or 'D')
 			// 데이터 요청시 입력된 isudtype의 값이 "SALL"인 경우
 			if ("S".equals(isudtype) || "U".equals(isudtype) || "D".equals(isudtype)) {
+				System.out.println("조건 조회  isudtype 값 : " + isudtype);
+				
+				String bnum = request.getParameter("bnumCheck");
+				if (bnum != null && bnum.length() > 0){
+					System.out.println("조회할 도서 번호  : " + bnum);
+					BookService bs = new BookServiceImpl();
+					BookVO bvo = new BookVO();
+					bvo.setBnum(bnum);
+					
+					ArrayList<BookVO> aList = bs.bookSelect(bvo);
+					
+					if(aList != null && aList.size() > 0){
+						
+						request.setAttribute("aList", aList);
+						RequestDispatcher rd = request.getRequestDispatcher("/kck/book/bookSelect.jsp");
+						rd.forward(request, response);
+					} else {
+						out.println("<script>");
+						out.println("location.href='/testKck/book?isudtype=SALL'");
+						out.println("</script>");
+						
+					}
+				
+				} else {
+					System.out.println("DB에서 데이터를 가져오지 못했어요..");
+				}
 			}
 
 			// 도서 수정 (버튼이 눌린 경우 실행되는 로직)
-			if ("UOK".equals(isudtype)) {
+			if ("UOK".equals(isudtype)) {		
+				System.out.println("도서 정보 수정 isudtype : " + isudtype);
+
+				String bnum = request.getParameter("bnum");
+				String bprice = request.getParameter("bprice");
+				String bqty = request.getParameter("bqty");				
+				System.out.println("bnum >>> : " + bnum);
+				System.out.println("bprice >>> : " + bprice);
+				System.out.println("bqty >>> : " + bqty);
+				
+				BookService bs = new BookServiceImpl();
+				BookVO bvo = null;
+				bvo = new BookVO();
+				
+				bvo.setBnum(bnum);
+				bvo.setBprice(bprice);
+				bvo.setBqty(bqty);
+				
+				int nCnt = bs.bookUpdate(bvo);
+				
+				if (nCnt >  0) {
+					System.out.println("도서 정보 " + nCnt + " 건 수정 되었습니다.");		
+					request.setAttribute("nCnt", new Integer(nCnt));										
+					RequestDispatcher rd= request.getRequestDispatcher("/kck/book/bookUpdate.jsp");
+					rd.forward(request, response);
+					
+				}else {
+					System.out.println("도성 정보 등록 실패 !!!!");
+					out.println("<script>");					
+					out.println("location.href='/testKck/book?isudtype=SALL'");
+					out.println("</script>");
+				}
 			}
 
 			// 도서 삭제 (버튼이 눌린 경우 실행되는 로직)
 			if ("DOK".equals(isudtype)) {
+				System.out.println("도서 정보 수정 isudtype : " + isudtype);
+				
+				String bnum = request.getParameter("bnum");				
+				System.out.println("bnum : " + bnum);
+				
+				BookService bs = new BookServiceImpl();
+				BookVO bvo = null;
+				bvo = new BookVO();
+				
+				bvo.setBnum(bnum);				
+				int nCnt = bs.bookDelete(bvo);
+				
+				if (nCnt >  0) {
+					System.out.println("도서 정보 " + nCnt + " 건 삭제 되었습니다.");		
+					request.setAttribute("nCnt", new Integer(nCnt));										
+					RequestDispatcher rd= request.getRequestDispatcher("/kck/book/bookDelete.jsp");
+					rd.forward(request, response);
+					
+				}else {
+					System.out.println("도서 정보 등록 실패 !!!!");
+					out.println("<script>");					
+					out.println("location.href='/testKck/book?isudtype=SALL'");
+					out.println("</script>");
+				}
 			}
 
 		} else {
 			// null or length == 0일 때 출력될 문장.
-			System.out.println("요청시 입력된 데이터가 없습니다.");
+			System.out.println("요청시 입력된 데이터가 없습니다, isudtype을 확인하세요!");
 		}
 	}
 

@@ -1,0 +1,56 @@
+로그인 : Model2 + Web MVC 패턴
+============================
+
+1. datasource 체크
+----------------------------
+데이터베이스 : Oracle 11g release 2 
+jdbc : ojdbc6.jar : Context/WebContent/WEB-INF/lib/ojdbc6.jar
+sid : orclKOSMO00
+(*sid 확인방법 : cmd - "sqlplus"입력 - "select name, db_unique_name from v$database;" 입력
+account : kck00//kck1234
+url : jdbc:oracle:thin:@localhost:1521:orcleKOSMO00
+jdbc driver : oracle.jdbc.driver.OracleDriver
+
+
+2. 요구사항 분석
+----------------------------
+로그인 쿼리
+MID
+MPW
+
+SELECT COUNT(A.MNUM) NCNT 
+FROM MVC_MEMBER A
+WHERE A.DELETEYN = 'Y'
+AND A.MID = ?
+AND A.MPW = ?
+
+3. 클래스 설계
+-----------------------------
+a.b.c.kosmo.login
+	
+a.b.c.kosmo.login.controller
+	LoginController
+a.b.c.kosmo.login.service
+	LoginService
+		public int loginCheckCnt(MemberVO);
+	LoginServiceImpl	
+a.b.c.kosmo.login.dao
+	LoginDAO
+		public int loginCheckCnt(MemberVO);
+	LoginDAOImpl
+a.b.c.kosmo.login.sql
+	LoginSqlMap
+		public static String getLoginCheckCntQuery(){}
+a.b.c.kosmo.login.vo (member VO 사용하기)
+
+
+<view : jsp>
+testKck/WebContent/kck/login/
+login.html
+login.jsp
+logout.jsp
+
+
+리퀘스트 디스패쳐는 컨텍스트를 안쓴다
+location.href는 컨텍스트 쓴다
+
