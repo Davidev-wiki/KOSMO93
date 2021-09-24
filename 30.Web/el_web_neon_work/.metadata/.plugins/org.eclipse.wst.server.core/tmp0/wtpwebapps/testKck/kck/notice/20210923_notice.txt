@@ -1,19 +1,37 @@
 공지사항 :: Model 2 + Web MVC 패턴 
 ===============================================
 
-0. datasource : 데이터 소스 : 데이터베이스 연결정보 
-------------------------------
-데이터 베이스 : 오라클 11g 2 릴리즈 :  Oracle 11g 2 Release
-jdbc 드라이버 : ojdbc6.jar : Context/WebContent/WEB-INF/lib/ojdbc6.jar 카피
-sid : orclKOSMO00
-account : hbe00/heb1234
-url : jdbc:oracle:thin:@localhost:1521:orclKOSMO00
-jdbc 드라이버 네임스페이스 : oracle:jdbc:dirver:OracleDriver
 
+1. datasource : 데이터 소스 : 데이터베이스 연결정보
+------------------------------
+어떤 데이터베이스에 연결하는가?
+ 	=> 데이터 베이스 : 오라클 11g 2 릴리즈 :  Oracle 11g 2 Release
+
+어떤 jdbc 드라이버를 사용하는가?
+	=> ojdbc6.jar : Context/WebContent/WEB-INF/lib/ojdbc6.jar 카피
+
+데이터베이스의 아이디는 무엇인가? 
+	=> sid : orclKOSMO00
+
+데이터베이스 내 DBMS 계정의 ID와 PW는 무엇인가?
+	=> account : kck00/kck1234
+
+데이터베이스의 경로는?
+	=> url : jdbc:oracle:thin:@localhost:1521:orclKOSMO00
+
+jdbc 드라이버 네임스페이스는?
+	=> 네임스페이스 : oracle:jdbc:dirver:OracleDriver
+
+
+자신의 sid를 보기 위해서는?
+cmd 창에서 아래 문구 입력
 sqlplus / as sysdba 또는 sqlplus "/as sysdba"
 select name, db_unique_name from v$database;
 
-1. 요구사항 
+
+
+2. 요구사항 
+------------------------------
 관리자 만 사용
 공지사항의 종류에 따라 보는 사람들이 다를 수 있다. 
 공지사항은 열람 기간 
@@ -27,7 +45,10 @@ NPHOTO : 사진 : 100
 입력일  : INSERTDATE : DATE : YYYY-MM-DD
 수정일  : UPDATEDATE : DATE : YYYY-MM-DD
 
-2. 테이블 설계 
+
+
+3. 테이블 설계 
+------------------------------
 공지사항 테이블 : MVC_NOTICE
 CREATE TABLE MVC_NOTICE(
 	 NNUM VARCHAR2(20) PRIMARY KEY 
@@ -39,7 +60,7 @@ CREATE TABLE MVC_NOTICE(
 	,UPDATEDATE DATE
 );
 
--- 인데스
+-- 인덱스
 -- SYS_C0011201
 SELECT A.INDEX_NAME, A.COLUMN_NAME, A.TABLE_NAME
 FROM ALL_IND_COLUMNS A
@@ -50,8 +71,10 @@ SELECT  /*+ INDEX_DESC(A SYS_C0011201) */
         NVL(MAX(A.NNUM), 0) + 1 MAXNUM 
 FROM MVC_NOTICE A;
 
-3. 클래스 설계 
 
+
+4. 클래스 설계 
+------------------------------
 a.b.c.com.kosmo.notice
 a.b.c.com.kosmo.notice.controller
 	NoticeController

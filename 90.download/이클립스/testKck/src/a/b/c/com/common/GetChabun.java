@@ -38,7 +38,7 @@ public abstract class GetChabun {
 	// 공지사항  번호  
 	public static String getNoticeChabun(String type) {
 		
-		return BIZ_GUBUN_M.concat(numPad(type, ""));
+		return BIZ_GUBUN_M.concat(numPad(type, GetNoticeMaxNum.getMaxNum()));
 	}
 	
 	// 책  번호  

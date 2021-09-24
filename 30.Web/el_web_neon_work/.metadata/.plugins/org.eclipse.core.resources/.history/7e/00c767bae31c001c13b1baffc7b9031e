@@ -1,0 +1,59 @@
+package a.b.c.com.kosmo.notice.sql;
+
+public abstract class NoticeSqlMap {
+
+	public static String getChabunQuery(){		
+		return "";
+	}
+	public static String noticeSelectAllQuery(){		
+		System.out.println("NoticeSqlMap.noticeSelectAllQuery() 실행");
+		
+		StringBuffer sb = new StringBuffer();
+		
+		sb.append("	SELECT 									\n");
+		sb.append("		 A.NNUM				NNUM			\n");
+		sb.append("		,A.NSUBJECT			NSUBJECT		\n");
+		sb.append("		,A.NMEMO			NMEMO			\n");
+		sb.append("		,A.NPHOTO			NPHOTO			\n");
+		sb.append("		,A.DELETEYN			DELETEYN		\n");
+		sb.append("		,TO_CHAR(A.INSERTDATE, 'YYYY-MM-DD')	INSERTDATE		\n");
+		sb.append("		,TO_CHAR(A.UPDATEDATE, 'YYYY-MM-DD')	INSERTDATE		\n");
+		sb.append("	FROM  MVC_NOTICE A						\n");
+		sb.append("	ORDER BY 1 DESC							\n");
+		
+		System.out.println("NoticeSqlMap.noticeSelectAllQuery() 리턴 완료");
+		
+		return sb.toString();
+	}
+	public static String noticeSelectQuery(){	
+		System.out.println("NoticeSqlMap.noticeSelectAllQuery() 실행");
+		
+		StringBuffer sb = new StringBuffer();
+		
+		sb.append("	SELECT 									\n");
+		sb.append("		 A.NNUM				NNUM			\n");
+		sb.append("		,A.NSUBJECT			NSUBJECT		\n");
+		sb.append("		,A.NMEMO			NMEMO			\n");
+		sb.append("		,A.NPHOTO			NPHOTO			\n");
+		sb.append("		,A.DELETEYN			DELETEYN		\n");
+		sb.append("		,TO_CHAR(A.INSERTDATE, 'YYYY-MM-DD')	INSERTDATE		\n");
+		sb.append("		,TO_CHAR(A.UPDATEDATE, 'YYYY-MM-DD')	INSERTDATE		\n");
+		sb.append("	FROM  MVC_NOTICE A						\n");
+		sb.append("	WHERE A.NNUM=				?			\n"); 
+		sb.append("	AND DELETEYN=			   'Y'			\n"); 
+		
+		System.out.println("NoticeSqlMap.noticeSelectAllQuery() 리턴 완료");
+		
+		return sb.toString();
+	}
+	public static String noticeInsertQuery(){		
+		return "";
+	}
+	public static String noticeUpdateQuery(){		
+		return "";
+	}
+	public static String noticeDeleteQuery(){		
+		return "";
+	}
+	
+}

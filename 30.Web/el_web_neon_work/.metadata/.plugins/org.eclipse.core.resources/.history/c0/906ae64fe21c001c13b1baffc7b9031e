@@ -1,0 +1,24 @@
+package a.b.c.com.kosmo.notice.sql;
+
+public abstract class NoticeSqlMap {
+
+	public static String getChabunQuery(){		
+		return "";
+	}
+	public static String noticeSelectAllQuery(){		
+		return "";
+	}
+	public static String noticeSelectQuery(){		
+		return "";
+	}
+	public static String noticeInsertQuery(){		
+		return "";
+	}
+	public static String noticeUpdateQuery(){		
+		return "";
+	}
+	public static String noticeDeleteQuery(){		
+		return "";
+	}
+	
+}
