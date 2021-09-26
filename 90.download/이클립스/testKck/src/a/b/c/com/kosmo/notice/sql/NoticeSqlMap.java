@@ -19,7 +19,7 @@ public abstract class NoticeSqlMap {
 		System.out.println("NoticeSqlMap.noticeSelectAllQuery() 실행");
 		
 		StringBuffer sb = new StringBuffer();
-		
+
 		sb.append("	SELECT 									\n");
 		sb.append("		 A.NNUM				NNUM			\n");
 		sb.append("		,A.NSUBJECT			NSUBJECT		\n");
@@ -27,7 +27,7 @@ public abstract class NoticeSqlMap {
 		sb.append("		,A.NPHOTO			NPHOTO			\n");
 		sb.append("		,A.DELETEYN			DELETEYN		\n");
 		sb.append("		,TO_CHAR(A.INSERTDATE, 'YYYY-MM-DD')	INSERTDATE		\n");
-		sb.append("		,TO_CHAR(A.UPDATEDATE, 'YYYY-MM-DD')	INSERTDATE		\n");
+		sb.append("		,TO_CHAR(A.UPDATEDATE, 'YYYY-MM-DD')	UPDATEDATE		\n");
 		sb.append("	FROM  MVC_NOTICE A						\n");
 		sb.append("	ORDER BY 1 DESC							\n");
 		
@@ -36,7 +36,7 @@ public abstract class NoticeSqlMap {
 		return sb.toString();
 	}
 	public static String noticeSelectQuery(){	
-		System.out.println("NoticeSqlMap.noticeSelectAllQuery() 실행");
+		System.out.println("NoticeSqlMap.noticeSelectQuery() 실행");
 		
 		StringBuffer sb = new StringBuffer();
 		
@@ -47,12 +47,13 @@ public abstract class NoticeSqlMap {
 		sb.append("		,A.NPHOTO			NPHOTO			\n");
 		sb.append("		,A.DELETEYN			DELETEYN		\n");
 		sb.append("		,TO_CHAR(A.INSERTDATE, 'YYYY-MM-DD')	INSERTDATE		\n");
-		sb.append("		,TO_CHAR(A.UPDATEDATE, 'YYYY-MM-DD')	INSERTDATE		\n");
+		sb.append("		,TO_CHAR(A.UPDATEDATE, 'YYYY-MM-DD')	UPDATEDATE		\n");
 		sb.append("	FROM  MVC_NOTICE A						\n");
-		sb.append("	WHERE A.NNUM=				?			\n");  // P.H1
-		sb.append("	AND DELETEYN=			   'Y'			\n"); 
+		sb.append("	WHERE DELETEYN	= 'Y'					\n");
+		sb.append("	AND	  A.NNUM	=  ?					\n");  // P.H1 
+
 		
-		System.out.println("NoticeSqlMap.noticeSelectAllQuery() 리턴 완료");
+		System.out.println("NoticeSqlMap.noticeSelectQuery() 리턴 완료");
 		
 		return sb.toString();
 	}
@@ -107,13 +108,13 @@ public abstract class NoticeSqlMap {
 		
 		StringBuffer sb = new StringBuffer();
 		
-		sb.append("	UPDATE 									\n");
-		sb.append("		 	MVC_NOTICE 						\n");
-		sb.append("	SET										\n");
-		sb.append("			 DELETEYN		= 'N'			\n");
-		sb.append("			,UPDATEDATE		=  SYSDATE		\n");
-		sb.append("	WHERE  	 NNUM 			=  ?			\n");// P.H1    
-		sb.append("	AND    	 DELETEYN 		= 'Y'  			\n");
+		sb.append(" UPDATE 									\n");
+		sb.append("		   	 MVC_NOTICE			    		\n");	
+		sb.append("	SET  									\n");		
+		sb.append("	  		DELETEYN		='N'			\n");
+		sb.append("		  ,UPDATEDATE 		= SYSDATE		\n");
+		sb.append("	WHERE  	 NNUM 			= ?				\n"); 
+		sb.append("	AND    DELETEYN 		= 'Y'  			\n");
 
 		System.out.println("NoticeSqlMap.noticeDeleteQuery() 리턴 완료");
 		

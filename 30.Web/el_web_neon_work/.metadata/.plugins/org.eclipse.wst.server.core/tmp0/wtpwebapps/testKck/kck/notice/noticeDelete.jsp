@@ -3,31 +3,29 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>공지사항 전체 조회</title>
-<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script>
-	$(document).ready(function(){
-		
-		// Insert
-		
-		// SelectAll
-		
-		// Update
-		
-		// Delete
-		
-		// send
-		
-	});
-</script>
+<title>공지사항 삭제</title>
 </head>
-<% request.setCharacterEncoding("EUC-KR");%>
-<%
-
-	
-%>
-
 <body>
+<h3>공지사항 삭제</h3>
+<hr>
+<%
+	Object obj = request.getAttribute("nCnt");
+	
+	if (obj == null) return;
+	
+	int nCnt = ((Integer)obj).intValue();
+	
+	if (nCnt > 0){
+		System.out.println("공지사항 삭제가 완료되었습니다!");
+%>
+		<script>
+			location.href="/testKck/notice?ISUD_TYPE=SALL";
+		</script>
+<%
+	} else {
+		
+	}
+%>
 
 </body>
 </html>

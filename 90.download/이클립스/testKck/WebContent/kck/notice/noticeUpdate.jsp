@@ -3,10 +3,10 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>글 수정</title>
+<title>공지사항 수정</title>
 </head>
 <body>
-<h3>글 수정</h3>
+<h3>공지사항 수정</h3>
 <hr>
 <%
 	Object obj = request.getAttribute("nCnt");

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;noticeDelete.jsp&apos; to &apos;noticeDelete.jsp&apos;&#x0D;&#x0A;- Original project: &apos;testKck&apos;&#x0D;&#x0A;- Destination element: &apos;noticeDelete.jsp&apos;&#x0D;&#x0A;- Original element: &apos;noticeDelete.jsp&apos;" description="Copy file" element1="WebContent/kck/notice/noticeDelete.jsp" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1632658763671" target="/testKck/WebContent/kck/notice/noticeDelete.jsp" units="0" version="1.0"/>
+</session>

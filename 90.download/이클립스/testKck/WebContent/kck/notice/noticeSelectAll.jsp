@@ -50,8 +50,8 @@ td, th {
 						$("#SALL")
 								.click(
 										function() {
-											var isudType = document.noticeSelectAllForm.ISUD_TYPE.value = "SALL";
-											send(isudType);
+											var isudType = document.noticeSelectAllForm.ISUD_TYPE.value = "SALL";			
+											send(isudType);	
 										});
 
 						// Update : 체크 여부, 체크박스에 체크가 된 항목 : 수정
@@ -109,8 +109,7 @@ td, th {
 							$("#noticeSelectAllForm")
 									.attr(
 											{
-												"action" : "testKck/notice?ISUD_TYPE="
-														+ isudType,
+												"action" : "/testKck/notice?ISUD_TYPE="+isudType,
 												"method" : "GET",
 												"enctype" : "application/x-www-form-urlencoded"
 											}).submit();
@@ -185,11 +184,14 @@ SELECT ALL
 					} // for 반복문 종료 : DB에서 객체로 가지고 온 데이터를 한 줄씩 출력함
 				%>
 				<tr>
-					<td colspan="20" align="right"><input type="hidden"
-						name="ISUD_TYPE" id="ISUD_TYPE" value=""> <input
-						type="button" value="등록" id="I"> <input type="button"
-						value="조회" id="SALL"> <input type="button" value="수정"
-						id="U"> <input type="button" value="삭제" id="DOK">
+					<td colspan="20" align="right">
+						<input type="hidden" name="ISUD_TYPE" id="ISUD_TYPE" value=""> 
+						<input type="button" value="등록" id="I"> 
+						<input type="button" value="조회" id="SALL"> 
+						<input type="button" value="수정" id="U"> 
+						<input type="button" value="삭제" id="DOK">
+					</td>
+				</tr>
 			</tbody>
 		</table>
 	</form>

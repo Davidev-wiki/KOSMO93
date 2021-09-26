@@ -4928,3 +4928,21 @@ Caused by: org.eclipse.aether.transfer.ArtifactNotFoundException: Could not find
 
 !ENTRY org.eclipse.jface.text 2 0 2021-09-26 16:44:58.421
 !MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+
+!ENTRY org.eclipse.jface.text 2 0 2021-09-26 18:53:22.205
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2021-09-26 18:53:22.206
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+
+!ENTRY org.eclipse.jface.text 2 0 2021-09-26 18:53:22.233
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2021-09-26 18:53:22.235
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+
+!ENTRY org.eclipse.jface.text 2 0 2021-09-26 21:01:46.454
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2021-09-26 21:01:46.456
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
