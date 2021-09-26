@@ -248,3 +248,5 @@
 0:0:0:0:0:0:0:1 - - [26/Sep/2021:21:09:05 +0900] "GET /testKck/fileupload/notice/null HTTP/1.1" 404 849
 0:0:0:0:0:0:0:1 - - [26/Sep/2021:21:10:17 +0900] "GET /testKck/notice?nnumCheck=M202109260005&ISUD_TYPE=U HTTP/1.1" 200 2412
 0:0:0:0:0:0:0:1 - - [26/Sep/2021:21:10:17 +0900] "GET /testKck/testKck/fileupload/notice/null HTTP/1.1" 404 861
+127.0.0.1 - - [26/Sep/2021:21:33:21 +0900] "GET / HTTP/1.1" 404 807
+0:0:0:0:0:0:0:1 - - [26/Sep/2021:21:33:22 +0900] "GET /testKck/index.html HTTP/1.1" 200 490
