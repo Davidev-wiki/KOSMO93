@@ -1,0 +1,9 @@
+127.0.0.1 - - [26/Sep/2021:17:30:08 +0900] "GET / HTTP/1.1" 404 807
+0:0:0:0:0:0:0:1 - - [26/Sep/2021:17:30:08 +0900] "GET /testKck/kck/notice/notice.html HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [26/Sep/2021:17:30:08 +0900] "GET /testKck/img/ase.gif HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [26/Sep/2021:17:30:08 +0900] "GET /testKck/img/b-baa.gif HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [26/Sep/2021:17:30:11 +0900] "GET /favicon.ico HTTP/1.1" 404 818
+0:0:0:0:0:0:0:1 - - [26/Sep/2021:17:30:44 +0900] "POST /testKck/notice?ISUD_TYPE=I HTTP/1.1" 404 760
+0:0:0:0:0:0:0:1 - - [26/Sep/2021:17:31:34 +0900] "POST /testKck/notice?ISUD_TYPE=I HTTP/1.1" 200 224
+0:0:0:0:0:0:0:1 - - [26/Sep/2021:17:31:34 +0900] "GET /testKck/notice?ISUD_TYPE=SALL HTTP/1.1" 404 763
+0:0:0:0:0:0:0:1 - - [26/Sep/2021:17:31:45 +0900] "GET /testKck/kck/notice/notice.html HTTP/1.1" 200 2140

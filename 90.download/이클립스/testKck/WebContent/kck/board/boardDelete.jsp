@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,26 +6,26 @@
 <title>글 삭제</title>
 </head>
 <body>
-	<h3>글 삭제</h3>
-	<hr>
-	<%
-		// 컨트롤러에서 여기로 이어지는 로직 잘 살펴보기 
-		Object obj = request.getAttribute("bDelete");
-		if (obj == null)
-			return;
+<h3>글 삭제</h3>
+<hr>
+<%
+	Object obj = request.getAttribute("nCnt");
+	
+	if (obj == null) return;
+	
+	int nCnt = ((Integer)obj).intValue();
+	
+	if (nCnt > 0){
+		System.out.println("공지사항 삭제가 완료되었습니다!");
+%>
+		<script>
+			location.href="/testKck/notice?ISUD_TYPE=SALL";
+		</script>
+<%
+	} else {
+		
+	}
+%>
 
-		boolean bool = ((Boolean) obj).booleanValue();
-
-		if (bool) {
-			System.out.println("삭제 성공 bool : " + bool);
-	%>
-	<script>
-		location.href = "/testKck/board?ISUD_TYPE=SALL";
-	</script>
-	<%
-		} else {
-
-		}
-	%>
 </body>
 </html>

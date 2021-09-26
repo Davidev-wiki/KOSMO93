@@ -18,3 +18,9 @@
 
 9월 22, 2021 23:10:20.53 NEW SESSION
 9월 22, 2021 23:10:20.53 [2028:17628:0922/231020.528:ERROR:external_registry_loader_win.cc(158)] File C:\Users\david\AppData\Local\Google\Drive\user_default\apdfllckaahabafndbhieahigkjlhalf_live.crx for key Software\Google\Chrome\Extensions\apdfllckaahabafndbhieahigkjlhalf does not exist or is not readable.
+
+9월 24, 2021 16:11:19.74 NEW SESSION
+9월 24, 2021 16:11:19.74 [24424:1968:0924/161119.716:ERROR:external_registry_loader_win.cc(158)] File C:\Users\david\AppData\Local\Google\Drive\user_default\apdfllckaahabafndbhieahigkjlhalf_live.crx for key Software\Google\Chrome\Extensions\apdfllckaahabafndbhieahigkjlhalf does not exist or is not readable.
+
+9월 24, 2021 16:13:54.57 NEW SESSION
+9월 24, 2021 16:13:54.57 [10764:19556:0924/161354.572:ERROR:external_registry_loader_win.cc(158)] File C:\Users\david\AppData\Local\Google\Drive\user_default\apdfllckaahabafndbhieahigkjlhalf_live.crx for key Software\Google\Chrome\Extensions\apdfllckaahabafndbhieahigkjlhalf does not exist or is not readable.

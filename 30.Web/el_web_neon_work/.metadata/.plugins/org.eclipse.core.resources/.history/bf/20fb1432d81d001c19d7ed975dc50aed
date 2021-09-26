@@ -1,0 +1,82 @@
+package a.b.c.com.kosmo.notice.controller;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import a.b.c.com.common.GetChabun;
+import a.b.c.com.kosmo.notice.service.NoticeService;
+import a.b.c.com.kosmo.notice.service.NoticeServiceImpl;
+import a.b.c.com.kosmo.notice.vo.NoticeVO;
+
+import java.io.PrintWriter;
+import java.util.ArrayList;
+
+@WebServlet("/notice")
+public class NoticeController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+	throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		
+		// encoding setting
+		request.setCharacterEncoding("EUC-KR");
+		response.setCharacterEncoding("EUC-KR");
+		response.setContentType("text/html; charset=EUC-KR");
+		
+		// PrintWriter
+		PrintWriter out = response.getWriter();
+		
+		// request.getParameter로 가져온 값을  isudType 변수에 초기화
+		String isudType = request.getParameter("ISUD_TYPE");
+		
+		// Data null 체크
+		if(isudType != null && isudType.length() > 0){
+			
+			// 분기를 위해 대문자로 변경
+			isudType = isudType.toUpperCase();
+			
+			// 공지사항 등록 : "I"
+			if("I".equals(isudType)){
+				
+			}
+			
+			// 공지사항 조회 : "SALL"
+			if("SALL".equals(isudType)){
+				
+			}
+			
+			// 공지사항 등록 : "U"
+			if("U".equals(isudType)){
+				
+			}
+			
+			// 공지사항 등록 : "D"
+			if("D".equals(isudType)){
+				
+			}
+			
+		} else {
+			System.out.println("ISUD_TYPE을 확인해주세요.");
+		}
+		
+		
+	}
+	
+		
+		
+
+		
+		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

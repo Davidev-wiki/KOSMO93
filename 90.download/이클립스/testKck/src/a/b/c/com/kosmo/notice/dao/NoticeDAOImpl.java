@@ -90,6 +90,7 @@ public class NoticeDAOImpl implements NoticeDAO {
 			pstmt.setString(4, nvo.getNphoto());
 
 			nCnt = pstmt.executeUpdate();
+			
 			if (!conn.getAutoCommit())
 				conn.getAutoCommit();
 

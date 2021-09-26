@@ -8,7 +8,7 @@ public abstract class NoticeSqlMap {
 		StringBuffer sb = new StringBuffer();
 		
 		sb.append(" SELECT  /*+ INDEX_DESC(A SYS_C0012126) */ 			\n");
-		sb.append("         NVL(MAX(SUBSTR(A.MNUM, -4)), 0) + 1 MAXNUM	\n");
+		sb.append("         NVL(MAX(SUBSTR(A.NNUM, -4)), 0) + 1 MAXNUM	\n");
 		sb.append(" FROM    MVC_NOTICE A 								\n");
 		
 		System.out.println("NoticeSqlMap.getChabunQuery() 리턴 완료");
@@ -63,21 +63,21 @@ public abstract class NoticeSqlMap {
 		
 		sb.append("	INSERT INTO 							\n");
 		sb.append("		 MVC_NOTICE (						\n");
-		sb.append("							NNUM			\n");
-		sb.append("							NSUBJECT		\n");
-		sb.append("							NMEMO			\n");
-		sb.append("							NPHOTO			\n");
-		sb.append("							DELETEYN		\n");
-		sb.append("							INSERTDATE		\n");
-		sb.append("							UPDATEDATE		\n");
+		sb.append("							 NNUM			\n");
+		sb.append("							,NSUBJECT		\n");
+		sb.append("							,NMEMO			\n");
+		sb.append("							,NPHOTO			\n");
+		sb.append("							,DELETEYN		\n");
+		sb.append("							,INSERTDATE		\n");
+		sb.append("							,UPDATEDATE		\n");
 		sb.append("		) VALUES (							\n");
-		sb.append("							  ?				\n"); // P.H1
-		sb.append("							  ?				\n"); // P.H2
-		sb.append("							  ?				\n"); // P.H3
-		sb.append("							  ?				\n"); // P.H4
-		sb.append("							 'Y'			\n");
-		sb.append("							SYSDATE			\n");
-		sb.append("							SYSDATE			\n");		
+		sb.append("							   ?			\n"); // P.H1
+		sb.append("							  ,?			\n"); // P.H2
+		sb.append("							  ,?			\n"); // P.H3
+		sb.append("							  ,?			\n"); // P.H4
+		sb.append("							  ,'Y'			\n");
+		sb.append("							,SYSDATE			\n");
+		sb.append("							,SYSDATE			\n");		
 		sb.append("		)									\n");
 		
 		System.out.println("NoticeSqlMap.noticeInsertQuery() 리턴 완료");

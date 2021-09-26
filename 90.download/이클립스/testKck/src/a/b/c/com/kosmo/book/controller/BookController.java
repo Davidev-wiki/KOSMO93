@@ -192,7 +192,7 @@ public class BookController extends HttpServlet {
 				int nCnt = bs.bookInsert(bvo);
 				
 				if (nCnt > 0) {
-					// 등록에 성공하면 bookInsert.jsp 로 이동시킨다.
+					// 등록에 성공하면 bookInsert.jsp 페이지를 보여준다.
 					System.out.println("도서 " + nCnt + " 건 등록 완료!");
 					
 					// 건 수를 담은 integer 객체를 새로 만들고
