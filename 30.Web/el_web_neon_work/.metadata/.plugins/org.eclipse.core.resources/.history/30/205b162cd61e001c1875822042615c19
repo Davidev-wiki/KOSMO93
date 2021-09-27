@@ -72,7 +72,7 @@
 </style>
 <script type="text/javascript">
 	function openPop(){
-		var popup = window.open('/testKck/notice?ISUD_TYPE=NOTICE','', 'width=380px, height=380px, resizable=no');
+		var popup = window.oppen('/testKck/notice?ISUD_TYPE=NOTICE','', 'width=380px, height=380px, resizable=no');
 	}
 </script>
 </head>

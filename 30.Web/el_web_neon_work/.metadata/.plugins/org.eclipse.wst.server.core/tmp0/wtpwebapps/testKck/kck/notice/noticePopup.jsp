@@ -55,7 +55,7 @@ td, th {
 
 		if (nCnt == 1) {
 
-			NoticeVO nvo = new NoticeVO();
+			NoticeVO nvo = aList.get(0);
 
 			nnum = nvo.getNnum();
 			nsubject = nvo.getNsubject();
@@ -75,17 +75,17 @@ td, th {
 						alt="img"></td>
 				</tr>
 				<tr>
-					<td class="tt">공지번호 : <%=nnum%></td>
+					<td class="tt">공지번호 : <%= nnum%></td>
 				</tr>
 				<tr>
-					<td class="tt">제목 : <%=nsubject%></td>
+					<td class="tt">제목 : <%= nsubject%></td>
 				</tr>
 				<tr>
-					<td class="tt">내용 : <%=nmemo%></td>
+					<td class="tt">내용 : <%= nmemo%></td>
 				</tr>
 				<tr>
 					<td class="tt1"><img
-						src="/testKck/fileupload/notice/<%=nphoto%>" border="1"
+						src="/testKck/fileupload/notice/<%= nphoto%>" border="1"
 						width="60" height="50" alt="image"></td>
 				</tr>
 			</table>

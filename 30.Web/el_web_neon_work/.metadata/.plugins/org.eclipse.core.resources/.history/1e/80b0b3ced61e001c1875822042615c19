@@ -266,7 +266,7 @@ public class NoticeController extends HttpServlet {
 			if ("NOTICE".equals(isudType)) {
 				System.out.println("전송된 ISUD_TYPE : " + isudType);
 
-				String nnum = "M202109260010";
+				String nnum = "M202109260005";
 
 				if (nnum != null && nnum.length() > 0) {
 					System.out.println("공지사항 번호 : " + nnum);
@@ -281,7 +281,7 @@ public class NoticeController extends HttpServlet {
 
 						System.out.println("조회한 데이터 건 수 : " + aListS.size());
 						request.setAttribute("aListS", aListS);
-						RequestDispatcher rd = request.getRequestDispatcher("/kck/notice/noticePopup.jsp");
+						RequestDispatcher rd = request.getRequestDispatcher("/testKck/kck/notice/noticePopup.jsp");
 						rd.forward(request, response);
 
 					} else {

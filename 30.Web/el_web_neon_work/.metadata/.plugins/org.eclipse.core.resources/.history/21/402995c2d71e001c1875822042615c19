@@ -55,7 +55,7 @@ td, th {
 
 		if (nCnt == 1) {
 
-			NoticeVO nvo = aList.get(0);
+			NoticeVO nvo = new NoticeVO();
 
 			nnum = nvo.getNnum();
 			nsubject = nvo.getNsubject();
