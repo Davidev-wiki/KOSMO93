@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Css test</title>
+
+</head>
+<body>
+<h3>Hello CSS</h3>
+<hr>
+<p style="color:green">
+예제 만드는 중..
+CSS 테스트입니다.
+개발자는 기본적인 의미만 알고 있으면 될 것 같다.
+스타일 블럭과 인라인의 property의 이름이 조금 차이가 있다고 한다..
+</p>
+</body>
+</html>

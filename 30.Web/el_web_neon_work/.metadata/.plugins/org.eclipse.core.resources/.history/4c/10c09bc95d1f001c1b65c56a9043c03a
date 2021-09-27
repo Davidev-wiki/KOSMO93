@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>HTML Style Attributes</title>
+</head>
+<body style="background-color:powderblue;">
+<h2>HTML Style Attributes</h2>
+style : &nbsp; HTML 엘리먼트의 스타일을 위한 attr<br>
+background-color : &nbsp; element 바탕색 컬러<br>
+color : &nbsp; 텍스트 컬러<br>
+font-family : &nbsp; 텍스트 폰트<br>
+font-size : &nbsp; 텍스트 폰트<br>
+text-align : &nbsp; 텍스트 수평 정렬하기<br>
+<!-- html 주석 -->
+<!-- hr태그는 수평선 -->
+<hr>
+<h1 style="color:blue; text-align:center;">글자 색 블루, 텍스트 정렬 중앙</h1>
+<p style="color:red;">글자 색 : 빨강</p>
+<h1 style="font-family:verdana;">글자 폰트 : verdana</h1>
+<p style="font-family:courier;">글자 폰트 : courier</p>
+<h1 style="font-size:300%;">글자 크기 300%</h1>
+<p style="font-size:160%;">글자 크기 160%</p>
+<h1 style="text-align:left;">텍스트 정렬 왼쪽</h1>
+<h1 style="text-align:center;">텍스트 정렬 가운데</h1>
+<p style="text-align:right;">텍스트 정렬 오른쪽</p>
+<hr>
+<hr>
+
+<!-- h1~h6 tag(element) -->
+<h1> h1~h6 element(h1) </h1>
+<h2> First Heading(h2) </h2>
+<h3 style="font-size:300%;"> First Heading(h3) </h3>
+<h4> First Heading(h4) </h4>
+<h5> First Heading(h5) </h5>
+<h6> First Heading(h6) </h6>
+<h1> HTML Attributes </h1>
+<hr>
+
+
+</body>
+</html>
