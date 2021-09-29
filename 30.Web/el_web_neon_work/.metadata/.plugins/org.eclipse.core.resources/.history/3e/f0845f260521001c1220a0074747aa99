@@ -1,0 +1,19 @@
+package a.b.c.com.common;
+
+public class ReadXMLAttrClass {
+
+	
+	public static String getTagValue(){
+		
+		return "";
+	}
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+
+
+}
