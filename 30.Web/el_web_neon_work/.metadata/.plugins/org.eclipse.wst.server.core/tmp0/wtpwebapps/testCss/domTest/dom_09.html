@@ -2,9 +2,34 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>onload로 이미지 크기 출력하기</title>
+<script>
+function changeImage(){
+	var sel = document.getElementById("sel");
+	var img = document.getElementById("myImg");
+	img.onload = function(){
+		
+		// 이미지 크기 출력
+		var mySpan = document.getElementById("mySpan");
+		mySpan.innerHTML = img.width + "X" + img.height;
+	}
+	var index = sel.selectedIndex;
+	img.src = sel.options[index].value;
+	
+}
+</script>
 </head>
-<body>
-
+<body onload="change Image()">
+<h3>onload로 이미지 크기 출력</h3>
+<hr>
+<form>
+<select id="sel" onchange="changeImage()">
+	<option value="/testCss/img/media/icon.png">사과
+	<option value="/testCss/img/media/lawn.png">바나나
+	<option value="/testCss/img/media/puppy.png">망고
+</select>
+<span id="mySpan">이미지 크기</span>
+</form>
+<p><img id="myImg" src="/testCss/img/media/net.png" alt="img"></p>
 </body>
 </html>
