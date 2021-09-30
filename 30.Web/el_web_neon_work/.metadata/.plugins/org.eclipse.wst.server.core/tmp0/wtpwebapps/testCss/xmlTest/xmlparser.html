@@ -7,12 +7,14 @@
 <script>
 	function parseText() {
 		var xmlText, xmlParser, xmlDoc;
+		
 		xmlText = "<country>"
 				+ "<name>Korea</name>"
 				+ "<capital>Seoul</capital>"
 				+ "</country>"
 		
 				xmlParser = new DOMParser();
+				
 				xmlDoc = xmlParser.parseFromString(xmlText, "text/xml");
 				document.getElementById("text").innerHTML = 
 					xmlDoc.getElementsByTagName("name")[0].childNodes[0].nodeValue

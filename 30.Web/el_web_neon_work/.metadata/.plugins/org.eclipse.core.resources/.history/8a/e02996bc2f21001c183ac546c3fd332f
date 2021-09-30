@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<company>
+	<staff>
+		<firstname>희진</firstname>
+		<lastname>이</lastname>
+		<nickname>반장</nickname>
+		<salary>1000원</salary>
+	</staff>
+	
+	<staff>
+		<firstname>희진</firstname>
+		<lastname>이</lastname>
+		<nickname>반장</nickname>
+		<salary>1000원</salary>
+	</staff>
+</company>
