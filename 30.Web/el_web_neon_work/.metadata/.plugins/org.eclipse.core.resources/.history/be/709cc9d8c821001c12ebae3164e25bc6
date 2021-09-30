@@ -1,0 +1,33 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+
+<%
+	// Obtain our environment naming context
+	Context initCtx = new InitialContext();
+	out.println("initCtx? : " + initCtx + "<br>");
+	
+	// initCtx의 lookup 메소드를 이용,
+	// "java:comp/env"에 해당하는 객체를 찾아 evnCtx에 삽입한다.
+	Context envCtx = (Context) initCtx.lookup("java:comp/env");
+	out.println("envCtx : " + envCtx + "<br>");
+	
+	// Look up our data source
+	// envCtx의 lookup 메서드를 이용,
+	// "jdbc/Oracle11g_orclKOSMO00"에 해당하는 객체를 찾아서
+	
+	
+	// Look up our data source
+	DataSource ds = (DataSource)
+	  envCtx.lookup("jdbc/EmployeeDB");
+	
+	Connection conn = ds.getConnection();
+%>
+
+</body>
+</html>
