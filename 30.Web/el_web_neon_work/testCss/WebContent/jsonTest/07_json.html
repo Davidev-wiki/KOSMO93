@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>eval</title>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+
+// eval()이 뭔데 ㅅㅂ 아오 
+
+	$(document).ready(function(){
+		
+		alert("jQuery 시작!");
+		
+		var bool = false;
+		// bool : false
+		alert("bool : " + bool);
+		// type : boolean
+		alert("typeof(bool) : " + typeof(bool));
+		if(!bool){
+			console.log("bool : " + bool);
+		}
+		
+		var bool_1 = false;
+		// bool_1 : false
+		alert("bool_1 : " + bool_1);
+		// 결과 : boolean 타입
+		alert("typeof(bool_1) : " + typeof(bool_1));
+		
+		
+		var evalBool = eval(bool_1);
+		// evalBool : false
+		alert("evalBool : " + evalBool);
+		// evalBool의 타입 : boolean
+		alert("typeof(evalBool) : " + typeof(evalBool));
+		if(!evalBool){
+			console.log("evalBool : " + evalBool);
+		}
+		
+	});
+
+</script>
+</head>
+<body>
+<h3>eval()함수 예제</h3>
+<hr>
+</body>
+</html>

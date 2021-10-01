@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>전역변수 & 지역변수</title>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">	
+	$(document).ready(function(){
+		
+	}
+</script>
+</head>
+<body>
+<h3>
+전역변수  vs 지역변수<br>
+전역변수 : 함수 외부에서 선언된 변수. 프로그램 전체에서 접근할 수 있다.<br>
+지역변수 : 함수 내부에서 선언된 변수. 함수 실행 유무에 따라 생성 & 소멸.
+</h3>
+<hr>
+<h4>
+
+변수 abc0의 값을<br>
+함수 외부에서는 abc0<br>
+함수 내부에서는 def0으로 초기화<br>
+함수 외부에서 abc0를 호출하면 전역변수의 값이 호출된다.<br>
+</h4>
+<hr>
+<script>
+	var abc0 = "abc0";
+	function a(){
+		var abc0 = "def0";
+	}
+	document.write("변수 acb0의 값 : " + abc0);
+</script>
+<h4>
+	함수 내부에서 abc1의 값을 호출하면 지역변수의 값이 출력된다.
+</h4>
+<hr>
+<script>
+	var abc1 = "abc1";
+	function a1(){
+		var abc1 = "def1";
+		document.write("a1() 안에 정의된 abc1의 값 : " + abc1);
+	}
+	a1();
+</script>
+<h4>
+	함수 내부에서 var를 사용하지 않고 변수의 값을 정하면<br>
+	전역변수의 값을 변경한다.
+</h4>
+<hr>
+<script>
+	var abc2 = "abc2";
+	function a2() {
+		abc2 = "def2";
+		document.write("a2()함수 내부에서 변수 abc2를 호출한 값 : " + abc2 + "<br>");
+	}
+	a2();
+	document.write("a2()함수 외부에서 변수 abc2를 호출한 값 : " + abc2 + "<br>");
+</script>
+</body>
+</html>

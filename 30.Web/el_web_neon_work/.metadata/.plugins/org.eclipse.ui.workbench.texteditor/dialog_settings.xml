@@ -9,12 +9,13 @@
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="&#x09;text += &quot; &quot; + + &quot;\n&quot;;" key="selection"/>
+		<item value="session" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="session"/>
 			<item value="text += &quot;&quot;++&quot;\n&quot;;"/>
 			<item value="bv"/>
 			<item value="testKosmo"/>
@@ -22,7 +23,6 @@
 			<item value="birth"/>
 			<item value="EUC-KR"/>
 			<item value="hobby"/>
-			<item value="gender"/>
 		</list>
 		<list key="replacehistory">
 			<item value="text += &quot; &quot; + + &quot;\n&quot;;"/>

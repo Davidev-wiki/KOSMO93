@@ -9,3 +9,5 @@
 127.0.0.1 - - [30/Sep/2021:17:34:39 +0900] "GET / HTTP/1.1" 404 807
 0:0:0:0:0:0:0:1 - - [30/Sep/2021:17:34:41 +0900] "GET /testCss/xmlTest/oracleTest.jsp HTTP/1.1" 200 1735
 0:0:0:0:0:0:0:1 - - [30/Sep/2021:17:44:25 +0900] "GET /testCss/xmlTest/oracleTest2.jsp HTTP/1.1" 200 1412
+127.0.0.1 - - [30/Sep/2021:18:31:03 +0900] "GET / HTTP/1.1" 404 807
+0:0:0:0:0:0:0:1 - - [30/Sep/2021:18:31:03 +0900] "GET /testCss/jsonTest/02_json.html HTTP/1.1" 200 1141

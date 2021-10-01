@@ -5,44 +5,46 @@
 <title>01_json.html</title>
 <script type="text/javascript">
 
-function initCompany(){
-	
-	var company = {
-					"name":"(주)근희컴퍼니"
-				   ,"since": 2019
-				   ,"department": ["기획팀","영업팀","디자인팀","개발팀"]
-				   ,"biz": ["소프트웨어개발팀","통신판매업","위치정보서비스"]
-				  };
-	
-	alert(company);
-	
-	document.getElementById("name").innerHTML = company.name;
-	document.getElementById("since").innerHTML = company.since;
-	
-	var deptLi = "";
-	for (var i=0; i < company.department.length; i++ ){
-		deptLi += "<li>" + company.department[i] + "</li>";
-	}		
-	document.getElementById("department").innerHTML = deptLi;
-	
-	var bizLi = "";
-	for (var i=0; i < company.biz.length; i++ ){
-		bizLi += "<li>" + company.biz[i] + "</li>";
-	}
-	document.getElementById("biz").innerHTML = bizLi;
-}
+/*
+  
+ 	==========자바스크립트 	영역 시작======================= 
+ 
+ */
 
+	var ju = {
+			 "name" : "김상진"
+			,"age" : "29"
+			,"gender" : "남자"
+			,"visual" : "멋짐"
+	};
+	
+	alert("변수 ju에는 "키"&"밸류"형태로 4가지 데이터가 들어있다. : " + ju);
+	alert("typeof(ju) : " + typeof(ju));
+	document.write("<h1>" + ju.name + "</h1>");
+	document.write("<h1>" + ju.age + "</h1>");
+	document.write("<h1>" + ju.gender + "</h1>");
+	document.write("<h1>" + ju.visual + "</h1>");
+
+/*
+ 
+ 	=========자바스크립트 영역 종료 ========================
+ 
+*/
+
+	var	ju_1 = JSON.stringify(ju);
+	alert("JSON.stringify(ju) => 'ju_1'이다. typeof(ju_1) : " + typeof(ju_1));
+	alert("ju_1 : " + ju_1);
+	console.log("ju_1 : " + ju_1);
+	document.write("<h3>" + ju_1.name + "</h3>");
+	
+	var ju_2 = JSON.parse(ju_1);
+	alert("JSON.parse(ju_1) => ju_2이다. ju_2 : " + ju_2);
+	alert("typeof(ju_2) : " + typeof(ju_2));
+	document.write("<h3>" + ju_2.name + "</h3>");
+	
 </script>
-
 </head>
-<body onload="initCompany()">
-	<h1 id="name"></h1>
-	<p>
-		<strong>설립년도 : </strong><span id="since"></span>
-	</p>
-	<h2>주요 사업 부서</h2>
-	<ul id="department"></ul>
-	<h2>주요 사업 분야</h2>
-	<ul id="biz"></ul>
+<body>
+	
 </body>
 </html>

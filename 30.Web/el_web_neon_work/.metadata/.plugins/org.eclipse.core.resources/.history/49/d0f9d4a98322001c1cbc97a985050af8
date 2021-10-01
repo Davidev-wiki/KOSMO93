@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>attr() & prop()</title>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+
+		alert("jQuery 시작!");
+
+		var goLink = $('.link');
+		
+		// href라는 attribute의 값을 찾아서 창에 띄워줘!
+		alert(goLink.attr('href'));
+		// 콘솔로그에 찍어줘!
+		console.log(goLink.attr('href'));
+		
+		// 링크 클래스에서 'href'라는 property의 값을 가져와서 창에 띄워줘!
+		alert(goLink.prop('href'));
+		
+		// 링크 클래스에서 'href'라는 property의 값을 가져와서 콘솔에 보여줘!
+		console.log(goLink.prop('href'));
+
+		var checkbox = $('#chk');
+		alert(checkbox.attr('checked'));
+		console.log(goLink.attr('checked'));
+		alert(checkbox.prop('checked'));
+		console.log(goLink.prop('checked'));
+	});
+</script>
+</head>
+<body>
+	<h3>attr():html & prop():javascript</h3>
+	<hr>
+	<p>
+		<a href="#none" class="link">버튼</a>
+	</p>
+	<p>
+		<input type="checkbox" name="chk" id="chk" checked="checked">
+	</p>
+</body>
+</html>

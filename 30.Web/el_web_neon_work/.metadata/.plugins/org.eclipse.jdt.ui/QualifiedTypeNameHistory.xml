@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="a.b.c.cgitest.EmpVO"/>
-<fullyQualifiedTypeName name="a.b.c.com.kosmo.board.dao.BoardDAO"/>
-<fullyQualifiedTypeName name="a.b.c.com.kosmo.board.dao.BoardDAOImpl"/>
-<fullyQualifiedTypeName name="com.oreilly.servlet.MultipartRequest"/>
-<fullyQualifiedTypeName name="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"/>
-<fullyQualifiedTypeName name="a.b.c.com.kosmo.board.service.BoardService"/>
-<fullyQualifiedTypeName name="a.b.c.com.kosmo.board.service.BoardServiceImpl"/>
-<fullyQualifiedTypeName name="a.b.c.com.kosmo.board.vo.BoardVO"/>
 <fullyQualifiedTypeName name="a.b.c.com.kosmo.board.sql.BoardSqlMap"/>
 <fullyQualifiedTypeName name="a.b.c.com.kosmo.book.dao.BookDAO"/>
 <fullyQualifiedTypeName name="a.b.c.com.kosmo.book.dao.BookDAOImpl"/>
@@ -20,7 +12,6 @@
 <fullyQualifiedTypeName name="a.b.c.com.kosmo.mem.dao.MemberDAOImpl"/>
 <fullyQualifiedTypeName name="a.b.c.com.kosmo.mem.sql.MemeberSqlMap"/>
 <fullyQualifiedTypeName name="java.lang.StringBuffer"/>
-<fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="a.b.c.com.kosmo.mem.service.MemberService"/>
 <fullyQualifiedTypeName name="a.b.c.com.kosmo.mem.service.MemberServiceImpl"/>
 <fullyQualifiedTypeName name="a.b.c.com.kosmo.mem.vo.MemberVO"/>
@@ -32,8 +23,6 @@
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="a.b.c.com.kosmo.notice.dao.NoticeDAO"/>
 <fullyQualifiedTypeName name="a.b.c.com.kosmo.notice.dao.NoticeDAOImpl"/>
-<fullyQualifiedTypeName name="java.sql.ResultSet"/>
-<fullyQualifiedTypeName name="java.sql.Connection"/>
 <fullyQualifiedTypeName name="a.b.c.com.kosmo.notice.service.NoticeService"/>
 <fullyQualifiedTypeName name="a.b.c.com.kosmo.notice.vo.NoticeVO"/>
 <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
@@ -48,7 +37,27 @@
 <fullyQualifiedTypeName name="javax.xml.parsers.DocumentBuilder"/>
 <fullyQualifiedTypeName name="org.w3c.dom.Document"/>
 <fullyQualifiedTypeName name="org.w3c.dom.NodeList"/>
-<fullyQualifiedTypeName name="java.io.File"/>
 <fullyQualifiedTypeName name="org.w3c.dom.Node"/>
 <fullyQualifiedTypeName name="org.w3c.dom.Element"/>
+<fullyQualifiedTypeName name="a.b.c.com.common.CommonXML"/>
+<fullyQualifiedTypeName name="java.sql.DatabaseMetaData"/>
+<fullyQualifiedTypeName name="jdk.nashorn.internal.parser.JSONParser"/>
+<fullyQualifiedTypeName name="java.io.FileReader"/>
+<fullyQualifiedTypeName name="java.util.Iterator"/>
+<fullyQualifiedTypeName name="oracle.net.aso.e"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="java.util.Scanner"/>
+<fullyQualifiedTypeName name="a.b.c.com.common.OracleJsonTest"/>
+<fullyQualifiedTypeName name="java.io.File"/>
+<fullyQualifiedTypeName name="java.sql.Statement"/>
+<fullyQualifiedTypeName name="java.sql.ResultSet"/>
+<fullyQualifiedTypeName name="java.sql.ResultSetMetaData"/>
+<fullyQualifiedTypeName name="java.sql.Connection"/>
+<fullyQualifiedTypeName name="java.sql.SQLException"/>
+<fullyQualifiedTypeName name="org.json.simple.JSONObject"/>
+<fullyQualifiedTypeName name="org.json.simple.JSONArray"/>
+<fullyQualifiedTypeName name="java.io.IOException"/>
+<fullyQualifiedTypeName name="java.io.BufferedWriter"/>
+<fullyQualifiedTypeName name="a.b.c.com.common.CommonJSON"/>
+<fullyQualifiedTypeName name="java.io.FileWriter"/>
 </qualifiedTypeNameHistroy>

@@ -1,0 +1,49 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Reading json file</title>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+	
+	$(document).ready(function(){
+		
+		console.log("jQuery 진입!");
+		
+		$("#btn1").click(function(){
+			
+			console.log("button 클릭됨!");
+			
+			var jsonUrl = "/testCss/jsonTest/emp.json";
+			
+			$.ajax({
+				
+				type : "POST",
+				url : jsonUrl,
+				dataType : "text",
+				success : function(data){
+					console.log(data);
+					var v = JSON.stringify(data); // Javascript 객체 -> 문자열 변환
+					document.getElementById("json").innerHTML = v;
+					
+					var vv = JSON.parse(data); // JSON형식의 문자열을 Javascript 객체로 변환
+					
+					
+				}
+				
+			});
+			
+			
+		});
+		
+	});
+
+</script>
+</head>
+<body>
+<p id="json"></p>
+<p id="json1"></p>
+<button id="btn1">button</button>
+</body>
+</html>

@@ -1,5 +1,0 @@
-package a.b.c.com.kosmo.login.service;
-
-public interface LoginService {
-
-}
