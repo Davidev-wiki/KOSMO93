@@ -30,7 +30,7 @@ public class LoginDAOImpl implements LoginDAO {
 			if (rsRs != null) {
 
 				while (rsRs.next()) {
-					// int형으로 아이디를 가지고 온다?
+					// 입력된 아이디와 비번에 맞는 ID값
 					nCnt = rsRs.getInt(1);
 					System.out.println("가지고 온 nCnt 값 : " + nCnt);
 				}

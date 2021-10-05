@@ -58,7 +58,7 @@ public class LoginController extends HttpServlet {
 				mvo.setMid(mid);
 				mvo.setMpw(mpw);
 				int nCnt = ls.loginCheckCnt(mvo);
-				System.out.println("컨트롤러에 받아온 nCnt 값 : " + nCnt);
+				System.out.println("컨트롤러에 받아온 (입력한 ID & PW에 부합하는 ID개수) nCnt 값 : " + nCnt);
 
 				if (nCnt == 1) {
 					request.setAttribute("nCnt", new Integer(nCnt));

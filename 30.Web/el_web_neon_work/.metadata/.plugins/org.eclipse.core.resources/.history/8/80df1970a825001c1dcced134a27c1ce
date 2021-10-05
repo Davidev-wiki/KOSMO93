@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Ajax Test</title>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+	$(document).ready(function(){
+		
+		$("button").click(function(){
+			$("#target").load("/testCss/AjaxTest/testfile1.txt");
+		});
+	});
+	
+</script>
+
+</head>
+<body>
+<div id="target" style="width:300px; height:60px; border:solid 3px red">
+</div>
+<button>Get Data</button>
+</body>
+</html>

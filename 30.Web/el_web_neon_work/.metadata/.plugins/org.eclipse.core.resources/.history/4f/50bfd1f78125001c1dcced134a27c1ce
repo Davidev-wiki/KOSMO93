@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>escape</title>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type ="text/javascript">
+/*
+	[escape] : 쉼표, 세미콜론을 구분하기 위해 사용.
+	사용방법 : escape("문자열");
+	- 문자열의 각 문자들을 '%16진수 코드값'형태로 변환
+	- 1바이트 문자는 '%XX' 형태로 표시
+	- 영문 알파벳(대,소문자), 숫자, 일부 특수문자(@, *, -, _, +, ., /)를 제외한 문자만  인코딩
+	- 한글이 깨지는 것을 방지하기 위하여 사용
+	- 한글, 한자 등(2바이트)은 '%u16진수 4자리'로 표시
+	- 기존 ASCII 코드로 변경이 가능한 것들은 놔두고
+	- 인코딩이 필요한 것(한글, 특문 등)들만 변환해준다!?
+			
+	[unescape]
+	사용방법 : unescape("%16진수 코드값");
+	- 코드값에 맞는 문자로 변환 (escape로 변환된 코드값만 문자로 변환)
+	
+	[encodeURI]
+	사용방법 : encodeURI(uri);
+	- 인터넷 주소에 사용되는 일부 특수문자(:, ;, /, =, ?, & 등)를 제외한 문자만 인코딩
+	- 보통 인터넷 주소의 파라미터 전체를 인코딩할 때 사용한다.
+	
+	[decodeURI]
+	사용방법 : decodeURI(인코딩 된 문자열 );
+	- encodeURI로 인코딩한 값을 디코딩
+	
+	[encodeURIComponent]
+	사용방법 : encodeURIComponent(url 전체);
+	- encodeURI에서 제외된 일부 특수문자까지 인코딩
+	- url 전체(인터넷주소 전체)가 파라미터로 전송될 경우 사용 가능
+	
+	
+	[decodeURIComponent]
+	사용방법 : decodeURIComponent(decodeURI Component로 인코딩한 문자열);
+	- encodeURIComponent로 인코딩한 값을 다시 원래대로 디코딩	
+*/
+
+$(document).ready(function(){
+	alert("escape문자 : ");
+	
+	console.log("ㄱ  :  " + escape('ㄱ'));
+	console.log("ㅣ  :  " + escape('ㅣ'));
+	console.log("ㅁ  :  " + escape('ㅁ'));
+	console.log("김  :  " + escape('김'));
+	console.log(" ' '  :  " + escape(' '));
+	console.log("k : " + escape('k'));
+	console.log("i : " + escape('i'));
+	console.log("m : " + escape('m'));
+	
+	console.log("kim : " + escape('kim'));
+	
+	var str2 = '%u314E%u3155%u3134%uD604';
+	alert(unescape(str2));
+	
+	
+	
+});
+
+</script>
+
+</head>
+<body>
+
+</body>
+</html>
