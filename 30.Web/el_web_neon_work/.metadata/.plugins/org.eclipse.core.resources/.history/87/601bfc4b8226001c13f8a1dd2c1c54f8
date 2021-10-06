@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>ID, PW Check</title>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function(){
+		
+		// 아이디 중복확인 버튼 누르면 페이지 이동 (로직 실행 / Using Ajax) 
+		// 이후 결과 받아와서 텍스트박스 색상변경하기.
+		$("#midCheckBtn").click(function(){
+			
+			alert("아이디 중복확인버튼 클릭되어 함수 진입! ");
+			// Ajax로 데이터 전달을 위해 
+			// 전달할 데이터를 '지역'변수로 (url, type, mid, isudtype) 세팅
+			let urlVal = "/testCss/idpwCheck";  // 확장자가 빠져있는데?
+			let typeVal = "GET";
+			let midVal = $("#mid").val();
+			let isudtypeVal = $("#ISUD_TYPE").val("IDCHECK");
+			
+			// 이거 반드시 해줘야 한다고 하는데..
+			isudtypeVal = isudtypeVal.val();
+			
+			
+			if(midVal == ''){
+				alert("아이디를 입력해주세요.");
+				$("#mid").focus();
+				return false;
+			}
+			
+			// 화면에 log & alert 띄우기
+			alert("urlVal" + urlVal);
+			console.log("urlVal" + urlVal);
+			alert("typeVal" + typeVal);
+			console.log("typeVal" + typeVal);
+			alert("midVal" + midVal);
+			console.log("midVal" + midVal);
+			alert("isudtypeVal" + isudtypeVal);
+			console.log("isudtypeVal" + isudtypeVal);
+			
+			
+			$.ajax(
+					{
+						urlVal : urlVal,
+						type : typeVal,
+						data : {
+									"mid" : midVal,
+									"ISUD_TYPE" : isudtypeVal,
+								},
+						success : whenSuccess,
+						error : whenError
+					}
+				);
+			
+			
+			function whenSuccess(resData){
+				
+				// XML데이터를 가져올 때 .find()함수를 사용한다.
+				// 응답으로 가져온  xml 데이터에서 "<result>"태그의 값을 가져와서 화면에 적는기능!
+				var sVal = $(resData).find("result").text();
+				
+				if (sVal == "IDGOOD") {
+					alert("사용 가능한 ID 입니다.");
+					$("#mid").css("background-color", "green");
+					$("#mid").attr("readonly, true"); // 옵션에 true의 의미?
+					$("#mid").focus();
+				} else {
+					alert("이미 사용중인 ID 입니다.");
+					$("#mid").val('');
+					$("#mid").focus('');
+				}
+				
+			} 
+			
+			function Error(resData){
+				alert("아 오늘 잘 안되네..");
+			}
+			
+		});
+		
+		
+		// 비밀번호 확인 버튼 누르면 페이지 이동 (로직 실행 / Using Ajax)
+		// 이후 결과 받아와서 텍스트박스 색상변경하기.
+		$("#mpwCheckBtn").click(function(){
+			
+		});
+
+		
+	});
+	
+</script>
+</head>
+<body>
+	<h3>ID & PW Check</h3>
+	<hr>
+	<hr>
+	<form name="memForm" id="memForm">
+		<table border="1">
+			<tr>
+				<td>
+					아이디 : <input type="hidden" name="ISUD_TYPE" id="ISUD_TYPE">
+					<input type="text" name="mid" id="mid" placeholder="아이디체크" style="width:100px" />
+					<input type="button" id="midCheckBtn" value="아이디중복확인" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					비밀번호 : <input type="text" name="mpw" id="mpw" placeholder="비밀번호체크" style="width:100px" />
+					<input type="button" id="mpwCheckBtn" value="비밀번호확인" />
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

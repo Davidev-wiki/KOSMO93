@@ -1,0 +1,53 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Ajax 3</title>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		
+		$("#btn").click(function(){
+			
+			alert("버튼이 클릭되었습니다!");
+			let urlReq = "/testCss/AjaxTest/data3.jsp";
+			let dataReq = "json";
+			
+			$.ajax({
+				url : rulReq,
+				dataType : dataReq,
+				success : toSuccess,
+				error : toError
+			});
+			
+			function toSuccess(data){
+				alert("데이터 요청-리턴에 성공했습니다.");
+				alert("가져온 data : " + data);
+				console.log("가져온 data : " + data);
+				
+				var results = JSON.stringify(data);
+				alert("results : " + results);
+				console.log("results : " + results);
+				
+				var v = JSON.parse(results);
+				alert("v : " + v);
+				console.log("v : " + v);
+				
+				console.log("v : " + v.bools);
+			}
+			
+			function toError(data){
+				alert("데이터 요청-리턴에 실패했습니다.");
+			}
+			
+		});
+		
+	});
+</script>
+</head>
+<body>
+	<input type="button" id="btn" value="Click">
+	<div id="readJson"></div>
+</body>
+</html>

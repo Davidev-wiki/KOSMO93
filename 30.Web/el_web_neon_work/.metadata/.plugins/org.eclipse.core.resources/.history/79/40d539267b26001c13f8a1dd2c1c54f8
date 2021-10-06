@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>ID, PW Check</title>
+
+
+</head>
+<body>
+<h3>ID, PW Check</h3>
+<hr>
+<form name="memForm" id="memForm"></form>
+<table border="1"></table>
+</body>
+</html>

@@ -15,7 +15,7 @@ $(document).ready(function(){
 			type : "POST",
 			url : "/testCss/AjaxTest/data1.jsp",
 			data : {					
-				id : $('#id').val(),	// data 는 쿼리 스트링 				
+				"id" : $('#id').val(),	// data 는 쿼리 스트링 				
 			},
 			success : function (resData){
 				alert("리턴 데이터 >>> : " + resData);

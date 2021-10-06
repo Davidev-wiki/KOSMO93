@@ -40,3 +40,15 @@
 9월 28, 2021 19:14:07.82 [21564:19392:0928/191407.818:ERROR:chrome_browser_main_extra_parts_metrics.cc(234)] crbug.com/1216328: Checking default browser status started. Please report if there is no report that this ends.
 9월 28, 2021 19:14:07.83 [21564:19392:0928/191407.832:ERROR:chrome_browser_main_extra_parts_metrics.cc(238)] crbug.com/1216328: Checking default browser status ended.
 9월 28, 2021 19:14:07.83 [21564:9800:0928/191407.832:ERROR:device_event_log_impl.cc(214)] [19:14:07.833] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+
+10월 06, 2021 15:09:15.23 NEW SESSION
+10월 06, 2021 15:09:15.23 [21616:17008:1006/150915.200:ERROR:external_registry_loader_win.cc(158)] File C:\Users\david\AppData\Local\Google\Drive\user_default\apdfllckaahabafndbhieahigkjlhalf_live.crx for key Software\Google\Chrome\Extensions\apdfllckaahabafndbhieahigkjlhalf does not exist or is not readable.
+10월 06, 2021 15:09:18.01 [21616:12484:1006/150918.011:ERROR:chrome_browser_main_extra_parts_metrics.cc(228)] crbug.com/1216328: Checking Bluetooth availability started. Please report if there is no report that this ends.
+10월 06, 2021 15:09:18.01 [21616:12484:1006/150918.011:ERROR:chrome_browser_main_extra_parts_metrics.cc(231)] crbug.com/1216328: Checking Bluetooth availability ended.
+10월 06, 2021 15:09:18.01 [21616:12484:1006/150918.011:ERROR:chrome_browser_main_extra_parts_metrics.cc(234)] crbug.com/1216328: Checking default browser status started. Please report if there is no report that this ends.
+10월 06, 2021 15:09:18.02 [21616:12484:1006/150918.027:ERROR:chrome_browser_main_extra_parts_metrics.cc(238)] crbug.com/1216328: Checking default browser status ended.
+10월 06, 2021 15:35:25.58 [17468:11320:1006/153525.588:ERROR:external_registry_loader_win.cc(158)] File C:\Users\david\AppData\Local\Google\Drive\user_default\apdfllckaahabafndbhieahigkjlhalf_live.crx for key Software\Google\Chrome\Extensions\apdfllckaahabafndbhieahigkjlhalf does not exist or is not readable.
+10월 06, 2021 15:35:28.43 [17468:21376:1006/153528.434:ERROR:chrome_browser_main_extra_parts_metrics.cc(228)] crbug.com/1216328: Checking Bluetooth availability started. Please report if there is no report that this ends.
+10월 06, 2021 15:35:28.43 [17468:21376:1006/153528.434:ERROR:chrome_browser_main_extra_parts_metrics.cc(231)] crbug.com/1216328: Checking Bluetooth availability ended.
+10월 06, 2021 15:35:28.43 [17468:21376:1006/153528.434:ERROR:chrome_browser_main_extra_parts_metrics.cc(234)] crbug.com/1216328: Checking default browser status started. Please report if there is no report that this ends.
+10월 06, 2021 15:35:28.45 [17468:21376:1006/153528.450:ERROR:chrome_browser_main_extra_parts_metrics.cc(238)] crbug.com/1216328: Checking default browser status ended.
