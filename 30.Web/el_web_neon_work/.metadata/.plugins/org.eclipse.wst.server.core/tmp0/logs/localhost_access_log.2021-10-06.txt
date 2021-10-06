@@ -72,3 +72,13 @@
 0:0:0:0:0:0:0:1 - - [06/Oct/2021:18:17:55 +0900] "GET /testCss/idpwCheck?mid=asdf&ISUD_TYPE=IDCHECK HTTP/1.1" 200 19
 0:0:0:0:0:0:0:1 - - [06/Oct/2021:18:19:17 +0900] "GET /testCss/AjaxTest/idpwCheck.html HTTP/1.1" 200 4274
 0:0:0:0:0:0:0:1 - - [06/Oct/2021:18:19:27 +0900] "GET /testCss/idpwCheck?mid=f&ISUD_TYPE=IDCHECK HTTP/1.1" 200 19
+127.0.0.1 - - [06/Oct/2021:23:45:19 +0900] "GET / HTTP/1.1" 404 807
+0:0:0:0:0:0:0:1 - - [06/Oct/2021:23:45:20 +0900] "GET /testCss/AjaxTest/idpwCheck.html HTTP/1.1" 200 4273
+0:0:0:0:0:0:0:1 - - [06/Oct/2021:23:45:20 +0900] "GET /favicon.ico HTTP/1.1" 404 818
+0:0:0:0:0:0:0:1 - - [06/Oct/2021:23:46:13 +0900] "GET /testCss/idpwCheck?mid=abc&ISUD_TYPE=IDCHECK HTTP/1.1" 404 749
+0:0:0:0:0:0:0:1 - - [06/Oct/2021:23:46:42 +0900] "GET /testCss/idpwCheck?mid=abc&ISUD_TYPE=IDCHECK HTTP/1.1" 404 749
+0:0:0:0:0:0:0:1 - - [06/Oct/2021:23:50:37 +0900] "GET /testCss/AjaxTest/idpwCheck.html HTTP/1.1" 200 4273
+0:0:0:0:0:0:0:1 - - [06/Oct/2021:23:50:38 +0900] "GET /favicon.ico HTTP/1.1" 404 818
+0:0:0:0:0:0:0:1 - - [06/Oct/2021:23:50:56 +0900] "GET /testCss/idpwCheck?mid=abc&ISUD_TYPE=IDCHECK HTTP/1.1" 200 134
+0:0:0:0:0:0:0:1 - - [06/Oct/2021:23:51:16 +0900] "GET /testCss/idpwCheck?mid=ERIC&ISUD_TYPE=IDCHECK HTTP/1.1" 200 134
+0:0:0:0:0:0:0:1 - - [06/Oct/2021:23:51:35 +0900] "GET /testCss/idpwCheck?mid=asdfwnkeqr&ISUD_TYPE=IDCHECK HTTP/1.1" 200 134

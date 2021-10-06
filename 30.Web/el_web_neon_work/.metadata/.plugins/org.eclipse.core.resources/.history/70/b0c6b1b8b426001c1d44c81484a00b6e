@@ -81,7 +81,7 @@ public class IdPwCheckServlet extends HttpServlet {
 					
 					System.out.println("idCheckVal : " + idCheckVal);
 					request.setAttribute(idCheckVal, idCheckVal);
-					RequestDispatcher rd = request.getRequestDispatcher("/AjaxTest/idCheck.jsp");
+					RequestDispatcher rd = request.getRequestDispatcher("/testCss/AjaxTest/idCheck.jsp");
 					rd.forward(request, response);
 					
 				} else {

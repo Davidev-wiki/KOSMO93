@@ -26,7 +26,6 @@
 			    maxActive="100" 
 			    maxIdle="30" 
 			    maxWait="10000"  
-			   
 			    type="javax.sql.DataSource" 
 			    name="jdbc/Oracle11g_orclKOSMO00"
 			    driverClassName="oracle.jdbc.driver.OracleDriver"
@@ -44,8 +43,8 @@
 	    loginTimeout : 연결 끊어지는 시간
 	    
 	   
-	    ==============실제 필요한 부분====================
-	    type : 웹에서 이 리소스를 사용할 때 DataSource로 리턴됨(데이터베이스 연결정보)
+	    ==============실제필요한 부분====================
+	    type : 웹에서 이 리소스를 사용할 때 DataSource로 리턴됨
 	    name : JDBC이름, 변경 가능
 	    driverClassName : JDBC 드라이버
 	    url : "jdbc:oracle:thin:@ip주소:포트번호:전역 데이터베이스 이름" 

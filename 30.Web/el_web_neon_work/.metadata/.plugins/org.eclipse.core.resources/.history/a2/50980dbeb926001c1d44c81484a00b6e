@@ -12,16 +12,16 @@
 <%	
 	// Servlet에서 request.getAttribute() 를 이용해 
 	// 데이터 가지고 오기
-	Object obj = request.getAttribute("idCheckVal");
+	Object obj = request.getAttribute("pwCheckVal");
 	if (obj == null) return;
 			
 	String idCheckVal = (String) obj;
-	System.out.println("idCheckVal : " + idCheckVal);
+	System.out.println("pwCheckVal : " + pwCheckVal);
 
 %>
 <?xml version='1.0' encoding='UTF-8'?>
 <login>
-	<result><%= idCheckVal %></result>
+	<result><%= pwCheckVal %></result>
 </login>
 
 </body>
