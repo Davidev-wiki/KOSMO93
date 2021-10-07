@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<comment>
+	<result>true</result>
+	<message></message>
+	<total_count>24</total_count>
+	<item>
+		<num>1</num>
+		<writer>
+			<!-- CDATA Section -->
+			<![CDATA[주영아]]>
+		</writer>
+		<content>
+			<![CDATA[Ajax로 구현하는 댓글 예제입니다. 잘 나오나?]]>
+		</content>
+		<datetime>
+			<![CDATA[2021-10-07 11:42:21]]>
+		</datetime>
+	</item>
+	<item>
+		<num>2</num>
+		<writer>
+			<!-- CDATA Section -->
+			<![CDATA[이광호]]>
+		</writer>
+		<content>
+			<![CDATA[jQuery로 Ajax를 구현하면 매우 쉽다고 합니다.]]>
+		</content>
+		<datetime>
+			<![CDATA[2021-10-07 11:42:22]]>
+		</datetime>
+	</item>
+	<item>
+		<num>1</num>
+		<writer>
+			<!-- CDATA Section -->
+			<![CDATA[김찬기]]>
+		</writer>
+		<content>
+			<![CDATA[...]]>
+		</content>
+		<datetime>
+			<![CDATA[2021-10-07 11:42:23]]>
+		</datetime>
+	</item>
+	
+</comment>

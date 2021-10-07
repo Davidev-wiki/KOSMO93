@@ -1,0 +1,22 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%
+	int num1 = Integer.parseInt(request.getParameter("num1"));
+	int num2 = Integer.parseInt(request.getParameter("num2"));
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>el_04</title>
+</head>
+<body>
+<h3>el_04</h3>
+<hr>
+<!-- el_04.jsp?num1=20&num2=10 -->
+num1의 값 (JSP) : <%= num1 %><br/>
+num2의 값 (JSP) : <%= num2 %><br/>
+<br />
+num1의 값(EL) : ${param.num1}<br/><!-- ${num1 }은 바인딩 객체가 없어서 출력되지 않는다. -->
+
+</body>
+</html>

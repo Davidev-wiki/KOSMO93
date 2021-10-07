@@ -45,7 +45,8 @@ public class IdPwCheckServlet extends HttpServlet {
 				
 				int nCnt = 0;
 				String idCheckVal = "";
-				
+				// 컬럼에서 카운트 함수로 mid로 가져온 id와 일치하는 개수를 가져옴.
+				// 1개 있으면 이미 등록된 id가 있다는 것 
 				String idCheckQuery = "SELECT COUNT(A.ENAME) NCNT FROM EMP A WHERE A.ENAME = ?";
 				
 				String mid = request.getParameter("mid");
@@ -136,7 +137,7 @@ public class IdPwCheckServlet extends HttpServlet {
 					
 					System.out.println("pwCheckVal : " + pwCheckVal);
 					request.setAttribute(pwCheckVal, pwCheckVal);
-					RequestDispatcher rd = request.getRequestDispatcher("/testCss/AjaxTest/pwCheck.jsp"); 
+					RequestDispatcher rd = request.getRequestDispatcher("/AjaxTest/pwCheck.jsp"); 
 					rd.forward(request, response);
 				
 				} else {
