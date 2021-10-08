@@ -1,0 +1,72 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>jstl_04 if문 : 분기하기</title>
+</head>
+<body>
+<h3>jstl_04</h3>
+<hr>
+<!-- jstl_04.jsp?num=1 -->
+<!-- jstl_04.jsp?num=2 -->
+<!-- jstl_04.jsp?num=3 -->
+
+<%
+
+	int num = Integer.parseInt(request.getParameter("num"));
+	if (num == 1){
+		out.println("안녕하세요? (java's if문 : if)");
+	} else if (num ==2) {
+		out.println("처음 뵙겠습니다 (java's if문 : else if)");
+	} else {
+		out.println("반갑습니다! (java's if문 : else)");
+	}
+
+%>
+<br/><br/>
+
+<c:if test="${param.num == 1 }"> 안녕하셈? (c:if문) </c:if> 
+<c:if test="${param.num == 2 }"> 처음보셈? (c:if문) </c:if> 
+<c:if test="${param.num == 3 }"> 반가우셈? (c:if문) </c:if> 
+<br/><br/>
+
+
+<%--
+
+자바의 스위치문 == JSTL의 츄즈문
+
+JAVA : switch (비교값) case 기준값 default
+
+JSTL core : <c:choose>
+				<c:when test="조건식">실행문</c:when>
+				<c:when test="조건식">실행문</c:when>
+				<c:otherwise>실행문</c:otherwise>
+			</c:choose>
+
+--%>
+
+<%
+switch(num){
+case 1:
+	out.println("첨 보네? (java : switch문)");
+	break;
+case 2:
+	out.println("안녕해? (java : switch문)");
+	break;
+default:
+	out.println("반가워? (java : switch문)");
+	break;
+}
+
+%>
+<br/><br/>
+<c:choose>
+	<c:when test="${param.num == 1}">처음보네요?(c:choose)</c:when>
+	<c:when test="${param.num == 2}">안녕하네요?(c:choose)</c:when>
+	<c:otherwise>안녕하네요?(c:choose)</c:otherwise>
+</c:choose>
+
+</body>
+</html>

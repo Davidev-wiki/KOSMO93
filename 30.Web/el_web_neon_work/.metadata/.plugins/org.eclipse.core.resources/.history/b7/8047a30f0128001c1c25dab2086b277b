@@ -1,0 +1,33 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>jstl_10</title>
+</head>
+<body>
+<h3>jstl_10</h3>
+<hr>
+<c:set var="date" value="<%=new Date() %>" />
+오늘의 날짜 : <fmt:formatData value="${date }" type="date" /><br />
+현재의 시각 : <fmt:formatData value="${date }" type="time" /><br />
+날짜와 시각 : <fmt:formatData value="${date }" type="both" /><br />
+Short :
+Medium :
+Long :
+Full :
+Pattern1 :
+Pattern2 : 
+<br/><hr /><br/>
+<%
+	Date now = new Date();
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분 ss초");
+%>
+JAVA : <%=now %><br />
+JAVA Format : <%=sdf.format(now) %>
+</body>
+</html>

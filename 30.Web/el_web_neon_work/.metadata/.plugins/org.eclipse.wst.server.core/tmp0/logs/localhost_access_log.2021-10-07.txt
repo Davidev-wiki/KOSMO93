@@ -108,3 +108,10 @@
 0:0:0:0:0:0:0:1 - - [07/Oct/2021:18:15:29 +0900] "GET /testCss/elTest/el_06.jsp HTTP/1.1" 200 2465
 0:0:0:0:0:0:0:1 - - [07/Oct/2021:18:15:57 +0900] "GET /testCss/elTest/el_06.jsp HTTP/1.1" 200 2457
 0:0:0:0:0:0:0:1 - - [07/Oct/2021:18:15:57 +0900] "GET /favicon.ico HTTP/1.1" 404 818
+127.0.0.1 - - [07/Oct/2021:22:20:21 +0900] "GET / HTTP/1.1" 404 807
+0:0:0:0:0:0:0:1 - - [07/Oct/2021:22:20:21 +0900] "GET /testCss/AjaxTest/reply.html HTTP/1.1" 200 6856
+0:0:0:0:0:0:0:1 - - [07/Oct/2021:22:20:22 +0900] "GET /testCss/AjaxTest/reply_3.xml HTTP/1.1" 200 928
+0:0:0:0:0:0:0:1 - - [07/Oct/2021:22:20:22 +0900] "GET /favicon.ico HTTP/1.1" 404 818
+0:0:0:0:0:0:0:1 - - [07/Oct/2021:22:20:35 +0900] "POST /testCss/AjaxTest/reply_1.xml HTTP/1.1" 200 368
+0:0:0:0:0:0:0:1 - - [07/Oct/2021:22:20:52 +0900] "POST /testCss/AjaxTest/reply_1.xml HTTP/1.1" 200 368
+0:0:0:0:0:0:0:1 - - [07/Oct/2021:22:26:08 +0900] "POST /testCss/AjaxTest/reply_1.xml HTTP/1.1" 200 368
