@@ -12,4 +12,6 @@
 <typeInfo handle="=testKck/src&lt;a.b.c.com.kosmo.login.dao{LoginDAO.java[LoginDAO" modifiers="513" timestamp="1632383132197"/>
 <typeInfo handle="=testKck/src&lt;a.b.c.com.kosmo.notice.service{NoticeService.java[NoticeService" modifiers="513" timestamp="1632448070051"/>
 <typeInfo handle="=testKck/src&lt;a.b.c.com.kosmo.notice.dao{NoticeDAO.java[NoticeDAO" modifiers="513" timestamp="1632448060475"/>
+<typeInfo handle="=testSpring/src&lt;a.b.c.com.emp.service{EmpService.java[EmpService" modifiers="513" timestamp="1633933477729"/>
+<typeInfo handle="=testSpring/src&lt;a.b.c.com.emp.dao{EmpDAO.java[EmpDAO" modifiers="513" timestamp="1633939634133"/>
 </typeInfoHistroy>

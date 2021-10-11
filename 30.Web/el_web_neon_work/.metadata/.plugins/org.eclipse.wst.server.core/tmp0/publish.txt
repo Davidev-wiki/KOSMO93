@@ -1,3 +1,5 @@
 #Tomcat publish data
-#Fri Oct 08 18:09:37 KST 2021
+#Mon Oct 11 22:21:29 KST 2021
 org.eclipse.jst.jee.server\:/binary\:C\:\\00.KOSMO93\\30.Web\\el_web_neon_work\\testCss\\WebContent\\WEB-INF\\lib\\jasper.jar=WEB-INF/lib/jasper.jar
+org.eclipse.jst.jee.server\:/binary\:C\:\\00.KOSMO93\\30.Web\\el_web_neon_work\\testSpring\\WebContent\\WEB-INF\\lib\\spring-web-3.2.9.RELEASE.jar=WEB-INF/lib/spring-web-3.2.9.RELEASE.jar
+org.eclipse.jst.jee.server\:/binary\:C\:\\00.KOSMO93\\30.Web\\el_web_neon_work\\testSpring\\WebContent\\WEB-INF\\lib\\jasper-el.jar=WEB-INF/lib/jasper-el.jar
