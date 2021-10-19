@@ -1,0 +1,75 @@
+2021-10-18
+------------------------------
+
+스프링 프레임워크 
+-----------------------
+
+1. POJO 라이브러리 사용
+	Spring API 3.2.9 포조 라이브러리 21개
+
+	beans.jar : spring-beans-3.2.9.RELEASE.jar
+		클래스 인스턴스 하는 기능 
+		스프링 프레임워크에서는 
+		클래스를 컴포넌트, 빈즈(콩, 자바에서는 컴포넌트 개념으로 사용) 라고 부른다. 
+	
+	context.jar : spring-context-3.2.9.RELEASE.jar
+		클래스 위치를 찾아가는 기능 
+	
+	core.jar : spring-core-3.2.9.RELEASE.jar
+		스프링 프레임 워크 기본 엔진(컨테이너)
+		Ioc, DI 를 한다. 
+	
+	webmvc.jar : spring-webmvc-3.2.9.RELEASE.jar
+		스프링 웹 엠브이시 
+
+
+	Context/WEB-INF/web.xml
+		웰컴파일 : 서블릿 
+		디스패처서블릿 : webmvc.jar
+		스프링환경설정파일 : context.jar
+		url 패턴 정의
+	
+	Context/WEB-INF/spring-servlet.xml
+		엠브이시어노테이션 : webmvc.jar
+		컨텍스트컴포넌트스캔
+			context.jar
+			core.jar
+			beans.jar
+		뷰리졸빙
+			context.jar
+			webmvc.jar
+
+2. 어노테이션
+	@Controller 
+	@Service 
+	@Transactional
+	@Repository 
+
+	@RequestMapping 
+	@ReqestMethod 
+	@ModelAttribute 
+
+	@Autowired : DI : 의존성 주입
+		필드
+		세터함수
+		생성자
+
+	Spring.io 에서 @ 어노테이션 기술을 지원받지 않는다. 
+	 @ 어노테이션 기술은 자바에서 지원한다.
+	
+
+
+
+springStudy
+======================
+
+1.	Context/WebContent/index.jsp 
+	스프링에서 view 파일은 WEB-INF/하위에 있어야 한다.
+	
+	view 파일이 model 을 사용하기 위해서 
+	Context/WebContent/WEB-INF/ 하위 있는 파일은 
+	웹브라우저에서 요청하면 않된다. 
+	이유는 : 클래스가 있는 위치이다. 
+	클라이언트는 웹서버까지만 요청할 수 있다.
+
+
