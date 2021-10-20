@@ -21,12 +21,28 @@ public class SpringEmpDAOImpl implements SpringEmpDAO {
 		// TODO Auto-generated method stub
 		logger.info("SpringEmpDAOImpl springEmpSelectAll 함수 진입 >>> : ");		
 		
+		logger.info("SpringEmpDAOImpl springEmpSelectAll 함수 진입 >>> : sqlSession ::: " + sqlSession);
+			
 		return sqlSession.selectList("springEmpSelectAll");
 	}
 
 	@Override
 	public List springEmpSelect(SpringEmpVO evo) {
 		// TODO Auto-generated method stub
+		logger.info("SpringEmpDAOImpl springEmpSelect 함수 진입 >>> : ");		
+		
 		return sqlSession.selectList("springEmpSelect", evo);
+	}
+
+	@Override
+	public int springEmpInsert(SpringEmpVO evo) {
+		// TODO Auto-generated method stub
+		return (Integer)sqlSession.insert("springEmpInsert", evo);
+	}
+
+	@Override
+	public int springEmpUpdate(SpringEmpVO evo) {
+		// TODO Auto-generated method stub
+		return (Integer)sqlSession.insert("springEmpUpdate", evo);
 	}
 }

@@ -8,4 +8,6 @@ public interface SpringEmpService {
 
 	public List springEmpSelectAll();
 	public List springEmpSelect(SpringEmpVO evo);
+	public int springEmpInsert(SpringEmpVO evo);
+	public int springEmpUpdate(SpringEmpVO evo);
 }

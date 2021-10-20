@@ -35,6 +35,20 @@ public class SpringEmpServiceImpl implements SpringEmpService {
 	@Override
 	public List springEmpSelect(SpringEmpVO evo) {
 		// TODO Auto-generated method stub
+		logger.info("SpringEmpServiceImpl springEmpSelect 함수 진입 >>> : ");
+		
 		return springEmpDAO.springEmpSelect(evo);
+	}
+
+	@Override
+	public int springEmpInsert(SpringEmpVO evo) {
+		// TODO Auto-generated method stub
+		return springEmpDAO.springEmpInsert(evo);
+	}
+
+	@Override
+	public int springEmpUpdate(SpringEmpVO evo) {
+		// TODO Auto-generated method stub
+		return springEmpDAO.springEmpUpdate(evo);
 	}
 }
