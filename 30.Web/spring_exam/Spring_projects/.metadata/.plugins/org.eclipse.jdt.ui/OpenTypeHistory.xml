@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<typeInfoHistroy>
+<typeInfo handle="=testSpring/src&lt;a.b.c.com.service{SpringAutowiredService.java[SpringAutowiredService" modifiers="513" timestamp="1634278059690"/>
+<typeInfo handle="=testSpring/src&lt;a.b.c.com.dao{SpringAutowiredDAO.java[SpringAutowiredDAO" modifiers="513" timestamp="1634278089366"/>
+<typeInfo handle="=springEmp/src&lt;a.b.c.com.emp.service{SpringEmpService.java[SpringEmpService" modifiers="513" timestamp="1634724791244"/>
+<typeInfo handle="=springEmp/src&lt;a.b.c.com.emp.dao{SpringEmpDAO.java[SpringEmpDAO" modifiers="513" timestamp="1634724730430"/>
+</typeInfoHistroy>

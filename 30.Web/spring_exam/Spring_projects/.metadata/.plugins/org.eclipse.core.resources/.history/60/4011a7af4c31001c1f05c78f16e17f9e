@@ -1,0 +1,22 @@
+package a.b.c.com.emp.controller;
+
+import org.apache.log4j.Logger;
+import org.springframework.stereotype.Controller;
+
+import a.b.c.com.emp.service.SpringEmpService;
+
+@Controller
+public class SpringEmpController {
+	
+	//log4j
+	private Logger logger = Logger.getLogger(SpringEmpController.class);
+	
+	//컨트롤러-서비스 연결하기
+	private SpringEmpService springEmpService;
+	
+	//RequestMapping
+	
+	
+	//
+	
+}

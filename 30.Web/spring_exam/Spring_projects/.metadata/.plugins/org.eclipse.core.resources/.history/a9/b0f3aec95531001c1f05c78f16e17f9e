@@ -1,0 +1,41 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@ page import="a.b.c.com.emp.vo.SpringEmpVO" %>
+<%@ page import="java.util.List" %>   
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>EMP SELECT ALL</title>
+</head>
+<body>
+<h3>EMP SELECT ALL : jsp</h3>
+<hr>
+<%
+	// controller에서 세팅한 데이터 가져오는데 
+	// 데이터값이 없으면 그냥 null 리턴 
+	Object obj = request.getAttribute("listAll");
+	if(obj==null) return;
+	
+	// list에 데이터가 있는 경우 데이터 꺼내서 출력하기
+	List<SpringEmpVO> list = (List<SpringEmpVO>)obj;
+	if(list.size() > 0){
+		for(int i=0; i < list.size(); i++){
+			SpringEmpVO evo = list.get(i);	
+%>
+		<h3>가지고 온 Properties</h3>
+			<%=evo.getEmpno() %> 
+			<%=evo.getEname() %> 
+			<%=evo.getHiredate() %> <br>
+		
+<%
+		}
+	}
+%>
+
+
+</body>
+</html>

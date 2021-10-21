@@ -1,0 +1,42 @@
+package a.b.c.com.emp.dao;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import a.b.c.com.emp.vo.SpringEmpVO;
+
+@Repository
+public class SpringEmpDAOImpl implements SpringEmpDAO {
+	
+	//logger setting
+	private Logger logger = Logger.getLogger(SpringEmpDAOImpl.class);
+	
+	// DAO -> ibatis.SqlSession을 선언해서 연결한다. 
+	@Autowired(required=false)
+	private SqlSession sqlSession;
+	
+	@Override
+	public List springEmpSelectAll() {
+		// TODO Auto-generated method stub
+		logger.info("SpringEmpDAOImpl.springEmpSelectAll() 진입");
+		
+		//바로 View로 가지 않고 sqlSession을 통해 DispatcherServlet으로 가는듯하다.
+		//Return type이 List임을 잘 확인! 
+		return sqlSession.selectList("springEmpSelectAll");
+	}
+
+	@Override
+	public List springEmpSelect(SpringEmpVO evo) {
+		// TODO Auto-generated method stub
+		logger.info("SpringEmpDAOImpl.springEmpSelect(SpringEmpVO evo) 진입");
+		
+		//바로 View로 가지 않고 sqlSession을 통해 DispatcherServlet으로 가는듯하다.
+		//Return type이 List임을 잘 확인! 
+		return sqlSession.selectList("springEmpSelect", evo);
+	}
+
+}

@@ -1,0 +1,15 @@
+package a.b.c.com.dao;
+
+import java.util.List;
+
+import a.b.c.com.vo.FormDataVO;
+
+public class SpringAutowiredDAOImpl implements SpringAutowiredDAO {
+
+	@Override
+	public List<FormDataVO> autowiredTest(FormDataVO fvo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

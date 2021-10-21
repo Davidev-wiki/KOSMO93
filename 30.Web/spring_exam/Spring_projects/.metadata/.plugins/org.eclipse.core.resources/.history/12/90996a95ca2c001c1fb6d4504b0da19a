@@ -1,0 +1,50 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>formdata_post_spring_modelattribute_return</title>
+</head>
+<body>
+<h3>mvc/formdata_post_spring_modelattribute_return</h3>
+<p>
+-------------------테 스 트----------------------------
+<!-- @ModelAttribute("ma_fdvo") FormDataVO fdvo -->
+<h3>${ma_fdvo}---1</h3>		 <!-- 객체 주소 출력 -->
+<h3>${FormDataVO}---2</h3>   <!-- 출력 안됨 --> 
+<h3>${ma_fdvo}---3</h3>		 <!-- 객체 주소 출력 -->
+<hr>
+<h3>${ma_fdvo.datanum}11</h3>    <!-- 데이터 출력 -->
+<h3>${FormDataVO.datanum}22</h3> <!-- 데이터 출력 안됨 -->
+<h3>${ma_fdvo.datanum}33</h3>    <!-- 데이터 출력 -->
+------------------------------------------------------
+<p>
+<h3>EL 표현식으로 데이터 추출하기 1 (ma_fdvo 참조변수 이용 : 잘 출력된다)</h3>
+<hr>
+$ {ma_fdvo } : ${ma_fdvo }<br>
+$ {ma_fdvo.datanum } : ${ma_fdvo.datanum }<br>
+$ {ma_fdvo.dataid } : ${ma_fdvo.dataid }<br>
+$ {ma_fdvo.datapw } : ${ma_fdvo.datapw }<br>
+$ {ma_fdvo.dataname } : ${ma_fdvo.dataname }<br>
+<p>
+<h3>EL 표현식 및 객체로 데이터 추출하기 2 (ma_fdvo.get()함수 이용 : 잘 출력 된다.) </h3>
+<hr>
+$ {ma_fdvo } >>> : ${ma_fdvo }<br>
+$ {ma_fdvo.datanum } >>> : ${ma_fdvo.getDatanum() }<br>
+$ {ma_fdvo.getDataid() } >>> : ${ma_fdvo.getDataid() }<br>
+$ {ma_fdvo.getDatapw() } >>> : ${ma_fdvo.getDatapw() }<br>
+$ {ma_fdvo.getDataname() } >>> : ${ma_fdvo.getDataname() }<br>
+<p>
+<h3>request.getAttribute() 객체로 데이터 추출하기</h3>
+<hr>
+<%
+	Object obj = request.getAttribute("ma_fdvo");
+	FormDataVO fdvo = (FormDataVO)obj;
+	
+	System.out.println("formdata_post_spring_modelattribute_return.jsp >> fdvo : " + fdvo);
+	out.println("formdata_post_spring_modelattribute_return.jsp >> fdvo : " + fdvo + "<br>");
+%>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		 xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
+		 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" 
+		 id="WebApp_ID" 
+		 version="3.1">
+	<display-name>springEmp</display-name>
+  	<!-- 랜딩페이지는 index.jsp로 할래 -->
+  	<welcome-file-list>
+    	<welcome-file>index.jsp</welcome-file>
+  	</welcome-file-list>
+  	
+  	<!-- 서블릿은 DispatcherServlet으로 할래 -->
+  	<!-- 컨텍스트 환경설정 파일은 spring-servlet.xml로 할래 -->
+  	<servlet>
+  				<servlet-name>spring</servlet-name>
+  				<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+  				<init-param>
+  							<param-name>contextConfigLocation</param-name>
+  							<param-value>/WEB-INF/spring-servlet.xml</param-value>
+  				</init-param>
+  				<load-on-startup>1</load-on-startup>
+  	</servlet>
+  	<!-- 서블릿 매핑할 때 URL은 *.k로 표기할래  -->
+  	<servlet-mapping>
+  					<servlet-name>spring</servlet-name>
+  					<url-pattern>*.k</url-pattern>
+  	</servlet-mapping>
+  	
+  	<!-- POST 방식 인코딩 -->
+  	<!-- 인코딩 필터는 아래 클래스로 할래 -->
+  	<!-- 인코딩 타입은 EUC-KR로 할래 -->
+  	<filter>
+  				<filter-name>encodingFilter</filter-name>
+  				<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+  				<init-param>
+  							<param-name>encoding</param-name>
+  							<param-value>EUC-KR</param-value>
+  				</init-param>
+  				<init-param>
+  							<param-name>forceEncoding</param-name>
+  							<param-value>true</param-value>
+  				</init-param>
+  	</filter>
+  	
+  	<!-- url 패턴이 /*로 시작되는 것들은 모두 다 인코딩 필터 적용할래 -->
+  	<filter-mapping>
+  			<filter-name>encodingFilter</filter-name>
+  			<url-pattern>/*</url-pattern>
+  	</filter-mapping>
+  	
+  	<!-- 아래 경로에 있는 프로퍼티로 log4j 세팅할래 -->
+	<context-param>
+				<param-name>log4jConfigLocation</param-name>
+				<param-value>/WEB-INF/classes/log4j.properties</param-value>
+	</context-param>
+</web-app>

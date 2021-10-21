@@ -1,0 +1,20 @@
+package a.b.c.com.controller;
+
+import java.util.logging.Logger;
+
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class SpringAutowiredController {
+	
+	// Logger 호출
+	private Logger logger = Logger.getLogger(SpringAutowiredController.class);
+	// 서비스 인스턴스
+	
+	// 생성자 연결, 주입
+	
+	// 요청에 따라 뷰로 연결하는 RequestMapping
+
+	// 요청에 따라 뷰로 연결하는 RequestMapping
+	
+}

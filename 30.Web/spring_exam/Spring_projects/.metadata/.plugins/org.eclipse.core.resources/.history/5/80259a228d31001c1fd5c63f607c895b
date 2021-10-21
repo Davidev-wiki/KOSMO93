@@ -1,0 +1,11 @@
+package a.b.c.com.emp.service;
+
+import java.util.List;
+
+import a.b.c.com.emp.vo.SpringEmpVO;
+
+public interface SpringEmpService {
+
+	public List springEmpSelectAll();
+	public List springEmpSelect(SpringEmpVO evo);
+}

@@ -1,0 +1,39 @@
+package com.spring.dept.dao;
+
+import java.util.List;
+
+import com.spring.dept.vo.DeptVO;
+
+public class DeptMapperImpl implements DeptMapper {
+
+	@Override
+	public List<DeptVO> listDepartment(DeptVO param) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public DeptVO selectDepartment(String deptid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int insertDepartment(DeptVO param) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int updateDepartment(DeptVO param) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int deleteDepartment(DeptVO param) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

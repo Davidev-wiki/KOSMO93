@@ -1,0 +1,30 @@
+package a.b.c.com.controller;
+
+import org.apache.log4j.Logger;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+@Controller
+public class LoginController {
+	private Logger logger = Logger.getLogger(LoginController.class);
+	
+	@RequestMapping(value="login", method=RequestMethod.GET)
+	public String loginForm(Model model) {
+		
+		logger.info("logger print");
+		
+		return "login";
+	}
+	
+	
+	public String onSubmit111(@ModelAttribute("userVO") UserVO userVO) {
+		
+		logger.info("logger print");
+		
+		return "loginData";
+	}
+	
+}

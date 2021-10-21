@@ -1,0 +1,23 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>formdata_post_spring_modelattribute_return</title>
+</head>
+<body>
+<h3>mvc/formdata_post_spring_modelattribute_return</h3>
+<p>
+<h3>EL로 데이터 갖고오기 테스트</h3>
+<!-- @ModelAttribute("ma_fdvo") FormDataVO fdvo -->
+<h3>${ma_fdvo}1</h3>
+<h3>${FormDataVO}2</h3>
+<h3>${ma_fdvo}3</h3>
+<hr>
+<h3>${ma_fdvo.datanum}11</h3>
+<h3>${FormDataVO.datanum}22</h3>
+<h3>${ma_fdvo.datanum}33</h3>
+
+</body>
+</html>

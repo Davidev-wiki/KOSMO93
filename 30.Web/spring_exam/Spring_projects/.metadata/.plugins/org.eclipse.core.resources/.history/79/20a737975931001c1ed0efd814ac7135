@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:context="http://www.springframework.org/schema/context"
+		xmlns:tx="http://www.springframework.org/schema/tx"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans 
+							http://www.springframework.org/schema/beans/spring-beans.xsd
+							http://www.springframework.org/schema/context 
+							http://www.springframework.org/schema/context/spring-context.xsd
+							http://www.springframework.org/schema/tx 
+							http://www.springframework.org/schema/tx/spring-tx.xsd">
+		
+		
+		<!-- 1. Component(=bean) 4개 세팅 -->
+		<!-- JNDI 클래스로  데이터 소스(value에 등록한 연결정보)로 연결해줘  -->
+		<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+				<property name="jndiName" value="java:comp/env/jdbc/Oracle11g_orclKOSMO00" />
+		</bean>
+		
+		<!-- 2. Mybatis 클래스중 sqlSessionFactory로 DB연동 도와줘 -->
+		<!-- dataSource참조하고 환경설정파일 위치, 쿼리문이 적힌 파일 위치 알려줄테니까 -->
+		<!-- classpath:/ 여기에 등장하는 '/'는 루트 디렉토리, 즉 springEmp를 뜻한다. -->
+		<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+				<property name="dataSource" ref="dataSource" />
+				<property name="configLocation" value="classpath:/mybatisconfig/mybatis-config.xml" />
+				<property name="mapperLocations" value="classpath:/mybatisquery/*.xml" />
+		</bean>
+		
+		<!-- 3. dataSource 맡길게, Transaction 처리 해주는 매니저 나오라그래 -->
+		<!-- spring-mybatis에서는 개발자가 트랜잭션처리에 관여하지 않는다. -->
+		<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+						<property name="dataSource" ref="dataSource" />
+		</bean>
+
+		<!-- 4. DAO(자바 용어) or Mapper(Mybatis 용어) 찾기 -->
+		<!-- Mapper 찾아주는 클래스도 역시 있다..MapperScannerConfigurer -->
+		<!-- 설정한 경로에서 찾아줘 -->
+		<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+				<property name="basePackage"><value>a.b.c.com.**.dao</value></property>
+		</bean>
+</beans>

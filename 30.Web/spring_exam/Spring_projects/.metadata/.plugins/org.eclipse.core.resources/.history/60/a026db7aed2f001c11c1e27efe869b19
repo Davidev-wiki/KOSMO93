@@ -1,0 +1,21 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>학과 테이블</title>
+<style type="text/css">
+	.required{
+		color:red;
+	}
+</style>
+<script type="text/javascript">
+
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

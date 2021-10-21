@@ -1,0 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>스프링 MVC 테스트</title>
+</head>
+<body>
+Spring Web MVC 테스트 : Spring library 3.2.9
+<hr>
+
+<a href="login.kck">login실행</a><br>
+<a href="department_insertForm.kck">department실행</a>
+</body>
+</html>

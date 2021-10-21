@@ -1,0 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>formdata_get_spring</title>
+</head>
+<body>
+<h3>FormData_GET_SPRING</h3>
+<hr>
+<hr><h3>${m_fvo }</h3>
+<hr><h3>${m_fvo.datanum }</h3>
+<hr><h3>${m_fvo.dataid }</h3>
+<hr><h3>${m_fvo.datapw }</h3>
+<hr><h3>${m_fvo.dataname }</h3>
+</body>
+</html>

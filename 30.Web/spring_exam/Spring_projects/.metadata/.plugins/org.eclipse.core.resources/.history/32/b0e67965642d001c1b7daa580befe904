@@ -1,0 +1,19 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>formdata_post_valueobject</title>
+</head>
+<body>
+<h3>formdata_post_valueobject</h3>
+<hr>
+---------------테스트------------------<br>
+1트 : ${fdvo}<br>
+2트 : ${fdvo.getnum()}<br>
+3트 : ${FormDataVO.getnum() }<br>
+--------------------------------------
+<hr>
+</body>
+</html>

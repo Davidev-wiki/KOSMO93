@@ -1,0 +1,89 @@
+2021-10-21
+--------------------------------
+
+workspace : 
+	el_springdblink
+		eclipse
+	el_springdblink_work
+		jdk 플러그인 확인 : 자동
+		apache-tomcat 플러그인 하기 : 수동
+		STS 플러그인 하기 : 수동 : 
+			Spring Tools3 3.9.14 RELEASE
+
+Context : 
+	springDBLink
+
+encodig : UTF-8
+==========================
+이클립스 
+----------------
+Window - Preferences 
+General  
+	Workspace - Text file encoding
+		Other : UTF-8
+	Contetnet Types 
+		# - Java Class File
+			Default encoding : utf-8 키인 후 Update
+		- Text
+			Default encoding : utf-8 키인 후 Update
+			# HTML
+				Default encoding : utf-8 키인 후 Update
+			# JSP
+				Default encoding : utf-8 키인 후 Update
+Web 
+	CSS Files
+		Encoding: ISO 10646/Unicode(UTF-8)
+	HTML Files
+		Encoding: ISO 10646/Unicode(UTF-8)
+	JSP Files
+		Encoding: ISO 10646/Unicode(UTF-8)
+
+Project Explorer
+Servers - Tomcat v8.5 Server at localhost-config
+server.xml
+--------------------
+<Connector	connectionTimeout="20000" 
+			port="8088" 
+			protocol="HTTP/1.1" 
+			redirectPort="8443"
+			URIEncoding="UTF-8"/>	
+
+
+springDBLink - Webcontent - WEB-INF
+web.xml
+--------------------
+<filter>
+	<filter-name>encodingFilter</filter-name> 
+	<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class> 
+	<init-param> 
+		<param-name>encoding</param-name> 
+		<param-value>UTF-8</param-value> 
+	</init-param> 
+	<init-param> 
+		<param-name>forceEncoding</param-name> 
+		<param-value>true</param-value> 
+	</init-param> 
+</filter> 
+<filter-mapping> 
+	<filter-name>encodingFilter</filter-name> 
+	<url-pattern>/*</url-pattern> 
+</filter-mapping> 
+
+	
+	
+
+
+-- 부서테이블 생성
+create table department(
+	dept_id varchar2(10) not null,
+	dept_name varchar2(25) not null,
+	dept_tel varchar2(12)
+);
+
+-- 학과테이블 생성
+create table lesson(
+	no number not null,
+	l_num varchar2(2 byte) not null,
+	l_name varchar2(20 byte) not null,
+	constraint lesson_pk primary key(no)
+);

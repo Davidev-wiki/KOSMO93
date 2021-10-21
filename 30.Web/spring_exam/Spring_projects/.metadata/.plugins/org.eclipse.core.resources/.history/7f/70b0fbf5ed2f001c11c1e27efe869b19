@@ -1,0 +1,43 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@ page import="a.b.c.com.vo.DeptVO" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>학과 테이블</title>
+<style type="text/css">
+	.required{
+		color:red;
+	}
+</style>
+</head>
+<body>
+<%
+
+	Object obj = request.getAttribute("dvo");
+	out.println("가져온 데이터 object? : " + obj + "<br>");
+	if(obj != null){
+		
+		DeptVO dvo = (DeptVO)obj;
+		out.println("dvo : " + dvo);
+		out.println("dvo.getDeptid() : " + dvo.getDeptid());
+		out.println("dvo.getDeptname() : " + dvo.getDeptname());
+		out.println("dvo.getDepttel() : " + dvo.getDepttel());
+		
+%>
+	<%= dvo.getDeptid() %><br>
+	<%= dvo.getDeptname() %><br>
+	<%= dvo.getDepttel() %><br>
+
+<%
+	}
+%>
+
+
+
+
+
+
+</body>
+</html>

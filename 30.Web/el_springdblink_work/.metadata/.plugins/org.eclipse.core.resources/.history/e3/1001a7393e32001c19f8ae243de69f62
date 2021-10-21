@@ -1,0 +1,5 @@
+package com.spring.dept.controller;
+
+public class DepartmentController {
+
+}
