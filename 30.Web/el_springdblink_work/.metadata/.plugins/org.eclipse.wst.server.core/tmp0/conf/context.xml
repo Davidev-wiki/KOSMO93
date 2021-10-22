@@ -20,15 +20,15 @@
     <!-- web application will be reloaded.                                   -->
     <WatchedResource>WEB-INF/web.xml</WatchedResource>
     <WatchedResource>${catalina.base}/conf/web.xml</WatchedResource>
-	<Resource 	auth="Container" 				 
+	<Resource 	    auth="Container" 				 
 				    maxActive="100" 
 				    maxIdle="30" 
 				    maxWait="10000"  
 				    type="javax.sql.DataSource" 
 					name="jdbc/Oracle11g_orclKOSMO00"
 				    driverClassName="oracle.jdbc.driver.OracleDriver"
-				    url="jdbc:oracle:thin:@172.30.1.25:1521:orclKOSMO00"
-					username="scott" 
+				    url="jdbc:oracle:thin:@192.168.219.103:1521:orclKOSMO00"
+					username="scott"
 				    password="tiger" />
     <!-- Uncomment this to disable session persistence across Tomcat restarts -->
     <!--

@@ -14,63 +14,110 @@ import com.spring.dept.service.DeptService;
 import com.spring.dept.vo.DeptVO;
 
 @Controller
-//@RequestMapping(value="/department")
+// [@RequestMapping(value="/department")]
 public class DepartmentController {
+	
+	// logger 초기화
 	private Logger logger = Logger.getLogger(DepartmentController.class);
+	
+	// directory -> const 선언
 	private static final String CONTEXT_PATH = "dept";
 	
+	// service instance
 	@Autowired
 	private DeptService deptService;
 	
-	// 전체 조회
-	@RequestMapping("/listDepartment")
+	// 전체 조회 -> department.jsp
+	@RequestMapping("listDepartment")
 	public ModelAndView listDepartment(@ModelAttribute DeptVO param) {
+		logger.info("DepartmentController.listDepartment() 진입");
 		
 		List<DeptVO> list = deptService.listDepartment(param);
 		
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("departmentList", list);
+		mav.setViewName(CONTEXT_PATH + "/department");
 		
 		return mav;
 	}
-	// 상세 정보 보기
-	@RequestMapping("/selectDepartment")
+	
+	// 상세 정보 보기 -> departmetn_pop.jsp
+	@RequestMapping("selectDepartment")
 	public ModelAndView selectDepartment(@RequestParam("deptid") String deptid) {
+		
+		logger.info("DepartmentController.selectDepartment() 진입");
 		
 		ModelAndView mav = new ModelAndView();
 		
+		if(deptid.equals("")) { // [등록] 버튼 클릭시
+			mav.addObject("mode", "insert");
+		} else { 				// [수정/삭제] 버튼 클릭시
+			mav.addObject("DeptVO", deptService.selectDepartment(deptid));
+			mav.addObject("mode", "update");
+		}
+		
+		mav.setViewName(CONTEXT_PATH+"/department_pop");
+		
 		return mav;
-	}	
+	}
+	
+	
 	// 레코드 추가
-	@RequestMapping("/insertDepartment")
+	@RequestMapping("insertDepartment")
 	public ModelAndView insertDepartment(@ModelAttribute DeptVO param) {
-		logger.info("DepartmentController.insertDepartment(@ModelAttribute DeptVO param) 진입");
+		logger.info("DepartmentController.insertDepartment() 진입");
 		
 		String resultStr="";
+		
 		int result = deptService.insertDepartment(param);
 		
-		if(result > 0) resultStr = "등록 완료!";
-		else resultStr = "등록에 실패했어요..";
+		if(result > 0) resultStr = "등록이 완료되었습니다.";
+		else resultStr = "등록에 문제가 있어 완료하지 못하였습니다.";
 		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("result", resultStr);
-		// WEB-INF/jsp/dept/result를 나타낸다 (spring-servlet 설정 참조)
+		mav.setViewName(CONTEXT_PATH+"/result");
+		
+		return mav;
+	}
+	// 레코드 수정 -> result.jsp
+	@RequestMapping("updateDepartment")
+	public ModelAndView updateDepartment(@ModelAttribute DeptVO param) {
+		logger.info("DepartmentController.updateDepartment() 진입");
+		
+		String resultStr = "";
+		
+		int result = deptService.updateDepartment(param);
+		
+		if (result > 0) resultStr = "수정이 완료되었습니다.";
+		else resultStr = "수정에 문제가 있어 완료하지 못하였습니다.";
+		
+		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("result", resultStr);
 		mav.setViewName(CONTEXT_PATH + "/result");
 		
 		return mav;
 	}
-	// 레코드 수정
-	@RequestMapping("/updateDepartment")
-	public ModelAndView updateDepartment(@ModelAttribute DeptVO param) {
-		
-		ModelAndView mav = new ModelAndView();
-		
-		return mav;
-	}
+	
 	// 레코드 삭제
-	@RequestMapping("/deleteDepartment")
+	@RequestMapping("deleteDepartment")
 	public ModelAndView deleteDepartment(@ModelAttribute DeptVO param) {
+		logger.info("DepartmentController.deleteDepartment() 진입");
+		
+		String resultStr = "";
+		
+		int result = deptService.deleteDepartment(param);
+		
+		if(result > 0) resultStr = "삭제가 완료되었습니다.";
+		else resultStr = "삭제에 문제가 있어 완료하지 못하였습니다.";		
+		
 		ModelAndView mav = new ModelAndView();
-
+		mav.addObject("result", resultStr);
+		mav.setViewName(CONTEXT_PATH + "/result");
+		
 		return mav;
+		
 	}
+	
 }

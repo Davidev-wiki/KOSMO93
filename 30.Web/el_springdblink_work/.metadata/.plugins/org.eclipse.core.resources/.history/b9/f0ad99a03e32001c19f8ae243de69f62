@@ -1,5 +1,0 @@
-package com.spring.dept.dao;
-
-public interface DeptMapper {
-
-}

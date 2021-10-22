@@ -11,5 +11,5 @@ public interface DeptService {
 	public int insertDepartment(DeptVO param);
 	public int updateDepartment(DeptVO param);
 	public int deleteDepartment(DeptVO param);
-	
+
 }

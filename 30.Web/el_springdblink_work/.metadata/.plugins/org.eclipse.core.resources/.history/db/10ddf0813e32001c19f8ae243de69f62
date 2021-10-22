@@ -1,5 +1,0 @@
-package com.spring.dept.service;
-
-public interface DeptService {
-
-}
