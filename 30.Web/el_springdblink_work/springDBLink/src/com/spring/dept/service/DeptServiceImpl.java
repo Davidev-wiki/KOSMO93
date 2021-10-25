@@ -21,12 +21,12 @@ public class DeptServiceImpl implements DeptService{
 	
 	@Override
 	public List<DeptVO> listDepartment(DeptVO param) {
-		logger.info("DeptServiceImpl listDepartment >>>> ");
-		logger.info("DeptServiceImpl listDepartment param >>>> " + param);
+		logger.info("DeptServiceImpl.listDepartment >>>> ");
+		logger.info("DeptServiceImpl.listDepartment param >>>> " + param);
 		
 		List<DeptVO> list = new ArrayList<DeptVO>();
 		list = deptMapper.listDepartment(param);
-		logger.info("DeptServiceImpl listDepartment list >>>> " + list);
+		logger.info("DeptServiceImpl.listDepartment list >>>> " + list);
 		
 		return list;
 	}

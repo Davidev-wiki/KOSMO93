@@ -1,0 +1,32 @@
+package com.spring.lesson.controller;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.spring.lesson.service.LessonService;
+
+// 컨트롤러
+@Controller
+@RequestMapping(value="/lesson")
+public class LessonController {
+	
+	private static final String CONTEXT_PATH="lesson";
+	
+	@Autowired
+	private LessonService lessonService;
+	
+	/* 전체 조회 */
+	@RequestMapping("/listLesson")
+	public ModelAndView listLesson(@ModelAttribute LessonVO param) {
+		List<LessonVO> list = lessonService.listLesson(param);
+		157
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("lessonList", list);
+		mav.addObject("paramName", param.getLname());
+		mav.setViewName(CONTEXT_PATH + "/lesson");
+		return mav;
+	}
+
+}

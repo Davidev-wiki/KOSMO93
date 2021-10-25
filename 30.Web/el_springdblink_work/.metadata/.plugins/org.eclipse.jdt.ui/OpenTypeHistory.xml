@@ -2,4 +2,6 @@
 <typeInfoHistroy>
 <typeInfo handle="=springDBLink/src&lt;com.spring.dept.service{DeptService.java[DeptService" modifiers="513" timestamp="1634868043715"/>
 <typeInfo handle="=springDBLink/src&lt;com.spring.dept.dao{DeptMapper.java[DeptMapper" modifiers="513" timestamp="1634867845822"/>
+<typeInfo handle="=springDBLink/src&lt;com.spring.lesson.service{LessonService.java[LessonService" modifiers="513" timestamp="1635061623178"/>
+<typeInfo handle="=springDBLink/src&lt;com.spring.lesson.dao{LessonMapper.java[LessonMapper" modifiers="513" timestamp="1635061473407"/>
 </typeInfoHistroy>

@@ -1,0 +1,5 @@
+package com.spring.lesson.service;
+
+public class LessonServiceImpl implements LessonService {
+
+}

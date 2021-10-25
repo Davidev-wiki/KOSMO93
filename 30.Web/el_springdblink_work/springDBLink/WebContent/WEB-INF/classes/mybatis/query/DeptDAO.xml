@@ -6,7 +6,17 @@
 <!-- Mapper의 namespace : Mapper가 있는 위치를 알려준다. -->
 <mapper namespace="com.spring.dept.dao.DeptMapper">
 
-<!-- 결과의 타입을 어떻게 할지 정해준다. -->
+<!-- <resultMap>는 
+
+			'SELECT 조회 결과값을 오브젝트에 매핑하기 위해 사용하는 요소로,' 
+
+	              ResultSet 에서 데이터를 가져올 때 필요한 JDBC 코드를 대신한다.
+	 id : 식별자 (for 매핑)
+	 type : 구문이 "리턴한 결과를 매핑할 오브젝트 타입"의 "패키지 경로를 포함한 전체 클래스명"(namespace) or 별칭
+	<result>의 'property' 요소 : DeptVO 객체의 property명
+	<result>의 'column' 요소 : Database의 컬럼명
+	property와 column의 이름을 명시적으로 일치시킨다.
+-->
 <resultMap type="com.spring.dept.vo.DeptVO" id="deptVO">
 	<result property="deptid" 	column="DEPT_ID"/>
 	<result property="deptname" column="DEPT_NAME"/>
@@ -16,8 +26,10 @@
 	 <!-- 
 	  부서 전체를 조회하는 Select문. 
 	 listDepartment라는 id value와 Mapper가 매칭된다. 
-	  매개변수는 어떤 형태로 받을 것인지, (parameterType)
-	  리턴은 어떤 형태로할 것인지 적어준다. (resultMap)
+	 <parameterType> : "해당 구문에 전달될 파라미터의 패키지 경로를 포함한 전체 클래스명" or 별칭
+	 					*해당 구문에 전달될 파라미터 : #{deptname}, =플레이스 홀더
+	 
+	 <resultMap> : 데이터베이스 결과 "데이터를 객체에 매핑하는 방법"을 정의
 	  종결문자 ';'는 쓰지 않는다.
 	 -->
 <select id="listDepartment" parameterType="com.spring.dept.vo.DeptVO" resultMap="deptVO">

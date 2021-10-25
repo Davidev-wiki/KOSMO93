@@ -1,0 +1,10 @@
+package com.spring.lesson.controller;
+
+import org.springframework.stereotype.Controller;
+
+// 컨트롤러
+@Controller
+@RequestMapping(value="/lesson"
+public class LessonController {
+
+}

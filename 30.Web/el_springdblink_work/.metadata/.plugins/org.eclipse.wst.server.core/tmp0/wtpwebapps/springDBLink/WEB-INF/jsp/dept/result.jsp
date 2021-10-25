@@ -1,19 +1,20 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>°á°ú È­¸é</title>
+<meta charset="UTF-8">
+<title>ê²°ê³¼ í™”ë©´</title>
 <script type="text/javascript">
 	
 	alert("${result}");
-	if ("${result}".indexOf("¹®Á¦") > -1){
+	if ("${result}".indexOf("ë¬¸ì œ") > -1){
 		history.go(-1);
 	}else{
 		opener.listSearch();
 		window.close();
 	}
+	
 </script>
 </head>
 <body>

@@ -1,0 +1,12 @@
+package com.spring.lesson.controller;
+
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+// 컨트롤러
+@Controller
+@RequestMapping(value="/lesson")
+public class LessonController {
+
+}

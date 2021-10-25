@@ -1,0 +1,24 @@
+package com.spring.dept.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.spring.dept.service.DeptService;
+
+@Controller
+@RequestMapping(value="/department")
+public class DepartmentController {
+	
+	private static final String CONTEXT_PATH = "dept";
+	
+	@Autowired
+	private DeptService deptService;
+
+	// 전체 조회
+	// 상세 정보 보기
+	// 레코드 추가 
+	// 레코드 수정 
+	// 레코드 삭제
+	
+}

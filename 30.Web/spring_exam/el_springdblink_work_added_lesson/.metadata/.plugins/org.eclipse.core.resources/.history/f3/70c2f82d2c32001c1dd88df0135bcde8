@@ -1,0 +1,9 @@
+package com.spring.dept.controller;
+
+import org.springframework.stereotype.Controller;
+
+@Controller
+@RequestMapping(value="/department")
+public class DepartmentController {
+
+}

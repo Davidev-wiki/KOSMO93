@@ -1,0 +1,17 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<title>>스프링 MVC 데이터 베이스 연동</title>
+</head>
+<body>
+<div>
+	<a href="department/listDepartment.h">[학과 데이터]</a><br>	
+	<a href="department/selectDepartment.h?deptid=">[select 학과 데이터]</a><br>	
+	<a href="department/insertDepartment.h">[insert 학과 데이터]</a><br>	
+	<a href="department/updateDepartment.h">[update 학과 데이터]</a><br>	
+	<a href="department/deleteDepartment.h">[delete 학과 데이터]</a><br>	
+</div>
+</body>
+</html>

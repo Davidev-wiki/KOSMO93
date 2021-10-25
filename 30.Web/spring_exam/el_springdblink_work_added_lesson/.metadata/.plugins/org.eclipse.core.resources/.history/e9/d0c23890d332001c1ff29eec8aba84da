@@ -1,0 +1,9 @@
+package com.spring.lesson.vo;
+
+public class LessonVO {
+	
+	private int no;
+	private String lnum;
+	private String lname;
+
+}

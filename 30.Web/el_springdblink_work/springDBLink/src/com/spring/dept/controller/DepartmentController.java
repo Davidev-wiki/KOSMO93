@@ -24,17 +24,28 @@ public class DepartmentController {
 	private static final String CONTEXT_PATH = "dept";
 	
 	// service instance
+	// 서비스를 호출하기 위해서 선언해준다.
 	@Autowired
 	private DeptService deptService;
 	
-	// 전체 조회 -> department.jsp
+	// 데이터 전체 조회를 위한 함수.
+	// "listDepartment"로 들어온 요청은 이리 come
+	// value와 method를 지정해주지 않았다. method=디폴트로 GET이 된다.
 	@RequestMapping("listDepartment")
+	// @ModelAttribute 기능 
+	// 1. 선언 후 자동으로 객체를 생성한다.(VO 한정)
+	// 2. 링크타고 들어온 매핑된 값들이 자동으로 객체에 매핑된다.
+	// @ModelAttribue("이름") : 괄호 안에 "이름"이 들어가면 이 문자열이 생성된 객체의 이름이 된다.
 	public ModelAndView listDepartment(@ModelAttribute DeptVO param) {
-		logger.info("DepartmentController.listDepartment() 진입");
+		// System.out.println 스프링버전 (라이브러리 추가 필요.)
+		logger.info("DepartmentController.listDepartlment() 진입");
 		
 		List<DeptVO> list = deptService.listDepartment(param);
 		
 		ModelAndView mav = new ModelAndView();
+		// addObject("attributeName으로", attributeValue를 추가한다.);
+		// setViewName(String viewName); : 뷰 이름 세팅해주기 : 뷰 리졸버가 이 이름을 이용해 뷰를 연결해준다.
+		// *getViewName() 함수도 있음.
 		mav.addObject("departmentList", list);
 		mav.setViewName(CONTEXT_PATH + "/department");
 		

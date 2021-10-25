@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html> 
 <html>
 <head>
-<meta charset="utf-8">
-<title>ÇÐ°ú Å×ÀÌºí</title>
+<meta charset="UTF-8">
+<title>í•™ê³¼ í…Œì´ë¸”</title>
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
 
@@ -41,7 +41,7 @@
 </form>
 <div>
 	<table>
-		<tr><th><h4>ÇÐ°úÅ×ÀÌºí[SPING]</h4></th></tr>
+		<tr><th><h4>í•™ê³¼í…Œì´ë¸”[SPING]</h4></th></tr>
 	</table>
 </div>
 <div>
@@ -54,17 +54,17 @@
 </colgroup>
 <thead>
 	<tr>
-		<th>ÇÐ°úÄÚµå</th>
-		<th>ÇÐ°ú¸í </th>
-		<th>ÀüÈ­¹øÈ£</th>
-		<th>»ó¼¼º¸±â</th>
+		<th>í•™ê³¼ì½”ë“œ</th>
+		<th>í•™ê³¼ëª… </th>
+		<th>ì „í™”ë²ˆí˜¸</th>
+		<th>ìƒì„¸ë³´ê¸°</th>
 	</tr>
 </thead>
 <tbody>
 <c:if test="${empty departmentList}">
 <tr>
 <td colspan="5" align="center">
-µî·ÏµÈ ÇÐ°ú Á¤º¸°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.
+ë“±ë¡ëœ í•™ê³¼ ì •ë³´ê°€ ì¡´ìž¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.
 </tr>
 </c:if>
 <c:forEach items="${departmentList}" var="row">
@@ -73,14 +73,14 @@
 		<td align="center">${row.deptname}</td>
 		<td align="center">${row.depttel}</td>
 		<td align="center">
-			<input type="button" value="[¼öÁ¤/»èÁ¦]" onclick="updatePopup('${row.deptid}')"/>
+			<input type="button" value="[ìˆ˜ì •/ì‚­ì œ]" onclick="updatePopup('${row.deptid}')"/>
 		</td>
 	</tr>
 </c:forEach>
 <tr>
-	<td colspan="3" align="center">Ã³¸®ÇÒ ¹öÆ°À» ¼±ÅÃÇÏ¼¼¿ä</td>
+	<td colspan="3" align="center">ì²˜ë¦¬í•  ë²„íŠ¼ì„ ì„ íƒí•˜ì„¸ìš”</td>
 	<td align="center">
-		<input type="button" onclick="insertPopup()" value="[µî·Ï]"/>
+		<input type="button" onclick="insertPopup()" value="[ë“±ë¡]"/>
 	</td>
 </tr>
 </tbody>
@@ -90,12 +90,12 @@
 <form id="searchForm" name="searchForm" method="POST">
 	<table border="1" cellpadding="1" cellspacing="1">
 		<tr>
-			<th>ÇÐ °ú ¸í</th>
+			<th>í•™ ê³¼ ëª…</th>
 			<td>
 				<input type="text" id="deptname" name="deptname" />
 			</td>
 			<td>
-				<input type="button" onclick="listSearch()" value="°Ë»ö" />
+				<input type="button" onclick="listSearch()" value="ê²€ìƒ‰" />
 			</td>				
 		</tr>
 	</table>

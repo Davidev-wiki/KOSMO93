@@ -1,0 +1,16 @@
+package com.spring.lesson.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+// 컨트롤러
+@Controller
+@RequestMapping(value="/lesson")
+public class LessonController {
+	
+	private static final String CONTEXT_PATH = "lesson";
+	
+	
+
+}

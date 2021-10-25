@@ -12,7 +12,7 @@ import com.spring.dept.vo.DeptVO;
 public class DeptMapperImpl extends SqlSessionDaoSupport implements DeptMapper{
 	private Logger logger = Logger.getLogger(DeptServiceImpl.class);
 	
-	private final String PACKAGE_PATH = "com.spring.dept.dao.DeptDAO.";
+	private final String PACKAGE_PATH = "mybatis.query.DeptDAO.";
 
 	@Override
 	public List<DeptVO> listDepartment(DeptVO param) {

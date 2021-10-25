@@ -1,0 +1,2 @@
+강사님의 DBLink 코드.
+but, lesson_pop.jsp에서 버튼 disabled 적용의 변경이 필요함.
