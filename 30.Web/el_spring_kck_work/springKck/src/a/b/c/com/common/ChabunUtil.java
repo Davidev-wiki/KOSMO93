@@ -30,7 +30,7 @@ public abstract class ChabunUtil {
 		 return BIZ_GUBUN_B.concat(ChabunUtil.numPad(type, memNum));
 	 }
 	 
-	 // Rboard 채번로직. R이 ㅁ머였지...?
+	 // Rboard 채번로직. R이 ㅁ머였지...? : 댓글
 	 public static String getRboardChabun(String type, String memNum) {
 		 
 		 return BIZ_GUBUN_RB.concat(ChabunUtil.numPad(type, memNum));

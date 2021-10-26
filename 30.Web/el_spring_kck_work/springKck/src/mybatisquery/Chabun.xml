@@ -1,1 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+				"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 채번 DAO파일의 경로를 namespace 엘리먼트에 적어준다. -->
+<mapper namespace="a.b.c.com.common.dao.ChabunDAO">
+
+<select id="getBoardChabun" resultType="boardVO">
+			SELECT NVL(MAX(SUBSTR(A.SBNUM, -4)), 0) + 1  SBNUM FROM SPRING_BOARD A
+</select>
+
+</mapper>

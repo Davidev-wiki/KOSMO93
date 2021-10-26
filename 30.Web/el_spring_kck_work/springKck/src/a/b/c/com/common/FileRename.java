@@ -21,22 +21,23 @@ public class FileRename implements FileRenamePolicy {
 		System.out.println("갖고온 파일의 이름 >>> : " + f);
 		
 		try {
-			
-			String s = f;
-			// 파일이름 변경 요청이 들어오면 
-			// 파라미터로 보낸 해당 파일이 있는 경우에 실행하기.
-			for (int i=1; sf.exists(); i++) {
+				// 파일이름 변경 요청이 들어오면 
+				// 파라미터로 보낸 해당 파일이 있는 경우에 실행하기.
 				// 갖고온 파일의 이름을 . 기준으로 개수를 센다.
 				// lt에 글자 수가 저장될 것 같다
 				// s1 변수에 (.)앞까지의 파일 명을 저장?
 				// s2 변수에 (.)뒤에있는 확장자 명을 저장?
 				// st 변수에는 이름 변경을 위한 형식을 지정한다.
 				// 파일 이름을 "원래 파일이름" + "_숫자_"."확장자명"으로 합친다.
-				int lt = s.lastIndexOf(".");
-				String s1 = s.substring(0, lt);
-				String s2 = s.substring(lt);
-				String st = "_" + i + "_";
-				f = s1.concat(st).concat(s2);
+				String s = f;
+				for (int i=1; sf.exists(); i++) {
+					int lt = s.lastIndexOf(".");
+					String s1 = s.substring(0, lt);
+					String s2 = s.substring(lt);
+					String st = "_"+ i +"_";
+					f = s1.concat(st).concat(s2);
+					sf = new File(sf.getParent(), f);
+				}
 				// getParent() : 새 File 객체를 만드는데 부모 객체에 만드는 것인가?
 				/*
 				    File(File parent, String child)
@@ -51,11 +52,9 @@ public class FileRename implements FileRenamePolicy {
 					File(URI uri)
 					Creates a new File instance by converting the given file: URI into an abstract pathname.
 				 */
-				sf = new File(sf.getParent(), f);
-			}
 			
 		} catch(Exception e) {
-			System.out.println("FileRename.rename() 에러 발생 >>> : " + e.getMessage());
+			System.out.println("FileRename.reName() 에러 발생 >>> : " + e.getMessage());
 		}
 		
 		return sf;

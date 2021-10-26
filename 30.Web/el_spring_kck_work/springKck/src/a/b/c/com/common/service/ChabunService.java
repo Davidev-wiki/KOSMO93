@@ -5,4 +5,5 @@ import a.b.c.com.board.vo.SpringBoardVO;
 public interface ChabunService {
 
 	public SpringBoardVO getBoardChabun();
+	public SpringRboardVO getRboardChabun();
 }

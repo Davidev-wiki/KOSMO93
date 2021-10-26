@@ -5,19 +5,21 @@
 <head>
 <meta charset="UTF-8">
 <title>[게시판 글 쓰기]</title>
-<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
+	
 		$(document).ready(function(){
-			console.log("jQuery 진입 >>> :");
-			$("document").on("click", "#sbbtn", function() {
+			console.log("웹 서버로 데이터 등록이 요청됨 >>> :");
+			$(document).on("click", "#sbbtn", function() {
 				console.log("등록 버튼이 클릭되었음 >>> :");
 				$("#boardForm").attr({
 					"action" : "boardInsert.k",
 					"method" : "POST",
-					"enctype" : "multipart/form-data",
+					"enctype" : "multipart/form-data"
 				}).submit();
 			});
 		});
+
 </script>
 </head>
 <body>
@@ -45,7 +47,8 @@
 			</tr>
 			<tr>
 				<td align="center">내용</td>
-				<td><textarea name="sbcontent" id="sbcontent" cols="50" rows="10"></td>			
+				<td><textarea name="sbcontent" id="sbcontent" cols="50" rows="10"></textarea>
+				</td>			
 			</tr>
 			<tr>
 				<td align="center">사진</td>
