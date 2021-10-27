@@ -1,0 +1,55 @@
+package a.b.c.com.board.controller;
+
+import org.apache.log4j.Logger;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+@Controller
+public class SpringBoardController {
+	Logger logger = Logger.getLogger(SpringBoardController.class);
+	
+	// 게시판 글 입력 폼
+	@RequestMapping(value="boardForm", method=RequestMethod.GET)
+	public String boardForm() {		
+		return "board/springBoardForm";
+	}
+	
+	// 글쓰기 
+	@RequestMapping(value="boardInsert", method=RequestMethod.POST)
+	public String boardInsert(HttpServletRequest req) {
+		logger.info("BoardController boardInsert 함수 진입 >>> :");
+		
+		// 채번 구하기
+		String sbnum= ChabunUtil.getBoardChabun("N", chabunService.getBoardChabun().getSbnum());
+		logger.info("BoardController boardInsert sbnum >>> : " + sbnum);
+		
+		// 이미지 업로드
+		FileUploadUtil fu = new FileUploadUtil();
+		// 이미지 파일 원본 사이즈 
+		// boolean bool = fu.imgfileUpload(req);
+		// 이미지 파일 원본 사이즈 크기 조절 하기 
+		boolean bool = fu.imgfileUploadSize(req);
+		logger.info("BoardController boardInsert bool >>> : " + bool);
+		
+		// 채번, 이미지 업로드 성공하면 VO 세팅하기 
+		BoardVO _bvo = null;
+		_bvo = new BoardVO();
+		
+		_bvo.setSbnum(sbnum);
+		_bvo.setSbsubject(fu.getParameter("sbsubject"));
+		_bvo.setSbname(fu.getParameter("sbname"));
+		_bvo.setSbpw(fu.getParameter("sbpw"));
+		_bvo.setSbcontent(fu.getParameter("sbcontent"));
+		_bvo.setSbfile(fu.getFileName("sbfile"));
+		
+		logger.info("BoardController boardInsert _bvo.getSbnum() >>> : " + _bvo.getSbnum());
+		logger.info("BoardController boardInsert _bvo.getSbcontent() >>> : " + _bvo.getSbcontent());
+		logger.info("BoardController boardInsert _bvo.getSbfile() >>> : " + _bvo.getSbfile());
+		int nCnt = boardService.boardInsert(_bvo);
+		logger.info("BoardController boardInsert nCnt >>> : " + nCnt);
+		
+		if (nCnt > 0) { return "board/boardInsert";}
+		return "board/boardForm";
+	}	
+}

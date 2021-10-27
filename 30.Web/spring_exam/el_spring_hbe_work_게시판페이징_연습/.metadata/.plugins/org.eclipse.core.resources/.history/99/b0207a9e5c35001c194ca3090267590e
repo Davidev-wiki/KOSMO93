@@ -1,0 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="a.b.c.com.board.vo.SpringBoardVO" %> 
+<%@ page import="java.util.List" %>        
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>BOARD SELECT</title>
+<style type="text/css">
+	div {
+			margin: 50px 0px 0px 100px;
+		}
+	.mem{ text-align: center;}
+</style>
+</head>
+<body>
+
+</body>
+</html>

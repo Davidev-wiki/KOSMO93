@@ -1,0 +1,70 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="a.b.c.com.board.vo.SpringBoardVO" %> 
+<%@ page import="java.util.List" %>        
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>BOARD SELECT</title>
+<style type="text/css">
+	div {
+			margin: 50px 0px 0px 100px;
+		}
+	.mem{ text-align: center;}
+</style>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function(){
+		
+		// 비밀번호 확인
+		$(document).on("click", "#pwbtn", function(){
+			alert("pwbtn >>> : ");
+
+			let idcheckURL = "boardIdCheck.h";
+			let method = "POST";
+			let dataParam = {
+				sbnum: $("#sbnum").val(),
+				sbpw: $("#sbpw").val(),
+			};
+			//dataParam = $("#boardUpdateForm").serialize();
+			alert("dataParam >>> : " + dataParam);
+			
+			$.ajax({
+				url: idcheckURL,
+				type: method,
+				data: JSON.stringify(dataParam),
+	            contentType: "application/json;",
+	            dataType: "json",
+				success: whenSuccess,
+				error: whenError
+			});
+			
+			function whenSuccess(e){
+				alert("e >>> : " + e);				
+			}
+			function whenError(){
+				
+			}
+		});
+	
+		//  U
+		$(document).on("click", "#U", function(){
+			//alert("U >>> : ");		
+			$("#boardUpdateForm").attr({ "method":"POST"
+				                        ,"action":"boardUpdate.h"}).submit();
+		});
+		//  D
+		$(document).on("click", "#D", function(){
+			//alert("D >>> : ");
+			$("#boardUpdateForm").attr({ "method":"POST"
+				                        ,"action":"boardDelete.h"}).submit();
+		});
+	});
+</script>	
+</head>
+<body>
+
+</body>
+</html>

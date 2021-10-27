@@ -1,0 +1,75 @@
+package a.b.c.com.board.dao;
+
+import java.util.List;
+
+import org.apache.log4j.Logger;
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import a.b.c.com.board.vo.SpringBoardVO;
+
+@Repository
+public class SpringBoardDAOImpl implements SpringBoardDAO {
+	Logger logger = Logger.getLogger(SpringBoardDAOImpl.class);
+	
+	@Autowired(required=false)
+	private SqlSessionTemplate sqlSession;
+
+	@Override
+	public List<SpringBoardVO> boardSelect(SpringBoardVO bvo) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("boardSelect", bvo);
+	}
+
+	@Override
+	public List<SpringBoardVO> boardSelectAll(SpringBoardVO bvo) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("boardSelectAll", bvo);
+	}
+
+	@Override
+	public int boardInsert(SpringBoardVO bvo) {
+		// TODO Auto-generated method stub
+		return (Integer)sqlSession.insert("boardInsert", bvo);
+	}
+
+	@Override
+	public int boardUpdate(SpringBoardVO bvo) {
+		// TODO Auto-generated method stub
+		return (Integer)sqlSession.update("boardUpdate", bvo);
+	}
+
+	@Override
+	public int boardDelete(SpringBoardVO bvo) {
+		// TODO Auto-generated method stub
+		return (Integer)sqlSession.update("boardDelete", bvo);
+	}
+
+	@Override
+	public List<SpringBoardVO> boardPwCheck(SpringBoardVO bvo) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("boardPwCheck", bvo);
+	}
+
+	// 비밀번호 체크하기
+	@RequestMapping(value="boardPwCheck", method=RequestMethod.POST)
+	@ResponseBody
+	public Object boardIdCheck(@RequestBody BoardVO bvo, Model model) {
+		logger.info("BoardController boardIdCheck 함수 진입 >>> :");
+		
+		logger.info("BoardController boardIdCheck bvo.getSbnum() >>> : " + bvo.getSbnum());	
+		logger.info("BoardController boardIdCheck bvo.getSbpw() >>> : " + bvo.getSbpw());	
+		
+		List<BoardVO> list = boardService.boardIdCheck(bvo);
+		logger.info("BoardController boardIdCheck _bvo.getSbpw() >>> : " + list.size());
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		if (list.size() == 1) { map.put("SBPW", "GOOD"); }
+		else {map.put("SBPW", "BAD");}
+		
+		return map;
+	}
+}

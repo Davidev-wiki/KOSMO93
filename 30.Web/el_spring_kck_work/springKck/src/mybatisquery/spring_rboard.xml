@@ -1,1 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+                        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="a.b.c.com.rboard.dao.SpringRboardDAO">
+
+<!-- result Map이 없다? -->
+<insert id="rboardInsert" parameterType="rboardVO">
+		INSERT INTO SPRING_RBOARD(
+									 A.RSBNUM    	 	 RSBNUM
+									,A.SBNUM	     	 SBNUM
+									,A.RSBNAME	 	 	 RSBNAME
+									,A.RSBCONTENT	 	 RSBCONTENT
+									,A.RSBPW			 RSBPW
+									,A.RSBDELYN	 		 RSBDELYN
+									,A.RSBINSERTDATE	 RSBINSERTDATE
+								 )
+						  VALUES (	 
+									 #{rsbnum, 			jdbcType=VARCHAR}
+									,#{sbnum, 			jdbcType=VARCHAR}
+									,#{rsbname, 		jdbcType=VARCHAR}
+									,#{rsbcontent, 		jdbcType=VARCHAR}
+									,#{rsbpw, 			jdbcType=VARCHAR}
+									,#{rsbdelyn, 		jdbcType=VARCHAR}
+									,#{rsbinsertdate, 	jdbcType=VARCHAR}
+								 )
+</insert>
+
+<update id="rboardDelete" parameterType="rboardVO">
+
+</update>
+
+<select id="rboardSelect" parameterType="rboardVO" resultType="rboardVO">
+
+</select>
+
+<select id="rboardSelectAll" parameterType="rboardVO" resultType="rboardVO">
+
+</select>
+
+</mapper>

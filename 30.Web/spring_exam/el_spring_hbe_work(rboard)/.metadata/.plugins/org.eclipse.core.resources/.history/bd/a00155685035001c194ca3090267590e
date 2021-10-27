@@ -1,0 +1,11 @@
+package a.b.c.com.board.service;
+
+public interface SpringBoardService {
+	
+	public List<SpringBoardVO> boardSelect(BoardVO bvo);
+	public List<BoardVO> boardSelectAll(BoardVO bvo);
+	public int boardInsert(BoardVO bvo);
+	public int boardUpdate(BoardVO bvo);
+	public int boardDelete(BoardVO bvo);
+
+}

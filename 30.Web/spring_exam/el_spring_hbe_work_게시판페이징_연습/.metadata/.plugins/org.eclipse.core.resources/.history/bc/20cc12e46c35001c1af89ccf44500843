@@ -1,0 +1,37 @@
+package a.b.c.com.rboard.dao;
+
+import java.util.List;
+
+import a.b.c.com.rboard.vo.SpringRboardVO;
+
+public class SpringRboardDAOImpl implements SpringRboardDAO {
+	
+
+	@Autowired(required=false)
+	private SqlSession sqlSession;
+
+	@Override
+	public List<SpringRboardVO> rboardSelect(SpringRboardVO rbvo) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("rboardSelect", rbvo);
+	}
+
+	@Override
+	public List<SpringRboardVO> rboardSelectAll(SpringRboardVO rbvo) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("rboardSelectAll", rbvo);
+	}
+
+	@Override
+	public int rboardInsert(SpringRboardVO rbvo) {
+		// TODO Auto-generated method stub
+		return (Integer)sqlSession.insert("rboardInsert", rbvo);
+	}
+
+	@Override
+	public int rboardDelete(SpringRboardVO rbvo) {
+		// TODO Auto-generated method stub
+		return (Integer)sqlSession.update("rboardDelete", rbvo);
+	}
+
+}

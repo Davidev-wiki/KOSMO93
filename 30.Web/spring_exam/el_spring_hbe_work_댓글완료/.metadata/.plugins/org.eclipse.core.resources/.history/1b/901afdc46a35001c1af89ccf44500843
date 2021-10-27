@@ -1,0 +1,16 @@
+package a.b.c.com.rboard.controller;
+
+import org.apache.log4j.Logger;
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class SpringRboardController {
+	Logger logger = Logger.getLogger(SpringRboardController.class);
+	
+	@Autowired(required=false)		
+	private RboardService rboardService;
+	
+	@Autowired(required=false)
+	private ChabunService chabunService;
+
+}

@@ -1,12 +1,69 @@
 package a.b.c.com.rboard.controller;
 
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import a.b.c.com.common.ChabunUtil;
+import a.b.c.com.common.service.ChabunService;
+import a.b.c.com.rboard.service.SpringRboardService;
+import a.b.c.com.rboard.vo.SpringRboardVO;
 
 @Controller
 public class SpringRboardController {
 	
-	// 댓글 등록(insert)
+	// logger set
+	private Logger logger = Logger.getLogger(SpringRboardController.class);
 	
+	// 비즈니스로직 서비스 연결 (null check)
+	@Autowired(required=false)
+	private SpringRboardService springRboardService;
+	
+	// 채번 서비스 연결
+	@Autowired(required=false)
+	private ChabunService chabunService;
+	
+	// rboardForm은 항상 여기로 come.
+	// both GET & POST
+	// 무조건 view page로 이동시키기.
+	@RequestMapping(value="rboardForm", method={RequestMethod.GET, RequestMethod.POST})
+	public String rboardForm() {
+		logger.info("SpringRboardController.rboardForm() 진입 >>> :");
+		return "rboard/springRboardForm";
+	}
+	
+	// 댓글 등록(insert) / body에 응답하기.
+	@RequestMapping(value="rboardInsert", method=RequestMethod.POST)
+	@ResponseBody
+	public String rboardInsert(SpringRboardVO rbvo) {
+		logger.info("SpringRboardController.rboardInsert() 진입 >>> :");
+		
+		logger.info("매개변수로 가져온 rbvo의 getRsbnum() 데이터 출력 >>> :" + rbvo.getRsbnum());
+		logger.info("매개변수로 가져온 rbvo의 getSbnum()데이터 출력 >>> :" + rbvo.getSbnum());
+		logger.info("매개변수로 가져온 rbvo의 getRsbcontent()데이터 출력 >>> :" + rbvo.getRsbcontent());
+		logger.info("매개변수로 가져온 rbvo의 getRsbname()데이터 출력 >>> :" + rbvo.getRsbname());
+		logger.info("매개변수로 가져온 rbvo의 getRsbpw()데이터 출력 >>> :" + rbvo.getRsbpw());
+		logger.info("매개변수로 가져온 rbvo의 getRsbinsertdate()데이터 출력 >>> :" + rbvo.getRsbinsertdate());
+		
+		// 채번 쿼리를 이용해 채번한 넘버를 가지고 "N"타입 (무엇인지 모름)
+		// ChabunUtil.getRboardChabun()함수를 돌리면
+		// RB가 붙은 넘버가 생성됨
+		String rsbnum = ChabunUtil.getRboardChabun("N", chabunService.getRboardChabun().getRsbnum());
+		
+		logger.info("rboard 채번으로 생성된 rsbnum >>> : " + rsbnum);
+		
+		// 객체에 생성한 번호를 세팅해준다.
+		rbvo.setRsbnum(rsbnum);
+		
+		int nCnt = springRboardService.rboardInsert(rbvo);
+		logger.info("등록 완료 건 수 nCnt >>> : " + nCnt);
+		
+		if (1 == nCnt) { return "SUCCESS"; }
+		else { return "FAIL";}
+	}
 	
 	// 댓글 조회(select)
 	

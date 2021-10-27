@@ -1,0 +1,6 @@
+package a.b.c.com.rboard.controller;
+
+@Controller
+public class SpringRboardController {
+
+}

@@ -1,0 +1,100 @@
+package a.b.c.com.paging;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class BoardDAO {
+
+	// 페이지 이동 처리
+		private int pageSize = 0;
+		private int groupSize = 0;
+		
+		private int curPage = 0;
+		private int totalCount = 0;
+		
+		// select list
+		public ArrayList selectList(int pageSize, int curPage) throws Exception{
+			
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rsRs = null;	
+			HashMap data = null;
+			ArrayList data_list = new ArrayList();
+			
+			String sqls = null;
+			
+			StringBuffer sql = new StringBuffer();
+				sql.append("\n SELECT                                                            	");
+				sql.append("\n 				*                                                   	");
+				sql.append("\n FROM (                                                           	");
+				sql.append("\n 				SELECT                                                  ");
+				sql.append("\n 								A.mnum,				-- 글번호                          	");
+				sql.append("\n 								A.mtitle,			-- 제목                             	");
+				sql.append("\n 								A.mname,			-- 작성자                          	");
+				sql.append("\n 								A.memail,			-- 이메일                          	");
+				sql.append("\n 								A.marea,			-- 글내용                          	");
+				sql.append("\n 								A.mpass,			-- 비밀번호                       	");
+				sql.append("\n 								A.mref,				-- REF              ");
+				sql.append("\n 								A.mstep,			-- STEP             ");
+				sql.append("\n 								A.mdepth,			-- DEPTH            ");
+				sql.append("\n 								A.mwriteday,	-- 작성일                            		");
+				sql.append("\n 								A.mhits,			-- 조회수                          	");
+				sql.append("\n 								CEIL(ROW_NUMBER() OVER(ORDER BY A.mnum)/?) PAGENO, ");
+				sql.append("\n 								COUNT(mnum) OVER() AS TOTALCOUNT                   ");
+				sql.append("\n 				FROM                                                    ");
+				sql.append("\n 								SE_BOARD A                              ");
+				sql.append("\n 			)                                                           ");
+				sql.append("\n WHERE                                                             	");
+				sql.append("\n 				PAGENO = ?                                              ");
+				sqls = sql.toString();			
+			
+			try {
+				conn = ConnProperty.getConnection();			
+				
+				pstmt = conn.prepareStatement(sqls);
+				pstmt.setInt(1, pageSize);
+				pstmt.setInt(2, curPage);
+				
+				rsRs = pstmt.executeQuery();
+				
+				if (rsRs !=null){
+					
+					while(rsRs) {
+						data = new HashMap();
+						
+						data.put("mnum", rs.getString("mnum"));
+						data.put("mtitle", rs.getString("mtitle"));
+						data.put("mname", rs.getString("mname"));
+						data.put("memail", rs.getString("memail"));
+						data.put("marea", rs.getString("marea"));
+						data.put("mpass", rs.getString("mpass"));
+						data.put("mref", rs.getString("mref"));
+						data.put("mstep", rs.getString("mstep"));
+						data.put("mdepth", rs.getString("mdepth"));
+						data.put("mwriteday", rs.getString("mwriteday"));
+						data.put("mhits", rs.getString("mhits"));
+						data.put("PAGENO", rs.getString("PAGENO"));
+						data.put("TOTALCOUNT", rs.getString("TOTALCOUNT"));
+						
+						data_list.add(data);					
+					}				
+				}
+				
+				rsRs.close(); rs=null;
+				pstmt.close(); pstmt=null;
+				conn.close(); conn=null;				
+			}
+			catch(SQLException e) {
+				System.out.println("selectDBList() : " + e);
+			}
+			finally{
+				ConnProperty.conClose(conn, pstmt, rsRs);
+			}
+			
+			return data_list;
+		}	
+}
