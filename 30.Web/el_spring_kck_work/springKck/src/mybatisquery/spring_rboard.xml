@@ -7,36 +7,46 @@
 
 <!-- result Map이 없다? -->
 <insert id="rboardInsert" parameterType="rboardVO">
-		INSERT INTO SPRING_RBOARD(
-									 A.RSBNUM    	 	 RSBNUM
-									,A.SBNUM	     	 SBNUM
-									,A.RSBNAME	 	 	 RSBNAME
-									,A.RSBCONTENT	 	 RSBCONTENT
-									,A.RSBPW			 RSBPW
-									,A.RSBDELYN	 		 RSBDELYN
-									,A.RSBINSERTDATE	 RSBINSERTDATE
-								 )
-						  VALUES (	 
-									 #{rsbnum, 			jdbcType=VARCHAR}
-									,#{sbnum, 			jdbcType=VARCHAR}
-									,#{rsbname, 		jdbcType=VARCHAR}
-									,#{rsbcontent, 		jdbcType=VARCHAR}
-									,#{rsbpw, 			jdbcType=VARCHAR}
-									,#{rsbdelyn, 		jdbcType=VARCHAR}
-									,#{rsbinsertdate, 	jdbcType=VARCHAR}
-								 )
+		<!-- 데이터 등록 쿼리문 -->
+	INSERT INTO SPRING_RBOARD( 
+                              RSBNUM
+                            , SBNUM
+                            , RSBNAME
+                            , RSBCONTENT
+                            , RSBPW
+                            , RSBDELYN
+                            , RSBINSERTDATE) 
+	                  VALUES( 
+                                #{rsbnum, jdbcType=VARCHAR}
+                              , #{sbnum, jdbcType=VARCHAR}
+                              , #{rsbname, jdbcType=VARCHAR}
+                              , #{rsbcontent, jdbcType=VARCHAR}
+                              , #{rsbpw, jdbcType=VARCHAR}
+                              , 'Y'
+                              , SYSDATE
+                              )
 </insert>
 
 <update id="rboardDelete" parameterType="rboardVO">
-
+		<!-- '삭제'의 의미 : DELYN을 'N'처리 함 -->
+		UPDATE SPRING_RBOARD SET 	 RSBDELYN = 'N'
+									,RSBINSERTDATE = 'SYSDATE'
+							WHERE 	 RSBDELYN = 'Y'
+							AND		 RSBNUM	  = #{rsbnum, jdbcType=VARCHAR}						
 </update>
 
 <select id="rboardSelect" parameterType="rboardVO" resultType="rboardVO">
-
+		<!-- 조건에 맞는 데이터를 모두 검색하는 쿼리문. -->
+		SELECT * FROM SPRING_RBOARD
+							WHERE RSBDELYN = 'Y'
+							AND	  RSBNUM = #{rsbnum, jdbcType=VARCHAR}
 </select>
 
 <select id="rboardSelectAll" parameterType="rboardVO" resultType="rboardVO">
-
+		<!-- 데이터 전체 조회 -->
+		SELECT * FROM SPRING_RBOARD
+							WHERE RSBDELYN = 'Y'
+							AND   SBNUM = #{sbnum, jdbcType=VARCHAR}
 </select>
 
 </mapper>

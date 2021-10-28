@@ -11,8 +11,8 @@
 <hr>
 <h2>Spring 4.3.16 + Mybatis 3.2.4 + STS3(springLegacy)</h2>
 <hr>
-<a href="boardForm.k">[스프링 게시판 글 쓰기]</a>
-<a href="boardSelectAll.k">[스프링 게시판 글 조회]</a>
-<a href="rboardForm.k">[스프링게시판 : 댓글 테스트]</a>
+<a href="boardForm.k">[스프링 게시판 글 쓰기]</a><br>
+<a href="boardSelectAll.k">[스프링 게시판 글 조회]</a><br>
+<a href="rboardForm.k">[스프링게시판 : 댓글 테스트]</a><br>
 </body>
 </html>	

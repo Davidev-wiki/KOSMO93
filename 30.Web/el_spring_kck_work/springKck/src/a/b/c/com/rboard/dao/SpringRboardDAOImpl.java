@@ -22,13 +22,15 @@ public class SpringRboardDAOImpl implements SpringRboardDAO {
 	@Override
 	public List<SpringRboardVO> rboardSelect(SpringRboardVO rbvo) {
 		// TODO Auto-generated method stub
-		return null;
+		logger.info("SpringRboardDAOImpl.rboardSelect() 진입>>> :");
+		return sqlSession.selectList("rboardSelect", rbvo);
 	}
 
 	@Override
 	public List<SpringRboardVO> rboardSelectAll(SpringRboardVO rbvo) {
 		// TODO Auto-generated method stub
-		return null;
+		logger.info("SpringRboardDAOImpl.rboardSelectAll() 진입>>> :");
+		return sqlSession.selectList("rboardSelectAll", rbvo);
 	}
 
 	@Override
@@ -41,7 +43,8 @@ public class SpringRboardDAOImpl implements SpringRboardDAO {
 	@Override
 	public int rboardDelete(SpringRboardVO rbvo) {
 		// TODO Auto-generated method stub
-		return 0;
+		logger.info("SpringRboardDAOImpl.rboardInsert() 진입>>> :");
+		return (Integer)sqlSession.delete("rboardDelete", rbvo);
 	}
 
 }

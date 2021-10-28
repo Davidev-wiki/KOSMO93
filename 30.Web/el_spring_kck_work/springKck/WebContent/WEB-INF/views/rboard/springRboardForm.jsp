@@ -242,7 +242,7 @@
 	function getTextLength(s){
 		var len = 0;
 		for(var i=0; i < s.length; i++){
-			if(escape(s.charAt(i)).lenth==6){
+			if(escape(s.charAt(i)).length==6){
 				len++;
 			}
 			len++;
@@ -290,7 +290,7 @@ RBOARD : 댓글
 <% request.setCharacterEncoding("UTF-8"); %>
 <%
 	String sbnum = request.getParameter("sbnum");
-	System.out.println("rboardForm.sbnum >>> : " + sbnum);
+	System.out.println("request에서 받아온 sbnum >>> : " + sbnum);
 %>
 
 <div id="rbwriterdiv">
@@ -302,7 +302,7 @@ RBOARD : 댓글
 		<input type="text" name="rsbname" id="rsbname"/>
 		<input type="hidden" name="sbnum" id="sbnum" value="<%=sbnum %>">
 		<input type="hidden" name="rsbnum" id="rsbnum">
-		<input type="button" value="저장하기" id="I">
+		<input type="button" value="등록" id="I">
 	</td>
 </tr>
 <tr>

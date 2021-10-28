@@ -16,20 +16,22 @@ public class SpringRboardServiceImpl implements SpringRboardService {
 	// logger set
 	private Logger logger = Logger.getLogger(SpringRboardServiceImpl.class);
 	
-	// DAO 연결
+	// DAO 연결(null check)
 	@Autowired(required=false)
 	private SpringRboardDAO springRboardDAO;
 	
 	@Override
 	public List<SpringRboardVO> rboardSelect(SpringRboardVO rbvo) {
 		// TODO Auto-generated method stub
-		return null;
+		logger.info("SpringRboardServiceImpl.rboardSelect() 진입 >>> :");
+		return springRboardDAO.rboardSelect(rbvo);
 	}
 
 	@Override
 	public List<SpringRboardVO> rboardSelectAll(SpringRboardVO rbvo) {
 		// TODO Auto-generated method stub
-		return null;
+		logger.info("SpringRboardServiceImpl.rboardSelectAll() 진입 >>> :");
+		return springRboardDAO.rboardSelectAll(rbvo);
 	}
 
 	@Override
@@ -42,7 +44,8 @@ public class SpringRboardServiceImpl implements SpringRboardService {
 	@Override
 	public int rboardDelete(SpringRboardVO rbvo) {
 		// TODO Auto-generated method stub
-		return 0;
+		logger.info("SpringRboardServiceImpl.rboardDelete() 진입 >>> :");
+		return springRboardDAO.rboardDelete(rbvo);
 	}
 
 }

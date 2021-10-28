@@ -110,9 +110,9 @@ public class SpringBoardController {
 		// 전체 조회하는데 파라미터로 받은 객체에서 
 		// 키필터,키워드, 시작일, 종료일을 출력해보기
 		logger.info("SpringBoardController.boardSelectAll bvo.getKeyfilter() >>> : " + bvo.getKeyfilter());
-		logger.info("SpringBoardController.boardSelectAll  bvo.getKeyword() >>> : " + bvo.getKeyword());
+		logger.info("SpringBoardController.boardSelectAll bvo.getKeyword() >>> : " + bvo.getKeyword());
 		logger.info("SpringBoardController.boardSelectAll bvo.getStartdate() >>> : " + bvo.getStartdate());
-		logger.info("SpringBoardController.boardSelectAll  bvo.getEnddate() >>> : " + bvo.getEnddate());		
+		logger.info("SpringBoardController.boardSelectAll bvo.getEnddate() >>> : " + bvo.getEnddate());		
 		
 		List<SpringBoardVO> listAll = springBoardService.boardSelectAll(bvo);
 		logger.info("필터에 해당하는 데이터 전체 조회로 가져온 값 listAll >>> : " + listAll);

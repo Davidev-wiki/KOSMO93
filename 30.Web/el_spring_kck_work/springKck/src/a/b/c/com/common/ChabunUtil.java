@@ -50,8 +50,6 @@ public abstract class ChabunUtil {
 		 System.out.println(">>> : " + ChabunUtil.getRboardChabun("N", c));
 		 System.out.println(">>> : " + ChabunUtil.getNoticeChabun("N", c));
 		 
-		 
 	 }
-	 
 	 
 }
