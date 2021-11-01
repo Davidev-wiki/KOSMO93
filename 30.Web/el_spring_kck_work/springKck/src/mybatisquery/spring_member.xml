@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="a.b.c.com.mem.dao.SpringMemberDAO">
+
+
+<select id="memberIdCheck" parameterType="memberVO" resultType="memberVO"> 
+
+		<!-- ID [조회] 쿼리 -->
+		SELECT  A.MID			MID
+		FROM	SPRING_MEMBER 	A
+		WHERE 	DELETEYN	=	'Y'
+		AND 	A.MID	=		#{mid, jdbcType=VARCHAR}
+		
+</select>
+
+<select id="memberSelectAll" parameterType="memberVO" resultType="memberVO"> 
+
+		<!-- 회원 정보 [조회] 쿼리 (전체조회) -->
+		SELECT	 A.MNUM									MNUM
+				,A.MNAME								MNAME
+				,A.MID									MID
+				,A.MPW									MPW
+				,A.MGENDER 								MGENDER
+				,A.MBIRTH 								MBIRTH
+				,A.MHP 									MHP
+				,A.MTEL									MTEL
+				,A.MEMAIL								MEMAIL
+				,A.MZONECODE							MZONECODE
+				,A.MROADADDRESS							MROADADDRESS
+				,A.MJIBUNADDRESS						MJIBUNADDRESS
+				,A.MHOBBY								MHOBBY
+				,A.MINFO								MINFO
+				,A.MPHOTO								MPHOTO
+				,A.MADMIN								MADMIN
+				,A.DELETEYN								DELETEYN
+				,TO_CHAR(A.INSERTDATE, 'YYYY-MM-DD')	INSERTDATE
+				,TO_CHAR(A.UPDATETDATE, 'YYYY-MM-DD')	UPDATEDATE
+		FROM 	SPRING_MEMBER A
+		WHERE 	A.DELETEYN	=	'Y'
+		ORDER BY 1 DESC
+
+</select>
+
+<select id="memberSelect" parameterType="memberVO" resultType="memberVO"> 
+		
+		<!-- 회원 정보 [조회] 쿼리 (한건조회) -->
+		SELECT	 A.MNUM									MNUM
+				,A.MNAME								MNAME
+				,A.MID									MID
+				,A.MPW									MPW
+				,A.MGENDER 								MGENDER
+				,A.MBIRTH 								MBIRTH
+				,A.MHP 									MHP
+				,A.MTEL									MTEL
+				,A.MEMAIL								MEMAIL
+				,A.MZONECODE							MZONECODE
+				,A.MROADADDRESS							MROADADDRESS
+				,A.MJIBUNADDRESS						MJIBUNADDRESS
+				,A.MHOBBY								MHOBBY
+				,A.MINFO								MINFO
+				,A.MPHOTO								MPHOTO
+				,A.MADMIN								MADMIN
+				,A.DELETEYN								DELETEYN
+				,TO_CHAR(A.INSERTDATE, 'YYYY-MM-DD')	INSERTDATE
+				,TO_CHAR(A.UPDATETDATE, 'YYYY-MM-DD')	UPDATEDATE
+		FROM 	SPRING_MEMBER A
+		WHERE 	A.DELETEYN	=							'Y'
+		AND		A.MNUM		=							#{mnum, jdbcType=VARCHAR}
+		
+</select>
+
+<insert id="memberInsert" parameterType="memberVO"> 
+		
+		<!-- 회원 정보 [등록] 쿼리 -->
+		INSERT INTO SPRING_MEMEBER(
+									 MNUM
+									,MNAME
+									,MID
+									,MPW
+									,MGENDER
+									,MBIRTH
+									,MHP
+									,MTEL
+									,MEMAIL
+									,MZONECODE
+									,MROADADDRESS
+									,MJIBUNADDRESS
+									,MHOBBY
+									,MINFO
+									,MPHOTO
+									,MADMIN
+									,DELETEYN
+									,INSERTDATE
+									,UPDATEDATE
+								  )
+							VALUES(
+									 #{mnum, jdbcType=VARCHAR}
+									,#{mname, jdbcType=VARCHAR}
+									,#{mid, jdbcType=VARCHAR}
+									,#{mpw, jdbcType=VARCHAR}
+									,#{mgender, jdbcType=VARCHAR}
+									,#{mbirth, jdbcType=VARCHAR}
+									,#{mhp, jdbcType=VARCHAR}
+									,#{mtel, jdbcType=VARCHAR}
+									,#{memail, jdbcType=VARCHAR}
+									,#{mzonecode, jdbcType=VARCHAR}
+									,#{mroadaddress, jdbcType=VARCHAR}
+									,#{mjibunaddress, jdbcType=VARCHAR}
+									,#{mhobby, jdbcType=VARCHAR}
+									,#{minfo, jdbcType=VARCHAR}
+									,#{mphoto, jdbcType=VARCHAR}
+									,#{madmin, jdbcType=VARCHAR}
+									,'Y'
+									,SYSDATE
+									,SYSDATE
+								)
+					
+
+</insert>
+
+<update id="memberUpdate" parameterType="memberVO"> 
+		
+		<!-- 회원 정보 [수정] 쿼리 -->
+		UPDATE 	SPRING_MEMBER
+		SET 	MEMAIL			=	#{memail, jdbcType=VARCHAR}
+			   ,MZONECODE		=	#{mzonecode, jdbcType=VARCHAR}
+			   ,MROADADDRESS	=	#{mroadaddress, jdbcType=VARCHAR}
+			   ,MJIBUNADDRESS	=	#{mjibunaddress, jdbcType=VARCHAR}
+  			   ,MHOBBY			=	#{mhobby, jdbcType=VARCHAR}
+			   ,UPDATEDATE		=	SYSDATE
+		WHERE	DELETEYN		=	'Y'
+		AND		A.MNUM			=	#{mnum, jdbcType=VARCHAR}
+				
+</update>
+
+<delete id="memberDelete" parameterType="memberVO"> 
+		
+		<!-- 회원 정보 [삭제] 쿼리 -->
+		UPDATE 	SPRING_MEMBER
+		SET 	DELETEYN		=	'N'
+			   ,UPDATEDATE		=	SYSDATE
+		WHERE	DELETEYN		=	'Y'
+		AND		A.MNUM			=	#{mnum, jdbcType=VARCHAR}
+</delete>
+
+</mapper>

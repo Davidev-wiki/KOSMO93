@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="a.b.c.com.mem.dao.SpringMemberDAO">
+
+<insert id="memberInsert" parameterType="memberVO">
+
+	INSERT INTO SPRING_MEMBER( 	 MNUM
+								,MNAME 
+								,MID 
+	                          	,MGENDER    
+	                          	,MBIRTH 
+	                          	,MHP 
+	                          	,MTEL
+	                          	,MEMAIL   
+	                          	,MZONECODE  
+	                          	,MROADADDRESS 
+	                          	,MGIBUNADDRESS 
+	                          	,MHOBBY   
+	                          	,MINFO
+	                          	,MPHOTO
+	                          	,MADMIN 
+	                          	,DELETEYN
+	                          	,INSERTDATE	 
+	                          	,UPDATEDATE	) 
+	                  VALUES( 	 #{mnum, jdbcType=VARCHAR}
+	                  			,#{mname, jdbcType=VARCHAR} 
+	                  			,#{mid, jdbcType=VARCHAR}
+	                          	,#{mpw, jdbcType=VARCHAR} 
+	                          	,#{mid, jdbcType=VARCHAR} 
+	                          	,#{mgener, jdbcType=VARCHAR}
+	                          	,#{mbirth, jdbcType=VARCHAR} 
+	                  			,#{mhp, jdbcType=VARCHAR}
+	                          	,#{mtel, jdbcType=VARCHAR} 
+	                          	,#{memail, jdbcType=VARCHAR} 
+	                          	,#{mzonecode, jdbcType=VARCHAR}
+	                          	,#{mroadaddress, jdbcType=VARCHAR} 
+	                  			,#{mjibunaddress, jdbcType=VARCHAR}
+	                          	,#{mhobby, jdbcType=VARCHAR} 
+	                          	,#{minfo, jdbcType=VARCHAR} 
+	                          	,#{mphoto, jdbcType=VARCHAR}
+	                          	,#{madmin, jdbcType=VARCHAR}
+	                          	'Y', 
+	                          	SYSDATE, 
+	                          	SYSDATE)
+</insert>
+
+<select id="memberSelectAll" parameterType="memberVO" resultType="memberVO">	
+	SELECT	 A.MNUM 			MNUM 
+			,A.MNAME 			MNAME 
+			,A.MID 				MID 
+            ,A.MGENDER 			MGENDER    
+            ,A.MBIRTH 			MBIRTH 
+            ,A.MHP 				MHP 
+            ,A.MTEL 			MTEL
+            ,A.MEMAIL 			MEMAIL   
+            ,A.MZONECODE 		MZONECODE  
+            ,A.MROADADDRESS 	MROADADDRESS 
+            ,A.MGIBUNADDRESS 	MGIBUNADDRESS 
+            ,A.MHOBBY 			MHOBBY   
+            ,A.MINFO 			MINFO
+            ,A.MPHOTO 			MPHOTO
+            ,A.MADMIN 			MADMIN 
+            ,A.DELETEYN 		DELETEYN
+            ,TO_CHAR(A.INSERTDATE, 'YYYY-MM-DD')  INSERTDATE 
+            ,TO_CHAR(A.UPDATEDATE, 'YYYY-MM-DD')  UPDATEDATE     
+	FROM 	SPRING_MEMBER A
+	WHERE 	A.DELETEYN = 'Y' 
+	<if test="startdate!=null and startdate!='' and enddate!=null and enddate!=''">
+		<![CDATA[AND TO_CHAR(A.INSERTDATE, 'YYYY-MM-DD') >= TO_CHAR(TO_DATE(#{startdate, jdbcType=VARCHAR}), 'YYYY-MM-DD')]]>
+		<![CDATA[AND TO_CHAR(A.INSERTDATE, 'YYYY-MM-DD') <= TO_CHAR(TO_DATE(#{enddate, jdbcType=VARCHAR}), 'YYYY-MM-DD')]]>
+	</if>
+	<if test="keyfilter=='key1'">
+		<![CDATA[AND A.MNUM LIKE '%' || #{keyword, jdbcType=VARCHAR} || '%']]>
+	</if>
+	<if test="keyfilter=='key2'">
+		<![CDATA[AND A.MNAME LIKE '%' || #{keyword, jdbcType=VARCHAR} || '%']]>
+	</if>	
+	<if test="keyfilter=='key3'">
+		<![CDATA[AND A.MID LIKE '%' || #{keyword, jdbcType=VARCHAR} || '%']]>			
+	</if>	
+	ORDER BY 1 DESC  
+</select>
+
+<select id="memberSelect" parameterType="memberVO" resultType="memberVO">
+	SELECT	 A.MNUM 			MNUM 
+			,A.MNAME 			MNAME 
+			,A.MID 				MID 
+            ,A.MGENDER 			MGENDER    
+            ,A.MBIRTH 			MBIRTH 
+            ,A.MHP 				MHP 
+            ,A.MTEL 			MTEL
+            ,A.MEMAIL 			MEMAIL   
+            ,A.MZONECODE 		MZONECODE  
+            ,A.MROADADDRESS 	MROADADDRESS 
+            ,A.MGIBUNADDRESS 	MGIBUNADDRESS 
+            ,A.MHOBBY 			MHOBBY   
+            ,A.MINFO 			MINFO
+            ,A.MPHOTO 			MPHOTO
+            ,A.MADMIN 			MADMIN 
+            ,A.DELETEYN 		DELETEYN
+            ,TO_CHAR(A.INSERTDATE, 'YYYY-MM-DD')  INSERTDATE 
+           	,TO_CHAR(A.UPDATEDATE, 'YYYY-MM-DD')  UPDATEDATE     
+	FROM 	SPRING_MEMBER A
+	WHERE 	A.DELETEYN = 'Y' 
+	AND 	A.MNUM = #{mnum, jdbcType=VARCHAR}
+</select>
+
+<update id="memberUpdate" parameterType="memberVO">
+	UPDATE   SPRING_MEMBER 
+	SET 	 MEMAIL 		= #{memail, jdbcType=VARCHAR}
+			,MZONECODE  	= #{mzonecode, jdbcType=VARCHAR}
+			,MROADADDRESS 	= #{mroadaddress, jdbcType=VARCHAR}
+			,MGIBUNADDRESS 	= #{mgibunaddress, jdbcType=VARCHAR}
+			,MHOBBY 		= #{mhobby, jdbcType=VARCHAR}
+	       	,UPDATEDATE = SYSDATE
+	WHERE 	DELETEYN = 'Y' 
+	AND 	MNUM = #{mnum, jdbcType=VARCHAR}
+</update>
+
+<update id="memberDelete" parameterType="memberVO">
+	UPDATE 	 SPRING_MEMBER 
+	SET 	 DELETEYN = 'N'
+			,UPDATEDATE = SYSDATE
+	WHERE 	DELETEYN = 'Y' 
+	AND 	MNUM = #{mnum, jdbcType=VARCHAR}
+</update>
+
+
+<select id="memberIdCheck" parameterType="memberVO" resultType="memberVO">
+	SELECT 	A.MID MID
+	FROM 	SPRING_MEMBER A 
+	WHERE 	A.DELETEYN = 'Y' 
+	AND 	A.MNUM = #{mnum, jdbcType=VARCHAR}
+	AND 	A.MID = #{mid, jdbcType=VARCHAR}
+</select>
+</mapper>
+

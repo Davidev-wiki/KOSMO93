@@ -2,12 +2,8 @@ package a.b.c.com.common;
 
 import java.util.ArrayList;
 import java.util.Enumeration;
-
 import javax.servlet.http.HttpServletRequest;
-
 import com.oreilly.servlet.MultipartRequest;
-
-
 
 public class FileUploadUtil {
 	
@@ -17,9 +13,13 @@ public class FileUploadUtil {
 	private MultipartRequest mr;;
 
 	public FileUploadUtil() {
-		this.imgfilePaths = CommonUtils.BOARD_IMG_UPLOAD_PATH;
-		this.imgfileSize = CommonUtils.BOARD_IMG_FILE_SIZE;
-		this.encodeType = CommonUtils.BOARD_EN_CODE;		
+
+	}
+	// 멤버 추가분 : 생성자 오버로딩
+	public FileUploadUtil(String imgfilePaths, int imgfileSize, String encodeType) {
+		this.imgfilePaths = imgfilePaths;
+		this.imgfileSize = imgfileSize;
+		this.encodeType = encodeType;		
 	}
 	
 	public boolean imgfileUpload(HttpServletRequest req) {		
@@ -62,6 +62,10 @@ public class FileUploadUtil {
 	
 	public String getParameter(String s){
 		return mr.getParameter(s);
+	}
+	
+	public String[] getParameterValues(String s){
+		return mr.getParameterValues(s);		
 	}
 	
 	public String getFileName(String f){

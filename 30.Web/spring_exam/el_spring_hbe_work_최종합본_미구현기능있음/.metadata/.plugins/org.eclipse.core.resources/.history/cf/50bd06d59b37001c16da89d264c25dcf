@@ -1,0 +1,14 @@
+package a.b.c.com.login.controller;
+
+import org.apache.log4j.Logger;
+import org.springframework.stereotype.Controller;
+
+import a.b.c.com.mem.controller.SpringMemberController;
+
+@Controller
+public class SpingLoginController {
+	Logger logger = Logger.getLogger(SpingLoginController.class);
+	
+	private SpringLoginService springLoginService
+	
+}

@@ -1,0 +1,21 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="a.b.c.com.cgi.session.K_Session"%>
+
+
+<% request.setCharacterEncoding("UTF-8");%>
+<%
+	K_Session kSession = null;
+	kSession = new K_Session();
+
+	String kID = kSession.getSession(request);	
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>

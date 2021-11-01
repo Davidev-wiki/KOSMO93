@@ -19,7 +19,12 @@ public class SpringBoardServiceImpl implements SpringBoardService {
 	// DAO instance
 	private SpringBoardDAO springBoardDAO;
 	
-	// 생성자에 DI 주입 (자동 연동/null check해주라)
+	// 기본 생성자
+	public SpringBoardServiceImpl() {
+		
+	}
+	
+	// 생성자에 DI 주입 (자동 연동 / null check해주라)
 	@Autowired(required=false)
 	public SpringBoardServiceImpl(SpringBoardDAO springBoardDAO) {
 		this.springBoardDAO = springBoardDAO;
@@ -65,6 +70,10 @@ public class SpringBoardServiceImpl implements SpringBoardService {
 		return springBoardDAO.boardPwCheck(bvo);
 	}
 
-	
+	@Override
+	public List<SpringBoardVO> boardSelectPaging(SpringBoardVO bvo) {
+		// TODO Auto-generated method stub
+		return springBoardDAO.boardSelectPaging(bvo);
+	}
 	
 }

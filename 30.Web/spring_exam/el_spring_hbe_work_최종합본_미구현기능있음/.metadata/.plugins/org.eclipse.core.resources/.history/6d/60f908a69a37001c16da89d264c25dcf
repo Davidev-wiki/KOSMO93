@@ -1,0 +1,15 @@
+package a.b.c.com.login.dao;
+
+import java.util.List;
+
+import a.b.c.com.mem.vo.SpringMemberVO;
+
+public class SpringLoginDAOImpl implements SpringLoginDAO {
+
+	@Override
+	public List<SpringMemberVO> loginCheck(SpringMemberVO mvo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

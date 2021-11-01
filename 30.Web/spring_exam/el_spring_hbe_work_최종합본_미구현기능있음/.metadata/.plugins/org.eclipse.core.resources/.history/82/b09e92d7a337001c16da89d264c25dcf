@@ -1,0 +1,39 @@
+package a.b.c.com.cgi.mail;
+
+
+import javax.mail.Authenticator;
+import javax.mail.PasswordAuthentication;
+
+public class MailAuth extends Authenticator{
+	/* 
+	 * 메일을 보내기 위해 추가한 mail-1.4.7 jar에는 javax.mail 패키지가 들어있다.
+	 * javax.mail 패키지의 주요 클래스는 
+	 * Session, Message, Address, Authenticator, Transport 등이 있다. 
+	 * SMTP 서버에 연결해 사용자 인증을 하기 위해서 Authenticator 클래스 사용이 필요하다.
+	 */
+	PasswordAuthentication pa;
+	
+	public MailAuth() {
+		
+		String mail_id = "eunbh44testmail@gmail.com";	// gmail 아이디
+		String mail_pw = "eunbh44TestMail00@";//// gmail 비밀번호
+		
+		pa = new PasswordAuthentication(mail_id, mail_pw);
+	}
+	
+	public PasswordAuthentication getPasswordAuthentication() {	
+		return pa;
+	/* 
+	 * public PasswordAuthentication getPasswordAuthentication() {	
+	 *		return pa;
+	 * 
+	 * Authenticator�� ����ϱ� ���ؼ��� PasswordAuthenticator Ŭ�����κ��� 
+	 * �ν��Ͻ��� �����ϰ� getPasswordAuthentication �޼ҵ�� ���Ϲ޾ƾ� �Ѵ�.
+	 * PasswordAuthentication Ŭ������ ������� 
+	 * ���̵�� �н����带 �Է¹޾� ��ȯ�ϵ��� �������Ѵ�.
+	 */
+	}
+}
+
+
+

@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import a.b.c.com.board.vo.SpringBoardVO;
 import a.b.c.com.common.dao.ChabunDAO;
+import a.b.c.com.mem.vo.SpringMemberVO;
 import a.b.c.com.rboard.vo.SpringRboardVO;
 
 @Service
@@ -18,6 +19,11 @@ public class ChabunServiceImpl implements ChabunService {
 	
 	// DAO instance
 	private ChabunDAO chabunDAO;
+	
+	// 기본 생성자
+	public ChabunServiceImpl() {
+		
+	}
 	
 	// 생성자에 DI 주입
 	@Autowired(required=false)
@@ -35,9 +41,13 @@ public class ChabunServiceImpl implements ChabunService {
 	@Override
 	public SpringRboardVO getRboardChabun() {
 		logger.info("ChabunServiceImpl.getRboardChabun() 진입");
-
 		return chabunDAO.getRboardChabun(); 
 	}
-
-
+	
+	@Override
+	public SpringMemberVO getMemChabun() {
+		// TODO Auto-generated method stub
+		logger.info("ChabunServiceImpl.getMemChabun() 진입");
+		return chabunDAO.getMemChabun();
+	}
 }

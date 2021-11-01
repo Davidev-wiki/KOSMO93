@@ -1,0 +1,15 @@
+package a.b.c.com.mem.service;
+
+import java.util.List;
+
+import a.b.c.com.mem.vo.SpringMemberVO;
+
+public interface SpringMemberService {
+	
+	public List<SpringMemberVO> memberSelectAll(SpringMemberVO mvo);
+	public List<SpringMemberVO> memberSelect(SpringMemberVO mvo);
+	public boolean memberInsert(SpringMemberVO mvo);
+	public boolean memberUpdate(SpringMemberVO mvo);
+	public boolean memberDelete(SpringMemberVO mvo);
+
+}

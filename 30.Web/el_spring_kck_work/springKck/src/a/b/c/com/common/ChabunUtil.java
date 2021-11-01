@@ -7,6 +7,11 @@ public abstract class ChabunUtil {
 	 public static final String BIZ_GUBUN_RB = "RB"; 
 	 public static final String BIZ_GUBUN_N = "NB"; 
 	 
+	 // 기본 생성자
+	 public ChabunUtil (){
+		 
+	 }
+	 
 	 // type : D : 20210001, M : YYYYMM, Y : YYYY, N :
 	 public static String numPad(String t, String c) {
 		 

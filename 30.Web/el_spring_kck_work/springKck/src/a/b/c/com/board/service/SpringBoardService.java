@@ -14,4 +14,7 @@ public interface SpringBoardService {
 	
 	public List<SpringBoardVO> boardPwCheck(SpringBoardVO bvo);
 	
+	// 페이징 
+	public List<SpringBoardVO> boardSelectPaging(SpringBoardVO bvo);
+
 }

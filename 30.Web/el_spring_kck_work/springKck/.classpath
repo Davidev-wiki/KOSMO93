@@ -11,26 +11,6 @@
 			<attribute name="owner.project.facets" value="jst.web"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/david/Desktop/개발도구/spring libraries in springKck/commons-logging-1.1.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/david/Desktop/개발도구/spring libraries in springKck/cos.jar"/>
-	<classpathentry kind="lib" path="C:/Users/david/Desktop/개발도구/spring libraries in springKck/jai_codec.jar"/>
-	<classpathentry kind="lib" path="C:/Users/david/Desktop/개발도구/spring libraries in springKck/jai_core.jar"/>
-	<classpathentry kind="lib" path="C:/Users/david/Desktop/개발도구/spring libraries in springKck/json-simple-1.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/david/Desktop/개발도구/spring libraries in springKck/jstl.jar"/>
-	<classpathentry kind="lib" path="C:/Users/david/Desktop/개발도구/spring libraries in springKck/log4j-1.2.17.jar"/>
-	<classpathentry kind="lib" path="C:/Users/david/Desktop/개발도구/spring libraries in springKck/mybatis-3.2.4.jar"/>
-	<classpathentry kind="lib" path="C:/Users/david/Desktop/개발도구/spring libraries in springKck/mybatis-spring-1.2.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/david/Desktop/개발도구/spring libraries in springKck/ojdbc6.jar"/>
-	<classpathentry kind="lib" path="C:/Users/david/Desktop/개발도구/Spring API SET(spring21ea+jstl2ea+log2ea)/spring-aop-3.2.9.RELEASE.jar"/>
-	<classpathentry kind="lib" path="C:/Users/david/Desktop/개발도구/Spring API SET(spring21ea+jstl2ea+log2ea)/spring-beans-3.2.9.RELEASE.jar"/>
-	<classpathentry kind="lib" path="C:/Users/david/Desktop/개발도구/Spring API SET(spring21ea+jstl2ea+log2ea)/spring-context-3.2.9.RELEASE.jar"/>
-	<classpathentry kind="lib" path="C:/Users/david/Desktop/개발도구/Spring API SET(spring21ea+jstl2ea+log2ea)/spring-context-support-3.2.9.RELEASE.jar"/>
-	<classpathentry kind="lib" path="C:/Users/david/Desktop/개발도구/Spring API SET(spring21ea+jstl2ea+log2ea)/spring-core-3.2.9.RELEASE.jar"/>
-	<classpathentry kind="lib" path="C:/Users/david/Desktop/개발도구/Spring API SET(spring21ea+jstl2ea+log2ea)/spring-expression-3.2.9.RELEASE.jar"/>
-	<classpathentry kind="lib" path="C:/Users/david/Desktop/개발도구/Spring API SET(spring21ea+jstl2ea+log2ea)/spring-jdbc-3.2.9.RELEASE.jar"/>
-	<classpathentry kind="lib" path="C:/Users/david/Desktop/개발도구/Spring API SET(spring21ea+jstl2ea+log2ea)/spring-tx-3.2.9.RELEASE.jar"/>
-	<classpathentry kind="lib" path="C:/Users/david/Desktop/개발도구/Spring API SET(spring21ea+jstl2ea+log2ea)/spring-web-3.2.9.RELEASE.jar"/>
-	<classpathentry kind="lib" path="C:/Users/david/Desktop/개발도구/Spring API SET(spring21ea+jstl2ea+log2ea)/spring-webmvc-3.2.9.RELEASE.jar"/>
-	<classpathentry kind="lib" path="C:/Users/david/Desktop/개발도구/Spring API SET(spring21ea+jstl2ea+log2ea)/standard.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="output" path="WebContent/WEB-INF/classes"/>
 </classpath>

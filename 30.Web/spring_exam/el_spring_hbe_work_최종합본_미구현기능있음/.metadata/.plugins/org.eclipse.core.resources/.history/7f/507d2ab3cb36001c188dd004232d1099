@@ -1,0 +1,11 @@
+package a.b.c.com.mem.service;
+
+import java.util.List;
+
+import a.b.c.com.mem.vo.SpringMemberVO;
+
+public class SpringMemberServiceImpl implements SpringMemberService {
+
+	
+
+}

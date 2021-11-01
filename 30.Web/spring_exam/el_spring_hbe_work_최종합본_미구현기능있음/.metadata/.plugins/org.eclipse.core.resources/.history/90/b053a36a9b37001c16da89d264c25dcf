@@ -1,0 +1,30 @@
+package a.b.c.com.login.service;
+
+import java.util.List;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import a.b.c.com.login.dao.SpringLoginDAO;
+import a.b.c.com.mem.dao.SpringMemberDAO;
+import a.b.c.com.mem.service.SpringMemberServiceImpl;
+import a.b.c.com.mem.vo.SpringMemberVO;
+
+public class SpringLoginServiceImpl implements SpringLoginService {
+	Logger logger = Logger.getLogger(SpringLoginServiceImpl.class);
+	
+	private SpringLoginDAO springLoginDAO;
+	
+	@Autowired(required=false)
+	public SpringLoginServiceImpl(SpringLoginDAO springLoginDAO) {
+		this.springLoginDAO = springLoginDAO;
+	}
+
+	@Override
+	public List<SpringMemberVO> loginCheck(SpringMemberVO mvo) {
+		// TODO Auto-generated method stub
+		logger.info("SpringMemberServiceImpl memberSelectAll() 함수 진입 >>> : ");
+		return springLoginDAO.loginCheck(mvo);
+	}
+
+}

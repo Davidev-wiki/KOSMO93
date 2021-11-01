@@ -1,0 +1,14 @@
+package a.b.c.com.mem.dao;
+
+import java.util.List;
+
+import a.b.c.com.mem.vo.SpringMemberVO;
+
+public interface SpringMemberDAO {
+
+	public List<SpringMemberVO> memberSelectAll();
+	public List<SpringMemberVO> memberSelect(SpringMemberVO mvo);
+	public boolean memberInsert(SpringMemberVO mvo);
+	public boolean memberUpdate(SpringMemberVO mvo);
+	public boolean memberDelete(SpringMemberVO mvo);
+}

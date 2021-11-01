@@ -1,0 +1,34 @@
+package a.b.c.com.login.controller;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import a.b.c.com.login.service.SpringLoginService;
+
+@Controller
+public class SpingLoginController {
+	Logger logger = Logger.getLogger(SpingLoginController.class);
+	
+	private SpringLoginService springLoginService;
+	
+	// 생성자 오토와이어드 
+	@Autowired(required=false)	
+	public SpingLoginController(SpringLoginService springLoginService) {
+		this.springLoginService = springLoginService;	
+	}	
+		
+	// 로그인 입력  폼	
+	@GetMapping("loginForm")
+	public String loginForm() {	
+		logger.info("SpingLoginController loginForm() 함수 진입 >>> : ");
+		return "login/springLoginFome";
+	}
+	
+	@GetMapping("login")
+	public String login(SpringMemberVO mvo, Model model) {	
+		logger.info("SpingLoginController login() 함수 진입 >>> : ");
+		return "login/springLoginFome";
+	}
+}

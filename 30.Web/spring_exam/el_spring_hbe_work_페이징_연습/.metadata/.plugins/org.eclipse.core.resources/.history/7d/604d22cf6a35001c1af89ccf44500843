@@ -1,0 +1,20 @@
+package a.b.c.com.rboard.controller;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+import a.b.c.com.common.service.ChabunService;
+import a.b.c.com.rboard.service.SpringRboardService;
+
+@Controller
+public class SpringRboardController {
+	Logger logger = Logger.getLogger(SpringRboardController.class);
+	
+	@Autowired(required=false)		
+	private SpringRboardService rboardService;
+	
+	@Autowired(required=false)
+	private ChabunService chabunService;
+
+}

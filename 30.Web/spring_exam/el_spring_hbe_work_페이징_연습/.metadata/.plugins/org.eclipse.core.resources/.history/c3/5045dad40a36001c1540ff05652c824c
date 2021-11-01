@@ -1,0 +1,17 @@
+package a.b.c.com.paging;
+
+public class BoardVO {
+	
+	private String mnum		
+	private String mtitle		
+	private String mname		
+	private String memail		
+	private String marea		
+	private String mpass		
+	private String mref		
+	private String mstep		
+	private String mdepth		
+	private String mwriteday	
+	private String mhits	
+
+}

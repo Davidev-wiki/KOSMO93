@@ -64,5 +64,10 @@ public class SpringBoardDAOImpl implements SpringBoardDAO {
 		logger.info("SpringBoardDAOImpl.boardPwCheck() 진입");
 		return sqlSession.selectList("boardPwCheck", bvo);
 	}
-
+	
+	@Override
+	public List<SpringBoardVO> boardSelectPaging(SpringBoardVO bvo) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("boardSelectPaging", bvo);
+	}
 }

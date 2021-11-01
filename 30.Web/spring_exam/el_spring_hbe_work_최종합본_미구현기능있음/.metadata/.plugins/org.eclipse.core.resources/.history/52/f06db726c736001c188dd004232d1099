@@ -1,0 +1,5 @@
+package a.b.c.com.mem.dao;
+
+public interface SpringMemberDAO {
+
+}

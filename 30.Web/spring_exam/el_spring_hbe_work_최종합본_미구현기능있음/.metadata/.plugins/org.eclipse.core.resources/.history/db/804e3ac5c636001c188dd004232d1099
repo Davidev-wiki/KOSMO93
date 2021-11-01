@@ -1,0 +1,25 @@
+package a.b.c.com.mem.vo;
+
+public class SpringMemberVO {
+	
+	private String mnum;
+	private String mname;
+	private String mid;
+	private String mpw;
+	private String mgender;
+	private String mbirth;
+	private String mhp;
+	private String mtel;
+	private String memail;
+	private String mzonecode;
+	private String mroadaddress;
+	private String mjibunaddress;
+	private String mhobby;				
+	private String mmemo;
+	private String mphoto;		
+	private String madmin;		
+	private String deleteyn;
+	private String insertdate;
+	private String updatedate;
+
+}

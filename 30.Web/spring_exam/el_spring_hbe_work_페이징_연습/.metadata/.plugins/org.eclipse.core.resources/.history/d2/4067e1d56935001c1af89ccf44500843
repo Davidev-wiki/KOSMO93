@@ -1,0 +1,14 @@
+package a.b.c.com.rboard.vo;
+
+public class SpringRboardVO {
+	
+	private String rsbnum;
+	private String sbnum;
+	private String rsbname;
+	private String rsbcontent;
+	private String rsbpw;
+	private String rsbdelyn;
+	private String rsbinsertdate;
+	
+
+}

@@ -1,0 +1,106 @@
+package a.b.c.com.cgi.session;
+
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpSessionBindingListener;
+import javax.servlet.http.HttpSessionBindingEvent;
+import java.util.Hashtable;
+import java.util.Enumeration;
+
+public class K_SessionManager implements HttpSessionBindingListener{
+	
+	private static K_SessionManager kManager = null;
+	
+	// 사용자 id를 저장해 둘 Hashtable
+	private static Hashtable hashManager = new Hashtable();
+	
+	// 생성자
+	private K_SessionManager(){
+		super();
+	}
+	
+	// �̱��� ��� 
+	public static synchronized K_SessionManager getInstance(){
+		
+		if(kManager == null){
+			kManager = new K_SessionManager();
+		}
+		
+		return kManager;
+	}
+	
+	// �ش� ���ǿ��� �̹� �α����� �ߴ��� Ȯ�� 
+	// ���Ǿ��̵� �޾Ƽ� �ش� ������ �α��� �����̸� true��, �ƴϸ� false�� ����.
+	public boolean isLogin(String sessionID){
+		
+		boolean isLogin = false;
+		
+		Enumeration e = hashManager.keys();
+		String key = "";
+		
+		while(e.hasMoreElements()){
+			
+			key = (String)e.nextElement();
+			
+			if (sessionID.equals(key)){
+				isLogin = true;
+			}
+		}
+		
+		return isLogin;
+	}
+	
+	// �ش� ���̵��� ���� ����� �������� 
+	// �̹� ������� ���̵����� Ȯ��
+	// �������̵� �޾Ƽ� �ش� ������ ������ ��� ���̸� true, �ƴϸ� false�� ����.
+	public boolean isUsing(String userID)
+	{
+		boolean isFlag = false;
+		
+		Enumeration e = hashManager.keys();
+		String key = "";
+		
+		while(e.hasMoreElements()){
+			
+			key = (String)e.nextElement();
+			
+			if (userID.equals(hashManager.get(key))){
+				isFlag = true;
+			}
+		}
+		
+		return isFlag;
+	}
+	
+	// Hashtable�� ���Ǿ��̵� �������̵� ¦���� �ֱ�. ==> ���Ǿ��̵�� �������̵� ã�� �� �ְ���.
+	// Hashtable�� ���ǿ� �ֱ� ==> ������ ���� Hashtable�� ������ �� �ְ���.
+	public void setSession(HttpSession hSession, String userID)
+	{
+		hashManager.put(hSession.getId(), userID);
+		hSession.setAttribute("login", this.getInstance());
+	}
+	
+	// ������ �����Ǿ��� �� �ڵ����� ȣ��Ǵ� �޼ҵ�
+	public void valueBound(HttpSessionBindingEvent event)
+	{
+		// nothing
+	}
+	
+	// ������ ������ �� �ڵ����� ȣ��Ǵ� �޼ҵ�
+	// ������ �������� Hashtable���� �ش� ������ ������ �����Ѵ�.
+	public void valueUnbound(HttpSessionBindingEvent event)
+	{
+		hashManager.remove(event.getSession().getId());
+	}
+	
+	// ���� ID�� ���� �α����� ID�� ������ ��
+	public String getUserID(String sessionID)
+	{
+		return (String)hashManager.get(sessionID);
+	}
+	
+	// ���� ������ ��
+	public int getUserCount()
+	{
+		return hashManager.size();
+	}
+}

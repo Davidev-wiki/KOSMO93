@@ -1,0 +1,5 @@
+package a.b.c.com.rboard.dao;
+
+public interface SpringRboardServiceDAO {
+
+}

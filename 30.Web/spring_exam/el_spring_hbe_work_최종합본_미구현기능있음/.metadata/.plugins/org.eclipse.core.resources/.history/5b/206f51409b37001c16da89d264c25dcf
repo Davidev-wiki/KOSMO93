@@ -1,0 +1,15 @@
+package a.b.c.com.login.service;
+
+import java.util.List;
+
+import a.b.c.com.mem.vo.SpringMemberVO;
+
+public class SpringLoginServiceImpl implements SpringLoginService {
+
+	@Override
+	public List<SpringMemberVO> loginCheck(SpringMemberVO mvo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
