@@ -142,6 +142,7 @@
 				<td class="tt"><%= hp %></td>
 				<td class="tt"><%= mvo.getMemail() %></td>
 				<td class="tt"><%= addr %></td>
+				<td class="tt"><%= hobby %></td>				
 				<td class="tt"><img src="/springKck/fileupload/member/<%= mvo.getMphoto() %>" border="1" width="25" height="25" alt="iamge"></td>
 				<td class="tt"><%= mvo.getUpdatedate() %></td>
 			</tr>

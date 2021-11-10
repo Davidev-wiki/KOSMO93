@@ -161,7 +161,7 @@ public class SpringMemberController{
 		
 		if(listAll.size() > 0) {
 			model.addAttribute("listAll", listAll);
-			return "mem/springmemSelectAll";
+			return "mem/springMemSelectAll";
 			}
 		else {return "mem/springMemForm";} // 회원가입 폼으로
 	}
