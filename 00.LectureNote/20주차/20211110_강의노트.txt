@@ -80,12 +80,10 @@ https://www.python.org/dev/peps/pep-0008/
 	낙타의 등에 있는 혹과 같다고 하여 카멜(Camel) 표기법이라고 부릅니다. Java의 권장 표기법입니다.
 	예) camelVariable, firstName, lastName ...
 
-
 파스칼 표기법(Pascal Case)
 	단어의 모든 앞글자를 대문자로 표기합니다. 
 	카멜 표기법이 단봉낙타라면 파스칼은 쌍봉낙타라고 할 수 있습니다. 
 	예) PascalVariable, FirstName, LastName ...
-
 
 헝가리안 표기법(Hungarian Notation)
 	접두어에 자료형을 붙이는 표기법입니다. 
@@ -93,7 +91,6 @@ https://www.python.org/dev/peps/pep-0008/
 	언어의 종류가 다양한 만큼 자료형도, 
 	문서 데이터도 다양해졌기 때문에 접두어가 의미가 없어졌기 때문 입니다. 
 	예) strName, bBusy, szName ... 
-
 
 스네이크 표기법(Snake Case)
 	단어 사이에 언더바를 넣어서 표기하는 방법입니다. 

@@ -12,10 +12,7 @@ public class FileUploadUtil {
 	private String encodeType;	
 	private MultipartRequest mr;;
 
-	public FileUploadUtil() {
-
-	}
-	// 멤버 추가분 : 생성자 오버로딩
+	// Member에서 추가된 부분 : 생성자 오버로딩
 	public FileUploadUtil(String imgfilePaths, int imgfileSize, String encodeType) {
 		this.imgfilePaths = imgfilePaths;
 		this.imgfileSize = imgfileSize;

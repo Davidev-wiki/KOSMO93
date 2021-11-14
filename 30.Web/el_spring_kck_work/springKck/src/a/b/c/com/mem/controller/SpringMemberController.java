@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import a.b.c.com.common.ChabunUtil;
 import a.b.c.com.common.CommonUtils;
@@ -72,7 +73,7 @@ public class SpringMemberController{
 		mvo = new SpringMemberVO();
 		
 		// 변수에 값 세팅
-		// 회원번호, 이름, 아이디, 패스워드, 성별
+		// 회원번호, 회원이름, 아이디, 패스워드, 성별
 		mvo.setMnum(mnum);
 		mvo.setMname(fu.getParameter("mname"));
 		mvo.setMid(fu.getParameter("mid"));
@@ -112,7 +113,7 @@ public class SpringMemberController{
 		// 도로명주소
 		String mroadaddress = fu.getParameter("mroadaddress");
 		String mroadaddressdetail = fu.getParameter("mroadaddressdetail");
-		mroadaddress = mroadaddress.concat("@").concat("mraodaddressdetail");
+		mroadaddress = mroadaddress.concat("@").concat(mroadaddressdetail);
 		mvo.setMroadaddress(mroadaddress);
 		
 		// 지번주소
@@ -148,7 +149,6 @@ public class SpringMemberController{
 		else {
 			System.out.println("등록 실패 >>> :");
 			return "memForm";}
-		
 	}
 	
 	// 회원 목록 조회
@@ -166,11 +166,6 @@ public class SpringMemberController{
 		else {return "mem/springMemForm";} // 회원가입 폼으로
 	}
 	
-
-	
-	
-	
-	
 	// 회원 수정/삭제 조회
 	@GetMapping("memSelect")
 	public String memSelect(SpringMemberVO mvo, Model model) {
@@ -187,6 +182,7 @@ public class SpringMemberController{
 			System.out.println("회원이 아니네요 >>> :");
 			return "mem/springMemForm";} // 회원가입 폼으로
 	}
+	
 	// 회원 정보 수정하기 (수정 항목 : 이메일/우편번호/도로명주소/지번주소)
 	@PostMapping("memUpdate")
 	public String memUpdate(HttpServletRequest req,SpringMemberVO mvo, Model model) {
@@ -242,13 +238,16 @@ public class SpringMemberController{
 	
 	// 아이디 중복 체크하기 : why method type : Post?
 	@PostMapping("memIdCheck")
+	@ResponseBody
 	public Object memIdCheck (SpringMemberVO mvo) {
 		logger.info("SpringMemberController.memIdCheck() 진입 >>> :");
 		logger.info("체크할 아이디 mvo.getMid() >>> : " + mvo.getMid());
 		
 		// memerIdCheck의 로직은 
-		// 파라미터로 보낸 아이디와 일치 하는 것이 있으면 "1"
-		// 일치하는 것이 없으면 "0"을 리턴.
+		// 파라미터로 보낸 아이디와 일치 하는 것이 있으면 "1" 
+		// => 아이디로 사용불가 "ID_NO"
+		// 일치하는 것이 없으면 "0"을 리턴 
+		// => 사용 가능한 것이므로 "ID_YES"
 		List<SpringMemberVO> list = springMemberService.memberIdCheck(mvo);
 		
 		String msg = "";
@@ -260,6 +259,6 @@ public class SpringMemberController{
 			msg = "ID_NO";
 			return msg;
 		}
-		
 	}
+	
 }

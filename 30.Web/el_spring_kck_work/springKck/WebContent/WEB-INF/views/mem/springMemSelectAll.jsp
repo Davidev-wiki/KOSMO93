@@ -29,9 +29,9 @@
 			location.href="memForm.k";
 		});
 		// [조회] 버튼 클릭시
-		$(document).on("click", "#SALL", function(){
+		$(document).on("click", "#S", function(){
 			$("#memSelectAllForm").attr({
-				"action" : "memSelectAll.k",
+				"action" : "memSelect.k",
 				"method" : "GET"
 			}).submit();
 		});
@@ -115,6 +115,7 @@
 			
 			for(int i=0; i < nCnt; i++){
 				SpringMemberVO mvo = aList.get(i);
+				
 				gender = CodeUtil.gender(mvo.getMgender());
 				birth = CodeUtil.birth(mvo.getMbirth());
 				hp = CodeUtil.hp(mvo.getMhp());
@@ -134,9 +135,9 @@
 					<input type="checkbox" id="mnum" name="mnum" class="mnum" value=<%= mvo.getMnum() %> >
 				</td>
 				<td class="tt"><%= i + 1 %></td>
-				<td class="tt"><%=mvo.getMnum() %></td>
-				<td class="tt"><%=mvo.getMname() %></td>
-				<td class="tt"><%=mvo.getMid() %></td>
+				<td class="tt"><%= mvo.getMnum() %></td>
+				<td class="tt"><%= mvo.getMname() %></td>
+				<td class="tt"><%= mvo.getMid() %></td>
 				<td class="tt"><%= gender %></td>
 				<td class="tt"><%= birth %></td>
 				<td class="tt"><%= hp %></td>
@@ -152,7 +153,7 @@
 			<tr>
 				<td colspan="20" align="right">
 					<input type="button" value="등록" id="I">
-					<input type="button" value="조회" id="SALL">
+					<input type="button" value="조회" id="S">
 					<input type="button" value="수정" id="U">
 					<input type="button" value="삭제" id="D">
 				</td>

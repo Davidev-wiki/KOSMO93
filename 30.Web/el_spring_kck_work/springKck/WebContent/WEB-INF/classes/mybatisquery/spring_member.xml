@@ -4,16 +4,52 @@
 
 <mapper namespace="a.b.c.com.mem.dao.SpringMemberDAO">
 
-
-<select id="memberIdCheck" parameterType="memberVO" resultType="memberVO"> 
-
-		<!-- ID [조회] 쿼리 -->
-		SELECT  A.MID			MID
-		FROM	SPRING_MEMBER 	A
-		WHERE 	DELETEYN	=	'Y'
-		AND 	A.MID	=		#{mid, jdbcType=VARCHAR}
+<insert id="memberInsert" parameterType="memberVO"> 
 		
-</select>
+		<!-- 회원 정보 [등록] 쿼리 -->
+		INSERT INTO SPRING_MEMBER(
+									 MNUM
+									,MNAME
+									,MID
+									,MPW
+									,MGENDER
+									,MBIRTH
+									,MHP
+									,MTEL
+									,MEMAIL
+									,MZONECODE
+									,MROADADDRESS
+									,MJIBUNADDRESS
+									,MHOBBY
+									,MINFO
+									,MPHOTO
+									,MADMIN
+									,DELETEYN
+									,INSERTDATE
+									,UPDATEDATE
+								  )
+							VALUES(
+									 #{mnum, jdbcType=VARCHAR}
+									,#{mname, jdbcType=VARCHAR}
+									,#{mid, jdbcType=VARCHAR}
+									,#{mpw, jdbcType=VARCHAR}
+									,#{mgender, jdbcType=VARCHAR}
+									,#{mbirth, jdbcType=VARCHAR}
+									,#{mhp, jdbcType=VARCHAR}
+									,#{mtel, jdbcType=VARCHAR}
+									,#{memail, jdbcType=VARCHAR}
+									,#{mzonecode, jdbcType=VARCHAR}
+									,#{mroadaddress, jdbcType=VARCHAR}
+									,#{mjibunaddress, jdbcType=VARCHAR}
+									,#{mhobby, jdbcType=VARCHAR}
+									,#{minfo, jdbcType=VARCHAR}
+									,#{mphoto, jdbcType=VARCHAR}
+									,#{madmin, jdbcType=VARCHAR}
+									,'Y'
+									,SYSDATE
+									,SYSDATE
+								)
+</insert>
 
 <select id="memberSelectAll" parameterType="memberVO" resultType="memberVO"> 
 
@@ -71,55 +107,6 @@
 		
 </select>
 
-<insert id="memberInsert" parameterType="memberVO"> 
-		
-		<!-- 회원 정보 [등록] 쿼리 -->
-		INSERT INTO SPRING_MEMEBER(
-									 MNUM
-									,MNAME
-									,MID
-									,MPW
-									,MGENDER
-									,MBIRTH
-									,MHP
-									,MTEL
-									,MEMAIL
-									,MZONECODE
-									,MROADADDRESS
-									,MJIBUNADDRESS
-									,MHOBBY
-									,MINFO
-									,MPHOTO
-									,MADMIN
-									,DELETEYN
-									,INSERTDATE
-									,UPDATEDATE
-								  )
-							VALUES(
-									 #{mnum, jdbcType=VARCHAR}
-									,#{mname, jdbcType=VARCHAR}
-									,#{mid, jdbcType=VARCHAR}
-									,#{mpw, jdbcType=VARCHAR}
-									,#{mgender, jdbcType=VARCHAR}
-									,#{mbirth, jdbcType=VARCHAR}
-									,#{mhp, jdbcType=VARCHAR}
-									,#{mtel, jdbcType=VARCHAR}
-									,#{memail, jdbcType=VARCHAR}
-									,#{mzonecode, jdbcType=VARCHAR}
-									,#{mroadaddress, jdbcType=VARCHAR}
-									,#{mjibunaddress, jdbcType=VARCHAR}
-									,#{mhobby, jdbcType=VARCHAR}
-									,#{minfo, jdbcType=VARCHAR}
-									,#{mphoto, jdbcType=VARCHAR}
-									,#{madmin, jdbcType=VARCHAR}
-									,'Y'
-									,SYSDATE
-									,SYSDATE
-								)
-					
-
-</insert>
-
 <update id="memberUpdate" parameterType="memberVO"> 
 		
 		<!-- 회원 정보 [수정] 쿼리 -->
@@ -131,7 +118,7 @@
   			   ,MHOBBY			=	#{mhobby, jdbcType=VARCHAR}
 			   ,UPDATEDATE		=	SYSDATE
 		WHERE	DELETEYN		=	'Y'
-		AND		A.MNUM			=	#{mnum, jdbcType=VARCHAR}
+		AND		MNUM			=	#{mnum, jdbcType=VARCHAR}
 				
 </update>
 
@@ -142,7 +129,17 @@
 		SET 	DELETEYN		=	'N'
 			   ,UPDATEDATE		=	SYSDATE
 		WHERE	DELETEYN		=	'Y'
-		AND		A.MNUM			=	#{mnum, jdbcType=VARCHAR}
+		AND		MNUM			=	#{mnum, jdbcType=VARCHAR}
 </delete>
+
+<select id="memberIdCheck" parameterType="memberVO" resultType="memberVO"> 
+
+		<!-- ID [조회] 쿼리 -->
+		SELECT  A.MID			MID
+		FROM	SPRING_MEMBER 	A
+		WHERE 	DELETEYN	=	'Y'
+		AND 	A.MID	=		#{mid, jdbcType=VARCHAR}
+		
+</select>
 
 </mapper>

@@ -94,15 +94,15 @@ public class CodeUtil {
 	
 	// 취미
 	public static String hobbys(String s) {
+		System.out.println("CodeUtil.hobbys()진입 >>> ");
 		System.out.println("들어온 매개변수 >>> : " + s);
 		
 		String h = "";
 		String ss[] = s.split(",");
-		for(int i=0; i<ss.length; i++) {
+		for(int i=0; i < ss.length; i++) {
 			System.out.println("hobby(ss[i]) >>> : " + hobby(ss[i]));
 			h += hobby(ss[i]) + " ";
 		}
-		
 		return h;
 	}
 	
@@ -110,11 +110,12 @@ public class CodeUtil {
 	// 위에 상수리스트에서 몇 번째 있는지 체크하고 값을 담아주기. 
 	// label : value 형태로 매칭한다.
 	public static String hobby(String s) {
+		System.out.println("CodeUtil.hobby() 진입 >>> ");
 		
 		String h = "";
-		if(s!=null && s.length()>0) {
+		if(s != null && s.length() > 0) {
 			
-			for(int i=0; i<s.length(); i++) {
+			for(int i=1; i < hobby_label.length; i++) {
 				if(("0" + i).equals(s)) {
 					h = CodeUtil.hobby_label[i-1];
 				}

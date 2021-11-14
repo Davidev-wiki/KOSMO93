@@ -44,7 +44,7 @@ public class SpringMemberDAOImpl implements SpringMemberDAO {
 	public int memberUpdate(SpringMemberVO mvo) {
 		// TODO Auto-generated method stub
 		logger.info("SpringMemberDAOImpl.memberUpdate() 진입 >>> :");
-		return (Integer) sqlSession.update("memberInsert", mvo);
+		return (Integer) sqlSession.update("memberUpdate", mvo);
 
 	}
 
@@ -52,7 +52,7 @@ public class SpringMemberDAOImpl implements SpringMemberDAO {
 	public int memberDelete(SpringMemberVO mvo) {
 		// TODO Auto-generated method stub
 		logger.info("SpringMemberDAOImpl.memberDelete() 진입 >>> :");
-		return (Integer) sqlSession.delete("memberInsert", mvo);
+		return (Integer) sqlSession.delete("memberDelete", mvo);
 
 	}
 
@@ -60,6 +60,6 @@ public class SpringMemberDAOImpl implements SpringMemberDAO {
 	public List<SpringMemberVO> memberIdCheck(SpringMemberVO mvo) {
 		// TODO Auto-generated method stub
 		logger.info("SpringMemberDAOImpl.memberIdCheck() 진입 >>> :");
-		return sqlSession.selectList("memberInsert", mvo);
+		return sqlSession.selectList("memberIdCheck", mvo);
 	}
 }

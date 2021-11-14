@@ -11,7 +11,7 @@
 	console.log("javascript 블럭 시작 >>> :");
 	
 	$(document).ready(function(){
-		console.log("jQeury시작 >>> :");
+		console.log("jQuery시작 >>> :");
 		
 		// ---------- 아이디 중복체크 -------------
 		// 아이디를 입력하지 않은 경우.
@@ -58,7 +58,7 @@
 					}
 				}
 				
-				function Error(e){
+				function WhenError(e){
 					alert("Error >>> : " + e.responseText);
 				}
 
@@ -73,9 +73,10 @@
 			});
 			
 			async function syncIdCheckData(){
+				
 				console.log("동기 방식으로 작업이 시작됩니다!");
 				
-				let idCheckData = "";
+				let idCheckData = '';
 				
 				var vv = $("#mid").val();
 				alert("mid 의 값 >>> :" + vv);
@@ -87,7 +88,7 @@
 				if("ID_YES" == idCheckData){
 					alert("사용 가능한 아이디 입니다!");
 					$("#mid").attr("readonly", true);				
-					$("#mid").css('background-color','yellow');						
+					$("#mid").css('background-color','#2EFE64');						
 					$("#mpw").focus();			
 					
 				} else if("ID_NO" == idCheckData){
@@ -126,16 +127,19 @@
 				
 				if(pw == pw_r){
 					alert("비밀번호가 같습니다.");
-					pw_r.val('');
+					$("#mpw_r").css('background-color','#2EFE64');		
+					$("#mgender").focus();						
+					// pw_r.val('');
+					// document.memForm.mpw_r.value = "";
 				} else {
 					alert("동일한 비밀번호를 입력해주세요!");
 					// document.memForm.mpw.value = "";
 					// document.memForm.mpw_r.value = "";
 					// document.memForm.mpw.focus();
-					pw.val('');
-					pw_r.val('');
-					pw.focus();
-					
+					$("#mpw_r").focus();
+					$("#mpw_r").val('');
+					$("#mpw_r").css('background-color','#FA5858');					
+				
 					return false;
 				}
 			});
@@ -182,9 +186,9 @@
 				console.log("우편번호 버튼이 클릭됨 >>> : ");
 				new daum.Postcode({
 							oncomplete: function(data){
-								$("#mzonecode").val(data.zonecode); // 5자리 새 우편번호 사용
-								$("#mroadaddress").val(data.roadaddress);
-								$("#mjibunaddress").val(data.jibunaddress);
+								$("#mzonecode").val(data.zonecode); 		// 5자리 새 우편번호 사용
+								$("#mroadaddress").val(data.roadAddress); 	// 도로명주소
+								$("#mjibunaddress").val(data.jibunAddress); // 지번주소
 							}
 						}).open();
 			});
@@ -313,7 +317,7 @@
 </tr>
 <tr>	
 	<td>이름</td>
-	<td><input type="text" name="mnum" id="mnum" readonly/></td>
+	<td><input type="text" name="mname" id="mname"/></td>
 </tr>
 <div id="middiv">
 <tr>
@@ -323,7 +327,7 @@
 		 -->
 	<td>		
 	<input type="text" name="mid" id="mid" placeholder="아이디 체크" />
-	<input type="button" name="midbtn" id="midbn" value="아이디중복확인" />
+	<input type="button" name="midbtn" id="midbtn" value="아이디중복확인" />
 	</td> 
 </tr>
 </div>
@@ -333,8 +337,8 @@
 			<input type="text" name="mpw" id="mpw" style="width:100px"/><br/>		
 			<input type="text" id="mpw_r" name="mpw_r" placeholder="비밀번호확인" style="width:100px" />		
 		 -->
-		 <input type="text" name="mpw" id="mpw" /><br>
-		 <input type="text" name="mpw_r" id="mpw_r" placeholder="비밀번호 확인" />
+		 <input type="password" name="mpw" id="mpw" /><br>
+		 <input type="password" name="mpw_r" id="mpw_r" placeholder="비밀번호 확인" />
 		 <input type="button" value="비밀번호 확인" id="pwCheck" /><br/>
 	</td>
 </tr>
@@ -397,7 +401,7 @@
 	<td>주소</td>
 	<td>
 		<input type="text" name="mzonecode" id="mzonecode" placeholder="우편번호" style="width:50px" maxlength="6"/>
-		<input type="button" name="zonecode" id="zonecode" value="우편번호 찾기" /><br>
+		<input type="button" name="zonecode" id="zonecode" value="우편번호 찾기"><br>
 		<input type="text" name="mroadaddress" id="mroadaddress" placeholder="도로명주소" style="width:250px" /><br>
 		<input type="text" name="mroadaddressdetail" id="mroadaddressdetail" placeholder="도로명 상세주소" style="width:250px"/><br>
 		<input type="text" name="mjibunaddress" id="mjibunaddress" placeholder="지번주소" style="width:250px"/>
