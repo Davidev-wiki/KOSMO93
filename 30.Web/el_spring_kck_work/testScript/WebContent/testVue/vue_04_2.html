@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Vue_04_2</title>
+<script type="text/javascript" src="https://unpkg.com/vue@2.5.16/dist/vue.js"></script>
+</head>
+<body>
+	<div id="chek">
+		<select v-model="selected">
+			<option disabled value="">Please select one</option>
+			<option>A</option>
+			<option>B</option>
+			<option>C</option>
+		</select>
+		<span>선택 >>> : {{ selected }}</span>
+	</div>
+	<script>
+		var vm = new Vue({
+			 el : '#chek'
+			,data : {selected : ""}
+		});
+	</script>
+</body>
+</html>
