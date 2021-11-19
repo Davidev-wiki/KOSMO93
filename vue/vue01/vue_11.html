@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>vue_11</title>
+<style>
+    #list  { width: 900px; border:1px solid black; border-collapse:collapse; }
+    #list td, #list th { border:1px solid black;  text-align:center; }
+    #list > thead > tr { color:yellow; background-color: purple; }
+</style>
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js"></script>
+</head>
+<body>
+    <div id="exmaple">
+    <p>
+    3학년2반 : <input type="text" :value="countryname" placeholder="이름" @input="nameChanged" />
+    </p>
+	<table id="list">
+		<thead>
+			<tr>
+                <th>번호</th><th>이름</th><th>과목</th><th>이과/문과</th>
+            </tr>
+		</thead>
+		<tbody id="contacts">
+            <tr v-for="c in filtered">
+                <td>{{c.no}}</td>
+                <td>{{c.name}}</td>
+                <td>{{c.capital}}</td>
+                <td>{{c.region}}</td>
+            </tr>
+		</tbody>
+	</table>
+    </div>
+    <script type="text/javascript">
+	var model = {
+        countryname : "",
+        countries : [
+            { no:1,  name : "이주훈", capital : "국어/수1/ 영어/과탐", region:"이과" },
+            { no:2,  name : "오재영", capital : "국어/수1/ 영어/과탐", region:"이과" },
+            { no:3,  name : "장수옥", capital : "국어/수2/영어/사탐", region:"문과" },
+            { no:4,  name : "조준휘", capital : "국어/수1/ 영어/과탐", region:"이과" },
+            { no:5,  name : "김찬기", capital : "국어/수2/영어/사탐", region:"이과" },
+            { no:6,  name : "최솔잎", capital : "국어/수2/영어/사탐", region:"문과" },
+            { no:7,  name : "유지수", capital : "국어/수2/영어/사탐", region:"문과" },
+            { no:8,  name : "윤종서", capital : "국어/수2/영어/아랍어", region:"이과" },
+         
+   	    ]
+    }
+    
+    var clist = new Vue({
+        el : "#exmaple",
+        data : model,
+        computed : {
+            filtered : function() {
+                // this
+            	var cname = this.countryname.trim();
+                // alert("cname >>> : " + cname);
+                // this : 전역객체
+                return this.countries.filter(function(item,index) {
+                    if (item.name.indexOf(cname) > -1) {
+                        return true;
+                    }
+                });
+            }
+        },
+        methods : {
+            nameChanged : function(e) {
+                this.countryname = e.target.value;
+            }
+        }
+    });
+    </script>
+</body>
+</html>
