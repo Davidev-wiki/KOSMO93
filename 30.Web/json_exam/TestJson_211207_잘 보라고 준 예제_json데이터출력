@@ -1,0 +1,42 @@
+package a.b.c.com.test;
+
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
+public class TestJson {
+
+	static String src =   "{\"aid\":\"A2972647879317415621\",\"tid\":\"T2972647797711740454\",\"cid\":\"TC0ONETIME\",\"partner_order_id\":\"0001\",\"partner_user_id\":\"jin\",\"payment_method_type\":\"MONEY\",\"item_name\":\"goods\",\"quantity\":1,\"amount\":{\"total\":2200,\"tax_free\":200,\"vat\":182,\"point\":2200,\"discount\":0},\"created_at\":\"2021-12-06T16:31:41\",\"approved_at\":\"2021-12-06T16:32:03\"}";
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		try {
+			JSONParser jParser = new JSONParser();
+
+			JSONObject src_jObj = (JSONObject)jParser.parse(src);	
+			System.out.println("src_jObj >>> : " + src_jObj); 
+			String aid = (String)src_jObj.get("aid"); 
+			System.out.println("aid >>> : " + aid);
+		
+			// JSON 안에 있는 JSON 출려하기 >>> : 
+			System.out.println("\nJSON 안에 있는 JSON 출력하기 >>> : ");
+			JSONObject amount_jObj = (JSONObject)src_jObj.get("amount");
+			System.out.println("amount_jObj >>> : " + amount_jObj); 
+					
+			String total = String.valueOf(amount_jObj.get("total"));
+			String tax_free = String.valueOf(amount_jObj.get("tax_free"));
+			String vat = String.valueOf(amount_jObj.get("vat"));
+			String point = String.valueOf(amount_jObj.get("point"));
+			String discount = String.valueOf(amount_jObj.get("discount"));
+			
+			System.out.println("total >>> : " + total);
+			System.out.println("tax_free >>> : " + tax_free);
+			System.out.println("vat >>> : " + vat);
+			System.out.println("point >>> : " + point);
+			System.out.println("discount >>> : " + discount);
+			
+		}catch(Exception e) {
+			
+		}
+	}
+}

@@ -1,0 +1,384 @@
+2021-12-06 (MySQL 콘솔로 사용해보기)
+-------------------
+
+MySQL Server 설치하기 
+https://mainia.tistory.com/5972
+
+MySQL JDBC 드라이버
+https://dev.mysql.com/downloads/connector/j/
+	Select Operating System: Platform Independent
+	Platform Independent (Architecture Independent), ZIP Archive	8.0.27
+
+
+설치하기 
+=====================
+1. https://www.mysql.com/
+2. https://www.mysql.com/downloads/ 
+	MySQL Community Server 링크 클릭 
+3. MySQL Installer for Windows 링크 클릭 
+4. MySQL Installer 8.0.27
+	Windows (x86, 32-bit), MSI Installer	8.0.27	470.2M	다운로드 클릭
+5. Developer Default
+6.  Microsoft Visual C++ 2015 ~~ 라는 메시지 설치
+7. Type and NetWorking
+	Config Type: Development Computer
+		port: 3306
+		Pipe Name : MYSQL
+		Memory Name : MYSQL
+8. Account and Roles
+	MySQL Root Password : 1234
+	Repeat Password : 1234
+9. Windows Service
+	Windows Service Name : MySQL80
+10. Connect To Server
+		User name : root
+		Password : 1234
+
+
+워크밴치 사용하기
+=====================
+나중에 하기 
+
+
+콘솔로 사용하기
+=====================
+윈도우[시작] - [MySQL] - [MySQL 8.0 Command Line Client] 클릭
+Enter password: **** <--- 1234
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 17
+Server version: 8.0.27 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2021, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql>
+
+
+win + R -> cmd 에서 
+mysql>exit
+mysql>quit
+
+cd C:\Program Files\MySQL\MySQL Server 8.0\bin
+
+C:\Program Files\MySQL\MySQL Server 8.0\bin>mysql -u root -p mysql
+C:\Program Files\MySQL\MySQL Server 8.0\bin>mysql -u root -p
+Enter password: **** <-- 1234
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 15
+Server version: 8.0.27 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2021, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql>show databases;
+mysql>use mysql;
+mysql>show tables;
+mysql>desc db;
+mysql>desc user;
+
+
+example 데이터베이스 생성하기
+mysql> create database example;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| example            |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.01 sec)
+
+사용자 계정 생성 및 비밀번호 부여하기
+사용자 계정 : my_user
+비밀번호 : my_1234
+mysql> create user my_user@localhost identified by 'my_1234';
+Query OK, 0 rows affected (0.02 sec)
+
+flush privileges 명령어 : 사용자 계정 권한 테이블 재 로딩
+mysql> flush privileges;
+Query OK, 0 rows affected (0.01 sec)
+
+사용자 계정 권한부여하기 
+mysql> grant all privileges on example.* to my_user@localhost;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> quit
+Bye
+
+C:\Program Files\MySQL\MySQL Server 8.0\bin>mysql -u my_user -p example
+Enter password: ******* <-- my_1234
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 19
+Server version: 8.0.27 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2021, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql>
+
+MySQL Server SQL 질의어 
+C:\Program Files\MySQL\MySQL Server 8.0\bin>mysql -u root -p
+Enter password: ****
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| example            |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> use mysql;
+Database changed
+mysql>
+
+멤버(member) 데이터베이스 생성하기 
+mysql> create database member;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| example            |
+| information_schema |
+| member             |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+6 rows in set (0.00 sec)
+
+mysql> create database exam;
+mysql> show databases;
+mysql> drop database exam;
+
+MySQL Server SQL 데이터 형(Data type)
+숫자 :	int() : 0과 음수, 양수  
+		float()
+문자 :	char(s) : s 최소길이 1byte, s 최대길이 고정길이
+		varchar(s) : s 최소길이 1byte, s 최대길이 가변길이
+		text() : 큰 문자열 
+날짜 :	date() : 'yyyy-mm-dd'
+		datetime() : 'yyyy-mm-dd hh:mm:ss'
+		now() : 현재 날짜 생성지 datetime 데이터 형으로 필드를 생성해야 한다.
+이진(binary)	:	binary() : char 형태의 이진 데이터, 최대 255byte
+				blob() : 이미지, 파일 4GB
+	
+
+
+MySQL Server 데이터베이스의 테이블 다루기 
+member 데이터베이스 사용하기 
+mysql> use member;
+Database changed
+
+member 데이터베이스에 member 테이블 생성 
+create table member(
+	mid varchar(20) not null,
+	mpw varchar(20) not null,
+	mname varchar(20) not null,
+	memail varchar(50),
+	mtel varchar(20),
+	mloc varchar(100),
+	mdate varchar(50)
+);
+
+mysql> create table member(
+    -> mid varchar(20) not null,
+    -> mpw varchar(20) not null,
+    -> mname varchar(20) not null,
+    -> memail varchar(50),
+    -> mtel varchar(20),
+    -> mloc varchar(100),
+    -> mdate varchar(50)
+    -> );
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> show tables;
++------------------+
+| Tables_in_member |
++------------------+
+| member           |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> desc member;
++--------+--------------+------+-----+---------+-------+
+| Field  | Type         | Null | Key | Default | Extra |
++--------+--------------+------+-----+---------+-------+
+| mid    | varchar(20)  | NO   |     | NULL    |       |
+| mpw    | varchar(20)  | NO   |     | NULL    |       |
+| mname  | varchar(20)  | NO   |     | NULL    |       |
+| memail | varchar(50)  | YES  |     | NULL    |       |
+| mtel   | varchar(20)  | YES  |     | NULL    |       |
+| mloc   | varchar(100) | YES  |     | NULL    |       |
+| mdate  | varchar(50)  | YES  |     | NULL    |       |
++--------+--------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+
+테이블 이름 변경 member --> remember
+mysql> rename table member to remember;
+Query OK, 0 rows affected (0.02 sec)
+mysql> show tables;
++------------------+
+| Tables_in_member |
++------------------+
+| remember         |
++------------------+
+1 row in set (0.00 sec)
+
+mysql>
+
+테이블 복사 : member_1 <-- remember
+mysql> create table member_1 as select * from remember;
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql>
+
+mysql> show tables;
++------------------+
+| Tables_in_member |
++------------------+
+| member_1         |
+| remember         |
++------------------+
+2 rows in set (0.00 sec)
+
+mysql>
+
+
+컬럼 추가 : member_1 테이블에 memo text 컬럼 추가
+alter table 테이블명 add  column 추가필드명 데이터형;
+mysql> alter table member_1 add column memo text;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql>
+
+mysql> desc member_1;
++--------+--------------+------+-----+---------+-------+
+| Field  | Type         | Null | Key | Default | Extra |
++--------+--------------+------+-----+---------+-------+
+| mid    | varchar(20)  | NO   |     | NULL    |       |
+| mpw    | varchar(20)  | NO   |     | NULL    |       |
+| mname  | varchar(20)  | NO   |     | NULL    |       |
+| memail | varchar(50)  | YES  |     | NULL    |       |
+| mtel   | varchar(20)  | YES  |     | NULL    |       |
+| mloc   | varchar(100) | YES  |     | NULL    |       |
+| mdate  | varchar(50)  | YES  |     | NULL    |       |
+| memo   | text         | YES  |     | NULL    |       |
++--------+--------------+------+-----+---------+-------+
+8 rows in set (0.01 sec)
+
+필드 삭제
+mysql> alter table member_1 drop column memo;
+
+필드 타입 변경 : mtel varchar(20) -> char(20)
+mysql> alter table member_1 modify mtel char(20);
+
+필드 수정 : mloc -> mloclive
+alter table 테이블명 change column 이전필드면 수정필드명 데이터형;
+mysql> alter table member_1 change column mloc mlocliv char(20);
+
+테이블 삭제
+mysql> drop table member_1;
+
+
+MySQL Server 데이터베이스의 테이블 데이터 다루기 
+mysql> insert into remember
+		(mid, mpw, mname, memail, mtel, mloc, mdate)
+		value
+		('m0001', 'abc00', 'abc', 'abc@naver.com', '010-1111-1111', '서울', '2021.12.02');
+mysql> insert into remember
+		(mid, mpw, mname, memail, mtel, mloc, mdate)
+		value
+		('m0002', 'abc11', 'abc11', 'abc11@naver.com', '010-2222-2222', '서울', '2021.12.02');
+mysql> insert into remember
+		(mid, mpw, mname, memail, mtel, mloc, mdate)
+		value
+		('m0003', 'abc22', 'abc22', 'abc22@naver.com', '010-3333-3333', '서울', '2021.12.02');
+
+
+
+Oracle Query vs MySQL Query
+===========================
+
+1. 공백치환 함수 ( NVL -> IFNULL )
+Oracle : SELECT NVL('컬럼명', '') FROM DUAL;
+MySql : SELECT IFNULL('컬럼명', '') FROM DUAL;
+
+2. 현재 날짜시간
+Oracle : SYSDATE
+Mysql  : NOW() 
+
+3. 날짜포멧 
+Oracle : TO_CHAR(sysdate,'MMDDYYYYHH24MISS')
+Mysql  : DATE_FORMAT(now(),'%Y%m%d%H%i%s')  -> 여기서 대문자Y는 4자리 년도, 소문자 y는 2자리 년도
+
+4. 날짜 포멧 : 요일
+Oracle : 요일이 1~7로 인식함  -> TO_CHAR(SYSDATE - 1, 'D') 
+Mysql : 요일이 0~6으로 인식   -> DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 1 DAY), '%w')
+* 참고로 자바스크립트가 0~6으로 인식하기에 Oracle 쿼리에서 -1을 해서 맞추는 경우가 많음
+
+5. Like절 '%' 사용법
+Oracle : Like '%'||'문자'||'%' 이런식으로 컬럼명 앞뒤로 '%'를 붙여주면 된다
+Mysql : LIKE CONCAT('문자','%') 이런식으로 CONCAT 함수 사용
+
+6. 형변환
+Oracle : To_char, To_number 등
+Mysql : CAST
+SELECT TO_CHAR(1234) FROM DUAL 
+-> SELECT CAST(1234 AS CHAR) FROM DUAL
+
+7. 대소문자 구분함
+Oracle : 구분없음
+Mysql : 기본적으로 구분하나, 설정으로 변경 가능함
+
+8. ROWNUM
+Oracle : where 절에 rownum > 5 and rownum =< 10 
+Mysql : where절 없이 limit 5,10
+
+9. Sequence(시퀀스)는 둘 다 사용자함수를 만들어서 아래와 같이 사용
+Oracle : 시퀀스명.nextval
+Mysql : 시퀀스명.currval
+
+10. 문자열 자르기
+Oracle: SUBSTR(문자열, 1, 10)
+Mysql: SUBSTRING(문자열, 1,10), LEFT(문자열, 3), RIGHT(문자열, 3)
+
+11. 문자열 합치기 ( - 문자열을 연결한다고 가정)
+Oracle: 문자열(또는 컬럼) ||' - '
+Mysql: CONCAT(문자열(또는 컬럼), ' - ')
+
+12. 예약어가 컬럼명일 때
+Oracle: 컬럼명을 따옴표(")로 감싸기 (예: select "column" from tab)
+Mysql: 컬럼명을 TAB 키 위에 있는 ` 키 ( Single quotation )로 감싸기
+
+13. 저장프로시저 있는지 여부 파악해서 Create 하기
+Oracle: CREATE OR REPLACE PROCEDURE 프로시저명
+Mysql: DROP PROCEDURE IF EXISTS 프로시저명; 을 한 뒤에 CREATE PROCEDURE 프로시저명

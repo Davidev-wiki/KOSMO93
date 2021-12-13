@@ -1,0 +1,28 @@
+package a.b.c.com.test;
+
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
+public class TestJson2 {
+
+	static String jObject = "{ \"json1\" : \"test1\", \"json2\" : { \"json2-1\" : \"test2-1\", \"json2-2\" : \"test2-2\" }}";
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		try {
+			JSONParser jParser = new JSONParser();
+
+			JSONObject jObject1 = (JSONObject)jParser.parse(jObject);
+			
+			System.out.println(jObject1.get("json1")); 
+			JSONObject ss = (JSONObject)jObject1.get("json2");
+			System.out.println(ss); 
+			System.out.println(ss.get("json2-1")); 
+			
+			
+		}catch(Exception e) {
+			
+		}
+	}
+}

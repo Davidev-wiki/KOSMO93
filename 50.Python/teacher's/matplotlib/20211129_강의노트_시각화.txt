@@ -1,0 +1,47 @@
+2021-11-29
+---------------------------------
+리포팅 툴 --> 시각화 
+
+2016
+------
+http://jqPlot.com
+http://CanvasJS.com/
+www.chartjs.org
+gionkunz.github.io/chartist-js
+n3-charts.github.io/line-chart
+zingchart.com
+www.highcharts.com
+www.flotcharts.org
+www.amcharts.com
+www.ejschart.com
+charts.hohli.com
+
+2020
+------
+https://infogram.com/
+https://public.tableau.com/app/discover
+https://flowingdata.com/
+https://www.visualisingdata.com/
+https://contents.newsjel.ly/
+
+
+2020 년 최고의 15 가지 최고의 데이터 시각화 도구
+1) Xplenty
+2) Zoho Analytics
+3) Whatagraph
+4) HubSpot
+5) Tableau Desktop
+6) Sisence
+7) 적응 형 발견
+8) TeamMate 분석
+9) 주피터
+10) 던다스 BI
+11) 인포그램
+12) Google 차트
+13) Visme
+14) 집
+15) 클루 비우스
+16) TapClicks
+17) 미인
+18) Microsoft Power BI
+ 
