@@ -14,5 +14,5 @@ Tools
 
 - Web Server : Apache-tomcat-8.5.70 
 - Framework : Spring 3.2.9, 4.3.16(for Annotation, Web Socket), Mybatis
-- IDE : ECLIPSE 2020-06(4.16), ECLIPSE NEON, PyCharm, Jupyternotebook, VS Code
+- IDE : ECLIPSE 2020-06(4.16), ECLIPSE NEON, PyCharm, Jupyternotebook, VS Code, Anaconda
 - Database : Oracle 11g Release, SQLite3, TinyDB, MySQL
